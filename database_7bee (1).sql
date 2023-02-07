@@ -1,9 +1,11 @@
-﻿
-IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '7bee')
+﻿ -- drop database database_7Bee
+
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'database_7Bee')
 BEGIN
-   CREATE DATABASE 7bee;
+   CREATE DATABASE database_7Bee;
 END;
-use [7bee]
+go
+use database_7Bee
 
 go
 
@@ -19,6 +21,7 @@ CREATE TABLE NGUOIDUNG (
    isActive bit not null
 );
 
+go
 CREATE TABLE PARTNER (
    SDT varchar (10) Primary Key not null,
    Shop_TenShop nvarchar (50) not null UNIQUE ,
@@ -29,6 +32,8 @@ CREATE TABLE PARTNER (
    MoTa_Shop varchar(255) ,
    isActive bit not null
 );
+
+go
 --drop table TINTUC
 CREATE TABLE TINTUC (
    TT_MA varchar(25) Primary Key not null,
@@ -40,6 +45,7 @@ CREATE TABLE TINTUC (
    TT_NoiDung_Body nvarchar (max)
 );
 
+go
 CREATE TABLE DANHGIA_TINTUC (
    DG_TT_MA varchar(25) Primary Key,
    TT_MA varchar(25) not null,
@@ -47,6 +53,7 @@ CREATE TABLE DANHGIA_TINTUC (
    DG_TT_NoiDung nvarchar (255)
 );
 
+go
 CREATE TABLE DONHANG (
    DH_MA varchar(25) Primary Key,
    SP_MA varchar(25) not null,
@@ -59,6 +66,7 @@ CREATE TABLE DONHANG (
    DH_DiaChi nvarchar (255) not null
 );
 
+go
 CREATE TABLE SANPHAM (
     SP_MA varchar(25) PRIMARY KEY,
     Shop_TenShop nvarchar(50) not null,
@@ -68,11 +76,13 @@ CREATE TABLE SANPHAM (
     SP_Gia money not null
 );
 
+go
 CREATE TABLE LOAISP (
   LoaiSP_MA varchar(25) PRIMARY KEY,
   LoaiSP_Ten nvarchar(255) not null
 );
 
+go
 CREATE TABLE CHITIET_SANPHAM (
 CTSP_MA varchar(25) PRIMARY KEY,
 SP_MA varchar(25) not null,
@@ -83,6 +93,8 @@ CTSP_Mau nvarchar(50),
 CTSP_HinhAnh varchar(255),
 CTSP_SoLuong int not null
 );
+
+go
 --DROP TABLE LICHSU
 CREATE TABLE LICHSU (
 LS_MA varchar(25) PRIMARY KEY,
@@ -93,6 +105,7 @@ HoTen nvarchar (50) not null,
 LS_NgayMua datetime not null
 );
 
+go
 CREATE TABLE DANHGIA_SANPHAM (
   DG_SP_MA varchar(25) PRIMARY KEY,
   LS_MA varchar(25) not null,
@@ -104,6 +117,7 @@ CREATE TABLE DANHGIA_SANPHAM (
 );
 
 
+go
 --khoa ngoai 
  
 -- TINTUC 
@@ -148,6 +162,7 @@ ALTER TABLE LICHSU
 ADD CONSTRAINT FK_LICHSU_DONHANG
 FOREIGN KEY (DH_MA) REFERENCES DONHANG(DH_MA);
 
+go
 -- DANHGIA_SP 
 
 ALTER TABLE DANHGIA_SANPHAM
@@ -155,7 +170,7 @@ ADD CONSTRAINT FK_DANHGIA_SANPHAM_LICHSU
 FOREIGN KEY (LS_MA)
 REFERENCES LICHSU(LS_MA);
 
-
+go
 -- DỮ LIÊU MẪU 
 
 -- Dữ liệu bảng Người Dùng
@@ -170,7 +185,7 @@ INSERT INTO NGUOIDUNG VALUES
 	(0954322656,N'Bùi Hoàng Việt','viet12@gmail.com','abc3',1978-05-22, N'quận Bình tân, TP.HCM', null,1,1 ),
 	(0953432145,N'Nguyễn Thị Lệ','le12@gmail.com','ac13',1978-09-15, N'quận tân bình, TP.HCM', null,1,1 ),
 	(0964532167,N'Nguyễn Kim Hùng','Hung124@gmail.com','ac13',1978-05-22, N'quận 7, TP.HCM', null,1,1 )
-
+go
 
 -- Dữ liệu bảng Shop
 INSERT INTO PARTNER VALUES
@@ -180,7 +195,7 @@ INSERT INTO PARTNER VALUES
 	(0545325675, N'Kim long Computer','longshop134@gmail.com',2014-07-23,null,'hai123','Bán các loại máy và thiết bị điện tử',0),
 	(0342655236, N'Sasin quán','Sasin134@gmail.com',2014-07-23,null,'hai123','Mì cay là chân ái',1),
 	(0643534678, N'Ba Anh Em','AEshop134@gmail.com',2014-12-06,null,'hai123','Bán sỉ lẻ áo quần cũ',1)
-
+go
 -- Dữ liệu bảng TIN TỨC
 INSERT INTO TINTUC VALUES
 	('TT05', N'Hải Computer',2019-09-23,null,null,N'Săn sale máy tính lên tới 50%',null),
@@ -189,7 +204,7 @@ INSERT INTO TINTUC VALUES
 	('TT02', N'Hải âu',2022-12-23,null,null,N'Săn sale Áo thể thao nam lên tới 50%',null),
 	('TT01', N'Ba Anh Em',2021-05-13,null,null,N'Săn sale Combo set đồ cho cặp đôi lên tới 50%',null),
 	('TT00', N'Sasin quán',2023-02-23,null,null,N'Combo mì cay hương vị mới',null)
-
+go 
 -- Dữ liệu bảng Đánh Giá tin tức
 INSERT INTO DANHGIA_TINTUC VALUES
 	('DGTT05', 'TT05',0327884256,null),
@@ -199,31 +214,13 @@ INSERT INTO DANHGIA_TINTUC VALUES
 	('DGTT09', 'TT01',0363278964,null),
 	('DGTT10', 'TT05',0953432145,null),
 	('DGTT11', 'TT01',0327884256,null)
-
--- Dữ liệu bảng ĐƠN HÀNG
-INSERT INTO DONHANG VALUES
-	('DH001', 'SP001',N'Nguyễn Trần Minh Hải',12,1680000,N'Hải Computer',null,0363438943,N'quận 1, TP.HCM'),
-	('DH002', 'SP002',N'Lê Hoàng Bảo',2,1680000,N'Hải Computer',null,0395632154,N'quận tân bình, TP.HCM'),
-	('DH003', 'SP007',N'Nguyễn Thị Lệ',1,680000,N'Ba Anh Em',null,0953432145,N'quận tân bình, TP.HCM'),
-	('DH004', 'SP004',N'Nguyễn Kiều Trang',5,256000,N'Việt nam food',null,0327544266,N'quận 3, TP.HCM'),
-	('DH005', 'SP005',N'Nguyễn Trần Minh Hải',5,168000,N'Việt nam food',null,0363438943,N'quận 1, TP.HCM')
-
--- Dữ liệu Bảng Lịch Sử
-INSERT INTO LICHSU VALUES
-	('LS001', 'DH001',N'Ổ Đĩa SSD Gen4 500gb',20160000,N'Nguyễn Trần Minh Hải',2023-02-14),
-	('LS002', 'DH005',N'Mỳ ý sốt bò hảo hạn',840000,N'Nguyễn Trần Minh Hải',2023-02-13),
-	('LS003', 'DH002',N'Ổ Đĩa SSD Gen3 500gb',3360000,N'Lê Hoàng Bảo',2023-02-13),
-	('LS004', 'DH003',N'Túi chéo nữ hoàng kim',680000,N'Nguyễn Thị Lệ',2023-02-13),
-	('LS005', 'DH004',N'Combo Gà cay + nước ngọt tự chọn',1280000,N'Nguyễn Kiều Trang',2023-02-13)
-
--- Dữ Liệu bảng đánh giá sản phẩm
-INSERT INTO DANHGIA_SANPHAM VALUES
-	('DGSP001', 'LS001','SP001',N'Nguyễn Trần Minh Hải',1,N'tốt, đẹp',2023-02-14),
-	('DGSP002', 'LS002','SP005',N'Nguyễn Trần Minh Hải',0,N'đồ ăn không ngon lắm',2023-02-14),
-	('DGSP003', 'LS003','SP002',N'Lê Hoàng Bảo',1,N'tốt, đẹp',2023-02-14),
-	('DGSP004', 'LS004','SP007',N'Nguyễn Thị Lệ',1,N'tốt, đẹp',2023-02-14),
-	('DGSP005', 'LS005','SP004',N'Nguyễn Kiều Trang',1,N'tốt, đẹp',2023-02-14)
-
+go 
+	-- Dữ liệu bảng Loại SP
+INSERT INTO LOAISP VALUES
+	('LSP001',N'Đồ Ăn'),
+	('LSP002',N'Thời Trang'),
+	('LSP003',N'Điện Tử')
+go 
 -- Dữ liệu sản phẩm
 INSERT INTO SANPHAM VALUES
 	('SP001',N'Hải Computer','LSP003',2021-08-25,N'Ổ Đĩa SSD Gen4 500gb',1680000),
@@ -235,6 +232,7 @@ INSERT INTO SANPHAM VALUES
 	('SP007',N'Ba Anh Em','LSP002',2023-02-25,N'Túi chéo nữ hoàng kim',680000),
 	('SP008',N'Ba Anh Em','LSP002',2023-02-25,N'Giày adidas nam siêu chất',1575000),
 	('SP009',N'Kim long Computer','LSP003',2023-01-25,N'Màn hình Samsung siêu tràn viền',5680000)
+go 
 	
 
 -- Dữ liệu bảng chi tiết sản phẩm
@@ -249,15 +247,35 @@ INSERT INTO CHITIET_SANPHAM VALUES
 	('CTSP008','SP008',N'Giày adidas nam siêu chất','36,37,38,39,40,41',2300,N'Xanh',null,24),
 	('CTSP009','SP009',N'Màn hình Samsung siêu tràn viền','52 inch',2300,N'Xanh',null,24)
 
--- Dữ liệu bảng Loại SP
-INSERT INTO LOAISP VALUES
-	('LSP001',N'Đồ Ăn'),
-	('LSP002',N'Thời Trang'),
-	('LSP003',N'Điện Tử')
-	
+go
 
+-- Dữ liệu bảng ĐƠN HÀNG
+INSERT INTO DONHANG VALUES
+	('DH001', 'SP001',N'Nguyễn Trần Minh Hải',12,1680000,N'Hải Computer',null,0363438943,N'quận 1, TP.HCM'),
+	('DH002', 'SP002',N'Lê Hoàng Bảo',2,1680000,N'Hải Computer',null,0395632154,N'quận tân bình, TP.HCM'),
+	('DH003', 'SP007',N'Nguyễn Thị Lệ',1,680000,N'Ba Anh Em',null,0953432145,N'quận tân bình, TP.HCM'),
+	('DH004', 'SP004',N'Nguyễn Kiều Trang',5,256000,N'Việt nam food',null,0327544266,N'quận 3, TP.HCM'),
+	('DH005', 'SP005',N'Nguyễn Trần Minh Hải',5,168000,N'Việt nam food',null,0363438943,N'quận 1, TP.HCM')
+go 
+-- Dữ liệu Bảng Lịch Sử
+INSERT INTO LICHSU VALUES
+	('LS001', 'DH001',N'Ổ Đĩa SSD Gen4 500gb',20160000,N'Nguyễn Trần Minh Hải',2023-02-14),
+	('LS002', 'DH005',N'Mỳ ý sốt bò hảo hạn',840000,N'Nguyễn Trần Minh Hải',2023-02-13),
+	('LS003', 'DH002',N'Ổ Đĩa SSD Gen3 500gb',3360000,N'Lê Hoàng Bảo',2023-02-13),
+	('LS004', 'DH003',N'Túi chéo nữ hoàng kim',680000,N'Nguyễn Thị Lệ',2023-02-13),
+	('LS005', 'DH004',N'Combo Gà cay + nước ngọt tự chọn',1280000,N'Nguyễn Kiều Trang',2023-02-13)
+go 
 
--- Sp dùng sẵn
+-- Dữ Liệu bảng đánh giá sản phẩm
+INSERT INTO DANHGIA_SANPHAM VALUES
+	('DGSP001', 'LS001','SP001',N'Nguyễn Trần Minh Hải',1,N'tốt, đẹp',2023-02-14),
+	('DGSP002', 'LS002','SP005',N'Nguyễn Trần Minh Hải',0,N'đồ ăn không ngon lắm',2023-02-14),
+	('DGSP003', 'LS003','SP002',N'Lê Hoàng Bảo',1,N'tốt, đẹp',2023-02-14),
+	('DGSP004', 'LS004','SP007',N'Nguyễn Thị Lệ',1,N'tốt, đẹp',2023-02-14),
+	('DGSP005', 'LS005','SP004',N'Nguyễn Kiều Trang',1,N'tốt, đẹp',2023-02-14)
+
+go
+
 -- Sp Tìm người dùng 
 create proc sp_TimND
 	@sdt varchar(10)
