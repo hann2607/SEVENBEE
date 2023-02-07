@@ -45,9 +45,8 @@
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
     <!-- User-Profile SCSS -->
-    <link rel="stylesheet" href="css/up.css">
+    <link rel="stylesheet" href="css/user-profile.css">
     <!-- User-Profile JS -->
-    <script src="js/user-profile.js"></script>
 </head>
 
 <body>
@@ -514,11 +513,16 @@
                         <form action="#">
                             <div class="login-form">
                                 <h4 class="login-title">Register</h4>
-                                <div class="row d-flex justify-content-center">
-                                    <div class="avatar-wrapper">
-                                        <img class="profile-pic" src="" />
-                                            
-                                        <input id="file-upload" type="file" accept="image/*" />
+                                <div class="row d-flex justify-content-center mb-20">
+
+                                    <div class="avatar-upload position-relative">
+                                        <div class="avatar-edit position-absolute">
+                                            <input type='file' name="images" id="imageUpload"
+                                                accept=".png, .jpg, .jpeg" /> <label for="imageUpload"></label>
+                                        </div>
+                                        <div class="avatar-preview border border-5 border-warning rounded-circle" >
+                                            <div id="imagePreview" style="background-image: url(images/team/1.png);"></div>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -835,6 +839,9 @@
     <script src="js/scrollUp.min.js"></script>
     <!-- Main/Activator js -->
     <script src="js/main.js"></script>
+
+    <script src="js/user-profile.js"></script>
+
 </body>
 
 <!-- login-register31:27-->
