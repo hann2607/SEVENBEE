@@ -20,9 +20,9 @@ import lombok.NoArgsConstructor;
 public class NGUOIDUNG {
 	@Id
 	String SDT;
-	String HoTen, Email, MatKhau, DiaChi, HinhAnh;
+	String Ho_Ten, Email, Mat_Khau, Dia_Chi, Hinh_Anh;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "NgaySinh")
-	Date NgaySinh = new Date();
-	boolean VaiTro = true, isActive = false;
+	Date Ngay_Sinh = new Date();
+	boolean Vai_Tro = true, is_Active = false;
 }
