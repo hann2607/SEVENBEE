@@ -25,6 +25,7 @@ public class homeController {
 //		List<NGUOIDUNG> listnd = nguoidungdao.findAll();
 //		System.out.println(listnd.toString());
 		System.out.println();
-		return PageInfo.prepareAndForwardSite(model, PageType.HOMEPAGE);
+		model.addAttribute("abc", "cac");
+		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
 }
