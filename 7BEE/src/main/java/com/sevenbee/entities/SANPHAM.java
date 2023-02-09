@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class SANPHAM {
 	@Id
 	String SP_MA;
-	String Shop_TenShop, LoaiSP_MA, SP_TenSP;
+	String Shop_TenShop, LoaiSP_MA, SP_TenSP, SP_HinhAnh;
 	long SP_Gia;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SP_Ngaydang")

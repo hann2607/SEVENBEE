@@ -18,7 +18,7 @@ public class PageInfo {
 
 	static {
 		// user
-		pageRoute.put(PageType.HOMEPAGE, new PageInfo("TRANG CHỦ", "index", "/views/jsp/index/index.jsp"));
+		pageRoute.put(PageType.HOMEPAGE, new PageInfo("TRANG CHỦ", "index", "/views/jsp/home/home.jsp"));
 		pageRoute.put(PageType.SITE_PRODUCT, new PageInfo("SẢN PHẨM", "khachhang/product.jsp", null));
 		pageRoute.put(PageType.SITE_FAVORITES, new PageInfo("YÊU THÍCH", "khachhang/favorites.jsp", null));
 		pageRoute.put(PageType.SITE_CHECKOUT, new PageInfo("THANH TOÁN", "khachhang/checkout.jsp", null));
