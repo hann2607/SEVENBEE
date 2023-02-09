@@ -27,8 +27,4 @@ public class LICHSU {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "LS_NgayMua")
 	Date LS_NgayMua = new Date();
-	@OneToMany(mappedBy = "DH_MA")
-	List<DONHANG> donhang;
-	@OneToMany(mappedBy = "???")
-	List<DANHGIA_SANPHAM> danhgiasanpham;
 }
