@@ -136,7 +136,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="/views/product-details.html">Graphic Corner</a>
+													<a href="/views/product-details.html">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
