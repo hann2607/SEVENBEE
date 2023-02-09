@@ -10,14 +10,14 @@ import com.sevenbee.dao.NGUOIDUNGDAO;
 import com.sevenbee.entities.NGUOIDUNG;
 
 @Controller
-public class testcontroller {
+public class homeController {
 	@Autowired 
 	NGUOIDUNGDAO nguoidungdao;
 	
-	@RequestMapping("/")
+	@RequestMapping("/home")
 	public String home() {
-		List<NGUOIDUNG> listnd = nguoidungdao.findAll();
-		System.out.println(listnd.toString());
+//		List<NGUOIDUNG> listnd = nguoidungdao.findAll();
+//		System.out.println(listnd.toString());
 		return "index";
 	}
 }
