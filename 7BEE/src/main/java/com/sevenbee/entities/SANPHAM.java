@@ -34,6 +34,6 @@ public class SANPHAM {
 	@OneToOne
 	CHITIET_SANPHAM chitiet_sanpham;
 	@ManyToOne
-	LOAISP loai_sanpham;
+	LOAISP loaisp;
 	
 }
