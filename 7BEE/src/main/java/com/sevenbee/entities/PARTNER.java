@@ -1,10 +1,13 @@
 package com.sevenbee.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -25,4 +28,7 @@ public class PARTNER {
 	@Column(name = "NgayDKShop")
 	Date NgayDKShop = new Date();
 	boolean isactive = false;
+	@OneToMany
+	@JoinColumn(name = "Shop_TenShop")
+	List<SANPHAM> sanpham;
 }
