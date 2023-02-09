@@ -268,7 +268,7 @@ a.button-small::after {
 	-moz-transition: all 0.4s ease-in-out;
 	-o-transition: all 0.4s ease-in-out;
 }
-a.button-border span,
+ a.button-border span,
 a.button-border-white span,
 input,
 select,
@@ -278,7 +278,7 @@ textarea {
 	-ms-transition: all 0.5s ease-out 0s;
 	-o-transition: all 0.5s ease-out 0s;
 	transition: all 0.5s ease-out 0s;
-}
+} 
 /*----------------------------------------*/
 /*  1.3 Section Title
 /*----------------------------------------*/
@@ -1395,7 +1395,6 @@ textarea:focus {
 		text-align: left;
 		-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-		transition: all 0.3s ease-in-out;
 }
 .setting {
 		min-width: 150px;
@@ -3058,8 +3057,7 @@ text-align: center;
 	font-family: fontawesome;
 }
 .category-heading > h2 > i {
-	float: ;
-	text-align: ;
+	
 	float: right;
 	padding-right: 20px;
 	font-size: 12px;

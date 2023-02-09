@@ -14,10 +14,10 @@ public class homeController {
 	@Autowired 
 	NGUOIDUNGDAO nguoidungdao;
 	
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String home() {
-//		List<NGUOIDUNG> listnd = nguoidungdao.findAll();
-//		System.out.println(listnd.toString());
+		List<NGUOIDUNG> listnd = nguoidungdao.findAll();
+		System.out.println(listnd.toString());
 		return "index";
 	}
 }
