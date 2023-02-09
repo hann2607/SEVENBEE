@@ -30,5 +30,8 @@ public class PARTNER {
 	boolean isactive = false;
 	@OneToMany
 	@JoinColumn(name = "Shop_TenShop")
+	List<TINTUC> tintuc;
+	@OneToMany
+	@JoinColumn(name = "Shop_TenShop")
 	List<SANPHAM> sanpham;
 }

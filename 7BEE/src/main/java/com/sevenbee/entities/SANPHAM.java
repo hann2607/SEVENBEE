@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -27,7 +28,12 @@ public class SANPHAM {
 	@Column(name = "SP_Ngaydang")
 	Date SP_Ngaydang = new Date();
 	@ManyToOne
-	LOAISP loai_sanpham;
-	@ManyToOne
 	PARTNER partner;
+	@ManyToOne
+	DONHANG donhang;
+	@OneToOne
+	CHITIET_SANPHAM chitiet_sanpham;
+	@ManyToOne
+	LOAISP loai_sanpham;
+	
 }

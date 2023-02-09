@@ -5,7 +5,6 @@ import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -27,4 +26,6 @@ public class DANHGIA_SANPHAM {
 	@Column(name = "DG_SP_NgayDanhGia")
 	Date DG_SP_NgayDanhGia = new Date();
 	boolean DG_SP_Like = true;
+	@ManyToOne
+	LICHSU lichsu;
 }

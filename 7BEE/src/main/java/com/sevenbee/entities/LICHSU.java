@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -27,4 +28,10 @@ public class LICHSU {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "LS_NgayMua")
 	Date LS_NgayMua = new Date();
+	@OneToMany
+	@JoinColumn(name = "DH_MA")
+	List<DONHANG> donhang;
+	@OneToMany
+	@JoinColumn(name = "LS_MA")
+	List<DANHGIA_SANPHAM> danhgia_sanpham;
 }
