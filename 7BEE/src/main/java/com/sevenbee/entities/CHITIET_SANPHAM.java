@@ -19,6 +19,4 @@ public class CHITIET_SANPHAM {
 	String CTSP_MA;
 	String SP_MA, CTSP_Mo_Ta, Kich_Thuoc, CTSP_Mau, CTSP_Hinh_Anh;
 	int CTSP_Luot_Mua,CTSP_So_Luong;
-	@ManyToOne @JoinColumn(name = "SP_MA")
-	SANPHAM sanpham;
 }

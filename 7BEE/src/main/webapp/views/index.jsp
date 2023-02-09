@@ -8,13 +8,15 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>SEVEN BEE</title>
+<title>${page.title}</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="/views/images/favicon.png">
+<link rel="shortcut icon" type="image/x-icon"
+	href="/views/images/favicon.png">
 <!-- Material Design Iconic Font-V2.2.0 -->
-<link rel="stylesheet" href="/views/css/material-design-iconic-font.min.css">
+<link rel="stylesheet"
+	href="/views/css/material-design-iconic-font.min.css">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="/views/css/font-awesome.min.css">
 <!-- Font Awesome Stars-->
@@ -52,11 +54,14 @@
 		<!-- Header -->
 		<jsp:include page="/views/header.jsp"></jsp:include>
 		<!-- End Header -->
-		
+
 		<!-- Main -->
-		<jsp:include page="/views/jsp/index/index.jsp"></jsp:include>
+<%-- 		<jsp:include page="/views/jsp/index/index.jsp"></jsp:include> --%>
+		<!-- SECTION -->
+		<jsp:include page="${page.linkFile}"></jsp:include>
+		<!-- /SECTION -->
 		<!-- End Main -->
-		
+
 		<!-- Header -->
 		<jsp:include page="/views/footer.jsp"></jsp:include>
 		<!-- End Header -->

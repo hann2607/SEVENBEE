@@ -27,6 +27,4 @@ public class DANHGIA_SANPHAM {
 	@Column(name = "DG_SP_NgayDanhGia")
 	Date DG_SP_NgayDanhGia = new Date();
 	boolean DG_SP_Like = true;
-	@ManyToOne @JoinColumn(name = "LS_MA")
-	LICHSU lichsu;
 }
