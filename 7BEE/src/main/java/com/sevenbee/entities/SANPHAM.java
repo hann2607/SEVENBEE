@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -30,6 +31,11 @@ public class SANPHAM {
 	@ManyToOne
 	@JoinColumn(name = "LoaiSP_MA")
 	private LOAISP loaisp;
+	@OneToOne
+	@JoinColumn(name = "SP_MA")
+	private CHITIET_SANPHAM ct_sanpham;
+	
+	
 //	@ManyToOne
 //	PARTNER partner;
 }

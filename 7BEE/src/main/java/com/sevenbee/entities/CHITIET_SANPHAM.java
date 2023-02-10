@@ -16,8 +16,9 @@ import lombok.NoArgsConstructor;
 public class CHITIET_SANPHAM {
 	@Id
 	String CTSP_MA;
-	String SP_MA, CTSP_Mo_Ta, Kich_Thuoc, CTSP_Mau, CTSP_Hinh_Anh;
-	int CTSP_Luot_Mua,CTSP_So_Luong;
-	@OneToOne
+	String CTSP_MoTa, Kich_Thuoc, CTSP_Mau;
+	int CTSP_SoLuong;
+	@OneToOne(mappedBy = "ct_sanpham")
 	SANPHAM sanpham;
+	
 }
