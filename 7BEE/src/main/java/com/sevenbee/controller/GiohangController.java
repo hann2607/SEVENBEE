@@ -36,7 +36,7 @@ public class GiohangController {
 	
 	@RequestMapping("/Giohang")
 	public String LoadShopcart(Model model) throws ServletException, IOException{
-
+		
 		return PageInfo.goSite(model, PageType.SITE_SHOPPINGCART);
 	}
 }
