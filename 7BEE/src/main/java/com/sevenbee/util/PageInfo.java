@@ -15,7 +15,7 @@ public class PageInfo {
 	static {
 		// User
 		pageRoute.put(PageType.HOMEPAGE, new PageInfo("TRANG CHỦ", "index", "home/home.jsp"));
-		pageRoute.put(PageType.SITE_PRODUCT, new PageInfo("CHI TIẾT", "detailProduct", "detail-detailProduct/detailProduct.jsp"));
+		pageRoute.put(PageType.SITE_PRODUCT, new PageInfo("CHI TIẾT", "index", "detail-product/detailProduct.jsp"));
 		
 		
 		// Admin

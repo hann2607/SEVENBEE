@@ -149,7 +149,7 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
+												<a class="product_name" href="/product-detail/${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber

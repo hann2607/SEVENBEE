@@ -32,7 +32,7 @@ public class SANPHAM {
 	@JoinColumn(name = "LoaiSP_MA")
 	private LOAISP loaisp;
 	@OneToOne
-	@JoinColumn(name = "SP_MA")
+	@JoinColumn(name = "CTSP_MA")
 	private CHITIET_SANPHAM ct_sanpham;
 	
 	
