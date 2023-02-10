@@ -228,7 +228,7 @@
                                                     <span>8000000</span><span> VNĐ</span></div>
                                             </h6>
                                             <div class="minicart-button">
-                                                <a href="checkout.html"
+                                                <a href="shopping-cart.html"
                                                     class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                     <span>XEM GIỎ HÀNG</span>
                                                 </a>
@@ -377,18 +377,8 @@
                             <div class="product-details-view-content sp-normal-content pt-60">
                                 <div class="product-info">
                                     <h2>Today is a good day Framed poster</h2>
-                                    <span class="product-details-ref">Reference: demo_15</span>
-                                    <div class="rating-box pt-20">
-                                        <ul class="rating rating-with-review-item">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="review-item"><a href="#">Read Review</a></li>
-                                            <li class="review-item"><a href="#">Write Review</a></li>
-                                        </ul>
-                                    </div>
+                                    <span class="product-details-ref">Tên Shop...</span>
+                                   
                                     <div class="price-box pt-20">
                                         <span class="new-price new-price-2">$57.98</span>
                                     </div>
@@ -400,27 +390,23 @@
                                     </div>
                                     <div class="single-add-to-cart">
                                         <form action="#" class="cart-quantity">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary">Xanh</button>
+                                                <button type="button" class="btn btn-warning">Vàng</button>
+                                                <button type="button" class="btn btn-dark">Đen</button>
+                                            </div>
                                             <div class="quantity">
-                                                <label>Quantity</label>
+                                                <label>Số Lượng</label>
                                                 <div class="cart-plus-minus">
                                                     <input class="cart-plus-minus-box" value="1" type="text">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Add to cart</button>
+                                            <button class="add-to-cart" type="submit">Thêm Vào Giỏ Hàng</button>
                                         </form>
                                     </div>
-                                    <div class="product-additional-info">
-                                        <div class="product-social-sharing">
-                                            <ul>
-                                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
-                                                <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div> 
@@ -434,29 +420,36 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="li-product-tab">
-                                <ul class="nav li-product-menu">
-                                   <li><a class="active" data-toggle="tab" href="#description"><span>Description</span></a></li>
-                                   <li><a data-toggle="tab" href="#product-details"><span>Product Details</span></a></li>
-                                   <li><a data-toggle="tab" href="#reviews"><span>Reviews</span></a></li>
+                                <ul class="nav li-product-menu">                    
+                                   <li><a data-toggle="tab" href="#product-details"><span>Chi Tiết Sản Phẩm</span></a></li>
+                                   <li><a data-toggle="tab" href="#reviews"><span>Đánh Giá</span></a></li>
                                 </ul>               
                             </div>
                             <!-- Begin Li's Tab Menu Content Area -->
                         </div>
                     </div>
                     <div class="tab-content">
-                        <div id="description" class="tab-pane active show" role="tabpanel">
-                            <div class="product-description">
-                                <span>The best is yet to come! Give your walls a voice with a framed poster. This aesthethic, optimistic poster will look great in your desk or in an open-space office. Painted wooden frame with passe-partout for more depth.</span>
-                            </div>
-                        </div>
+                       
                         <div id="product-details" class="tab-pane" role="tabpanel">
-                            <div class="product-details-manufacturer">
-                                <a href="#">
-                                    <img src="images/product-details/1.jpg" alt="Product Manufacturer Image">
-                                </a>
-                                <p><span>Reference</span> demo_7</p>
-                                <p><span>Reference</span> demo_7</p>
-                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center  ">
+                                 <span class="font-weight-bold">Mã Sản phẩm</span>
+                                  <span class="">PH021</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span class="font-weight-bold"> Lượt Mua</span>
+                                    <span class="">261</span>
+                                  </li>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span class="font-weight-bold"> Kích Thước </span>
+                                    <span class="">36.02 x 23.4 x 1.79 cm</span>
+                                  </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span class="font-weight-bold"> Màu</span>
+                                  <span class="">Đen</span>
+                                    </li>
+    
+    
                         </div>
                         <div id="reviews" class="tab-pane" role="tabpanel">
                             <div class="product-reviews">
@@ -838,7 +831,7 @@
                 <div class="footer-static-top">
                     <div class="container">
                         <!-- Begin Footer Shipping Area -->
-                        <div class="footer-shipping pt-60 pb-55 pb-xs-25">
+                        <div class="footer-shipping pt-60 pb-25">
                             <div class="row">
                                 <!-- Begin Li's Shipping Inner Box Area -->
                                 <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
@@ -906,23 +899,24 @@
                                 <!-- Begin Footer Logo Area -->
                                 <div class="col-lg-4 col-md-6">
                                     <div class="footer-logo">
-                                        <img src="images/menu/logo/1.jpg" alt="Footer Logo">
+                                        <img src="images/menu/logo/logo-final-black-footer.png" alt="Footer Logo">
                                         <p class="info">
-                                            We are a team of designers and developers that create high quality HTML Template & Woocommerce, Shopify Theme.
+                                            7BEE là đội ngũ phát triển Website bán hàng dành cho tất cả mọi người. 
+                        
                                         </p>
                                     </div>
                                     <ul class="des">
                                         <li>
-                                            <span>Address: </span>
-                                            6688Princess Road, London, Greater London BAS 23JK, UK
+                                            <span>ĐỊA CHỈ: </span>
+                                            TP.Hồ Chí Minh
                                         </li>
                                         <li>
-                                            <span>Phone: </span>
-                                            <a href="#">(+123) 123 321 345</a>
+                                            <span>ĐIỆN THOẠI: </span>
+                                            <a href="#">(+84) 9847 724 10</a>
                                         </li>
                                         <li>
                                             <span>Email: </span>
-                                            <a href="mailto://info@yourdomain.com">info@yourdomain.com</a>
+                                            <a href="#">info@yourdomain.com</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -930,12 +924,12 @@
                                 <!-- Begin Footer Block Area -->
                                 <div class="col-lg-2 col-md-3 col-sm-6">
                                     <div class="footer-block">
-                                        <h3 class="footer-block-title">Product</h3>
+                                        <h3 class="footer-block-title">SẢN PHẨM</h3>
                                         <ul>
-                                            <li><a href="#">Prices drop</a></li>
-                                            <li><a href="#">New products</a></li>
-                                            <li><a href="#">Best sales</a></li>
-                                            <li><a href="#">Contact us</a></li>
+                                            <li><a href="#">ĐỒ CÔNG NGHỆ</a></li>
+                                            <li><a href="#">THỜI TRANG</a></li>
+                                            <li><a href="#">ĐỒ ĂN</a></li>
+                                            <li><a href="#">KHÁC</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -943,12 +937,12 @@
                                 <!-- Begin Footer Block Area -->
                                 <div class="col-lg-2 col-md-3 col-sm-6">
                                     <div class="footer-block">
-                                        <h3 class="footer-block-title">Our company</h3>
+                                        <h3 class="footer-block-title">VỀ CHÚNG TÔI</h3>
                                         <ul>
-                                            <li><a href="#">Delivery</a></li>
-                                            <li><a href="#">Legal Notice</a></li>
-                                            <li><a href="#">About us</a></li>
-                                            <li><a href="#">Contact us</a></li>
+                                            <li><a href="#">THÔNG TIN</a></li>
+                                            <li><a href="#">CHÍNH SÁCH</a></li>
+                                            <li><a href="#">GÓP Ý</a></li>
+                                            <li><a href="#">LIÊN HỆ</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -956,35 +950,41 @@
                                 <!-- Begin Footer Block Area -->
                                 <div class="col-lg-4">
                                     <div class="footer-block">
-                                        <h3 class="footer-block-title">Follow Us</h3>
+                                        <h3 class="footer-block-title">THEO DÕI CHÚNG TÔI</h3>
                                         <ul class="social-link">
                                             <li class="twitter">
-                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank"
+                                                    title="Twitter">
                                                     <i class="fa fa-twitter"></i>
                                                 </a>
                                             </li>
                                             <li class="rss">
-                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
+                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank"
+                                                    title="RSS">
                                                     <i class="fa fa-rss"></i>
                                                 </a>
                                             </li>
                                             <li class="google-plus">
-                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google +">
+                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip"
+                                                    target="_blank" title="Google +">
                                                     <i class="fa fa-google-plus"></i>
                                                 </a>
                                             </li>
                                             <li class="facebook">
-                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank"
+                                                    title="Facebook">
                                                     <i class="fa fa-facebook"></i>
                                                 </a>
                                             </li>
                                             <li class="youtube">
-                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank"
+                                                    title="Youtube">
                                                     <i class="fa fa-youtube"></i>
                                                 </a>
                                             </li>
                                             <li class="instagram">
-                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank"
+                                                    title="Instagram">
                                                     <i class="fa fa-instagram"></i>
                                                 </a>
                                             </li>
@@ -992,14 +992,17 @@
                                     </div>
                                     <!-- Begin Footer Newsletter Area -->
                                     <div class="footer-newsletter">
-                                        <h4>Sign up to newsletter</h4>
-                                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
-                                           <div id="mc_embed_signup_scroll">
-                                              <div id="mc-form" class="mc-form subscribe-form form-group" >
-                                                <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
-                                                <button  class="btn" id="mc-submit">Subscribe</button>
-                                              </div>
-                                           </div>
+                                        <h4>NHẬN THÔNG BÁO MỚI NHẤT</h4>
+                                        <form action="#" method="post" id="mc-embedded-subscribe-form"
+                                            name="mc-embedded-subscribe-form" class="footer-subscribe-form validate"
+                                            target="_blank" novalidate>
+                                            <div id="mc_embed_signup_scroll">
+                                                <div id="mc-form" class="mc-form subscribe-form form-group">
+                                                    <input id="mc-email" type="email" autocomplete="off"
+                                                        placeholder="Nhập Email..." />
+                                                    <button class="btn" id="mc-submit">ĐĂNG KÝ</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                     <!-- Footer Newsletter Area End Here -->
@@ -1049,7 +1052,7 @@
                                 <!-- Footer Payment Area End Here -->
                                 <!-- Begin Copyright Area -->
                                 <div class="copyright text-center pt-25">
-                                    <span><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+                                    <span><a target="_blank" href="#">Copyright &copy; 2023 SEVENBEE.COM</a></span>
                                 </div>
                                 <!-- Copyright Area End Here -->
                             </div>
