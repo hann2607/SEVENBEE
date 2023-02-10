@@ -189,7 +189,7 @@
 										</div>
 									</h6>
 									<div class="minicart-button">
-										<a href="shopping-cart.html"
+										<a href="/views/jsp/Giohang/Giohang.jsp"
 											class="li-button li-button-dark li-button-fullwidth li-button-sm">
 											<span>XEM GIỎ HÀNG</span>
 										</a> <a href="checkout.html"

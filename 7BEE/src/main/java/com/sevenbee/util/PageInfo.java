@@ -1,3 +1,4 @@
+
 package com.sevenbee.util;
 
 import java.io.IOException;
@@ -22,7 +23,9 @@ public class PageInfo {
 		pageRoute.put(PageType.SITE_PRODUCT, new PageInfo("SẢN PHẨM", "khachhang/product.jsp", null));
 		pageRoute.put(PageType.SITE_FAVORITES, new PageInfo("YÊU THÍCH", "khachhang/favorites.jsp", null));
 		pageRoute.put(PageType.SITE_CHECKOUT, new PageInfo("THANH TOÁN", "khachhang/checkout.jsp", null));
-		pageRoute.put(PageType.SITE_SHOPPINGCART, new PageInfo("ĐĂNG NHẬP & ĐĂNG KÝ", "signin-signup.jsp", null));
+		pageRoute.put(PageType.SITE_LOGIN, new PageInfo("ĐĂNG NHẬP & ĐĂNG KÝ", "signin-signup.jsp", null));
+		pageRoute.put(PageType.SITE_SHOPPINGCART, new PageInfo("GIỎ HÀNG","Giohang","/views/jsp/Giohang/Giohang.jsp"));
+		pageRoute.put(PageType.SITE_HISTORY, new PageInfo("LỊCH SỬ", "Lichsu.jsp", null));
 		
 		// Admin
 		pageRoute.put(PageType.ADMIN_CHART, new PageInfo("THỐNG KÊ", "admin/chart.jsp", null));
