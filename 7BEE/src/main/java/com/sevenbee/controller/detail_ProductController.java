@@ -16,7 +16,7 @@ import com.sevenbee.util.PageType;
 import jakarta.servlet.ServletException;
 
 @Controller
-public class detai_ProductController {
+public class detail_ProductController {
 	@Autowired
 	SANPHAMDAO dao;
 	
