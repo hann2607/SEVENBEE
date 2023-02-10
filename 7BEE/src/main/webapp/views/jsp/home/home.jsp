@@ -24,7 +24,7 @@
 									Giả chỉ còn <span>10000000</span> <span> VNĐ</span>
 								</h3>
 								<div class="default-btn slide-btn">
-									<a class="links" href="/views/shop-left-sidebar.html">MUA
+									<a class="links" href="#">MUA
 										NGAY</a>
 								</div>
 							</div>
@@ -43,7 +43,7 @@
 									Giá chỉ còn <span>12000000</span> <span> VNĐ</span>
 								</h3>
 								<div class="default-btn slide-btn">
-									<a class="links" href="/views/shop-left-sidebar.html">MUA
+									<a class="links" href="#">MUA
 										NGAY</a>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 									Giá chỉ còn <span>7000000</span> <span> VNĐ</span>
 								</h3>
 								<div class="default-btn slide-btn">
-									<a class="links" href="/views/shop-left-sidebar.html">MUA
+									<a class="links" href="#">MUA
 										NGAY</a>
 								</div>
 							</div>
@@ -122,12 +122,12 @@
 			<div id="li-new-product" class="tab-pane active show" role="tabpanel">
 				<div class="row">
 					<div class="product-active owl-carousel">
-						<c:forEach var="product" items="${listLatestProducts}">
+						<c:forEach var="product" items="${LatestProducts}">
 							<div class="col-lg-12">
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/views/single-product.html"> <img
+										<a href="/product-detail?id=${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -136,7 +136,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="/views/product-details.html">${product.loaisp.getLoaiSP_Ten()}</a>
+													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -149,7 +149,7 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/views/single-product.html">${product.SP_TenSP}</a>
+												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -159,10 +159,10 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="#">THÊM VÀO
+												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
 														GIỎ</a></li>
 												<li><a class="links-details"
-													href="/views/single-product.html"><i
+													href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -180,13 +180,13 @@
 			<div id="li-bestseller-product" class="tab-pane" role="tabpanel">
 				<div class="row">
 					<div class="product-active owl-carousel">
-						<c:forEach var="product" items="${listLatestProducts}">
+						<c:forEach var="dhsp" items="${BestSellerProducts}">
 							<div class="col-lg-12">
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/views/single-product.html"> <img
-											src="/views/images/product/large-size/${product.SP_HinhAnh}"
+										<a href="/product-detail?id=${dhsp.sanpham.SP_MA}"> <img
+											src="/views/images/product/large-size/${dhsp.sanpham.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
 									</div>
@@ -194,7 +194,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="/views/product-details.html">Graphic Corner</a>
+													<a href="#">${dhsp.sanpham.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -207,20 +207,20 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/views/single-product.html">${product.SP_TenSP}</a>
+												<a class="product_name" href="/product-detail?id=${dhsp.sanpham.SP_MA}">${dhsp.sanpham.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
-														type="number" value="${product.SP_Gia}"></fmt:formatNumber></span><span>
+														type="number" value="${dhsp.sanpham.SP_Gia}"></fmt:formatNumber></span><span>
 													VNĐ</span>
 											</div>
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="#">THÊM VÀO
+												<li class="add-cart active"><a href="/addCart?id=${dhsp.sanpham.SP_MA}">THÊM VÀO
 														GIỎ</a></li>
 												<li><a class="links-details"
-													href="/views/single-product.html"><i
+													href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -239,12 +239,12 @@
 			<div id="li-featured-product" class="tab-pane" role="tabpanel">
 				<div class="row">
 					<div class="product-active owl-carousel">
-						<c:forEach var="product" items="${listLatestProducts}">
+						<c:forEach var="product" items="${LatestProducts}">
 							<div class="col-lg-12">
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/views/single-product.html"> <img
+										<a href="/product-detail?id=${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -253,7 +253,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="/views/product-details.html">Graphic Corner</a>
+													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -266,7 +266,7 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/views/single-product.html">${product.SP_TenSP}</a>
+												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -276,10 +276,10 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="#">THÊM VÀO
+												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
 														GIỎ</a></li>
 												<li><a class="links-details"
-													href="/views/single-product.html"><i
+													href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -344,12 +344,12 @@
 				</div>
 				<div class="row">
 					<div class="product-active owl-carousel">
-						<c:forEach var="product" items="${listLatestProducts}">
+						<c:forEach var="product" items="${Products_DienTu}">
 							<div class="col-lg-12">
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/views/single-product.html"> <img
+										<a href="/product-detail?id=${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -358,7 +358,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="/views/product-details.html">Graphic Corner</a>
+													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -371,7 +371,7 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/views/single-product.html">${product.SP_TenSP}</a>
+												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -381,10 +381,10 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="#">THÊM VÀO
+												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
 														GIỎ</a></li>
 												<li><a class="links-details"
-													href="/views/single-product.html"><i
+													href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -423,12 +423,12 @@
 				</div>
 				<div class="row">
 					<div class="product-active owl-carousel">
-						<c:forEach var="product" items="${listLatestProducts}">
+						<c:forEach var="product" items="${Products_ThoiTrang}">
 							<div class="col-lg-12">
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/views/single-product.html"> <img
+										<a href="/product-detail?id=${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -437,7 +437,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="/views/product-details.html">Graphic Corner</a>
+													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -450,7 +450,7 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/views/single-product.html">${product.SP_TenSP}</a>
+												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -460,10 +460,10 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="#">THÊM VÀO
+												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
 														GIỎ</a></li>
 												<li><a class="links-details"
-													href="/views/single-product.html"><i
+													href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
