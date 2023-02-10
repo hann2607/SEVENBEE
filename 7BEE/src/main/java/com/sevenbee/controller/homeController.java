@@ -21,22 +21,35 @@ import jakarta.servlet.ServletException;
 
 @Controller
 public class homeController {
-	@Autowired 
+	@Autowired
 	NGUOIDUNGDAO nguoidungdao;
-	@Autowired 
+	@Autowired
 	SANPHAMDAO sanphamdao;
-	@Autowired 
+	@Autowired
 	DONHANGDAO donhangdao;
-	@Autowired 
+	@Autowired
 	DONHANG_SANPHAMDAO donhang_SANPHAMDAO;
-	
+
 	@RequestMapping("/")
 	public String home(Model model) throws ServletException, IOException {
-		List<SANPHAM> listLatestProducts = sanphamdao.findByLatestProducts();
-		List<DONHANG_SANPHAM> donhang = donhang_SANPHAMDAO.findAll();
-//		List<SANPHAM> findByBestSellerProducts(); 
-		System.out.println(donhang.toString());
-		model.addAttribute("listLatestProducts", listLatestProducts);
+		// Lấy ra danh sách sản phẩm mới nhất
+		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts();
+		model.addAttribute("LatestProducts", LatestProducts);
+
+		// Lấy ra danh sách sản phẩm bán chạy nhất
+		List<DONHANG_SANPHAM> BestSellerProducts = donhang_SANPHAMDAO.findByBestSellerProducts();
+		model.addAttribute("BestSellerProducts", BestSellerProducts);
+
+		// Lấy ra danh sách sản phẩm loại điện tử mới nhất
+		List<SANPHAM> Products_DienTu = sanphamdao.findProductsByLoaiSP("LSP003", 6);
+		model.addAttribute("Products_DienTu", Products_DienTu);
+
+		// Lấy ra danh sách sản phẩm loại thời trang mới nhất
+		List<SANPHAM> Products_ThoiTrang = sanphamdao.findProductsByLoaiSP("LSP002", 6);
+		model.addAttribute("Products_ThoiTrang", Products_ThoiTrang);
+
+//		System.out.println(listBestSellerProducts.toString());
+
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
 }

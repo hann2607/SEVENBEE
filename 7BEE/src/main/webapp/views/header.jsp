@@ -28,9 +28,11 @@
 								<div class="language ht-language">
 									<ul class="ht-setting-list">
 										<li class="active"><a href="#"><img
-												src="/views/images/menu/flag-icon/1.jpg" alt="">TIẾNG ANH</a></li>
+												src="/views/images/menu/flag-icon/1.jpg" alt="">TIẾNG
+												ANH</a></li>
 										<li><a href="#"><img
-												src="/views/images/menu/flag-icon/2.png" alt="">TIẾNG VIỆT</a></li>
+												src="/views/images/menu/flag-icon/2.png" alt="">TIẾNG
+												VIỆT</a></li>
 									</ul>
 								</div></li>
 							<!-- Language Area End Here -->
@@ -94,8 +96,8 @@
 				<!-- Begin Header Logo Area -->
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
-						<a href="index.html"> <img
-							src="/views/images/menu/logo/logo-final.png" alt="">
+						<a href="/"> <img src="/views/images/menu/logo/logo-final.png"
+							alt="">
 						</a>
 					</div>
 				</div>
@@ -145,7 +147,8 @@
 									<ul class="minicart-product-list">
 										<li><a href="single-product.html"
 											class="minicart-product-image"> <img
-												src="/views/images/product/small-size/1.jpg" alt="cart products">
+												src="/views/images/product/small-size/1.jpg"
+												alt="cart products">
 										</a>
 											<div class="minicart-product-details">
 												<h6>
@@ -164,7 +167,8 @@
 											</button></li>
 										<li><a href="single-product.html"
 											class="minicart-product-image"> <img
-												src="/views/images/product/small-size/2.jpg" alt="cart products">
+												src="/views/images/product/small-size/2.jpg"
+												alt="cart products">
 										</a>
 											<div class="minicart-product-details">
 												<h6>
@@ -215,56 +219,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<!-- Begin Header Bottom Menu Area -->
-					<div class="hb-menu">
-						<nav>
-							<ul>
-								<li><a class="clearafter" href="/views/index.html">TRANG CHỦ</a></li>
-								<li class="megamenu-holder"><a
-									href="shop-left-sidebar.html">DANH MỤC</a>
-									<ul class="megamenu hb-megamenu">
-										<li><a href="/views/shop-left-sidebar.html">ĐỒ CÔNG NGHỆ</a>
-											<ul>
-												<li><a href="/views/shop-3-column.html">ĐỒ ĐIỆN TỬ</a></li>
-												<li><a href="/views/shop-4-column.html">TỦ LẠNH, MÁY GIẶT</a></li></li>
-									</ul></li>
-								<li><a href="/views/single-product-gallery-left.html">ĐỜI SỐNG</a>
-									<ul>
-										<li><a href="/views/single-product-carousel.html">THỜI
-												TRANG, ĐỒ DÙNG CÁ NHÂN</a></li>
-										<li><a href="/views/single-product-gallery-left.html">ĐỒ ĂN,
-												THỰC PHẨM</a></li>
-										<li><a href="/views/single-product-gallery-right.html">ĐỒ
-												GIA DỤNG NỘI THẤT</a></li>
-										<li><a href="/views/single-product-tab-style-top.html">XE CỘ</a></li>
-									</ul></li>
-								<li><a href="/views/single-product.html">KHÁC</a>
-									<ul>
-										<li><a href="/views/single-product.html">BẤT ĐỘNG SẢN</a></li>
-										<li><a href="/views/single-product-sale.html">THÚ CƯNG</a></li>
-										<li><a href="/views/single-product-group.html">VIỆC LÀM</a></li>
-										<li><a href="/views/single-product-normal.html">ĐỒ VÕ FPOLY</a></li>
-										<li><a href="/views/single-product-affiliate.html">SÁCH CŨ</a></li>
-									</ul></li>
-							</ul>
-							</li>
-							<li class="dropdown-holder"><a href="/views/blog-left-sidebar.html">TIN
-									TỨC</a>
-								<ul class="hb-dropdown">
-									<li><a class="clearafter" href="/views/blog-left-sidebar.html">TIN
-											TỨC MỚI NHẤT</a></li>
-									<hr class="my-2">
-									<li><a class="clearafter" href="/views/blog-left-sidebar.html">TIN
-											TỨC CỦA TÔI</a></li>
-
-								</ul></li>
-							<li><a class="clearafter" href="/views/about-us.html">VỀ CHÚNG
-									TÔI</a></li>
-							<li><a href="/views/contact.html">LIÊN HỆ</a></li>
-							</ul>
-						</nav>
-					</div>
-					<!-- Header Bottom Menu Area End Here -->
+					<!-- navbar -->
+					<jsp:include page="/views/jsp/navbar/navbar.jsp"></jsp:include>
+					<!-- End navbar -->
 				</div>
 			</div>
 		</div>
