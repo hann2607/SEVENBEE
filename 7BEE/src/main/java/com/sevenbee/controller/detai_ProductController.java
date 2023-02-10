@@ -13,12 +13,13 @@ import jakarta.servlet.ServletException;
 
 @Controller
 public class detai_ProductController {
-	@RequestMapping("/")
+	
+	@RequestMapping("/de")
 	public String detai_Product(Model model) throws ServletException, IOException {
 //		Optional<SANPHAM> ctsp = sanphamdao.findById("SP005");
 //		System.out.println(ctsp.get().getCt_sanpham().getCTSP_MoTa());
-		
+		System.out.println(PageInfo.goSite(model, PageType.SITE_PRODUCT));
 //		model.addAttribute("listLatestProducts", listLatestProducts);
-		return PageInfo.goSite(model, PageType.HOMEPAGE);
+		return PageInfo.goSite(model, PageType.SITE_PRODUCT);
 	}
 }

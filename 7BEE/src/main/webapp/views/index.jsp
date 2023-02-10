@@ -59,7 +59,7 @@
 
 		<!-- Main -->
 		<!-- SECTION -->
-		<jsp:include page="${page.linkFile}"></jsp:include>
+		<jsp:include page="/views/jsp/${page.linkFile}"></jsp:include>
 		<!-- /SECTION -->
 		<!-- End Main -->
 
