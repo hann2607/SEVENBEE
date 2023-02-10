@@ -7,8 +7,6 @@ import java.util.Map;
 import org.springframework.ui.Model;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 
 
@@ -20,11 +18,11 @@ public class PageInfo {
 
 	static {
 		// user
-		pageRoute.put(PageType.HOMEPAGE, new PageInfo("TRANG CHỦ", "index", "/views/jsp/index/index.jsp"));
+		pageRoute.put(PageType.HOMEPAGE, new PageInfo("TRANG CHỦ", "index", "/views/jsp/home/home.jsp"));
 		pageRoute.put(PageType.SITE_PRODUCT, new PageInfo("SẢN PHẨM", "khachhang/product.jsp", null));
 		pageRoute.put(PageType.SITE_FAVORITES, new PageInfo("YÊU THÍCH", "khachhang/favorites.jsp", null));
 		pageRoute.put(PageType.SITE_CHECKOUT, new PageInfo("THANH TOÁN", "khachhang/checkout.jsp", null));
-		pageRoute.put(PageType.SITE_LOGIN, new PageInfo("ĐĂNG NHẬP & ĐĂNG KÝ", "signin-signup.jsp", null));
+		pageRoute.put(PageType.SITE_SHOPPINGCART, new PageInfo("ĐĂNG NHẬP & ĐĂNG KÝ", "signin-signup.jsp", null));
 		
 		// Admin
 		pageRoute.put(PageType.ADMIN_CHART, new PageInfo("THỐNG KÊ", "admin/chart.jsp", null));
@@ -32,7 +30,7 @@ public class PageInfo {
 		pageRoute.put(PageType.ADMIN_WAREHOUSE, new PageInfo("KHO", "admin/warehouse.jsp", null));
 	}
 
-	public static String prepareAndForward(Model model, PageType pageTyge)
+	public static String goAdmin(Model model, PageType pageTyge)
 			throws ServletException, IOException {
 		PageInfo page = pageRoute.get(pageTyge);
 
@@ -41,7 +39,7 @@ public class PageInfo {
 		return page.JSPName;
 	}
 	
-	public static String prepareAndForwardSite(Model model, PageType pageTyge)
+	public static String goSite(Model model, PageType pageTyge)
 			throws ServletException, IOException {
 		PageInfo page = pageRoute.get(pageTyge);
 
@@ -50,6 +48,7 @@ public class PageInfo {
 		return page.JSPName;
 	}
 
+	
 	private String title;
 	private String JSPName;
 	private String linkFile;
@@ -79,7 +78,4 @@ public class PageInfo {
 	public void setlinkFile(String linkFile) {
 		this.linkFile = linkFile;
 	}
-
-	
-
 }
