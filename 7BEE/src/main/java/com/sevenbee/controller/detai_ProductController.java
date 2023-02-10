@@ -14,7 +14,7 @@ import jakarta.servlet.ServletException;
 @Controller
 public class detai_ProductController {
 	
-	@RequestMapping("/de")
+	@RequestMapping("/")
 	public String detai_Product(Model model) throws ServletException, IOException {
 //		Optional<SANPHAM> ctsp = sanphamdao.findById("SP005");
 //		System.out.println(ctsp.get().getCt_sanpham().getCTSP_MoTa());

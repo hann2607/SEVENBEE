@@ -30,7 +30,7 @@ public class homeController {
 	@Autowired
 	DONHANG_SANPHAMDAO donhang_SANPHAMDAO;
 
-	@RequestMapping("/")
+	@RequestMapping("/home")
 	public String home(Model model) throws ServletException, IOException {
 		// Lấy ra danh sách sản phẩm mới nhất
 		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts();
