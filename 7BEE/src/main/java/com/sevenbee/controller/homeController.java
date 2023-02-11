@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.DONHANGDAO;
 import com.sevenbee.dao.DONHANG_SANPHAMDAO;
+import com.sevenbee.dao.LOAISPDAO;
 import com.sevenbee.dao.NGUOIDUNGDAO;
+import com.sevenbee.dao.PARTNERDAO;
 import com.sevenbee.dao.SANPHAMDAO;
 import com.sevenbee.entities.DONHANG_SANPHAM;
+import com.sevenbee.entities.LOAISP;
+import com.sevenbee.entities.PARTNER;
 import com.sevenbee.entities.SANPHAM;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
@@ -29,8 +33,12 @@ public class homeController {
 	DONHANGDAO donhangdao;
 	@Autowired
 	DONHANG_SANPHAMDAO donhang_SANPHAMDAO;
+	@Autowired
+	PARTNERDAO partnerdao;
+	@Autowired
+	LOAISPDAO loaispdao;
 
-	@RequestMapping("/")
+	@RequestMapping("/home")
 	public String home(Model model) throws ServletException, IOException {
 		// Lấy ra danh sách sản phẩm mới nhất
 		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts();
@@ -48,7 +56,10 @@ public class homeController {
 		List<SANPHAM> Products_ThoiTrang = sanphamdao.findProductsByLoaiSP("LSP002", 6);
 		model.addAttribute("Products_ThoiTrang", Products_ThoiTrang);
 
-//		System.out.println(listBestSellerProducts.toString());
+		// Lấy ra danh sách sản phẩm theo shop ngẫu nhiên
+		List<PARTNER> Products_ShopRandom = partnerdao.findProductsByShopRandom(3);
+		model.addAttribute("Products_ShopRandom", Products_ShopRandom);
+		System.out.println(Products_ShopRandom.size());
 
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}

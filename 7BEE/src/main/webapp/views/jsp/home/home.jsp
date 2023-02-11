@@ -21,11 +21,11 @@
 								</h5>
 								<h2>Chamcham Galaxy S9 | S9+</h2>
 								<h3>
-									Giả chỉ còn <span>10000000</span> <span> VNĐ</span>
+									Giả chỉ còn <span><fmt:formatNumber type="number"
+											value="10000000"></fmt:formatNumber></span> <span> VNĐ</span>
 								</h3>
 								<div class="default-btn slide-btn">
-									<a class="links" href="#">MUA
-										NGAY</a>
+									<a class="links" href="#">MUA NGAY</a>
 								</div>
 							</div>
 						</div>
@@ -40,11 +40,11 @@
 								</h5>
 								<h2>Work Desk Surface Studio 2018</h2>
 								<h3>
-									Giá chỉ còn <span>12000000</span> <span> VNĐ</span>
+									Giá chỉ còn <span><fmt:formatNumber type="number"
+											value="12000000"></fmt:formatNumber></span> <span> VNĐ</span>
 								</h3>
 								<div class="default-btn slide-btn">
-									<a class="links" href="#">MUA
-										NGAY</a>
+									<a class="links" href="#">MUA NGAY</a>
 								</div>
 							</div>
 						</div>
@@ -59,11 +59,11 @@
 								</h5>
 								<h2>Phantom 4 Pro+ Obsidian</h2>
 								<h3>
-									Giá chỉ còn <span>7000000</span> <span> VNĐ</span>
+									Giá chỉ còn <span><fmt:formatNumber type="number"
+											value="7000000"></fmt:formatNumber></span> <span> VNĐ</span>
 								</h3>
 								<div class="default-btn slide-btn">
-									<a class="links" href="#">MUA
-										NGAY</a>
+									<a class="links" href="#">MUA NGAY</a>
 								</div>
 							</div>
 						</div>
@@ -127,7 +127,7 @@
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/product-detail?id=${product.SP_MA}"> <img
+										<a href="/product-detail/${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -149,7 +149,8 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
+												<a class="product_name"
+													href="/product-detail/${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -159,10 +160,9 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
-														GIỎ</a></li>
-												<li><a class="links-details"
-													href="#"><i
+												<li class="add-cart active"><a
+													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
+												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -185,7 +185,7 @@
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/product-detail?id=${dhsp.sanpham.SP_MA}"> <img
+										<a href="/product-detail/${dhsp.sanpham.SP_MA}"> <img
 											src="/views/images/product/large-size/${dhsp.sanpham.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -207,7 +207,8 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/product-detail?id=${dhsp.sanpham.SP_MA}">${dhsp.sanpham.SP_TenSP}</a>
+												<a class="product_name"
+													href="/product-detail/${dhsp.sanpham.SP_MA}">${dhsp.sanpham.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -217,10 +218,9 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="/addCart?id=${dhsp.sanpham.SP_MA}">THÊM VÀO
-														GIỎ</a></li>
-												<li><a class="links-details"
-													href="#"><i
+												<li class="add-cart active"><a
+													href="/addCart/${dhsp.sanpham.SP_MA}">THÊM VÀO GIỎ</a></li>
+												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -244,7 +244,7 @@
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/product-detail?id=${product.SP_MA}"> <img
+										<a href="/product-detail/${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -266,7 +266,8 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
+												<a class="product_name"
+													href="/product-detail/${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -276,10 +277,9 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
-														GIỎ</a></li>
-												<li><a class="links-details"
-													href="#"><i
+												<li class="add-cart active"><a
+													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
+												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -349,7 +349,7 @@
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/product-detail?id=${product.SP_MA}"> <img
+										<a href="/product-detail/${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -371,7 +371,8 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
+												<a class="product_name"
+													href="/product-detail/${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -381,10 +382,9 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
-														GIỎ</a></li>
-												<li><a class="links-details"
-													href="#"><i
+												<li class="add-cart active"><a
+													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
+												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -428,7 +428,7 @@
 								<!-- single-product-wrap start -->
 								<div class="single-product-wrap">
 									<div class="product-image">
-										<a href="/product-detail?id=${product.SP_MA}"> <img
+										<a href="/product-detail/${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
 											alt="Li's Product Image">
 										</a> <span class="sticker">MỚI</span>
@@ -450,7 +450,8 @@
 												</div>
 											</div>
 											<h4>
-												<a class="product_name" href="/product-detail?id=${product.SP_MA}">${product.SP_TenSP}</a>
+												<a class="product_name"
+													href="/product-detail/${product.SP_MA}">${product.SP_TenSP}</a>
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
@@ -460,10 +461,9 @@
 										</div>
 										<div class="add-actions">
 											<ul class="add-actions-link">
-												<li class="add-cart active"><a href="/addCart?id=${product.SP_MA}">THÊM VÀO
-														GIỎ</a></li>
-												<li><a class="links-details"
-													href="#"><i
+												<li class="add-cart active"><a
+													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
+												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
@@ -521,108 +521,49 @@
 				<div class="featured-product">
 					<div class="li-section-title">
 						<h2>
-							<span>Chamcham</span>
+							<span>${Products_ShopRandom.get(0).getShop_TenShop()}</span>
 						</h2>
 					</div>
 					<div class="featured-product-active-2 owl-carousel">
 						<div class="featured-product-bundle">
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="/views/images/featured-product/1.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
+							<c:forEach var="product" begin="0" end="2"
+								items="${Products_ShopRandom.get(0).getSanpham()}">
+								<div class="row">
+									<div class="group-featured-pro-wrapper">
+										<div class="product-img">
+											<a href="/product-detail/${product.getSP_MA()}"> <img
+												alt=""
+												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+											</a>
 										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price"><span> <fmt:formatNumber type="number"
-								value="1000000"></fmt:formatNumber></span> <span> VNĐ</span></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/2.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
-										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
+										<div class="featured-pro-content">
+											<div class="product-review">
+												<h5 class="manufacturer">
+													<a href="#">${product.getLoaisp().getLoaiSP_Ten()}</a>
+												</h5>
+											</div>
+											<div class="rating-box">
+												<ul class="rating">
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li class="no-star"><i class="fa fa-star-o"></i></li>
+													<li class="no-star"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+											<h4>
+												<a class="featured-product-name"
+													href="/product-detail/${product.getSP_MA()}">${product.getSP_TenSP()}</a>
+											</h4>
+											<div class="featured-price-box">
+												<span class="new-price"><fmt:formatNumber
+														type="number" value="${product.getSP_Gia()}"></fmt:formatNumber></span><span>
+													VNĐ</span>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/3.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
-										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
-										</div>
-									</div>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -633,107 +574,50 @@
 				<div class="featured-product pt-sm-10 pt-xs-25">
 					<div class="li-section-title">
 						<h2>
-							<span>Meito</span>
+							<span>${Products_ShopRandom.get(1).getShop_TenShop()}</span>
 						</h2>
 					</div>
 					<div class="featured-product-active-2 owl-carousel">
 						<div class="featured-product-bundle">
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/4.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
+							<c:forEach var="product" begin="0" end="2"
+								items="${Products_ShopRandom.get(1).getSanpham()}">
+								<div class="row">
+									<div class="group-featured-pro-wrapper">
+										<div class="product-img">
+											<a href="/product-detail/${product.getSP_MA()}"> <img
+												alt=""
+												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+											</a>
 										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/5.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
-										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
+										<div class="featured-pro-content">
+											<div class="product-review">
+												<h5 class="manufacturer">
+													<a href="#">${product.getLoaisp().getLoaiSP_Ten()}</a>
+												</h5>
+											</div>
+											<div class="rating-box">
+												<ul class="rating">
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li class="no-star"><i class="fa fa-star-o"></i></li>
+													<li class="no-star"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+											<h4>
+												<a class="featured-product-name"
+													href="/product-detail/${product.getSP_MA()}">${product.getSP_TenSP()}</a>
+											</h4>
+											<div class="featured-price-box">
+												<span class="new-price"><fmt:formatNumber
+														type="number" value="${product.getSP_Gia()}"></fmt:formatNumber></span><span>
+													VNĐ</span>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/6.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
-										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
-										</div>
-									</div>
-								</div>
-							</div>
+							</c:forEach>
+
 						</div>
 					</div>
 				</div>
@@ -744,107 +628,49 @@
 				<div class="featured-product pt-sm-10 pt-xs-25">
 					<div class="li-section-title">
 						<h2>
-							<span>Sanai</span>
+							<span>${Products_ShopRandom.get(2).getShop_TenShop()}</span>
 						</h2>
 					</div>
 					<div class="featured-product-active-2 owl-carousel">
 						<div class="featured-product-bundle">
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/6.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
+							<c:forEach var="product" begin="0" end="2"
+								items="${Products_ShopRandom.get(2).getSanpham()}">
+								<div class="row">
+									<div class="group-featured-pro-wrapper">
+										<div class="product-img">
+											<a href="/product-detail/${product.getSP_MA()}"> <img
+												alt=""
+												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+											</a>
 										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/4.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
-										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
+										<div class="featured-pro-content">
+											<div class="product-review">
+												<h5 class="manufacturer">
+													<a href="#">${product.getLoaisp().getLoaiSP_Ten()}</a>
+												</h5>
+											</div>
+											<div class="rating-box">
+												<ul class="rating">
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li class="no-star"><i class="fa fa-star-o"></i></li>
+													<li class="no-star"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+											<h4>
+												<a class="featured-product-name"
+													href="/product-detail/${product.getSP_MA()}">${product.getSP_TenSP()}</a>
+											</h4>
+											<div class="featured-price-box">
+												<span class="new-price"><fmt:formatNumber
+														type="number" value="${product.getSP_Gia()}"></fmt:formatNumber></span><span>
+													VNĐ</span>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="group-featured-pro-wrapper">
-									<div class="product-img">
-										<a href="product-details.html"> <img alt=""
-											src="images/featured-product/2.jpg">
-										</a>
-									</div>
-									<div class="featured-pro-content">
-										<div class="product-review">
-											<h5 class="manufacturer">
-												<a href="product-details.html">Studio Design</a>
-											</h5>
-										</div>
-										<div class="rating-box">
-											<ul class="rating">
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-												<li class="no-star"><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div>
-										<h4>
-											<a class="featured-product-name" href="single-product.html">Mug
-												Today is a good day</a>
-										</h4>
-										<div class="featured-price-box">
-											<span class="new-price">$71.80</span>
-										</div>
-									</div>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
