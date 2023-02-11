@@ -32,7 +32,6 @@ public class detail_ProductController {
 		List<SANPHAM> same_Products = sanphamdao.findProductsByLoaiSP(sanpham.getLoaisp().getLoaiSP_MA().toString(), 6);
 		model.addAttribute("Same_Products", same_Products);
 
-		
 		return PageInfo.goSite(model, PageType.SITE_PRODUCT);
 	}
 }
