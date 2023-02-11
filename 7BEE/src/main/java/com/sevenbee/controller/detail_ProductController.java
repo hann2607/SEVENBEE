@@ -1,6 +1,7 @@
 package com.sevenbee.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,16 +19,20 @@ import jakarta.servlet.ServletException;
 @Controller
 public class detail_ProductController {
 	@Autowired
-	SANPHAMDAO dao;
-	
-	
+	SANPHAMDAO sanphamdao;
+
 	@RequestMapping("/product-detail/{id}")
-	public String detai_Product(@PathVariable("id") String id,Model model) throws ServletException, IOException {
-		//Hiển thị chi tiết sản phẩm theo mã sản phẩm
-		SANPHAM sanpham = dao.findById(id).get();
-		System.out.println(sanpham.getCt_sanpham().getCTSP_MoTa());
+	public String detai_Product(@PathVariable("id") String id, Model model) throws ServletException, IOException {
+		// Hiển thị chi tiết sản phẩm theo mã sản phẩm
+		SANPHAM sanpham = sanphamdao.findById(id).get();
 		model.addAttribute("sanpham", sanpham);
 		model.addAttribute("mota", sanpham.getCt_sanpham().getCTSP_MoTa());
+		
+		// Lấy ra danh sách sản phẩm cùng loại mới nhất
+		List<SANPHAM> same_Products = sanphamdao.findProductsByLoaiSP(sanpham.getLoaisp().getLoaiSP_MA().toString(), 6);
+		model.addAttribute("Same_Products", same_Products);
+
+		
 		return PageInfo.goSite(model, PageType.SITE_PRODUCT);
 	}
 }
