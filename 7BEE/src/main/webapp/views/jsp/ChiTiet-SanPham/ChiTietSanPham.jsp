@@ -147,6 +147,7 @@
 					<%
 					String input = (String) request.getAttribute("mota");
 					String[] components = input.split("-\\*-");
+					for (int i = 0; i < components.length; i += 2) {
 					%>
 					<li
 						class="list-group-item d-flex justify-content-between align-items-center ">
