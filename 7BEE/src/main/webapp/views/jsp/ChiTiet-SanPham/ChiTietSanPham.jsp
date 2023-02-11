@@ -151,7 +151,7 @@
 					%>
 					<li
 						class="list-group-item d-flex justify-content-between align-items-center ">
-						<span class="font-weight-bold"><%=components[i]%></span> <span
+						<span class="font-weight-bold text-capitalize"><%=components[i]%></span> <span
 						class=""><%=components[i + 1]%></span>
 					</li>
 					<%
