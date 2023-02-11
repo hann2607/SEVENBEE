@@ -7,8 +7,8 @@
 	<div class="container">
 		<div class="breadcrumb-content">
 			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li class="active">Shopping Cart</li>
+				<li><a href="index.html">Trang chủ</a></li>
+				<li class="active">Giỏ hàng</li>
 			</ul>
 		</div>
 	</div>
@@ -24,12 +24,12 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th class="li-product-remove">remove</th>
-									<th class="li-product-thumbnail">images</th>
-									<th class="cart-product-name">Product</th>
-									<th class="li-product-price">Unit Price</th>
-									<th class="li-product-quantity">Quantity</th>
-									<th class="li-product-subtotal">Total</th>
+									<th class="li-product-remove">Bỏ chọn</th>
+									<th class="li-product-thumbnail">Hình ảnh</th>
+									<th class="cart-product-name">Tên sản phẩm</th>
+									<th class="li-product-price">Đơn giá</th>
+									<th class="li-product-quantity">Số lượng</th>
+									<th class="li-product-subtotal">Thành tiền</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -83,12 +83,12 @@
 							<div class="coupon-all">
 								<div class="coupon">
 									<input id="coupon_code" class="input-text" name="coupon_code"
-										value="" placeholder="Coupon code" type="text"> <input
-										class="button" name="apply_coupon" value="Apply coupon"
+										value="" placeholder="Nhập mã giảm giá" type="text"> <input
+										class="button" name="apply_coupon" value="ADD CODE"
 										type="submit">
 								</div>
 								<div class="coupon2">
-									<input class="button" name="update_cart" value="Update cart"
+									<input class="button" name="update_cart" value="Restart giỏ hàng"
 										type="submit">
 								</div>
 							</div>
@@ -97,12 +97,12 @@
 					<div class="row">
 						<div class="col-md-5 ml-auto">
 							<div class="cart-page-total">
-								<h2>Cart totals</h2>
+								<h2>Tổng số giỏ hàng</h2>
 								<ul>
-									<li>Subtotal <span>$130.00</span></li>
-									<li>Total <span>$130.00</span></li>
+									<li>Tổng phụ <span>$130.00</span></li>
+									<li>Tổng cộng <span>$130.00</span></li>
 								</ul>
-								<a href="#">Proceed to checkout</a>
+								<a href="#">Tiến hành kiểm tra</a>
 							</div>
 						</div>
 					</div>
