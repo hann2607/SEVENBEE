@@ -38,28 +38,53 @@ public class homeController {
 	LOAISPDAO loaispdao;
 
 	@RequestMapping("/home")
-	public String home(Model model) throws ServletException, IOException {
+	public String home(Model model) throws ServletException, IOException {		
 		// Lấy ra danh sách sản phẩm mới nhất
-		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts();
+		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts(6);
+		for (SANPHAM sanpham : LatestProducts) {
+			sanpham.setSP_HinhAnh(spitArrImages(sanpham.getSP_HinhAnh()));
+		}
 		model.addAttribute("LatestProducts", LatestProducts);
 
 		// Lấy ra danh sách sản phẩm bán chạy nhất
 		List<DONHANG_SANPHAM> BestSellerProducts = donhang_SANPHAMDAO.findByBestSellerProducts();
+		for (DONHANG_SANPHAM sanpham : BestSellerProducts) {
+			sanpham.getSanpham().setSP_HinhAnh(spitArrImages(sanpham.getSanpham().getSP_HinhAnh()));
+		}
 		model.addAttribute("BestSellerProducts", BestSellerProducts);
 
 		// Lấy ra danh sách sản phẩm loại điện tử mới nhất
 		List<SANPHAM> Products_DienTu = sanphamdao.findProductsByLoaiSP("LSP003", 6);
+		for (SANPHAM sanpham : Products_DienTu) {
+			sanpham.setSP_HinhAnh(spitArrImages(sanpham.getSP_HinhAnh()));
+		}
 		model.addAttribute("Products_DienTu", Products_DienTu);
 
 		// Lấy ra danh sách sản phẩm loại thời trang mới nhất
 		List<SANPHAM> Products_ThoiTrang = sanphamdao.findProductsByLoaiSP("LSP002", 6);
+		for (SANPHAM sanpham : Products_ThoiTrang) {
+			sanpham.setSP_HinhAnh(spitArrImages(sanpham.getSP_HinhAnh()));
+		}
 		model.addAttribute("Products_ThoiTrang", Products_ThoiTrang);
 
 		// Lấy ra danh sách sản phẩm theo shop ngẫu nhiên
 		List<PARTNER> Products_ShopRandom = partnerdao.findProductsByShopRandom(3);
+		for (PARTNER shop : Products_ShopRandom) {
+			for (SANPHAM sanpham : shop.getSanpham()) {
+				sanpham.setSP_HinhAnh(spitArrImages(sanpham.getSP_HinhAnh()));
+			}
+		}
 		model.addAttribute("Products_ShopRandom", Products_ShopRandom);
-		System.out.println(Products_ShopRandom.size());
+		
 
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
+	}
+	
+	private String spitArrImages(String arrImages) {
+		String[] components = arrImages.split("-\\*-");
+		if(components != null) {
+			return components[0];
+		}
+		return null;
 	}
 }

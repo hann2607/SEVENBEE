@@ -129,7 +129,8 @@
 									<div class="product-image">
 										<a href="/product-detail/${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
-											alt="Li's Product Image">
+											alt="
+											Li's ProductImage">
 										</a> <span class="sticker">MỚI</span>
 									</div>
 									<div class="product_desc">
