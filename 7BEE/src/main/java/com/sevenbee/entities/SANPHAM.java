@@ -23,19 +23,18 @@ import lombok.NoArgsConstructor;
 public class SANPHAM {
 	@Id
 	String SP_MA;
-	String Shop_TenShop, SP_TenSP, SP_HinhAnh;
+	String SP_TenSP, SP_HinhAnh;
 	long SP_Gia;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SP_Ngaydang")
 	Date SP_Ngaydang = new Date();
 	@ManyToOne
-	@JoinColumn(name = "LoaiSP_MA")
+	@JoinColumn(name = "LoaiSP_MA", referencedColumnName = "LoaiSP_MA")
 	private LOAISP loaisp;
 	@OneToOne
 	@JoinColumn(name = "CTSP_MA")
 	private CHITIET_SANPHAM ct_sanpham;
-	
-	
-//	@ManyToOne
-//	PARTNER partner;
+	@ManyToOne
+	@JoinColumn(name = "Shop_TenShop", referencedColumnName = "Shop_TenShop")
+	private PARTNER shop;
 }

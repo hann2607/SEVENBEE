@@ -1,6 +1,6 @@
 package com.sevenbee.entities;
 
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,5 +20,5 @@ public class LOAISP {
 	String LoaiSP_MA;
 	String LoaiSP_Ten;
 	@OneToMany(mappedBy = "loaisp")
-	private Set<SANPHAM> sanpham;
+	private List<SANPHAM> sanpham;
 }
