@@ -533,7 +533,7 @@
 										<div class="product-img">
 											<a href="/product-detail/${product.getSP_MA()}"> <img
 												alt=""
-												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+												src="/views/images/product/large-size/${product.getSP_HinhAnh()}">
 											</a>
 										</div>
 										<div class="featured-pro-content">
@@ -586,7 +586,7 @@
 										<div class="product-img">
 											<a href="/product-detail/${product.getSP_MA()}"> <img
 												alt=""
-												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+												src="/views/images/product/large-size/${product.getSP_HinhAnh()}">
 											</a>
 										</div>
 										<div class="featured-pro-content">
@@ -640,7 +640,7 @@
 										<div class="product-img">
 											<a href="/product-detail/${product.getSP_MA()}"> <img
 												alt=""
-												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+												src="/views/images/product/large-size/${product.getSP_HinhAnh()}">
 											</a>
 										</div>
 										<div class="featured-pro-content">
