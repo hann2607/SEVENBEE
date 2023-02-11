@@ -129,7 +129,8 @@
 									<div class="product-image">
 										<a href="/product-detail/${product.SP_MA}"> <img
 											src="/views/images/product/large-size/${product.SP_HinhAnh}"
-											alt="Li's Product Image">
+											alt="
+											Li's ProductImage">
 										</a> <span class="sticker">MỚI</span>
 									</div>
 									<div class="product_desc">
@@ -533,7 +534,7 @@
 										<div class="product-img">
 											<a href="/product-detail/${product.getSP_MA()}"> <img
 												alt=""
-												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+												src="/views/images/product/large-size/${product.getSP_HinhAnh()}">
 											</a>
 										</div>
 										<div class="featured-pro-content">
@@ -586,7 +587,7 @@
 										<div class="product-img">
 											<a href="/product-detail/${product.getSP_MA()}"> <img
 												alt=""
-												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+												src="/views/images/product/large-size/${product.getSP_HinhAnh()}">
 											</a>
 										</div>
 										<div class="featured-pro-content">
@@ -640,7 +641,7 @@
 										<div class="product-img">
 											<a href="/product-detail/${product.getSP_MA()}"> <img
 												alt=""
-												src="/views/images/featured-product/${product.getSP_HinhAnh()}">
+												src="/views/images/product/large-size/${product.getSP_HinhAnh()}">
 											</a>
 										</div>
 										<div class="featured-pro-content">

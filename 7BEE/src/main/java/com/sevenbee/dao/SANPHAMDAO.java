@@ -9,8 +9,8 @@ import com.sevenbee.entities.SANPHAM;
 
 public interface SANPHAMDAO extends JpaRepository<SANPHAM, String> {
 	// Lấy ra danh sách sản phẩm mới nhất
-	@Query("SELECT sp FROM SANPHAM sp ORDER BY sp.SP_Ngaydang DESC LIMIT 6")
-	List<SANPHAM> findByLatestProducts();
+	@Query("SELECT sp FROM SANPHAM sp ORDER BY sp.SP_Ngaydang DESC LIMIT ?1")
+	List<SANPHAM> findByLatestProducts(int limit);
 
 	// Lấy ra danh sách sản phẩm theo loại mới nhất
 	@Query("SELECT sp FROM SANPHAM sp WHERE sp.loaisp.LoaiSP_MA=?1 ORDER BY sp.SP_Ngaydang DESC LIMIT ?2")
