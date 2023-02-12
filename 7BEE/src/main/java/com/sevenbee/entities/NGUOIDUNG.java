@@ -11,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,8 +23,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "NGUOIDUNG")
 public class NGUOIDUNG {
 	@Id
-	String SDT;
-	String Ho_ten, Email, Matkhau, Diachi, Hinhanh;
+	@NotEmpty
+	private String SDT;
+	String Ho_ten, Email, Diachi, Hinhanh;
+	@NotEmpty
+	private String Matkhau;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "NgaySinh")
 	Date Ngaysinh = new Date();
