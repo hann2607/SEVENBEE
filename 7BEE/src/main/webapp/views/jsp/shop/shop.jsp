@@ -171,11 +171,7 @@
 																	type="number" value="${product.SP_Gia}"></fmt:formatNumber></span><span>
 																VNĐ</span>
 														</div>
-														<p>Beach Camera Exclusive Bundle - Includes Two
-															Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The
-															Entire Room With Exquisite Sound via Ring Radiator
-															Technology. Stream And Control R3 Speakers Wirelessly
-															With Your Smartphone. Sophisticated, Modern Desig</p>
+														<p>${product.ct_sanpham.getCTSP_ThongTinThem()}</p>
 													</div>
 												</div>
 											</div>
