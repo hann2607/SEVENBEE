@@ -1904,7 +1904,7 @@ textarea:focus {
 .megamenu-static-holder .hb-megamenu, .megamenu-holder .hb-megamenu {
 	background-image: url(images/menu/li-bg-menu.jpg);
 	background-size: cover;
-	background-position: top;
+	background-position: right;
 	background-repeat: no-repeat;
 	top: auto;
 	left: 0;
@@ -1914,7 +1914,7 @@ textarea:focus {
 .megamenu-holder .hb-megamenu {
 	width: auto;
 	background-size: auto;
-	background-position: inherit;
+	background-position: right;
 }
 .megamenu-static-holder .hb-megamenu > li {
 	width: 25%;

@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="breadcrumb-content">
 			<ul>
-				<li><a href="index.html">TRANG CHỦ</a></li>
+				<li><a href="/home">TRANG CHỦ</a></li>
 				<li class="active">SHOP</li>
 			</ul>
 		</div>
@@ -63,6 +63,7 @@
 					</div>
 					<!-- product-select-box end -->
 				</div>
+				<h1 class="mt-4 ${pages.totalElements > 0 ? 'd-none' : 'd-block'} text-center">Không có kết quả!</h1>
 				<!-- shop-top-bar end -->
 				<!-- shop-products-wrapper start -->
 				<div class="shop-products-wrapper">
@@ -203,7 +204,7 @@
 								<div class="col-lg-6 col-md-6">
 									<ul class="pagination-box pt-xs-20 pb-xs-15">
 										<li><a
-											href="/shop/${loaiSP}?page=${pages.number <= 0 ? pages.number : pages.number - 1}"
+											href="${request.getContextPath()}?page=${pages.number <= 0 ? pages.number : pages.number - 1}"
 											class="Previous"><i class="fa fa-chevron-left"></i> Trước</a></li>
 										<%
 										for (int i = 0; i < Integer.parseInt(request.getAttribute("totalPages").toString()); i += 1) {
@@ -211,13 +212,13 @@
 										<li
 											<%if (Integer.parseInt(request.getAttribute("Pagecurrent").toString()) == i) {%>
 											class="active" <%}%>><a
-											href="/shop/${loaiSP}?page=<%=i%>"><%=i + 1%></a></li>
+											href="${request.getContextPath()}?page=<%=i%>"><%=i + 1%></a></li>
 										<%
 										}
 										%>
 
 										<li><a
-											href="/shop/${loaiSP}?page=${pages.number >= (pages.totalPages -1) ? pages.number : pages.number + 1}"
+											href="${request.getContextPath()}?page=${pages.number >= (pages.totalPages -1) ? pages.number : pages.number + 1}"
 											class="Next"> Sau <i class="fa fa-chevron-right"></i></a></li>
 									</ul>
 								</div>
