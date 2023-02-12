@@ -1,4 +1,4 @@
-package com.sevenbee.entities;
+package com.sevenbee.entity;
 
 import java.util.Date;
 import java.util.List;
@@ -11,6 +11,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,10 +26,15 @@ import lombok.NoArgsConstructor;
 public class NGUOIDUNG {
 	@Id
 	@NotEmpty
-	private String SDT;
-	String Ho_ten, Email, Diachi, Hinhanh;
+	String SDT;
+	@Email
 	@NotEmpty
-	private String Matkhau;
+	String Email;
+	@NotBlank(message = "Không được để trống họ và tên !")
+	String Ho_ten;
+	String Diachi, Hinhanh;
+	@NotEmpty
+	String Matkhau;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "NgaySinh")
 	Date Ngaysinh = new Date();

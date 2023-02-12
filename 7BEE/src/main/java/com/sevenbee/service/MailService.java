@@ -1,6 +1,6 @@
 package com.sevenbee.service;
 
-import com.sevenbee.entities.MailInfo;
+import com.sevenbee.entity.MailInfo;
 
 import jakarta.mail.MessagingException;
 

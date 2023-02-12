@@ -1,4 +1,4 @@
-package com.sevenbee.entities;
+package com.sevenbee.entity;
 
 import java.io.File;
 import java.util.ArrayList;

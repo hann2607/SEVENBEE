@@ -149,8 +149,8 @@ body {
 						<form class="login-form" action="/login" method="post">
 							<div class="form-group">
 								<input type="text" class="form-control"
-									placeholder="Email or UserName" name="username"
-									value="${cookie.username.value}">
+									placeholder="Email or UserName" name="userID"
+									value="${cookie.userID.value}">
 							</div>
 							<div class="form-group">
 								<input type="Password" class="form-control"

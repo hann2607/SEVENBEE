@@ -1,4 +1,4 @@
-package com.sevenbee.entities;
+package com.sevenbee.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

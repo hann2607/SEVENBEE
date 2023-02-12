@@ -8,7 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.sevenbee.entities.MailInfo;
+import com.sevenbee.entity.MailInfo;
 import com.sevenbee.service.MailService;
 
 @Service
