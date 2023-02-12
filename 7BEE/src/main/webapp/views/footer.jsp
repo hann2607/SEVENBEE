@@ -85,7 +85,7 @@
 							<li><span>ĐỊA CHỈ: </span> TP.Hồ Chí Minh</li>
 							<li><span>ĐIỆN THOẠI: </span> <a href="#">(+84) 9847 724
 									10</a></li>
-							<li><span>Email: </span> <a href="#">info@yourdomain.com</a>
+							<li><span>Email: </span> <a href="#">sevenbee.7bee@gmail.com</a>
 							</li>
 						</ul>
 					</div>
@@ -95,9 +95,9 @@
 						<div class="footer-block">
 							<h3 class="footer-block-title">SẢN PHẨM</h3>
 							<ul>
-								<li><a href="#">ĐỒ CÔNG NGHỆ</a></li>
-								<li><a href="#">THỜI TRANG</a></li>
-								<li><a href="#">ĐỒ ĂN</a></li>
+								<li><a href="/shop/LSP003">ĐỒ CÔNG NGHỆ</a></li>
+								<li><a href="/shop/LSP002">THỜI TRANG</a></li>
+								<li><a href="/shop/LSP001">ĐỒ ĂN</a></li>
 								<li><a href="#">KHÁC</a></li>
 							</ul>
 						</div>

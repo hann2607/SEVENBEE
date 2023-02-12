@@ -4,9 +4,14 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeTypeUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sevenbee.dao.DONHANGDAO;
 import com.sevenbee.dao.DONHANG_SANPHAMDAO;
@@ -86,5 +91,15 @@ public class homeController {
 			return components[0];
 		}
 		return null;
+	}
+	
+	@RequestMapping(value = "home/Quick-view/{id}", method = RequestMethod.GET, produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
+	public ResponseEntity<SANPHAM> find(@PathVariable("id") String id) {
+		System.out.println(id);
+		try {
+			return new ResponseEntity<SANPHAM>(sanphamdao.findProductBySP_MA(id), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<SANPHAM>(HttpStatus.BAD_REQUEST);
+		}
 	}
 }

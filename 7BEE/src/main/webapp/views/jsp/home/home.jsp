@@ -137,7 +137,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
+													<a href="/shop/${product.loaisp.getLoaiSP_MA()}">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -165,8 +165,9 @@
 													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
-													data-target="#exampleModalCenter" href="#"><i
+
+												<li ><a class="quick-view" data-toggle="modal"
+													data-target="#exampleModalCenter" href="#" onclick="showQuickView(${product.SP_MA})"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
 										</div>
@@ -195,7 +196,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${dhsp.sanpham.loaisp.getLoaiSP_Ten()}</a>
+													<a href="/shop/${dhsp.sanpham.loaisp.getLoaiSP_MA()}">${dhsp.sanpham.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -254,7 +255,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
+													<a href="/shop/${product.loaisp.getLoaiSP_MA()}">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -359,7 +360,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
+													<a href="/shop/${product.loaisp.getLoaiSP_MA()}">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -438,7 +439,7 @@
 										<div class="product_desc_info">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${product.loaisp.getLoaiSP_Ten()}</a>
+													<a href="/shop/${product.loaisp.getLoaiSP_MA()}">${product.loaisp.getLoaiSP_Ten()}</a>
 												</h5>
 												<div class="rating-box">
 													<ul class="rating">
@@ -522,7 +523,7 @@
 				<div class="featured-product">
 					<div class="li-section-title">
 						<h2>
-							<span>${Products_ShopRandom.get(0).getShop_TenShop()}</span>
+							<span>${Products_ShopRandom.get(0).getShop_TenShop() != null ? Products_ShopRandom.get(0).getShop_TenShop() : "null"}</span>
 						</h2>
 					</div>
 					<div class="featured-product-active-2 owl-carousel">
@@ -540,7 +541,7 @@
 										<div class="featured-pro-content">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${product.getLoaisp().getLoaiSP_Ten()}</a>
+													<a href="/shop/${product.getLoaisp().getLoaiSP_MA()}">${product.getLoaisp().getLoaiSP_Ten()}</a>
 												</h5>
 											</div>
 											<div class="rating-box">
@@ -575,7 +576,7 @@
 				<div class="featured-product pt-sm-10 pt-xs-25">
 					<div class="li-section-title">
 						<h2>
-							<span>${Products_ShopRandom.get(1).getShop_TenShop()}</span>
+							<span>${Products_ShopRandom.get(1).getShop_TenShop() != null ? Products_ShopRandom.get(1).getShop_TenShop() : "null"}</span>
 						</h2>
 					</div>
 					<div class="featured-product-active-2 owl-carousel">
@@ -593,7 +594,7 @@
 										<div class="featured-pro-content">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${product.getLoaisp().getLoaiSP_Ten()}</a>
+													<a href="/shop/${product.getLoaisp().getLoaiSP_MA()}">${product.getLoaisp().getLoaiSP_Ten()}</a>
 												</h5>
 											</div>
 											<div class="rating-box">
@@ -629,7 +630,7 @@
 				<div class="featured-product pt-sm-10 pt-xs-25">
 					<div class="li-section-title">
 						<h2>
-							<span>${Products_ShopRandom.get(2).getShop_TenShop()}</span>
+							<span>${Products_ShopRandom.get(2).getShop_TenShop() != null ? Products_ShopRandom.get(2).getShop_TenShop() : "null"}</span>
 						</h2>
 					</div>
 					<div class="featured-product-active-2 owl-carousel">
@@ -647,7 +648,7 @@
 										<div class="featured-pro-content">
 											<div class="product-review">
 												<h5 class="manufacturer">
-													<a href="#">${product.getLoaisp().getLoaiSP_Ten()}</a>
+													<a href="/shop/${product.getLoaisp().getLoaiSP_MA()}">${product.getLoaisp().getLoaiSP_Ten()}</a>
 												</h5>
 											</div>
 											<div class="rating-box">
@@ -682,6 +683,18 @@
 </div>
 <!-- Group Featured Product Area End Here -->
 
+<script type="text/javascript">
+	var showQuickView = function(id) {
+		console.log(id);
+		$.ajax({
+			type : 'GET',
+			url : 'home/Quick-view/' + id,
+			success : function(product) {
+				$('#exampleModalCenter #QVNameProduct').val(product.SP_TenSP);
+			}
+		});
+	}
+</script>
 
 <!-- Begin Quick View | Modal Area -->
 <div class="modal fade modal-wrapper" id="exampleModalCenter">
@@ -755,7 +768,7 @@
 					<div class="col-lg-7 col-md-6 col-sm-6">
 						<div class="product-details-view-content pt-60">
 							<div class="product-info">
-								<h2>Today is a good day Framed poster</h2>
+								<h2 id="QVNameProduct">Today is a good day Framed poster</h2>
 								<span class="product-details-ref">Reference: demo_15</span>
 								<div class="rating-box pt-20">
 									<ul class="rating rating-with-review-item">
