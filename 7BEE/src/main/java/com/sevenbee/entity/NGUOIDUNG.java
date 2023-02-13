@@ -13,7 +13,6 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,15 +24,16 @@ import lombok.NoArgsConstructor;
 @Table(name = "NGUOIDUNG")
 public class NGUOIDUNG {
 	@Id
-	@NotEmpty
+	@NotBlank(message = "Không được để trống số điện thoại !")
 	String SDT;
-	@Email
-	@NotEmpty
+	@Email(message = "Email nhập vào không đúng định dạng thử lại !")
+	@NotBlank(message = "Không được bỏ trống email của bạn !")
 	String Email;
 	@NotBlank(message = "Không được để trống họ và tên !")
 	String Ho_ten;
 	String Diachi, Hinhanh;
-	@NotEmpty
+	@NotBlank(message = "Không được để trống mật khẩu !")
+	@Column(length = 60, nullable = false)
 	String Matkhau;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "NgaySinh")
