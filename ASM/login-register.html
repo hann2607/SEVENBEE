@@ -418,13 +418,32 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Xác nhận tài khoản</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <form action="javascript: void(0)" class="otp-form" name="otp-form">
+
+                            <div class="title">
+                                <h3>OTP VERIFICATION</h3>
+                                <p class="info">An otp has been sent to ********k876@gmail.com</p>
+                                <p class="msg">Please enter OTP to verify</p>
+                            </div>
+                            <div class="d-flex flex-row">
+                                <input type="text" class="otp__digit otp__field__1 border border-success mx-1">
+                                <input type="text" class="otp__digit otp__field__2 border border-success mx-1">
+                                <input type="text" class="otp__digit otp__field__3 border border-success mx-1">
+                                <input type="text" class="otp__digit otp__field__4 border border-success mx-1">
+                                <input type="text" class="otp__digit otp__field__5 border border-success mx-1">
+                                <input type="text" class="otp__digit otp__field__6 border border-success mx-1">
+                            </div>
+
+                            <div class="result">
+                                <p id="_otp" class="_notok">855412</p>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -433,6 +452,37 @@
                 </div>
             </div>
         </div>
+        <script>
+            var otp_inputs = document.querySelectorAll(".otp__digit")
+            var mykey = "0123456789".split("")
+            otp_inputs.forEach((_) => {
+                _.addEventListener("keyup", handle_next_input)
+            })
+            function handle_next_input(event) {
+                let current = event.target
+                let index = parseInt(current.classList[1].split("__")[2])
+                current.value = event.key
+
+                if (event.keyCode == 8 && index > 1) {
+                    current.previousElementSibling.focus()
+                }
+                if (index < 6 && mykey.indexOf("" + event.key + "") != -1) {
+                    var next = current.nextElementSibling;
+                    next.focus()
+                }
+                var _finalKey = ""
+                for (let { value } of otp_inputs) {
+                    _finalKey += value
+                }
+                if (_finalKey.length == 6) {
+                    document.querySelector("#_otp").classList.replace("_notok", "_ok")
+                    document.querySelector("#_otp").innerText = _finalKey
+                } else {
+                    document.querySelector("#_otp").classList.replace("_ok", "_notok")
+                    document.querySelector("#_otp").innerText = _finalKey
+                }
+            }
+        </script>
         <!-- Login Content Area End Here -->
         <!-- Begin Footer Area -->
         <div class="footer">
