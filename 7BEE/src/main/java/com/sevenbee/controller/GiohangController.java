@@ -40,8 +40,6 @@ public class GiohangController {
 	@Autowired 
 	ShoppingCartService cartShop;
 	
-	@Autowired 
-	DONHANG donhang;
 	
 	@Autowired 
 	ParamService param;
@@ -51,31 +49,31 @@ public class GiohangController {
 	
 	@RequestMapping("/ShoppingCart")
 	public String LoadShopcart(Model model) throws ServletException, IOException{
-		model.addAttribute("products", DataSharing.donhang.values());
+		model.addAttribute("ShopCart", DataSharing.donhang.values());
 		model.addAttribute("cart", cartShop.getProducts());
 		model.addAttribute("amount", cartShop.getAmount());
 		return PageInfo.goSite(model, PageType.SITE_SHOPPINGCART);
 	}
 	
-	@GetMapping("/addCart")
-	public String addToCart(@PathVariable Integer id, Model model) {
+	@GetMapping("/addCart/{id}")
+	public String addToCart(@PathVariable String id, Model model) {
 		cartShop.addProduct(id);
-		session.set("cartQuantity", cartShop.getCount());
+		session.set("ShopCartmini", cartShop.getCount());
 		model.addAttribute("messages", "Add success!");
 		return "redirect:/ShoppingCart";
 	}
 	
-	@GetMapping("/updateCart")
-	public String updateCart(@PathVariable Integer id, Model model) {
-		cartShop.updateProduct(id, param.getInt("quantity", 0));
-		session.set("cartQuantity", cartShop.getCount());
+	@GetMapping("/updateCart/{id}")
+	public String updateCart(@PathVariable String DH_MA, Model model) {
+		cartShop.updateProduct(DH_MA, param.getInt("quantity", 0));
+		session.set("ShopCartmini", cartShop.getCount());
 		model.addAttribute("messages", "Update success!");
 		return "redirect:/ShoppingCart";
 	}
 	
 	@GetMapping("/removeCart")
-	public String removeCart(@PathVariable Integer id, Model model) {
-		cartShop.removeProduct(id);
+	public String removeCart(@PathVariable String DH_MA, Model model) {
+		cartShop.removeProduct(DH_MA);
 		model.addAttribute("messages", "remove success!");
 		return "redirect:/ShoppingCart";
 	}

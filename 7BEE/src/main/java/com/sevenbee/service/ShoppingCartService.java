@@ -8,11 +8,11 @@ import com.sevenbee.entities.DONHANG;
 
 public interface ShoppingCartService {
 	// Thêm mặt hàng vào giỏ hoặc tăng số lượng lên 1 nếu đã tồn tại
-	void addProduct(Integer id);
+	void addProduct(String DH_MA);
 	//xóa mặt hàng khỏi giỏ hàng
-	void removeProduct(Integer id);
+	void removeProduct(String DH_MA);
 	//thay đổi số lượng của mặt hàng trong giỏ
-	void updateProduct(Integer id, int qty);
+	void updateProduct(String DH_MA, int qty);
 	//xóa sạch các mặt hàng trong giỏ
 	void clear();
 	//lấy tất cả các mặt hàng trong giỏ

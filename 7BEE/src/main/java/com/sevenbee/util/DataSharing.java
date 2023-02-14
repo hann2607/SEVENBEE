@@ -6,10 +6,10 @@ import java.util.HashMap;
 import com.sevenbee.entities.DONHANG;
 
 public class DataSharing {
-	public static HashMap<String, DONHANG> donhang = new HashMap<>();
+	public static HashMap<String, DONHANG > donhang = new HashMap<>();
 
-	public void addData(String DH_MA, DONHANG value) {
-		donhang.put(DH_MA, value);
+	public void addData(String Ma_Sp, DONHANG value) {
+		
 	}
 
 	public DONHANG getData(String DH_MA) {

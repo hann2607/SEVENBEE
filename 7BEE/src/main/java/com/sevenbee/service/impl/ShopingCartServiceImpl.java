@@ -3,6 +3,7 @@ package com.sevenbee.service.impl;
 import java.util.HashMap;
 
 
+
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -18,46 +19,45 @@ import com.sevenbee.util.DataSharing;
 public class ShopingCartServiceImpl implements ShoppingCartService{
 	
 	private static HashMap<String, DONHANG> orders = new HashMap<>();
-	
+
 	@Override
-	public void addProduct(Integer id) {
-		DONHANG donhang = DataSharing.donhang.get(id).orderProduct(1);
-		if(!orders.containsKey(id)) {
+	public void addProduct(String DH_MA) {
+		DONHANG donhang = DataSharing.donhang.get(DH_MA).orderProduct(1);
+		if(!orders.containsKey(DH_MA)) {
 			orders.put(donhang.getDH_MA(), donhang);
 		} else if (donhang != null) {
-			int oldQuantity = orders.get(id).getSo_Luong();
-			orders.get(id).setSo_Luong(oldQuantity + 1); 
-		}	
+			int oldQuantity = orders.get(DH_MA).getSo_Luong();
+			orders.get(DH_MA).setSo_Luong(oldQuantity + 1); 
+		}			
 	}
 
 	@Override
-	public void removeProduct(Integer id) {
-		//Remove product
-		DONHANG donhang = orders.get(id);
-		DataSharing.donhang.get(id).orderProduct(0 - donhang.getSo_Luong());
-		orders.remove(id);
+	public void removeProduct(String DH_MA) {
+		DONHANG donhang = orders.get(DH_MA);
+		DataSharing.donhang.get(DH_MA).orderProduct(0 - donhang.getSo_Luong());
+		orders.remove(DH_MA);	
 	}
 
 	@Override
-	public void updateProduct(Integer id, int qty) {
-		DONHANG donhang = orders.get(id);
-		DONHANG donhangcheck = DataSharing.donhang.get(id).orderProduct(qty - donhang.getSo_Luong());
-		//UPdate or remove product
+	public void updateProduct(String DH_MA, int qty) {
+		DONHANG donhang = orders.get(DH_MA);
+		DONHANG donhangcheck = DataSharing.donhang.get(DH_MA).orderProduct(qty - donhang.getSo_Luong());
+		//UPdate or remove DH
 		if(qty > 0) {
 			if(donhangcheck != null) {
 				donhang.setSo_Luong(qty);
 			}
 		} else {
-			orders.remove(id);
-		}
+			orders.remove(DH_MA);
+		}	
 	}
 
 	@Override
 	public void clear() {
-		for (String id : orders.keySet()) {
-			DONHANG donhang = orders.get(id);
-			// Return quantity order into products list
-			DataSharing.donhang.get(id).orderProduct(0 - donhang.getSo_Luong());
+		for (String DH_MA : orders.keySet()) {
+			DONHANG donhang = orders.get(DH_MA);
+			// Return quantity order into DH list
+			DataSharing.donhang.get(DH_MA).orderProduct(0 - donhang.getSo_Luong());
 		}
 		orders.clear();
 	}
@@ -70,8 +70,8 @@ public class ShopingCartServiceImpl implements ShoppingCartService{
 	@Override
 	public int getCount() {
 		int count = 0;
-		for (DONHANG prod : orders.values()) {
-			count += prod.getSo_Luong();
+		for (DONHANG donhang : orders.values()) {
+			count += donhang.getSo_Luong();
 		}
 		return count;
 	}
@@ -79,10 +79,14 @@ public class ShopingCartServiceImpl implements ShoppingCartService{
 	@Override
 	public double getAmount() {
 		double amount = 0;
-		for (DONHANG prod : orders.values()) {
-			amount += prod.getDon_gia() * prod.getSo_Luong();
+		for (DONHANG donhang : orders.values()) {
+			amount += donhang.getDon_gia() * donhang.getSo_Luong();
 		}
 		return amount;
+	
 	}
+	
+	
 
+	
 }
