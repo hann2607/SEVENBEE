@@ -22,7 +22,16 @@ public interface SANPHAMDAO extends JpaRepository<SANPHAM, String> {
 	@Query("SELECT sp FROM SANPHAM sp WHERE sp.SP_MA=?1")
 	SANPHAM findProductBySP_MA(String masp);
 
-	// Lấy ra danh sách sản phẩm theo loại mới nhất
+	// Lấy ra danh sách sản phẩm theo loại
 	@Query("SELECT sp FROM SANPHAM sp WHERE sp.loaisp.LoaiSP_MA=?1")
 	Page<SANPHAM> findProductsByLoaiSPAndPage(String LoaiSP_MA, Pageable pageable);
+
+	// Lấy ra danh sách sản phẩm theo 1 loại sản phẩm
+	@Query("SELECT sp FROM SANPHAM sp WHERE sp.SP_TenSP LIKE ?1")
+	Page<SANPHAM> findProductsBy1LoaiSPAndPage(String LoaiSP_MA, Pageable pageable);
+
+	// Lấy ra danh sách sản phẩm theo 2 loại sản phẩm
+	@Query("SELECT sp FROM SANPHAM sp WHERE sp.SP_TenSP LIKE ?1 OR sp.SP_TenSP LIKE ?2")
+	Page<SANPHAM> findProductsBy2LoaiSPAndPage(String LoaiSP_MA1, String LoaiSP_MA2, Pageable pageable);
+
 }

@@ -1,7 +1,10 @@
 package com.sevenbee.entities;
 
 import java.util.Date;
+
 import java.util.Set;
+
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,4 +34,21 @@ public class DONHANG {
 	
 	@OneToMany(mappedBy = "donhang")
 	private Set<DONHANG_SANPHAM> donhang_sanpham;
+	
+	public DONHANG orderProduct(int So_Luong) {
+		DONHANG prod = null;
+		if(So_Luong <= this.So_Luong) {
+			try {
+				prod = (DONHANG) this.clone();
+				prod.setSo_Luong(So_Luong);
+				this.So_Luong -= So_Luong;
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
+		}
+		return prod;
+	}
+	
 }
+
+
