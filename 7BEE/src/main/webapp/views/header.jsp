@@ -141,7 +141,7 @@
 							<!-- Begin Header Mini Cart Area -->
 							<li class="hm-minicart">
 								<div class="hm-minicart-trigger">
-									<span class="item-icon"></span> <span class="item-text">80TR
+									<span class="item-icon"></span> <span class="item-text">80tr
 										<span class="cart-item-count">2</span>
 									</span>
 								</div> <span></span>
@@ -154,12 +154,14 @@
 										</a>
 											<div class="minicart-product-details">
 												<h6>
-													<a href="single-product.html">Aenean eu tristique</a>
+													<a href="single-product.html">${product.SP_MA}</a>
 												</h6>
 												<div class="d-flex justify-content-between">
-													<span>x 1</span>
+													<span></span>
 													<div>
-														<span>40000000</span><span> VNĐ</span>
+														<span><fmt:formatNumber type="number"
+																value=""></fmt:formatNumber></span><span>
+															VNĐ</span>
 													</div>
 												</div>
 
@@ -191,11 +193,13 @@
 									<h6 class="my-3 d-flex justify-content-between">
 										TỔNG TIỀN:
 										<div>
-											<span>8000000</span><span> VNĐ</span>
+											<span><fmt:formatNumber type="number"
+													value=""></fmt:formatNumber></span><span>
+												VNĐ</span>
 										</div>
 									</h6>
 									<div class="minicart-button">
-										<a href="/Giohang.jsp"
+										<a href="/ShoppingCart"
 											class="li-button li-button-dark li-button-fullwidth li-button-sm">
 											<span>XEM GIỎ HÀNG</span>
 										</a> <a href="checkout.html"
