@@ -80,19 +80,19 @@
 								<h4 class="login-title">Đăng nhập</h4>
 								<div class="row">
 									<div class="col-md-12 col-12 mb-20">
-										<label>Số điện thoại*</label> <input name="username" class="mb-0" type="tel"
-											placeholder="090xxxxxx" />
+										<label>Số điện thoại*</label> <input name="username"
+											class="mb-0" type="tel" placeholder="090xxxxxx" />
 
 									</div>
 									<div class="col-12 mb-20">
-										<label>Mật khẩu</label> <input name="password" class="mb-0" type="password"
-											placeholder="Mật khẩu" />
+										<label>Mật khẩu</label> <input name="password" class="mb-0"
+											type="password" placeholder="Mật khẩu" />
 
 									</div>
 									<div class="col-md-8">
 										<div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
-											<input type="checkbox" id="remember_me" /> <label
-												for="remember_me">Lưu đăng nhập</label>
+											<input name="rememberMe" value="true" type="checkbox" id="rememberMe" />
+											<label for="rememberMe">Lưu đăng nhập</label>
 										</div>
 									</div>
 									<div class="col-md-4 mt-10 mb-20 text-left text-md-right">

@@ -54,8 +54,11 @@ public class LoginController {
 
 	@RequestMapping("/user/login")
 	public String login(Model model, @RequestParam("username") String username,
-			@RequestParam("password") String password,@ModelAttribute("nguoidung") NGUOIDUNG nguoidung) throws ServletException, IOException {
+			@RequestParam("password") String password, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
+			throws ServletException, IOException {
 
+		boolean rememberMe = paramService.getBoolean("rememberMe", false);
+System.out.println(rememberMe);
 		if (username.isEmpty() && password.isEmpty()) {
 			// validate form
 			model.addAttribute("message", "Vui lòng điều đủ thông tin tài khoản và mật khẩu");
@@ -66,13 +69,19 @@ public class LoginController {
 
 			if (user == null) {
 				model.addAttribute("message", "Sai tài khoản hoặc mật khẩu");
-				return PageInfo.goSite(model, PageType.SITE_LOGIN);
+				return "redirect:/";
+			}
+			if (rememberMe) {
+				cookieService.add("username", username, 1);
+				cookieService.add("password", password, 1);
+			} else {
+				cookieService.remove("username");
+				cookieService.remove("password");
 			}
 			session.setAttribute("username", user.getHo_ten());
 			return PageInfo.goSite(model, PageType.HOMEPAGE);
 		}
 
-		//////////////////////////// Hàm chưa xử lí remember///////////
 	}
 
 	@RequestMapping("/user/register")
