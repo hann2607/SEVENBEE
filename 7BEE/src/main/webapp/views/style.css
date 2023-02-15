@@ -2161,7 +2161,7 @@ textarea:focus {
 	background: #ffffff none repeat scroll 0 0;
 	box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 	border-radius: 4px;
-	bottom: 25px;
+	bottom: -25px;
 	content: "";
 	left: -10px;
 	opacity: 0;
@@ -2172,7 +2172,7 @@ textarea:focus {
 	-webkit-transition: all 300ms ease-in 0s;
 	transition: all 300ms ease-in 0s;
 	visibility: hidden;
-	z-index: 0;
+	z-index: 10px;
 }
 .single-product-wrap:hover:before{
   opacity: 1;
@@ -2194,7 +2194,7 @@ textarea:focus {
 	right: 15px;
 	position: absolute;
 	top: 20px;
-	z-index: 99;
+	z-index: 1px;
 	height: 40px;
 	width: 40px;
 	line-height: 40px;
@@ -2393,7 +2393,7 @@ textarea:focus {
   line-height: 22px;
 }
 .add-actions {
-	top: 70px;
+	bottom: -15px;
 	left: 19px;
 	margin: 0 auto;
 	opacity: 0;
