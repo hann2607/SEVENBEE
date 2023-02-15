@@ -99,6 +99,7 @@ public class LoginController {
 		} else {
 			// Kiểm tra trùng ID
 			Optional<NGUOIDUNG> userSDT = nguoidungDAO.findById(nguoidung.getSDT());
+			System.out.println(userSDT.get().getHo_ten());
 			if (!userSDT.isPresent()) {
 				nguoidung.setVaitro(false);
 				nguoidung.setIsactive(false);
