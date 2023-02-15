@@ -427,10 +427,10 @@
                         <form action="javascript: void(0)" class="otp-form" name="otp-form">
 
                             <div class="title">
-                                <p class="info">An otp has been sent to ********k876@gmail.com</p>
-                                <p class="msg">Please enter OTP to verify</p>
+                                <p class="info">Một OTP đã được gửi đến ********k876@gmail</p>
+                                <p class="msg">Vui lòng nhập OTP để xác minh</p>
                             </div>
-                            <div class="d-flex flex-row">
+                            <div class="d-flex flex-row mb-25">
                                 <input type="text" class="otp__digit otp__field__1 border border-success mx-1">
                                 <input type="text" class="otp__digit otp__field__2 border border-success mx-1">
                                 <input type="text" class="otp__digit otp__field__3 border border-success mx-1">
@@ -438,16 +438,20 @@
                                 <input type="text" class="otp__digit otp__field__5 border border-success mx-1">
                                 <input type="text" class="otp__digit otp__field__6 border border-success mx-1">
                             </div>
-
                             <div class="result d-flex flex-row">
-                                <h6 class="me-2">Mã xác nhận của bạn là:</h6>
-                                <p id="_otp" class="_notok"></p>
+                                <h6>Mã xác nhận của bạn là:</h6>
+                                <h5 id="_otp" class="_notok text-primary mx-3"></h5>
+                            </div>
+                            <div class="w-100">
+                                <button type="button" class="btn btn-success w-100">Xác nhận</button>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
+                        <button type="button" class="border-0 bg-transparent text-primary fw-bold w-50"
+                            data-dismiss="modal">Thay đổi email</button>
+                        <button type="button" class="border-0 bg-transparent text-primary fw-bold w-50">Gửi lại
+                            mã</button>
                     </div>
                 </div>
             </div>
@@ -481,6 +485,11 @@
                     document.querySelector("#_otp").classList.replace("_ok", "_notok")
                     document.querySelector("#_otp").innerText = _finalKey
                 }
+                document.getElementById("register").addEventListener('click', function (
+
+                ) { 
+
+                })
             }
         </script>
         <!-- Login Content Area End Here -->

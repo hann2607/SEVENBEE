@@ -1,6 +1,7 @@
 package com.sevenbee.controller;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sevenbee.dao.NGUOIDUNGDAO;
+import com.sevenbee.entity.MailInfo;
 import com.sevenbee.entity.NGUOIDUNG;
+import com.sevenbee.mailCONSTANT.mail_CONSTANT;
 import com.sevenbee.service.AccountService;
 import com.sevenbee.service.CookieService;
+import com.sevenbee.service.MailService;
 import com.sevenbee.service.ParamService;
 import com.sevenbee.service.SessionService;
 import com.sevenbee.util.PageInfo;
@@ -28,6 +32,7 @@ import jakarta.validation.Valid;
 
 @Controller
 public class LoginController {
+	mail_CONSTANT mailBody = new mail_CONSTANT();
 	AccountValidate accountValidate = new AccountValidate();
 	@Autowired
 	CookieService cookieService;
@@ -42,9 +47,14 @@ public class LoginController {
 	NGUOIDUNGDAO nguoidungDAO;
 
 	@Autowired
+	MailService mailService;
+
+	@Autowired
 	private AccountService accountService;
 	@Autowired
 	private HttpSession session;
+
+	String codeVerify;
 
 	@GetMapping("/showLogin")
 	public String getLoginform(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
@@ -58,7 +68,6 @@ public class LoginController {
 			throws ServletException, IOException {
 
 		boolean rememberMe = paramService.getBoolean("rememberMe", false);
-System.out.println(rememberMe);
 		if (username.isEmpty() && password.isEmpty()) {
 			// validate form
 			model.addAttribute("message", "Vui lòng điều đủ thông tin tài khoản và mật khẩu");
@@ -84,34 +93,42 @@ System.out.println(rememberMe);
 
 	}
 
-	@RequestMapping("/user/register")
+	@RequestMapping("/user/validateAndSendmail")
 	public String register(Model model, @Valid @ModelAttribute("nguoidung") NGUOIDUNG nguoidung, BindingResult result)
 			throws ServletException, IOException {
-
 		if (result.hasErrors()) {
 			// validate form
 			return PageInfo.goSite(model, PageType.SITE_LOGIN);
 		} else {
 			// Kiểm tra trùng ID
-			Optional<NGUOIDUNG> user = nguoidungDAO.findById(nguoidung.getSDT());
-			if (!user.isPresent()) {
-				// Tạo tài khoản
-				nguoidung.setVaitro(false);
-				nguoidung.setIsactive(false);
-				nguoidung.setNgaysinh(null);
-				accountService.save(nguoidung);
-				session.setAttribute("username", nguoidung.getHo_ten());
-				return PageInfo.goSite(model, PageType.HOMEPAGE);
+			Optional<NGUOIDUNG> userSDT = nguoidungDAO.findById(nguoidung.getSDT());
+			if (!userSDT.isPresent()) {
+				// Gửi OTP cho new user
+				sendMailVerify(nguoidung.getEmail(), nguoidung.getHo_ten());
 			} else {
 				// Báo lỗi tài khoản đã tồn tại
-				model.addAttribute("");
-				System.out.println("fail register");
+				model.addAttribute("message", "Tài khoản đã tồn tại");
 				return PageInfo.goSite(model, PageType.SITE_LOGIN);
 			}
-
 		}
+		return PageInfo.goSite(model, PageType.HOMEPAGE);
 
-		//////////////////////////// Hàm chưa xử lí remember///////////
+	}
+
+	@RequestMapping("/user/createUser")
+	public String createUser(Model model, NGUOIDUNG nguoidung, @RequestParam("verifyUser") String verifyUser)
+			throws ServletException, IOException {
+		if (codeVerify.equalsIgnoreCase(verifyUser)) {
+			nguoidung.setVaitro(false);
+			nguoidung.setIsactive(false);
+			nguoidung.setNgaysinh(null);
+			accountService.save(nguoidung);
+			session.setAttribute("username", nguoidung.getHo_ten());
+			return PageInfo.goSite(model, PageType.HOMEPAGE);
+		} else {
+			model.addAttribute("message", "Mã xác nhận không chính xác");
+			return "redirect:/";
+		}
 	}
 
 	@RequestMapping("/logout")
@@ -119,4 +136,14 @@ System.out.println(rememberMe);
 		sessionService.remove("username");
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
+
+	public void sendMailVerify(String txtTo, String name) {
+		System.out.println(codeVerify);
+		MailInfo mail = new MailInfo();
+		mail.setTo(txtTo);
+		mail.setSubject("CHÀO MỪNG BẠN ĐẾN VỚI SEVEN BEE");
+		mail.setBody(mailBody.mail_VERIFY(name, codeVerify));
+		mailService.queue(mail);
+	}
+
 }

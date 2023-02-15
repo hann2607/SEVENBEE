@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MailInfo {
-
 	String from = "SevenBee";
 	String to;
 	String[] cc;

@@ -91,8 +91,9 @@
 									</div>
 									<div class="col-md-8">
 										<div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
-											<input name="rememberMe" value="true" type="checkbox" id="rememberMe" />
-											<label for="rememberMe">Lưu đăng nhập</label>
+											<input name="rememberMe" value="true" type="checkbox"
+												id="rememberMe" /> <label for="rememberMe">Lưu đăng
+												nhập</label>
 										</div>
 									</div>
 									<div class="col-md-4 mt-10 mb-20 text-left text-md-right">
@@ -107,7 +108,8 @@
 						</form:form>
 					</div>
 					<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-						<form:form action="#" modelAttribute="nguoidung">
+						<form:form action="/user/validateAndSendmail"
+							modelAttribute="nguoidung">
 							<div class="login-form">
 								<h4 class="login-title">Đăng ký</h4>
 								<div class="row">
@@ -123,7 +125,8 @@
 									</div>
 									<div class="col-md-12 mb-20">
 										<form:label path="Email">Email*</form:label>
-										<form:input path="Email" class="mb-0" type="email" />
+										<form:input path="Email" class="mb-0" type="email"
+											id="email-input" />
 										<form:errors path="Email" class="badge badge-danger" />
 									</div>
 									<div class="col-md-6 mb-20">
@@ -137,13 +140,14 @@
 
 									</div>
 									<div class="col-12">
-										<button formaction="/user/register"
+										<button formaction="/user/validateAndSendmail"
 											class="register-button mt-0">Đăng ký</button>
 									</div>
 								</div>
 							</div>
 						</form:form>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -194,6 +198,103 @@
 	<script src="js/scrollUp.min.js"></script>
 	<!-- Main/Activator js -->
 	<script src="js/main.js"></script>
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static"
+		data-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Xác nhận tài
+						khoản</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="javascript: void(0)" class="otp-form" name="otp-form">
+
+						<div class="title">
+							<div class="info">
+								Chúng tôi sẽ gửi đến một mã OTP đến địa chỉ
+								<p class="text-primary" id="email-output"></p>
+							</div>
+							<button type="button" class="btn btn-outline-primary"
+								formaction="/user/validateAndSendmail">Lấy mã</button>
+							<p class="msg">Nhập mã OTP để xác minh</p>
+						</div>
+						<div class="d-flex flex-row mb-25">
+							<input type="text"
+								class="otp__digit otp__field__1 border border-success mx-1">
+							<input type="text"
+								class="otp__digit otp__field__2 border border-success mx-1">
+							<input type="text"
+								class="otp__digit otp__field__3 border border-success mx-1">
+							<input type="text"
+								class="otp__digit otp__field__4 border border-success mx-1">
+							<input type="text"
+								class="otp__digit otp__field__5 border border-success mx-1">
+							<input type="text"
+								class="otp__digit otp__field__6 border border-success mx-1">
+						</div>
+						<div class="result d-flex flex-row">
+							<h6>Mã xác nhận của bạn là:</h6>
+							<h5 id="_otp" class="_notok text-primary mx-3"></h5>
+						</div>
+						<div class="w-100">
+							<button type="button" class="btn btn-success w-100">Xác
+								nhận</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button"
+						class="border-0 bg-transparent text-primary fw-bold w-50"
+						data-dismiss="modal">Thay đổi email</button>
+					<button type="button"
+						class="border-0 bg-transparent text-primary fw-bold w-50">Gửi
+						lại mã</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+            var otp_inputs = document.querySelectorAll(".otp__digit")
+            var mykey = "0123456789".split("")
+            otp_inputs.forEach((_) => {
+                _.addEventListener("keyup", handle_next_input)
+            })
+            function handle_next_input(event) {
+                let current = event.target
+                let index = parseInt(current.classList[1].split("__")[2])
+                current.value = event.key
+
+                if (event.keyCode == 8 && index > 1) {
+                    current.previousElementSibling.focus()
+                }
+                if (index < 6 && mykey.indexOf("" + event.key + "") != -1) {
+                    var next = current.nextElementSibling;
+                    next.focus()
+                }
+                var _finalKey = ""
+                for (let { value } of otp_inputs) {
+                    _finalKey += value
+                }
+                if (_finalKey.length == 6) {
+                    document.querySelector("#_otp").classList.replace("_notok", "_ok")
+                    document.querySelector("#_otp").innerText = _finalKey
+                } else {
+                    document.querySelector("#_otp").classList.replace("_ok", "_notok")
+                    document.querySelector("#_otp").innerText = _finalKey
+                }
+                document.getElementById("register").addEventListener('click', function (
+
+                ) { 
+
+                })
+            }
+        </script>
 </body>
 
 <!-- login-register31:27-->
