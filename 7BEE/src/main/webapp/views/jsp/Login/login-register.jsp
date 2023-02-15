@@ -140,7 +140,7 @@
 
 									</div>
 									<div class="col-12">
-										<button formaction="/user/validateAndSendmail"
+										<button formaction="/user/createUser"
 											class="register-button mt-0">Đăng ký</button>
 									</div>
 								</div>
