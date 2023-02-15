@@ -33,7 +33,7 @@
 							<h4 class="login-title">Thay đổi mật khẩu</h4>
 							<div class="row">
 								<div class="col-md-12 col-12 mb-20">
-									<label>Mật khẩu cũ</label>
+									
 									<form:label path="Matkhau">Mật khẩu</form:label>
 									<form:input path="Matkhau" class="mb-0" type="password" />
 									<form:errors path="Matkhau" class="badge badge-danger" />
