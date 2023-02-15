@@ -2,21 +2,23 @@ package com.sevenbee.util;
 
 import java.util.HashMap;
 
-
-import com.sevenbee.entities.DONHANG;
+import com.sevenbee.entities.SANPHAM;
 
 public class DataSharing {
-	public static HashMap<String, DONHANG > donhang = new HashMap<>();
+	public static HashMap<Integer, SANPHAM> cart = new HashMap<Integer, SANPHAM>();
 
-	public void addData(String Ma_Sp, DONHANG value) {
-		
+
+	public void addData(Integer Ma_Sp, SANPHAM value) {
+		cart.put(Ma_Sp, value);
 	}
 
-	public DONHANG getData(String DH_MA) {
-		return donhang.get(DH_MA);
+	public SANPHAM getData(Integer SP_MA) {
+		return cart.get(SP_MA);
 	}
 
-	public HashMap<String, DONHANG> getAllData() {
-		return donhang;
+	public HashMap<Integer, SANPHAM> getAllData() {
+		return cart;
 	}
+	
+	
 }

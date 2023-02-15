@@ -147,20 +147,20 @@
 								</div> <span></span>
 								<div class="minicart">
 									<ul class="minicart-product-list">
-										<li><a href="single-product.html"
+										<li><a href=""
 											class="minicart-product-image"> <img
-												src="/views/images/product/small-size/1.jpg"
+												src="/views/images/product/large-size/${product.SP_HinhAnh}"
 												alt="cart products">
 										</a>
 											<div class="minicart-product-details">
 												<h6>
-													<a href="single-product.html">${product.SP_MA}</a>
+													<a href="single-product.html"></a>
 												</h6>
 												<div class="d-flex justify-content-between">
-													<span></span>
+													<span>${product.SP_SoLuong}</span>
 													<div>
 														<span><fmt:formatNumber type="number"
-																value=""></fmt:formatNumber></span><span>
+																value="${product.SP_Gia}"></fmt:formatNumber></span><span>
 															VNĐ</span>
 													</div>
 												</div>
