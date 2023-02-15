@@ -105,7 +105,7 @@ public class LoginController {
 				nguoidung.setNgaysinh(null);
 				accountService.save(nguoidung);
 				session.setAttribute("username", nguoidung.getHo_ten());
-				sendMailVerify(nguoidung.getEmail(), nguoidung.getSDT(), nguoidung.getMatkhau());
+				sendMail(nguoidung.getEmail(), nguoidung.getSDT(), nguoidung.getMatkhau());
 				return PageInfo.goSite(model, PageType.HOMEPAGE);
 			} else {
 				// Báo lỗi tài khoản đã tồn tại
@@ -121,7 +121,7 @@ public class LoginController {
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
 
-	public void sendMailVerify(String txtTo, String username, String password) {
+	public void sendMail(String txtTo, String username, String password) {
 		MailInfo mail = new MailInfo();
 		mail.setTo(txtTo);
 		mail.setSubject("Thông Báo Tạo Tài Khoản Thành Công");
