@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sevenbee.dao.SANPHAMDAO;
-import com.sevenbee.entities.SANPHAM;
+import com.sevenbee.entity.SANPHAM;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 

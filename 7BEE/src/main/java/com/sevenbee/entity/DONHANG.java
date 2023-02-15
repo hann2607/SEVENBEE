@@ -1,12 +1,14 @@
-package com.sevenbee.entities;
+package com.sevenbee.entity;
 
 import java.util.Date;
-import java.util.List;
+
+import java.util.Set;
+
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -19,19 +21,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "LICHSU")
-public class LICHSU {
+@Table(name = "DONHANG")
+public class DONHANG {
 	@Id
-	String LS_MA;
-	String DH_MA, SP_TenSP, HoTen;
-	long TongTien;
+	String DH_MA;
+	String Ho_Ten, Shop_TenShop, Ghi_Chu, SDT, DH_DiaChi;
+	int So_Luong;
+	long Don_gia;
 	@Temporal(TemporalType.DATE)
-	@Column(name = "LS_NgayMua")
-	Date LS_NgayMua = new Date();
-	@OneToMany
-	@JoinColumn(name = "DH_MA")
-	List<DONHANG> donhang;
-	@OneToMany
-	@JoinColumn(name = "LS_MA")
-	List<DANHGIA_SANPHAM> danhgia_sanpham;
-}
+	@Column(name = "Ngay_xuat_HD")
+	Date Ngay_xuat_HD = new Date();
+	
+	@OneToMany(mappedBy = "donhang")
+	private Set<DONHANG_SANPHAM> donhang_sanpham;
+	
+	}
+	
+
+
+
