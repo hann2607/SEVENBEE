@@ -34,8 +34,6 @@ import jakarta.servlet.ServletException;
 @Controller
 public class GiohangController {
 	
-	@Autowired 
-	DONHANGDAO donhangdao;
 	
 	@Autowired 
 	ShoppingCartService cartShop;
@@ -49,7 +47,7 @@ public class GiohangController {
 	
 	@RequestMapping("/ShoppingCart")
 	public String LoadShopcart(Model model) throws ServletException, IOException{
-		model.addAttribute("ShopCart", DataSharing.donhang.values());
+		model.addAttribute("ShopCart", DataSharing.cart.values());
 		model.addAttribute("cart", cartShop.getProducts());
 		model.addAttribute("amount", cartShop.getAmount());
 		return PageInfo.goSite(model, PageType.SITE_SHOPPINGCART);
@@ -64,16 +62,16 @@ public class GiohangController {
 	}
 	
 	@GetMapping("/updateCart/{id}")
-	public String updateCart(@PathVariable String DH_MA, Model model) {
-		cartShop.updateProduct(DH_MA, param.getInt("quantity", 0));
+	public String updateCart(@PathVariable String id, Model model) {
+		cartShop.updateProduct(id, param.getInt("quantity", 0));
 		session.set("ShopCartmini", cartShop.getCount());
 		model.addAttribute("messages", "Update success!");
 		return "redirect:/ShoppingCart";
 	}
 	
-	@GetMapping("/removeCart")
-	public String removeCart(@PathVariable String DH_MA, Model model) {
-		cartShop.removeProduct(DH_MA);
+	@GetMapping("/removeCart/{id}")
+	public String removeCart(@PathVariable String id, Model model) {
+		cartShop.removeProduct(id);
 		model.addAttribute("messages", "remove success!");
 		return "redirect:/ShoppingCart";
 	}

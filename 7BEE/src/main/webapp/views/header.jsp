@@ -64,7 +64,7 @@
 												alt="" height="100px"
 												style="border-radius: 50%; border: 2px solid black;">
 										</div>
-										<div class="d-flex justify-content-center mt-2">ledangduong@gmail.com
+										<div class="d-flex justify-content-center mt-2">${username}
 										</div>
 										<div class="d-flex justify-content-center">
 											<div style="color: #ccc;">#Người dùng</div>
@@ -75,7 +75,7 @@
 										<li class="d-flex justify-content-center"><a
 											href="login-register.html">LỊCH SỬ</a></li>
 										<li class="d-flex justify-content-center"><a
-											href="checkout.html">ĐĂNG XUẤT</a></li>
+											href="/logout">ĐĂNG XUẤT</a></li>
 										<li class="d-none justify-content-center"><a
 											href="login-register.html">ĐĂNG NHẬP</a></li>
 										<li class="d-none justify-content-center"><a
@@ -147,20 +147,20 @@
 								</div> <span></span>
 								<div class="minicart">
 									<ul class="minicart-product-list">
-										<li><a href="single-product.html"
+										<li><a href=""
 											class="minicart-product-image"> <img
-												src="/views/images/product/small-size/1.jpg"
+												src="/views/images/product/large-size/${product.SP_HinhAnh}"
 												alt="cart products">
 										</a>
 											<div class="minicart-product-details">
 												<h6>
-													<a href="single-product.html">${product.SP_MA}</a>
+													<a href="single-product.html"></a>
 												</h6>
 												<div class="d-flex justify-content-between">
-													<span></span>
+													<span>${product.SP_SoLuong}</span>
 													<div>
 														<span><fmt:formatNumber type="number"
-																value=""></fmt:formatNumber></span><span>
+																value="${product.SP_Gia}"></fmt:formatNumber></span><span>
 															VNĐ</span>
 													</div>
 												</div>

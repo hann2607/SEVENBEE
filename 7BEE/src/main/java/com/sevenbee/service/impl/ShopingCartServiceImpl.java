@@ -4,74 +4,81 @@ import java.util.HashMap;
 
 
 
+
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
 
-import com.sevenbee.entities.DONHANG;
+import com.sevenbee.entities.SANPHAM;
 import com.sevenbee.service.ShoppingCartService;
-import com.sevenbee.util.DataSharing;
+
 
 @Service
 @SessionScope
 public class ShopingCartServiceImpl implements ShoppingCartService{
 	
-	private static HashMap<String, DONHANG> orders = new HashMap<>();
+	private static HashMap<String, SANPHAM> orders = new HashMap<>();
 
 	@Override
-	public void addProduct(String DH_MA) {
-		DONHANG donhang = DataSharing.donhang.get(DH_MA).orderProduct(1);
-		if(!orders.containsKey(DH_MA)) {
-			orders.put(donhang.getDH_MA(), donhang);
-		} else if (donhang != null) {
-			int oldQuantity = orders.get(DH_MA).getSo_Luong();
-			orders.get(DH_MA).setSo_Luong(oldQuantity + 1); 
-		}			
+	public void addProduct(String SP_MA) {
+		System.out.println(SP_MA);
+		// TODO Auto-generated method stub
+		SANPHAM sanpham = orders.get(SP_MA).orderProduct(1);
+		System.out.println(sanpham.getSP_MA()+" "+sanpham.getSP_SoLuong());
+		if(!orders.containsKey(SP_MA)) {
+			orders.put(sanpham.getSP_MA(), sanpham);
+		} else if (sanpham != null) {
+			int oldQuantity = orders.get(SP_MA).getSP_SoLuong();
+			orders.get(SP_MA).setSP_SoLuong(oldQuantity + 1); 
+		}
 	}
 
 	@Override
-	public void removeProduct(String DH_MA) {
-		DONHANG donhang = orders.get(DH_MA);
-		DataSharing.donhang.get(DH_MA).orderProduct(0 - donhang.getSo_Luong());
-		orders.remove(DH_MA);	
+	public void removeProduct(String SP_MA) {
+		SANPHAM sanpham = orders.get(SP_MA);
+		orders.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
+		orders.remove(SP_MA);		
 	}
 
 	@Override
-	public void updateProduct(String DH_MA, int qty) {
-		DONHANG donhang = orders.get(DH_MA);
-		DONHANG donhangcheck = DataSharing.donhang.get(DH_MA).orderProduct(qty - donhang.getSo_Luong());
-		//UPdate or remove DH
+	public void updateProduct(String SP_MA, int qty) {
+		SANPHAM sanpham = orders.get(SP_MA);
+		SANPHAM sanphamcheck = orders.get(SP_MA).orderProduct(qty - sanpham.getSP_SoLuong());
+		//UPdate or remove product
 		if(qty > 0) {
-			if(donhangcheck != null) {
-				donhang.setSo_Luong(qty);
+			if(sanphamcheck != null) {
+				sanpham.setSP_SoLuong(qty);
 			}
 		} else {
-			orders.remove(DH_MA);
-		}	
+			orders.remove(SP_MA);
+		}
+		
 	}
 
 	@Override
 	public void clear() {
-		for (String DH_MA : orders.keySet()) {
-			DONHANG donhang = orders.get(DH_MA);
-			// Return quantity order into DH list
-			DataSharing.donhang.get(DH_MA).orderProduct(0 - donhang.getSo_Luong());
+		for (String SP_MA : orders.keySet()) {
+			SANPHAM sanpham = orders.get(SP_MA);
+			// Return quantity order into products list
+			orders.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
 		}
 		orders.clear();
+		
 	}
 
 	@Override
-	public Map<String, DONHANG> getProducts() {
+	public Map<String, SANPHAM> getProducts() {
+		// TODO Auto-generated method stub
 		return orders;
 	}
 
 	@Override
 	public int getCount() {
 		int count = 0;
-		for (DONHANG donhang : orders.values()) {
-			count += donhang.getSo_Luong();
+		for (SANPHAM sanpham : orders.values()) {
+			count += sanpham.getSP_SoLuong();
 		}
 		return count;
 	}
@@ -79,12 +86,15 @@ public class ShopingCartServiceImpl implements ShoppingCartService{
 	@Override
 	public double getAmount() {
 		double amount = 0;
-		for (DONHANG donhang : orders.values()) {
-			amount += donhang.getDon_gia() * donhang.getSo_Luong();
+		for (SANPHAM sanpham : orders.values()) {
+			amount += sanpham.getSP_Gia() * sanpham.getSP_SoLuong();
 		}
 		return amount;
-	
 	}
+	
+	
+
+	
 	
 	
 

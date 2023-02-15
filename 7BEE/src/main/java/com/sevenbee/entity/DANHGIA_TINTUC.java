@@ -1,10 +1,8 @@
-package com.sevenbee.entities;
-
-import java.util.List;
+package com.sevenbee.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,11 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "LOAISP")
-public class LOAISP {
+@Table(name = "DANHGIA_TINTUC")
+public class DANHGIA_TINTUC {
 	@Id
-	String LoaiSP_MA;
-	String LoaiSP_Ten;
-	@OneToMany(mappedBy = "loaisp")
-	private List<SANPHAM> sanpham;
+	String DG_TT_MA;
+	String TT_MA, SDT, DG_TTNoiDung;
+	@ManyToOne
+	NGUOIDUNG nguoidung;
+	@ManyToOne
+	TINTUC tintuc;
 }

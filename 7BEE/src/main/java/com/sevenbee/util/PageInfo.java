@@ -19,6 +19,7 @@ public class PageInfo {
 		pageRoute.put(PageType.SITE_PRODUCT, new PageInfo("CHI TIẾT", "index", "ChiTiet-SanPham/ChiTietSanPham.jsp"));
 		pageRoute.put(PageType.SITE_SHOPPINGCART, new PageInfo("GIỎ HÀNG", "index", "Giohang/Giohang.jsp"));
 		pageRoute.put(PageType.SITE_CHECKOUT, new PageInfo("THANH TOÁN", "index", "ThanhToan/ThanhToan.jsp"));
+		pageRoute.put(PageType.SITE_LOGIN, new PageInfo("ĐĂNG NHẬP", "index", "Login/login-register.jsp"));
 		
 		// Admin
 		pageRoute.put(PageType.ADMIN_CHART, new PageInfo("THỐNG KÊ", "admin/chart.jsp", null));

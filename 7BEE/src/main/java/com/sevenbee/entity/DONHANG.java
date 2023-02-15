@@ -1,4 +1,4 @@
-package com.sevenbee.entities;
+package com.sevenbee.entity;
 
 import java.util.Date;
 
@@ -35,20 +35,8 @@ public class DONHANG {
 	@OneToMany(mappedBy = "donhang")
 	private Set<DONHANG_SANPHAM> donhang_sanpham;
 	
-	public DONHANG orderProduct(int So_Luong) {
-		DONHANG prod = null;
-		if(So_Luong <= this.So_Luong) {
-			try {
-				prod = (DONHANG) this.clone();
-				prod.setSo_Luong(So_Luong);
-				this.So_Luong -= So_Luong;
-			} catch (CloneNotSupportedException e) {
-				e.printStackTrace();
-			}
-		}
-		return prod;
 	}
 	
-}
+
 
 

@@ -1,4 +1,4 @@
-package com.sevenbee.entities;
+package com.sevenbee.entity;
 
 import java.util.Date;
 import java.util.List;
@@ -7,7 +7,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -20,17 +19,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "TINTUC")
-public class TINTUC {
+@Table(name = "LICHSU")
+public class LICHSU {
 	@Id
-	String TT_MA;
-	String Shop_TenShop, TT_Tags, TT_Hinh_Anh, TT_Noi_Dung_Title, TT_Noi_Dung_Body;
+	String LS_MA;
+	String DH_MA, SP_TenSP, HoTen;
+	long TongTien;
 	@Temporal(TemporalType.DATE)
-	@Column(name = "TT_Ngay_Dang")
-	Date TT_Ngay_Dang = new Date();
+	@Column(name = "LS_NgayMua")
+	Date LS_NgayMua = new Date();
 	@OneToMany
-	@JoinColumn(name = "TT_MA")
-	List<DANHGIA_TINTUC> danhgia_tintuc;
-	@ManyToOne
-	PARTNER partner;
+	@JoinColumn(name = "DH_MA")
+	List<DONHANG> donhang;
+	@OneToMany
+	@JoinColumn(name = "LS_MA")
+	List<DANHGIA_SANPHAM> danhgia_sanpham;
 }
