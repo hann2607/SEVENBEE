@@ -1,7 +1,6 @@
 package com.sevenbee.controller;
 
 import java.io.IOException;
-import java.security.SecureRandom;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +53,6 @@ public class LoginController {
 	@Autowired
 	private HttpSession session;
 
-	String codeVerify;
-
 	@GetMapping("/showLogin")
 	public String getLoginform(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
 			throws ServletException, IOException {
@@ -93,7 +90,7 @@ public class LoginController {
 
 	}
 
-	@RequestMapping("/user/validateAndSendmail")
+	@RequestMapping("/user/createUser")
 	public String register(Model model, @Valid @ModelAttribute("nguoidung") NGUOIDUNG nguoidung, BindingResult result)
 			throws ServletException, IOException {
 		if (result.hasErrors()) {
@@ -103,31 +100,18 @@ public class LoginController {
 			// Kiểm tra trùng ID
 			Optional<NGUOIDUNG> userSDT = nguoidungDAO.findById(nguoidung.getSDT());
 			if (!userSDT.isPresent()) {
-				// Gửi OTP cho new user
-				sendMailVerify(nguoidung.getEmail(), nguoidung.getHo_ten());
+				nguoidung.setVaitro(false);
+				nguoidung.setIsactive(false);
+				nguoidung.setNgaysinh(null);
+				accountService.save(nguoidung);
+				session.setAttribute("username", nguoidung.getHo_ten());
+				sendMailVerify(nguoidung.getEmail(), nguoidung.getSDT(), nguoidung.getMatkhau());
+				return PageInfo.goSite(model, PageType.HOMEPAGE);
 			} else {
 				// Báo lỗi tài khoản đã tồn tại
 				model.addAttribute("message", "Tài khoản đã tồn tại");
 				return PageInfo.goSite(model, PageType.SITE_LOGIN);
 			}
-		}
-		return PageInfo.goSite(model, PageType.HOMEPAGE);
-
-	}
-
-	@RequestMapping("/user/createUser")
-	public String createUser(Model model, NGUOIDUNG nguoidung, @RequestParam("verifyUser") String verifyUser)
-			throws ServletException, IOException {
-		if (codeVerify.equalsIgnoreCase(verifyUser)) {
-			nguoidung.setVaitro(false);
-			nguoidung.setIsactive(false);
-			nguoidung.setNgaysinh(null);
-			accountService.save(nguoidung);
-			session.setAttribute("username", nguoidung.getHo_ten());
-			return PageInfo.goSite(model, PageType.HOMEPAGE);
-		} else {
-			model.addAttribute("message", "Mã xác nhận không chính xác");
-			return "redirect:/";
 		}
 	}
 
@@ -137,12 +121,11 @@ public class LoginController {
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
 
-	public void sendMailVerify(String txtTo, String name) {
-		System.out.println(codeVerify);
+	public void sendMailVerify(String txtTo, String username, String password) {
 		MailInfo mail = new MailInfo();
 		mail.setTo(txtTo);
-		mail.setSubject("CHÀO MỪNG BẠN ĐẾN VỚI SEVEN BEE");
-		mail.setBody(mailBody.mail_VERIFY(name, codeVerify));
+		mail.setSubject("Thông Báo Tạo Tài Khoản Thành Công");
+		mail.setBody(mailBody.mail_Welcome(username, password));
 		mailService.queue(mail);
 	}
 
