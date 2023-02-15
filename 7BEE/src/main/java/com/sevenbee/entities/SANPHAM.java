@@ -24,6 +24,7 @@ public class SANPHAM {
 	@Id
 	String SP_MA;
 	String SP_TenSP, SP_HinhAnh;
+	int SP_SoLuong;
 	long SP_Gia;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SP_Ngaydang")
@@ -37,4 +38,19 @@ public class SANPHAM {
 	@ManyToOne
 	@JoinColumn(name = "Shop_TenShop", referencedColumnName = "Shop_TenShop")
 	private PARTNER shop;
+	
+	public SANPHAM orderProduct(int SP_SoLuong) {
+		SANPHAM sanpham = null;
+		
+		if(SP_SoLuong <= this.SP_SoLuong) {
+			try {
+				sanpham = (SANPHAM) this.clone();
+				sanpham.setSP_SoLuong(SP_SoLuong);
+				this.SP_SoLuong -= SP_SoLuong;
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
+		}
+		return sanpham;
+	}
 }
