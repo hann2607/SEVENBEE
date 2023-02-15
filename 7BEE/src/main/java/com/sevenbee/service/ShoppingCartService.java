@@ -2,10 +2,7 @@ package com.sevenbee.service;
 
 import java.util.Map;
 
-
-
-import com.sevenbee.entities.DONHANG;
-import com.sevenbee.entities.SANPHAM;
+import com.sevenbee.entity.SANPHAM;
 
 public interface ShoppingCartService {
 	// Thêm mặt hàng vào giỏ hoặc tăng số lượng lên 1 nếu đã tồn tại
