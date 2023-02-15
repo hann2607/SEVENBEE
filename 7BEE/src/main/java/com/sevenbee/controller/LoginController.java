@@ -1,7 +1,6 @@
 package com.sevenbee.controller;
 
 import java.io.IOException;
-import java.security.SecureRandom;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;

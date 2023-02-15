@@ -2,7 +2,7 @@ package com.sevenbee.util;
 
 import java.util.HashMap;
 
-import com.sevenbee.entities.SANPHAM;
+import com.sevenbee.entity.SANPHAM;
 
 public class DataSharing {
 	public static HashMap<Integer, SANPHAM> cart = new HashMap<Integer, SANPHAM>();

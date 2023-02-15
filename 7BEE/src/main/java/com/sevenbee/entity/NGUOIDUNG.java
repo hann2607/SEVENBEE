@@ -36,13 +36,13 @@ public class NGUOIDUNG {
 	@Column(length = 60, nullable = false)
 	String Matkhau;
 	@Temporal(TemporalType.DATE)
-	@Column(name = "NgaySinh")
+	@Column(name = "Ngaysinh")
 	Date Ngaysinh = new Date();
 	boolean Vaitro = true, isactive = false;
-	@OneToMany
-	@JoinColumn(name = "SDT")
-	List<DONHANG> donhang;
-	@OneToMany
-	@JoinColumn(name = "SDT")
-	List<DANHGIA_TINTUC> danhgia_tintuc;
+//	@OneToMany
+//	@JoinColumn(name = "SDT")
+//	List<DONHANG> donhang;
+//	@OneToMany
+//	@JoinColumn(name = "SDT")
+//	List<DANHGIA_TINTUC> danhgia_tintuc;
 }

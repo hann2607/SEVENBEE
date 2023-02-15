@@ -1,10 +1,7 @@
 package com.sevenbee.entity;
 
 import java.util.Date;
-
 import java.util.Set;
-
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
