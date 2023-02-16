@@ -53,7 +53,7 @@ public class LoginController {
 	@Autowired
 	private HttpSession session;
 
-	@GetMapping("/showLogin")
+	@GetMapping("/login")
 	public String getLoginform(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
 			throws ServletException, IOException {
 		return PageInfo.goSite(model, PageType.SITE_LOGIN);
@@ -84,7 +84,8 @@ public class LoginController {
 				cookieService.remove("username");
 				cookieService.remove("password");
 			}
-			session.setAttribute("username", user.getHo_ten());
+			session.setAttribute("username", user.getSDT());
+			session.setAttribute("name", user.getHo_ten());
 			return PageInfo.goSite(model, PageType.HOMEPAGE);
 		}
 
