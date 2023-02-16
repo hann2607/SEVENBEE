@@ -2394,7 +2394,7 @@ textarea:focus {
 }
 .add-actions {
 	bottom: -15px;
-	left: 19px;
+	left: 6px;
 	margin: 0 auto;
 	opacity: 0;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
