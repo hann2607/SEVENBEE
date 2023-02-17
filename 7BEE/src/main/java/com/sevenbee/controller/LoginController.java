@@ -85,8 +85,7 @@ public class LoginController {
 				cookieService.remove("password");
 			}
 			session.setAttribute("username", user.getSDT());
-			session.setAttribute("name", user.getHo_ten());
-			return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
+			return PageInfo.goSite(model, PageType.HOMEPAGE);
 		}
 
 	}

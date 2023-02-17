@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpCookie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -90,11 +91,12 @@ public class User_profile {
 
 //
 	@RequestMapping("/user/profile")
-	public String getUserByUsername(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
+	public String getUserByUsername(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung ,@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword)
 			throws ServletException, IOException {
 		// Sử dụng UserRepository để lấy đối tượng User tương ứng với tên đăng nhập
-		String id = cookieService.get("username").toString();
-		NGUOIDUNG user = nguoidungDAO.findById(id).get();
+		
+		System.out.println(sessionService.getValue("username", toString()));
+		NGUOIDUNG user = nguoidungDAO.findById(sessionService.getValue("username", toString())).get();
 		// System.out.println(user.getHo_ten());
 		// Nếu không tìm thấy user, trả về trang lỗi
 		if (user == null) {
@@ -111,11 +113,11 @@ public class User_profile {
 	}
 	
 	@PostMapping("/user/profile/update")
-	public String updateProfile(Model model, @Valid NGUOIDUNG nguoidung, BindingResult result) throws ServletException, IOException {
+	public String updateProfile(Model model, @Valid @ModelAttribute("nguoidung") NGUOIDUNG nguoidung, @ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword, BindingResult result) throws ServletException, IOException {
 		
-		nguoidung.setSDT("327544266");
+		nguoidung.setSDT(sessionService.getValue("username", toString()));
 		
-		nguoidung.setMatkhau("asd");
+		//nguoidung.setMatkhau("asd");
 		
 		//nguoidung.setSDT(userng.get().getSDT());
 		System.out.println(nguoidung.getHo_ten());
@@ -124,10 +126,10 @@ public class User_profile {
 		System.out.println(nguoidung.getEmail());
 		System.out.println(nguoidung.getNgaysinh());
 		
-		nguoidungDAO.save(nguoidung);
+		accountService.save(nguoidung);
 		
 		model.addAttribute("messages", "Update success!");
-		
+		System.out.println("update okk");
 		
 		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 		

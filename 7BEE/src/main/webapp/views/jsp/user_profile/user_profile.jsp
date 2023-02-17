@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
 					<!-- Password chance Form s-->
-					<form:form action="/user/changepassword" modelAttribute="nguoidung">
+					<form:form action="/user/changepassword" modelAttribute="nguoidungpassword">
 						<div class="login-form">
 							<h4 class="login-title">Thay đổi mật khẩu</h4>
 							<div class="row">
