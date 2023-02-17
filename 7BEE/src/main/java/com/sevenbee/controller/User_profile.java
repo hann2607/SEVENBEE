@@ -1,22 +1,18 @@
 package com.sevenbee.controller;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpCookie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.NGUOIDUNGDAO;
 import com.sevenbee.entity.NGUOIDUNG;
 import com.sevenbee.mailCONSTANT.mail_CONSTANT;
-import com.sevenbee.repository.UserRepository;
 import com.sevenbee.service.AccountService;
 import com.sevenbee.service.CookieService;
 import com.sevenbee.service.MailService;
@@ -27,7 +23,6 @@ import com.sevenbee.util.PageType;
 import com.sevenbee.validation.AccountValidate;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -53,8 +48,6 @@ public class User_profile {
 
 	@Autowired
 	private AccountService accountService;
-	@Autowired
-	private HttpSession session;
 
 	String codeVerify;
 
@@ -94,9 +87,8 @@ public class User_profile {
 	public String getUserByUsername(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung ,@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword)
 			throws ServletException, IOException {
 		// Sử dụng UserRepository để lấy đối tượng User tương ứng với tên đăng nhập
-		
-		System.out.println(sessionService.getValue("username", toString()));
-		NGUOIDUNG user = nguoidungDAO.findById(sessionService.getValue("username", toString())).get();
+		System.out.println(cookieService.getValue("username"));
+		NGUOIDUNG user = nguoidungDAO.findById(cookieService.getValue("username")).get();
 		// System.out.println(user.getHo_ten());
 		// Nếu không tìm thấy user, trả về trang lỗi
 		if (user == null) {
@@ -106,25 +98,22 @@ public class User_profile {
 		// Truyền thông tin user vào model để hiển thị trên giao diện
 		model.addAttribute("user", user);
 
-		String test = (user.isVaitro() == true) ? "Người dùng" : "Admin";
+		String test = (user.isVaitro() == true) ? "Admin" : "Người dùng";
 		model.addAttribute("test111", test);
 
 		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 	}
 	
 	@PostMapping("/user/profile/update")
-	public String updateProfile(Model model, @Valid @ModelAttribute("nguoidung") NGUOIDUNG nguoidung, @ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword, BindingResult result) throws ServletException, IOException {
+	public String updateProfile(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword, BindingResult result) throws ServletException, IOException {
 		
-		nguoidung.setSDT(sessionService.getValue("username", toString()));
 		
-		//nguoidung.setMatkhau("asd");
+		System.out.println(cookieService.getValue("username"));
 		
-		//nguoidung.setSDT(userng.get().getSDT());
-		System.out.println(nguoidung.getHo_ten());
-		System.out.println(nguoidung.getSDT());
-		System.out.println(nguoidung.getMatkhau());
-		System.out.println(nguoidung.getEmail());
-		System.out.println(nguoidung.getNgaysinh());
+		nguoidung.setSDT(cookieService.getValue("username"));
+		nguoidung.setMatkhau(cookieService.getValue("password"));
+		
+		
 		
 		accountService.save(nguoidung);
 		

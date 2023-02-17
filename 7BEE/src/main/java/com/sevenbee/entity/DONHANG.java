@@ -6,6 +6,8 @@ import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -22,7 +24,10 @@ import lombok.NoArgsConstructor;
 public class DONHANG {
 	@Id
 	String DH_MA;
-	String Ho_Ten, Shop_TenShop, Ghi_Chu, SDT, DH_DiaChi;
+	String Ho_Ten, Shop_TenShop, Ghi_Chu, DH_DiaChi;
+	@ManyToOne
+	@JoinColumn(name = "SDT")
+	NGUOIDUNG SDT;
 	int So_Luong;
 	long Don_gia;
 	@Temporal(TemporalType.DATE)
@@ -31,9 +36,5 @@ public class DONHANG {
 	
 	@OneToMany(mappedBy = "donhang")
 	private Set<DONHANG_SANPHAM> donhang_sanpham;
-	
-	}
-	
 
-
-
+}
