@@ -6,7 +6,7 @@
 <div class="hb-menu">
 	<nav>
 		<ul>
-			<li><a class="clearafter" href="/home">TRANG CHỦ</a></li>
+			<li><a class="clearafter" href="/index">TRANG CHỦ</a></li>
 			<li class="megamenu-holder"><a href="#">DANH MỤC</a>
 				<ul class="megamenu hb-megamenu">
 					<li><a href="/shop/LSP003">ĐỒ ĐIỆN TỬ</a>
