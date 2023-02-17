@@ -93,12 +93,12 @@ public class User_profile {
 	public String getUserByUsername(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
 			throws ServletException, IOException {
 		// Sử dụng UserRepository để lấy đối tượng User tương ứng với tên đăng nhập
-
-		NGUOIDUNG user = nguoidungDAO.findById("327544266").get();
+		String id = cookieService.get("username").toString();
+		NGUOIDUNG user = nguoidungDAO.findById(id).get();
 		// System.out.println(user.getHo_ten());
 		// Nếu không tìm thấy user, trả về trang lỗi
 		if (user == null) {
-			return "error";
+			return PageInfo.goSite(model, PageType.SITE_LOGIN);
 		}
 
 		// Truyền thông tin user vào model để hiển thị trên giao diện
@@ -111,7 +111,7 @@ public class User_profile {
 	}
 	
 	@PostMapping("/user/profile/update")
-	public String updateProfile(Model model, @Valid @ModelAttribute("nguoidung") NGUOIDUNG nguoidung, BindingResult result) throws ServletException, IOException {
+	public String updateProfile(Model model, @Valid NGUOIDUNG nguoidung, BindingResult result) throws ServletException, IOException {
 		
 		nguoidung.setSDT("327544266");
 		
@@ -124,8 +124,7 @@ public class User_profile {
 		System.out.println(nguoidung.getEmail());
 		System.out.println(nguoidung.getNgaysinh());
 		
-//		nguoidungDAO.save(nguoidung); 
-		nguoidungDAO.saveAndFlush(nguoidung);
+		nguoidungDAO.save(nguoidung);
 		
 		model.addAttribute("messages", "Update success!");
 		
