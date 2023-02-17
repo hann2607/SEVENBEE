@@ -7,8 +7,8 @@
 	<div class="container">
 		<div class="breadcrumb-content">
 			<ul>
-				<li><a href="/home">Home</a></li>
-				<li class="active">Single Product Normal</li>
+				<li><a href="/">Home</a></li>
+				<li class="active">Product Detail</li>
 			</ul>
 		</div>
 	</div>
@@ -22,56 +22,33 @@
 				<!-- Product Details Left -->
 				<div class="product-details-left">
 					<div class="product-details-images slider-navigation-1">
+						<%
+						String inputIMG = (String) request.getAttribute("listAnh");
+						String[] listIMG = inputIMG.split("-\\*-");
+						for (int i = 0; i < listIMG.length; i ++) {
+						%>
 						<div class="lg-image">
-							<img src="/views/images/product/large-size/1.jpg"
+							<img
+								src="/views/images/product/large-size/<%=listIMG[i]%>"
 								alt="product image">
 						</div>
-						<div class="lg-image">
-							<img src="/views/images/product/large-size/2.jpg"
-								alt="product image">
-						</div>
-						<div class="lg-image">
-							<img src="/views/mages/product/large-size/3.jpg"
-								alt="product image">
-						</div>
-						<div class="lg-image">
-							<img src="/views/images/product/large-size/4.jpg"
-								alt="product image">
-						</div>
-						<div class="lg-image">
-							<img src="/views/images/product/large-size/5.jpg"
-								alt="product image">
-						</div>
-						<div class="lg-image">
-							<img src="/views/images/product/large-size/6.jpg"
-								alt="product image">
-						</div>
+						<%
+						}
+						%>
 					</div>
 					<div class="product-details-thumbs slider-thumbs-1">
+						<%
+						String inputIMGsm = (String) request.getAttribute("listAnh");
+						String[] listIMGsm = inputIMGsm.split("-\\*-");
+						for (int i = 0; i < listIMGsm.length; i ++) {
+						%>
 						<div class="sm-image">
-							<img src="/views/images/product/small-size/1.jpg"
+							<img src="/views/images/product/small-size/<%=listIMGsm[i]%>"
 								alt="product image thumb">
 						</div>
-						<div class="sm-image">
-							<img src="/views/images/product/small-size/2.jpg"
-								alt="product image thumb">
-						</div>
-						<div class="sm-image">
-							<img src="/views/images/product/small-size/3.jpg"
-								alt="product image thumb">
-						</div>
-						<div class="sm-image">
-							<img src="/views/images/product/small-size/4.jpg"
-								alt="product image thumb">
-						</div>
-						<div class="sm-image">
-							<img src="/views/images/product/small-size/5.jpg"
-								alt="product image thumb">
-						</div>
-						<div class="sm-image">
-							<img src="/views/images/product/small-size/6.jpg"
-								alt="product image thumb">
-						</div>
+						<%
+						}
+						%>
 					</div>
 				</div>
 				<!--// Product Details Left -->
@@ -145,14 +122,14 @@
 			<div id="product-details" class="tab-pane" role="tabpanel">
 				<ul class="list-group border">
 					<%
-					String input = (String) request.getAttribute("mota");
-					String[] components = input.split("-\\*-");
-					for (int i = 0; i < components.length; i += 2) {
+					String inputMT = (String) request.getAttribute("mota");
+					String[] listMT = inputMT.split("-\\*-");
+					for (int i = 0; i < listMT.length; i += 2) {
 					%>
 					<li
 						class="list-group-item d-flex justify-content-between align-items-center ">
-						<span class="font-weight-bold text-capitalize"><%=components[i]%></span> <span
-						class=""><%=components[i + 1]%></span>
+						<span class="font-weight-bold text-capitalize"><%=listMT[i]%></span>
+						<span class=""><%=listMT[i + 1]%></span>
 					</li>
 					<%
 					}
@@ -308,7 +285,7 @@
 											</h4>
 											<div class="price-box">
 												<span class="new-price"><fmt:formatNumber
-													type="number" value="${item.SP_Gia}"></fmt:formatNumber><span>VNĐ</span></span>
+														type="number" value="${item.SP_Gia}"></fmt:formatNumber><span>VNĐ</span></span>
 											</div>
 										</div>
 										<div class="add-actions">

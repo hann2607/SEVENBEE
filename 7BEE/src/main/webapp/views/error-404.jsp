@@ -143,7 +143,7 @@
                         <!-- Begin Header Logo Area -->
                         <div class="col-lg-3">
                             <div class="logo pb-sm-30 pb-xs-30">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="/views/images/menu/logo/logo-final.png" alt="">
                                 </a>
                             </div>
@@ -191,7 +191,7 @@
                             <div class="hb-menu">
                                 <nav>
                                     <ul>
-                                        <li><a class="clearafter" href="/index">TRANG CHỦ</a></li>
+                                        <li><a class="clearafter" href="/">TRANG CHỦ</a></li>
                                         <li class="megamenu-holder"><a href="shop-left-sidebar.html">DANH MỤC</a>
                                             <ul class="megamenu hb-megamenu">
                                                 <li><a href="shop-left-sidebar.html">ĐỒ CÔNG NGHỆ</a>
