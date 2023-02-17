@@ -41,8 +41,10 @@ public class SANPHAM {
 	
 	public SANPHAM orderProduct(int SP_SoLuong) {
 		SANPHAM sanpham = null;
-		
+		System.out.println("soluong: " + SP_SoLuong);
+		System.out.println("this: " + this.SP_SoLuong);
 		if(SP_SoLuong <= this.SP_SoLuong) {
+			
 			try {
 				sanpham = (SANPHAM) this.clone();
 				sanpham.setSP_SoLuong(SP_SoLuong);

@@ -1,18 +1,14 @@
 package com.sevenbee.service.impl;
 
 import java.util.HashMap;
-
-
-
-
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
-
 import com.sevenbee.entities.SANPHAM;
 import com.sevenbee.service.ShoppingCartService;
+import com.sevenbee.util.DataSharing;
 
 
 @Service
@@ -20,13 +16,12 @@ import com.sevenbee.service.ShoppingCartService;
 public class ShopingCartServiceImpl implements ShoppingCartService{
 	
 	private static HashMap<String, SANPHAM> orders = new HashMap<>();
-
 	@Override
 	public void addProduct(String SP_MA) {
-		System.out.println(SP_MA);
 		// TODO Auto-generated method stub
+		orders = DataSharing.cart;
 		SANPHAM sanpham = orders.get(SP_MA).orderProduct(1);
-		System.out.println(sanpham.getSP_MA()+" "+sanpham.getSP_SoLuong());
+		System.out.println("sanpham: " + sanpham);
 		if(!orders.containsKey(SP_MA)) {
 			orders.put(sanpham.getSP_MA(), sanpham);
 		} else if (sanpham != null) {
@@ -90,13 +85,7 @@ public class ShopingCartServiceImpl implements ShoppingCartService{
 			amount += sanpham.getSP_Gia() * sanpham.getSP_SoLuong();
 		}
 		return amount;
-	}
-	
-	
-
-	
-	
-	
+	}	
 
 	
 }

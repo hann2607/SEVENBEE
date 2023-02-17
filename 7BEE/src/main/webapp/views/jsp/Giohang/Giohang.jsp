@@ -34,14 +34,13 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td class="li-product-remove"><a href="#"><i
+									<td class="li-product-remove"><a href="/clear"><i
 											class="fa fa-times"></i></a></td>
-									<td class="li-product-thumbnail"><a href="#"><img
-											src="/views/images/product/small-size/5.jpg"
+									<td class="li-product-thumbnail"><a href="/product-detail/${ShopCart.SP_MA}"><img
+											src="/views/images/product/small-size/${ShopCart.SP_HinhAnh}"
 											alt="Li's Product Image"></a></td>
-									<td class="li-product-name"><a href="#">Accusantium
-											dolorem1</a></td>
-									<td class="li-product-price"><span class="amount">$46.80</span></td>
+									<td class="li-product-name"><a href="#">${ShopCart.SP_TenSP}</a></td>
+									<td class="li-product-price"><span class="amount">${ShopCart.SP_Gia }</span></td>
 									<td class="quantity"><label>Quantity</label>
 										<div class="cart-plus-minus">
 											<input class="cart-plus-minus-box" value="1" type="text">
@@ -55,7 +54,7 @@
 									<td class="product-subtotal"><span class="amount">$70.00</span></td>
 								</tr>
 								<tr>
-									<td class="li-product-remove"><a href="#"><i
+									<td class="li-product-remove"><a href="/clear"><i
 											class="fa fa-times"></i></a></td>
 									<td class="li-product-thumbnail"><a href="#"><img
 											src="/views/images/product/small-size/6.jpg"

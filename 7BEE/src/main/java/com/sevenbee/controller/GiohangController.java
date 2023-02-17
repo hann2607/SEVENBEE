@@ -4,23 +4,22 @@ package com.sevenbee.controller;
 
 
 import java.io.IOException;
-
-
+import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import com.sevenbee.dao.DONHANGDAO;
-import com.sevenbee.entities.DONHANG;
+import com.sevenbee.dao.SANPHAMDAO;
+import com.sevenbee.entities.SANPHAM;
 import com.sevenbee.service.ParamService;
 import com.sevenbee.service.SessionService;
 import com.sevenbee.service.ShoppingCartService;
+import com.sevenbee.service.impl.ShopingCartServiceImpl;
 import com.sevenbee.util.DataSharing;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
@@ -42,12 +41,17 @@ public class GiohangController {
 	@Autowired 
 	ParamService param;
 	
+	
+	
 	@Autowired
 	SessionService session;
 	
+	@Autowired
+	SANPHAMDAO sanphamdao;
+	
 	@RequestMapping("/ShoppingCart")
 	public String LoadShopcart(Model model) throws ServletException, IOException{
-		model.addAttribute("ShopCart", DataSharing.cart.values());
+		model.addAttribute("ShopCart", DataSharing.cart.clone());
 		model.addAttribute("cart", cartShop.getProducts());
 		model.addAttribute("amount", cartShop.getAmount());
 		return PageInfo.goSite(model, PageType.SITE_SHOPPINGCART);
@@ -55,6 +59,11 @@ public class GiohangController {
 	
 	@GetMapping("/addCart/{id}")
 	public String addToCart(@PathVariable String id, Model model) {
+		List<SANPHAM> listSP =  sanphamdao.findAll();
+		for (SANPHAM sanpham : listSP) {
+			DataSharing.cart.put(sanpham.getSP_MA(), sanpham);
+		}
+		
 		cartShop.addProduct(id);
 		session.set("ShopCartmini", cartShop.getCount());
 		model.addAttribute("messages", "Add success!");
