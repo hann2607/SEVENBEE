@@ -26,6 +26,7 @@ public class ChiTiet_SanPhamController {
 		// Hiển thị chi tiết sản phẩm theo mã sản phẩm
 		SANPHAM sanpham = sanphamdao.findById(id).get();
 		model.addAttribute("sanpham", sanpham);
+		model.addAttribute("listAnh", sanpham.getSP_HinhAnh());
 		model.addAttribute("mota", sanpham.getCt_sanpham().getCTSP_MoTa());
 		
 		// Lấy ra danh sách sản phẩm cùng loại mới nhất

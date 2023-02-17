@@ -53,7 +53,7 @@ public class LoginController {
 	@Autowired
 	private HttpSession session;
 
-	@GetMapping("/showLogin")
+	@GetMapping("/login")
 	public String getLoginform(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
 			throws ServletException, IOException {
 		return PageInfo.goSite(model, PageType.SITE_LOGIN);
@@ -67,7 +67,7 @@ public class LoginController {
 		boolean rememberMe = paramService.getBoolean("rememberMe", false);
 		if (username.isEmpty() && password.isEmpty()) {
 			// validate form
-			model.addAttribute("message", "Vui lòng điều đủ thông tin tài khoản và mật khẩu");
+			model.addAttribute("message", "Vui lòng điền đủ thông tin tài khoản và mật khẩu");
 			return PageInfo.goSite(model, PageType.SITE_LOGIN);
 		} else {
 			// thực hiện đăng nhập và trả về đối tượng user
@@ -75,7 +75,7 @@ public class LoginController {
 
 			if (user == null) {
 				model.addAttribute("message", "Sai tài khoản hoặc mật khẩu");
-				return "redirect:/";
+				return PageInfo.goSite(model, PageType.SITE_LOGIN);
 			}
 			if (rememberMe) {
 				cookieService.add("username", username, 1);
@@ -84,7 +84,8 @@ public class LoginController {
 				cookieService.remove("username");
 				cookieService.remove("password");
 			}
-			session.setAttribute("username", user.getHo_ten());
+			session.setAttribute("username", user.getSDT());
+			session.setAttribute("name", user.getHo_ten());
 			return PageInfo.goSite(model, PageType.HOMEPAGE);
 		}
 
@@ -98,14 +99,15 @@ public class LoginController {
 			return PageInfo.goSite(model, PageType.SITE_LOGIN);
 		} else {
 			// Kiểm tra trùng ID
-			Optional<NGUOIDUNG> userSDT = nguoidungDAO.findById(nguoidung.getSDT());
-			if (!userSDT.isPresent()) {
+			Optional<NGUOIDUNG> user = nguoidungDAO.findById(nguoidung.getSDT());
+			if (!user.isPresent()) {
+				sendMail(nguoidung.getEmail(), nguoidung.getSDT(), nguoidung.getMatkhau());
 				nguoidung.setVaitro(false);
 				nguoidung.setIsactive(false);
 				nguoidung.setNgaysinh(null);
 				accountService.save(nguoidung);
 				session.setAttribute("username", nguoidung.getHo_ten());
-				sendMail(nguoidung.getEmail(), nguoidung.getSDT(), nguoidung.getMatkhau());
+				
 				return PageInfo.goSite(model, PageType.HOMEPAGE);
 			} else {
 				// Báo lỗi tài khoản đã tồn tại

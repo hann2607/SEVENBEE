@@ -64,7 +64,7 @@
 												alt="" height="100px"
 												style="border-radius: 50%; border: 2px solid black;">
 										</div>
-										<div class="d-flex justify-content-center mt-2">${username}
+										<div class="d-flex justify-content-center mt-2">${name}
 										</div>
 										<div class="d-flex justify-content-center">
 											<div style="color: #ccc;">#Người dùng</div>
@@ -98,7 +98,7 @@
 				<!-- Begin Header Logo Area -->
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
-						<a href="/home"> <img src="/views/images/menu/logo/logo-final.png"
+						<a href="/"> <img src="/views/images/menu/logo/logo-final.png"
 							alt="">
 						</a>
 					</div>
