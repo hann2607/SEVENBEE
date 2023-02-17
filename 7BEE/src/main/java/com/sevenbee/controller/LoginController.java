@@ -86,7 +86,7 @@ public class LoginController {
 			}
 			session.setAttribute("username", user.getSDT());
 			session.setAttribute("name", user.getHo_ten());
-			return PageInfo.goSite(model, PageType.HOMEPAGE);
+			return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 		}
 
 	}

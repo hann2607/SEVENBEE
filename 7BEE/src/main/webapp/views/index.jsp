@@ -47,6 +47,8 @@
 <link rel="stylesheet" href="/views/style.css">
 <!-- Responsive CSS -->
 <link rel="stylesheet" href="/views/css/responsive.css">
+<!-- User-Profile SCSS -->
+    <link rel="stylesheet" href="/views/css/user-profile.css">
 <!-- Modernizr js -->
 <script src="/views/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -110,6 +112,7 @@
 	<script src="/views/js/scrollUp.min.js"></script>
 	<!-- Main/Activator js -->
 	<script src="/views/js/main.js"></script>
+	<script src="/views/js/user-profile.js"></script>
 </body>
 
 <!-- index-431:47-->

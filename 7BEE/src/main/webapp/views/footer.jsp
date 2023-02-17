@@ -76,8 +76,9 @@
 					<!-- Begin Footer Logo Area -->
 					<div class="col-lg-4 col-md-6">
 						<div class="footer-logo">
+						<a href="https://linktr.ee/sevenbee.com">
 							<img src="/views/images/menu/logo/logo-final-black-footer.png"
-								alt="Footer Logo">
+								alt="Footer Logo"></a>
 							<p class="info">7BEE là đội ngũ phát triển Website bán hàng
 								dành cho tất cả mọi người.</p>
 						</div>
@@ -210,7 +211,7 @@
 					<!-- Footer Payment Area End Here -->
 					<!-- Begin Copyright Area -->
 					<div class="copyright text-center pt-25">
-						<span><a target="_blank" href="#">Copyright &copy; 2023
+						<span><a target="_blank" href="https://linktr.ee/sevenbee.com">Copyright &copy; 2023
 								SEVENBEE.COM</a></span>
 					</div>
 					<!-- Copyright Area End Here -->

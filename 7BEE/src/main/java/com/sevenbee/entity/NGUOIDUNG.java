@@ -36,7 +36,7 @@ public class NGUOIDUNG {
 	@Column(length = 60, nullable = false)
 	String Matkhau;
 	@Temporal(TemporalType.DATE)
-	@Column(name = "NgaySinh")
+	@Column(name = "Ngaysinh")
 	Date Ngaysinh = new Date();
 	boolean Vaitro = true, isactive = false;
 	@OneToMany
