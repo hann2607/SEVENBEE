@@ -62,7 +62,7 @@
 			<div class="container">
 				<div class="breadcrumb-content">
 					<ul>
-						<li><a href="index.html">Trang chủ</a></li>
+						<li><a href="/">Trang chủ</a></li>
 						<li class="active">Đăng nhập</li>
 					</ul>
 				</div>
@@ -198,6 +198,7 @@
 	<script src="js/scrollUp.min.js"></script>
 	<!-- Main/Activator js -->
 	<script src="js/main.js"></script>
+	
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-backdrop="static"
 		data-keyboard="false" tabindex="-1"
