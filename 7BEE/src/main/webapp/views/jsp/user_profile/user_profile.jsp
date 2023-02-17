@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+
 <script type="text/javascript">
  		if ("${message}" != "") {
 			alert("${message}");
@@ -28,14 +29,14 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
 					<!-- Password chance Form s-->
-					<form action="/user/changepassword">
+					<form:form action="/user/changepassword" modelAttribute="nguoidung">
 						<div class="login-form">
 							<h4 class="login-title">Thay đổi mật khẩu</h4>
 							<div class="row">
 								<div class="col-md-12 col-12 mb-20">
 									
 									<form:label path="Matkhau">Mật khẩu</form:label>
-									<form:input path="Matkhau" class="mb-0" type="password" />
+									<form:input path="Matkhau" class="mb-0" type="password" value = "${user.getMatkhau()}" />
 									<form:errors path="Matkhau" class="badge badge-danger" />
 								</div>
 								<div class="col-12 mb-20">
@@ -52,11 +53,11 @@
 								</div>
 							</div>
 						</div>
-					</form>
+					</form:form>
 				</div>
 				<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
 					<!--   chỉnh sửa profile -->
-					<form action="/user/editprofile">
+					<form:form action="/user/profile/update" method="post" modelAttribute="nguoidung">
 						<div class="login-form">
 							<h4 class="login-title">Thông tin người dùng</h4>
 							<div class="row d-flex justify-content-center mb-20">
@@ -77,40 +78,36 @@
 							<div class="row">
 								<div class="col-md-6 col-12 mb-20">
 									<form:label path="Ho_ten">Họ tên</form:label>
-									<form:input path="Ho_ten" class="mb-0" type="text"
+									<form:input path="Ho_ten" class="mb-0" type="text" value = "${user.getHo_ten()}"
 										 />
 									<form:errors path="Ho_ten" class="badge badge-danger" />
 								</div>
-								<div class="col-md-6 col-12 mb-20">
-									<form:label path="SDT">Số điện thoại</form:label>
-									<form:input path="SDT" class="mb-0" type="text" />
-									<form:errors path="SDT" class="badge badge-danger" />
-								</div>
+								
 								<div class="col-md-12 mb-20">
 									<form:label path="Email">Email*</form:label>
 									<form:input path="Email" class="mb-0" type="email"
-										id="email-input" />
+										id="email-input" value = "${user.getEmail()}" />
 									<form:errors path="Email" class="badge badge-danger" />
 								</div>
 
 								<div class="col-md-12 mb-20">
 									<label>Địa chỉ</label> <input class="mb-0" type="text"
-										placeholder="địa chỉ">
+										placeholder="địa chỉ" value = "${user.getDiachi()}">
 								</div>
 								<div class="col-md-6 mb-20">
 									<label>Ngày Sinh</label> <input class="mb-0" type="date"
-										placeholder="time">
+										placeholder="time" value = "${user.getNgaysinh()}" >
 								</div>
 								<div class="col-md-6 mb-20">
 									<label>Vai trò</label> <input class="mb-0" type="text"
-										placeholder="" disabled>
+										placeholder="" value = "${test111}" disabled >
 								</div>
 								<div class="col-12">
-									<button class="register-button mt-0">Chỉnh sửa</button>
+									<button formaction="/user/profile/update" formmethod="post" class="register-button mt-0">Chỉnh sửa</button>
 								</div>
 							</div>
 						</div>
-					</form>
+					</form:form>
 				</div>
 
 			</div>

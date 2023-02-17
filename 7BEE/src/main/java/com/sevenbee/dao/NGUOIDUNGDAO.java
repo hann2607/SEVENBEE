@@ -9,4 +9,6 @@ import com.sevenbee.entity.NGUOIDUNG;
 @Repository
 public interface NGUOIDUNGDAO extends JpaRepository<NGUOIDUNG, String>{
 
+	
+
 }
