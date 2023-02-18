@@ -38,6 +38,7 @@ public class NGUOIDUNG {
 	@NotBlank(message = "Không được để trống mật khẩu !")
 	@Column(length = 60, nullable = false)
 	String Matkhau;
+	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "Ngaysinh")
