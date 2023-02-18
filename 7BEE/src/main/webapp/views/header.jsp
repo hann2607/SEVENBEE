@@ -98,8 +98,12 @@
 				<!-- Begin Header Logo Area -->
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
-						<a href="/"> <img src="/views/images/menu/logo/logo-final.png"
-							alt="">
+
+						<a href="/home"> <img
+							src="/views/images/menu/logo/logo-final.png" alt="">
+
+
+
 						</a>
 					</div>
 				</div>
@@ -141,68 +145,51 @@
 							<!-- Begin Header Mini Cart Area -->
 							<li class="hm-minicart">
 								<div class="hm-minicart-trigger">
-									<span class="item-icon"></span> <span class="item-text">80tr
-										<span class="cart-item-count">2</span>
+									<span class="item-icon"></span> <span class="item-text">GIỎ
+										HÀNG <span class="cart-item-count">${listcarts == null ? '0' : totalProductInCart}</span>
 									</span>
 								</div> <span></span>
 								<div class="minicart">
-									<ul class="minicart-product-list">
-										<li><a href=""
-											class="minicart-product-image"> <img
-												src="/views/images/product/large-size/${product.SP_HinhAnh}"
-												alt="cart products">
-										</a>
-											<div class="minicart-product-details">
-												<h6>
-													<a href="single-product.html"></a>
-												</h6>
-												<div class="d-flex justify-content-between">
-													<span>${product.SP_SoLuong}</span>
-													<div>
-														<span><fmt:formatNumber type="number"
-																value="${product.SP_Gia}"></fmt:formatNumber></span><span>
-															VNĐ</span>
-													</div>
-												</div>
+									<c:forEach var="product" items="${listcarts}">
+										<ul class="minicart-product-list">
 
-											</div>
-											<button class="close">
-												<i class="fa fa-close"></i>
-											</button></li>
-										<li><a href="single-product.html"
-											class="minicart-product-image"> <img
-												src="/views/images/product/small-size/2.jpg"
-												alt="cart products">
-										</a>
-											<div class="minicart-product-details">
-												<h6>
-													<a href="single-product.html">Aenean eu tristique</a>
-												</h6>
-												<div class="d-flex justify-content-between">
-													<span>x 1</span>
-													<div>
-														<span>40000000</span><span> VNĐ</span>
+											<li><a href="single-product.html"
+												class="minicart-product-image"> <img
+													src="/views/images/product/large-size/${product.value.SP_HinhAnh}"
+													alt="cart products">
+											</a>
+												<div class="minicart-product-details">
+													<h6>
+														<a href="single-product.html">${product.value.SP_TenSP}</a>
+													</h6>
+													<div class="d-flex justify-content-between">
+														<span>x ${product.value.SP_SoLuong}</span>
+														<div>
+															<span><fmt:formatNumber type="number"
+																	value="${product.value.SP_Gia}"></fmt:formatNumber></span><span>
+																VNĐ</span>
+														</div>
 													</div>
-												</div>
 
-											</div>
-											<button class="close">
-												<i class="fa fa-close"></i>
-											</button></li>
-									</ul>
+												</div>
+<%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
+<!-- 													<i class="fa fa-close"></i> -->
+<!-- 												</button> -->
+												</li>
+										</ul>
+									</c:forEach>
 									<h6 class="my-3 d-flex justify-content-between">
 										TỔNG TIỀN:
 										<div>
 											<span><fmt:formatNumber type="number"
-													value=""></fmt:formatNumber></span><span>
-												VNĐ</span>
+													value="${sumtotal}"></fmt:formatNumber></span><span> VNĐ</span>
 										</div>
 									</h6>
 									<div class="minicart-button">
 										<a href="/ShoppingCart"
 											class="li-button li-button-dark li-button-fullwidth li-button-sm">
 											<span>XEM GIỎ HÀNG</span>
-										</a> <a href="checkout.html"
+										</a> <a href="/checkout"
 											class="li-button li-button-fullwidth li-button-sm"> <span>THANH
 												TOÁN</span>
 										</a>

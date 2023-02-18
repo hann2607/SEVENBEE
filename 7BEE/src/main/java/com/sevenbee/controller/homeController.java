@@ -2,18 +2,18 @@ package com.sevenbee.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sevenbee.dao.DONHANGDAO;
 import com.sevenbee.dao.DONHANG_SANPHAMDAO;
 import com.sevenbee.dao.LOAISPDAO;
@@ -23,6 +23,7 @@ import com.sevenbee.dao.SANPHAMDAO;
 import com.sevenbee.entity.DONHANG_SANPHAM;
 import com.sevenbee.entity.PARTNER;
 import com.sevenbee.entity.SANPHAM;
+import com.sevenbee.util.DataSharing;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
@@ -44,7 +45,7 @@ public class homeController {
 	LOAISPDAO loaispdao;
 
 	@RequestMapping("/")
-	public String home(Model model) throws ServletException, IOException {
+	public String home(Model model) throws ServletException, IOException {		
 		// Lấy ra danh sách sản phẩm mới nhất
 		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts(6);
 		for (SANPHAM sanpham : LatestProducts) {
@@ -82,26 +83,42 @@ public class homeController {
 		}
 		model.addAttribute("Products_ShopRandom", Products_ShopRandom);
 
+	
+// tổng tiền trong giỏ hàng nhỏ
+		model.addAttribute("sumtotal", total());
+		
+		int totalProductInCart = 0;
+		for(Map.Entry<String, SANPHAM> entry : DataSharing.cart.entrySet()) {
+		    totalProductInCart += entry.getValue().getSP_SoLuong();
+		}
+		model.addAttribute("totalProductInCart", totalProductInCart);
+
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
-
+	
+	private double total() {
+		double sum = 0;
+		for (SANPHAM sanpham : DataSharing.cart.values()) {
+			sum += sanpham.getSP_Gia() * sanpham.getSP_SoLuong();
+		}
+		return sum;
+	}
+	
 	private String spitArrImages(String arrImages) {
 		String[] components = arrImages.split("-\\*-");
-		if (components != null) {
+		if(components != null) {
 			return components[0];
 		}
 		return null;
 	}
-
-//	@GetMapping("/api/Quick-view/{id}")
-//	public String find(@PathVariable("id") String id) {
-//		System.out.println(id);
-////		model.addAttribute("sanpham", sanphamdao.findProductBySP_MA(id));
-////		try {
-////			return new ResponseEntity<>(sanphamdao.findProductBySP_MA(id), HttpStatus.OK);
-////		} catch (Exception e) {
-////			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-////		}
-//		return "hello";
-//	}
+	
+	@RequestMapping(value = "home/Quick-view/{id}", method = RequestMethod.GET, produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
+	public ResponseEntity<SANPHAM> find(@PathVariable("id") String id) {
+		System.out.println(id);
+		try {
+			return new ResponseEntity<SANPHAM>(sanphamdao.findProductBySP_MA(id), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<SANPHAM>(HttpStatus.BAD_REQUEST);
+		}
+	}
 }

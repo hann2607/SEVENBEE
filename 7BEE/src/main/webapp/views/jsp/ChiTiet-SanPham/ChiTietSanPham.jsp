@@ -67,7 +67,7 @@
 						</div>
 						<div class="product-desc">
 							<p>
-								<span>No data</span>
+								<span>${sanpham.getCt_sanpham().getCTSP_ThongTinThem()}</span>
 							</p>
 						</div>
 						<div class="single-add-to-cart">
@@ -89,7 +89,7 @@
 										</div>
 									</div>
 								</div>
-								<button class="add-to-cart" type="submit">Thêm Vào Giỏ
+								<button class="add-to-cart"  type="submit">Thêm Vào Giỏ
 									Hàng</button>
 							</form>
 						</div>

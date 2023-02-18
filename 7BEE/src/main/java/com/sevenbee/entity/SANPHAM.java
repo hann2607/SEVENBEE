@@ -38,11 +38,13 @@ public class SANPHAM {
 	@ManyToOne
 	@JoinColumn(name = "Shop_TenShop", referencedColumnName = "Shop_TenShop")
 	private PARTNER shop;
-
+	
 	public SANPHAM orderProduct(int SP_SoLuong) {
 		SANPHAM sanpham = null;
-
-		if (SP_SoLuong <= this.SP_SoLuong) {
+		System.out.println("soluong: " + SP_SoLuong);
+		System.out.println("this: " + this.SP_SoLuong);
+		if(SP_SoLuong <= this.SP_SoLuong) {
+			
 			try {
 				sanpham = (SANPHAM) this.clone();
 				sanpham.setSP_SoLuong(SP_SoLuong);
@@ -52,13 +54,5 @@ public class SANPHAM {
 			}
 		}
 		return sanpham;
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "{'SP_MA' : " + SP_MA + ", 'SP_TenSP' : " + SP_TenSP + ", 'SP_HinhAnh' : " + SP_HinhAnh
-				+ ", 'SP_SoLuong' : " + SP_SoLuong + ", 'SP_Ngaydang' : " + SP_Ngaydang + ", 'SP_Gia' : " + SP_Gia
-				+ ", 'LoaiSP_MA' : " + loaisp.LoaiSP_MA + ", 'LoaiSP_Ten' : " + loaisp.LoaiSP_Ten + "}";
 	}
 }
