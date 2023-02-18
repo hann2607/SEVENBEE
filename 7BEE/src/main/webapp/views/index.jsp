@@ -48,9 +48,14 @@
 <!-- Responsive CSS -->
 <link rel="stylesheet" href="/views/css/responsive.css">
 <!-- User-Profile SCSS -->
-    <link rel="stylesheet" href="/views/css/user-profile.css">
+<link rel="stylesheet" href="/views/css/user-profile.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
 <!-- Modernizr js -->
 <script src="/views/js/vendor/modernizr-2.8.3.min.js"></script>
+
 </head>
 
 <body>

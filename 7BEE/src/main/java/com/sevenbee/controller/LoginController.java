@@ -87,6 +87,7 @@ public class LoginController {
 			cookieService.add("username", username, 1);
 			cookieService.add("password", password, 1);
 			session.setAttribute("name", user.getHo_ten());
+			session.setAttribute("avatar", user.getHinhanh());
 			return PageInfo.goSite(model, PageType.HOMEPAGE);
 		}
 

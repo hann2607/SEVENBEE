@@ -60,7 +60,7 @@
 									<ul class="ht-setting-list">
 										<div class="d-flex justify-content-center">
 											<img
-												src="https://shopgarena.net/wp-content/uploads/2022/08/Hinh-nen-Yasuo-chibi.jpg"
+												src="https://shopgarena.net/wp-content/uploads/2022/08/${avatar}"
 												alt="" height="100px"
 												style="border-radius: 50%; border: 2px solid black;">
 										</div>
