@@ -686,11 +686,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
-		console.log($('.quick-view').length);
-		for(let i = 0; i < $('.quick-view').length; i++) {
-			$('.quick-view')[i].click( function() {
+// 		for(let i = 0; i < $('.quick-view').length; i++) {
+			$(document).on("click", ".quick-view", function() {
 			$.ajax({
-				url : '/api/Quick-view/' + $('.quick-view')[i].dataset.masp,
+				url : '/api/Quick-view/' + this.dataset.masp,
 					type : 'GET',
 						success : function(data) {
 							// Handle successful response
@@ -709,7 +708,7 @@
 								}
 			});
 		});
-		}
+// 		}
 	});
 	
 
