@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.SANPHAMDAO;
-import com.sevenbee.entities.SANPHAM;
+import com.sevenbee.entity.SANPHAM;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
@@ -26,6 +26,7 @@ public class ChiTiet_SanPhamController {
 		// Hiển thị chi tiết sản phẩm theo mã sản phẩm
 		SANPHAM sanpham = sanphamdao.findById(id).get();
 		model.addAttribute("sanpham", sanpham);
+		model.addAttribute("listAnh", sanpham.getSP_HinhAnh());
 		model.addAttribute("mota", sanpham.getCt_sanpham().getCTSP_MoTa());
 		
 		// Lấy ra danh sách sản phẩm cùng loại mới nhất

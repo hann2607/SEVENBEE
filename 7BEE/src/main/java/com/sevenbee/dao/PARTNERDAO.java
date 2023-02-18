@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.sevenbee.entities.PARTNER;
+import com.sevenbee.entity.PARTNER;
 
 public interface PARTNERDAO extends JpaRepository<PARTNER, String> {
 	// Lấy ra danh sách sản phẩm theo SHOP mới nhất

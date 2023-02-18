@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="breadcrumb-content">
 			<ul>
-				<li><a href="/home">TRANG CHỦ</a></li>
+				<li><a href="/">TRANG CHỦ</a></li>
 				<li class="active">SHOP</li>
 			</ul>
 		</div>

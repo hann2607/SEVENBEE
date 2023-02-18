@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
-import com.sevenbee.entities.SANPHAM;
+import com.sevenbee.entity.SANPHAM;
 import com.sevenbee.service.ShoppingCartService;
 import com.sevenbee.util.DataSharing;
 

@@ -64,7 +64,7 @@
 												alt="" height="100px"
 												style="border-radius: 50%; border: 2px solid black;">
 										</div>
-										<div class="d-flex justify-content-center mt-2">ledangduong@gmail.com
+										<div class="d-flex justify-content-center mt-2">${name}
 										</div>
 										<div class="d-flex justify-content-center">
 											<div style="color: #ccc;">#Người dùng</div>
@@ -75,7 +75,7 @@
 										<li class="d-flex justify-content-center"><a
 											href="login-register.html">LỊCH SỬ</a></li>
 										<li class="d-flex justify-content-center"><a
-											href="checkout.html">ĐĂNG XUẤT</a></li>
+											href="/logout">ĐĂNG XUẤT</a></li>
 										<li class="d-none justify-content-center"><a
 											href="login-register.html">ĐĂNG NHẬP</a></li>
 										<li class="d-none justify-content-center"><a
@@ -98,8 +98,13 @@
 				<!-- Begin Header Logo Area -->
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
+
 						<a href="/home"> <img
 							src="/views/images/menu/logo/logo-final.png" alt="">
+
+						<a href="/"> <img src="/views/images/menu/logo/logo-final.png"
+							alt="">
+
 						</a>
 					</div>
 				</div>

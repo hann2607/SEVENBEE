@@ -19,9 +19,9 @@ import com.sevenbee.dao.LOAISPDAO;
 import com.sevenbee.dao.NGUOIDUNGDAO;
 import com.sevenbee.dao.PARTNERDAO;
 import com.sevenbee.dao.SANPHAMDAO;
-import com.sevenbee.entities.DONHANG_SANPHAM;
-import com.sevenbee.entities.PARTNER;
-import com.sevenbee.entities.SANPHAM;
+import com.sevenbee.entity.DONHANG_SANPHAM;
+import com.sevenbee.entity.PARTNER;
+import com.sevenbee.entity.SANPHAM;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
@@ -42,7 +42,7 @@ public class homeController {
 	@Autowired
 	LOAISPDAO loaispdao;
 
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String home(Model model) throws ServletException, IOException {		
 		// Lấy ra danh sách sản phẩm mới nhất
 		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts(6);

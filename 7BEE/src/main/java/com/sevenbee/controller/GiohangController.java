@@ -2,7 +2,6 @@ package com.sevenbee.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,17 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.SANPHAMDAO;
-import com.sevenbee.entities.SANPHAM;
 import com.sevenbee.service.ParamService;
 import com.sevenbee.service.SessionService;
 import com.sevenbee.service.ShoppingCartService;
-import com.sevenbee.service.impl.ShopingCartServiceImpl;
 import com.sevenbee.util.DataSharing;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
