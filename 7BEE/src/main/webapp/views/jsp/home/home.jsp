@@ -692,7 +692,7 @@
 				type : 'GET',
 				success : function(data) {
 					// Handle successful response
-					console.log(JSON.parse(data));
+					console.log((data));
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 					// Handle error response

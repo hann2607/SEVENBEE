@@ -19,7 +19,10 @@ public class testController {
 	@GetMapping("/api/Quick-view/{id}")
 	public String find(@PathVariable("id") String id, Model model) throws JsonProcessingException {
 		SANPHAM sanpham = sanphamdao.findProductBySP_MA(id);
-		System.out.println(sanpham.toString());
-		return sanpham.toString();
+//		System.out.println(sanpham.toString());
+//		ObjectMapper Obj = new ObjectMapper();
+//		Obj.writeValueAsString(sanpham);
+//		 System.out.println(Obj);
+		return "hello";
 	}
 }
