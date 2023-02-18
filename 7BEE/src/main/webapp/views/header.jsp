@@ -99,7 +99,7 @@
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
 
-						<a href="/home"> <img
+						<a href="/"> <img
 							src="/views/images/menu/logo/logo-final.png" alt="">
 
 
@@ -137,7 +137,7 @@
 					<div class="header-middle-right">
 						<ul class="hm-menu">
 							<!-- Begin Header Middle Wishlist Area -->
-							<li class="hm-wishlist"><a href="wishlist.html"> <span
+							<li class="hm-wishlist"><a href="#"> <span
 									class="cart-item-count wishlist-item-count">0</span> <i
 									class="fa fa-heart-o"></i>
 							</a></li>
