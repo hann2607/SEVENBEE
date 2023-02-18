@@ -67,7 +67,7 @@
 						</div>
 						<div class="product-desc">
 							<p>
-								<span>No data</span>
+								<span>${sanpham.getCt_sanpham().getCTSP_ThongTinThem()}</span>
 							</p>
 						</div>
 						<div class="single-add-to-cart">

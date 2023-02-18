@@ -118,6 +118,7 @@
 	<!-- Main/Activator js -->
 	<script src="/views/js/main.js"></script>
 	<script src="/views/js/user-profile.js"></script>
+	<script src="/views/js/partner.js"></script>
 </body>
 
 <!-- index-431:47-->
