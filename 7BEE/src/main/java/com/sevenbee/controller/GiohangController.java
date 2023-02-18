@@ -87,13 +87,13 @@ public class GiohangController {
 	}
 	
 	
-	@GetMapping("/updateCart/{id}")
-	public String updateCart(@PathVariable String id, Model model) {
-		cartShop.updateProduct(id, param.getInt("quantity", 0));
-		sess.setAttribute("listcarts", DataSharing.cart.clone());
-		model.addAttribute("messages", "Update success!");
-		return "redirect:/ShoppingCart";
-	}
+//	@GetMapping("/updateCart/{id}")
+//	public String updateCart(@PathVariable String id, Model model) {
+//		cartShop.updateProduct(id, param.getInt("quantity", 0));
+//		sess.setAttribute("listcarts", DataSharing.cart.clone());
+//		model.addAttribute("messages", "Update success!");
+//		return "redirect:/ShoppingCart";
+//	}
 
 	@GetMapping("/removeCart/{id}")
 	public String removeCart(@PathVariable String id, Model model) {

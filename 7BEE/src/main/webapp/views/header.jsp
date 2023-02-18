@@ -189,7 +189,7 @@
 										<a href="/ShoppingCart"
 											class="li-button li-button-dark li-button-fullwidth li-button-sm">
 											<span>XEM GIỎ HÀNG</span>
-										</a> <a href="checkout.html"
+										</a> <a href="/checkout"
 											class="li-button li-button-fullwidth li-button-sm"> <span>THANH
 												TOÁN</span>
 										</a>

@@ -79,7 +79,7 @@
 										type="submit">
 								</div>
 								<div class="coupon2">
-									<input class="button" name="update_cart"
+									<input  class="button" name="update_cart"
 										value="Restart giỏ hàng" type="submit">
 								</div>
 							</div>
@@ -97,7 +97,7 @@
 												value="${sumtotal}"></fmt:formatNumber> VND</span>
 									</li>
 								</ul>
-								<a href="#">Tiến hành kiểm tra</a>
+								<a href="/checkout">THANH TOÁN</a>
 							</div>
 						</div>
 					</div>

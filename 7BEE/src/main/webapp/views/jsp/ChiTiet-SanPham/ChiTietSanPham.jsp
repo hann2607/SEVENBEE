@@ -89,7 +89,7 @@
 										</div>
 									</div>
 								</div>
-								<button class="add-to-cart" type="submit">Thêm Vào Giỏ
+								<button class="add-to-cart"  type="submit">Thêm Vào Giỏ
 									Hàng</button>
 							</form>
 						</div>
