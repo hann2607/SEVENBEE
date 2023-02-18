@@ -1,21 +1,21 @@
 package com.sevenbee.controller;
 
 import java.io.IOException;
-import java.util.Optional;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.NGUOIDUNGDAO;
 import com.sevenbee.entity.NGUOIDUNG;
 import com.sevenbee.mailCONSTANT.mail_CONSTANT;
-import com.sevenbee.repository.UserRepository;
 import com.sevenbee.service.AccountService;
 import com.sevenbee.service.CookieService;
 import com.sevenbee.service.MailService;
@@ -26,7 +26,6 @@ import com.sevenbee.util.PageType;
 import com.sevenbee.validation.AccountValidate;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -45,15 +44,11 @@ public class User_profile {
 	@Autowired
 	NGUOIDUNGDAO nguoidungDAO;
 
-	
-	
 	@Autowired
 	MailService mailService;
 
 	@Autowired
 	private AccountService accountService;
-	@Autowired
-	private HttpSession session;
 
 	String codeVerify;
 
@@ -90,49 +85,54 @@ public class User_profile {
 
 //
 	@RequestMapping("/user/profile")
-	public String getUserByUsername(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung)
-			throws ServletException, IOException {
+	public String getUserByUsername(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
+			@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword) throws ServletException, IOException {
 		// Sử dụng UserRepository để lấy đối tượng User tương ứng với tên đăng nhập
-
-		NGUOIDUNG user = nguoidungDAO.findById("327544266").get();
+		// System.out.println(cookieService.getValue("username"));
+		NGUOIDUNG user = nguoidungDAO.findById(cookieService.getValue("username")).get();
 		// System.out.println(user.getHo_ten());
 		// Nếu không tìm thấy user, trả về trang lỗi
 		if (user == null) {
-			return "error";
+			return PageInfo.goSite(model, PageType.SITE_LOGIN);
 		}
 
 		// Truyền thông tin user vào model để hiển thị trên giao diện
 		model.addAttribute("user", user);
 
-		String test = (user.isVaitro() == true) ? "Người dùng" : "Admin";
+		String test = (user.isVaitro() == true) ? "Admin" : "Người dùng";
 		model.addAttribute("test111", test);
 
 		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 	}
-	
+
 	@PostMapping("/user/profile/update")
-	public String updateProfile(Model model, @Valid @ModelAttribute("nguoidung") NGUOIDUNG nguoidung, BindingResult result) throws ServletException, IOException {
-		
-		nguoidung.setSDT("327544266");
-		
-		nguoidung.setMatkhau("asd");
-		
-		//nguoidung.setSDT(userng.get().getSDT());
-		System.out.println(nguoidung.getHo_ten());
-		System.out.println(nguoidung.getSDT());
-		System.out.println(nguoidung.getMatkhau());
-		System.out.println(nguoidung.getEmail());
-		System.out.println(nguoidung.getNgaysinh());
-		
-//		nguoidungDAO.save(nguoidung); 
-		nguoidungDAO.saveAndFlush(nguoidung);
-		
+	public String updateProfile(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
+			@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword, BindingResult result)
+			throws ServletException, IOException {
+
+		nguoidung.setSDT(cookieService.getValue("username"));
+		nguoidung.setMatkhau(cookieService.getValue("password"));
+
+		nguoidung.setVaitro(false);
+
+		accountService.save(nguoidung);
+
 		model.addAttribute("messages", "Update success!");
-		
-		
+		System.out.println("update okk");
+
 		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
-		
+
 	}
-	
+
+	@PostMapping("user/profile/changepassword")
+	public String ChangePasswords(Model model, @Valid @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
+			@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword, BindingResult result)
+			throws ServletException, IOException {
+		nguoidungpassword.setSDT(cookieService.getValue("username"));
+		accountService.save(nguoidungpassword);
+		model.addAttribute("messages", "Update success!");
+		System.out.println("update okk");
+		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
+	}
 
 }

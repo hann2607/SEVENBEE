@@ -71,7 +71,7 @@
 										</div>
 										<hr class="mt-3 mb-2">
 										<li class="d-flex justify-content-center"><a
-											href="login-register.html">TÀI KHOẢN</a></li>
+											href="/user/profile">TÀI KHOẢN</a></li>
 										<li class="d-flex justify-content-center"><a
 											href="login-register.html">LỊCH SỬ</a></li>
 										<li class="d-flex justify-content-center"><a
