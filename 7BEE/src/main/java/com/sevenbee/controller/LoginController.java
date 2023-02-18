@@ -84,7 +84,8 @@ public class LoginController {
 				cookieService.remove("username");
 				cookieService.remove("password");
 			}
-			session.setAttribute("username", user.getSDT());
+			cookieService.add("username", username, 1);
+			cookieService.add("password", password, 1);
 			session.setAttribute("name", user.getHo_ten());
 			return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 		}
@@ -119,7 +120,9 @@ public class LoginController {
 
 	@RequestMapping("/logout")
 	public String getLogout(Model model) throws ServletException, IOException {
-		sessionService.remove("username");
+		cookieService.remove("username");
+		cookieService.remove("password");
+		sessionService.remove("name");
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
 
