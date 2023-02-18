@@ -7,8 +7,8 @@
 	<div class="container">
 		<div class="breadcrumb-content">
 			<ul>
-				<li><a href="/">Home</a></li>
-				<li class="active">Product Detail</li>
+				<li><a href="/">TRANG CHỦ</a></li>
+				<li class="active">CHI TIẾT SẢN PHẨM</li>
 			</ul>
 		</div>
 	</div>

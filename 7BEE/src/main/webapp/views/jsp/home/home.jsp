@@ -166,8 +166,8 @@
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 
-												<li id="myButton${product.SP_MA}"><a
-													class="quick-view" data-toggle="modal"
+												<li><a class="quick-view" 
+													data-masp="${product.SP_MA}" data-toggle="modal" 
 													data-target="#exampleModalCenter" href="#"> <i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -225,7 +225,7 @@
 													href="/addCart/${dhsp.sanpham.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
+												<li><a class="quick-view" data-toggle="modal" data-masp="${dhsp.sanpham.SP_MA}"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -284,7 +284,7 @@
 													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
+												<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -389,7 +389,7 @@
 													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
+												<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -468,7 +468,7 @@
 													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
+												<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -685,41 +685,42 @@
 <!-- Group Featured Product Area End Here -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#myButtonSP006').click(function() {
+	$(document).ready( function() {
+		console.log($('.quick-view').length);
+		for(let i = 0; i < $('.quick-view').length; i++) {
+			$('.quick-view')[i].click( function() {
 			$.ajax({
-				url : '/api/Quick-view/SP006',
-				type : 'GET',
-				success : function(data) {
-					// Handle successful response
-					console.log((data));
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					// Handle error response
-					console.log(errorThrown);
-				}
+				url : '/api/Quick-view/' + $('.quick-view')[i].dataset.masp,
+					type : 'GET',
+						success : function(data) {
+							// Handle successful response
+								var arrSP = data.split("-*-");
+								var sanpham = JSON.parse(arrSP[0]);
+								$('#exampleModalCenter #QVNameProduct').text(sanpham.SP_TenSP.toUpperCase());
+								$('#exampleModalCenter #QuickViewPrice').text(commify(sanpham.SP_Gia));
+								$('#exampleModalCenter #image1').prop('src', '/views/images/product/large-size/' + sanpham.SP_HinhAnh);
+								$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
+								$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
+								},
+								
+								error : function(jqXHR, textStatus, errorThrown) {
+								// Handle error response
+								console.log(errorThrown);
+								}
 			});
 		});
+		}
 	});
-// 	var showQuickView = function(id) {
-		// 		$.ajax({
-		// 			type : 'GET',
-		// 			url : '/home/Quick-view/' + id,
-		// 			success: function(result) {
-		// 	            // Handle the returned list of objects
-		// 	            console.log(result);
-		// 	        },
-		// 	        error : function(e) {
-		// 	            console.log("Error: ", e);
-		// 	        }
-		// // 			success : function(data) {
-		// // 				console.log(data)
-		// // // 				$('#exampleModalCenter #QVNameProduct').val(product.SP_TenSP);
-		// // 			}, error : function(data) {
-		// // // 				$('#exampleModalCenter #QVNameProduct').val(product.SP_TenSP);
-		// // 			}
-		// 		});
-// 	}
+	
+
+	function commify(n) {
+		var parts = n.toString().split(".");
+		const numberPart = parts[0];
+		const decimalPart = parts[1];
+		const thousands = /\B(?=(\d{3})+(?!\d))/g;
+		return numberPart.replace(thousands, ".")
+				+ (decimalPart ? "," + decimalPart : "");
+	}
 </script>
 
 <!-- Begin Quick View | Modal Area -->
@@ -738,7 +739,7 @@
 							<div class="product-details-images slider-navigation-1">
 								<div class="lg-image">
 									<img src="/views/images/product/large-size/1.jpg"
-										alt="product image">
+										alt="product image" id="image1">
 								</div>
 								<div class="lg-image">
 									<img src="/views/images/product/large-size/2.jpg"
@@ -764,7 +765,7 @@
 							<div class="product-details-thumbs slider-thumbs-1">
 								<div class="sm-image">
 									<img src="/views/images/product/small-size/1.jpg"
-										alt="product image thumb">
+										alt="product image thumb" id="image1">
 								</div>
 								<div class="sm-image">
 									<img src="/views/images/product/small-size/2.jpg"
@@ -794,8 +795,9 @@
 					<div class="col-lg-7 col-md-6 col-sm-6">
 						<div class="product-details-view-content pt-60">
 							<div class="product-info">
-								<h2 id="QVNameProduct">${sanpham}</h2>
-								<span class="product-details-ref">Reference: demo_15</span>
+								<h1 id="QVNameProduct"
+									style="color: #0363cd; margin-top: -6%; margin-bottom: 2%"></h1>
+								<span class="product-details-ref" id="QuickViewModalLoaiSP"></span>
 								<div class="rating-box pt-20">
 									<ul class="rating rating-with-review-item">
 										<li><i class="fa fa-star-o"></i></li>
@@ -808,30 +810,25 @@
 									</ul>
 								</div>
 								<div class="price-box pt-20">
-									<span class="new-price new-price-2">1000</span> <span>VNĐ</span>
+									<span class="new-price new-price-2" id="QuickViewPrice"></span>
+									<span>VNĐ</span>
 								</div>
 								<div class="product-desc">
 									<p>
-										<span>100% cotton double printed dress. Black and white
-											striped top and orange high waisted skater skirt bottom.
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-											quibusdam corporis, earum facilis et nostrum dolorum
-											accusamus similique eveniet quia pariatur. </span>
+										<span id="QuickViewmodalmotaSP"></span>
 									</p>
 								</div>
 								<div class="product-variants">
-									<div class="produt-variants-size">
-										<label>Dimension</label> <select class="nice-select">
-											<option value="1" title="S" selected="selected">40x60cm</option>
-											<option value="2" title="M">60x90cm</option>
-											<option value="3" title="L">80x120cm</option>
-										</select>
+									<div class="">
+										<button type="button" class="btn btn-primary">Xanh</button>
+										<button type="button" class="btn btn-warning">Vàng</button>
+										<button type="button" class="btn btn-dark">Đen</button>
 									</div>
 								</div>
 								<div class="single-add-to-cart">
 									<form action="#" class="cart-quantity">
 										<div class="quantity">
-											<label>Quantity</label>
+											<label>SỐ LƯỢNG</label>
 											<div class="cart-plus-minus">
 												<input class="cart-plus-minus-box" value="1" type="text">
 												<div class="dec qtybutton">
