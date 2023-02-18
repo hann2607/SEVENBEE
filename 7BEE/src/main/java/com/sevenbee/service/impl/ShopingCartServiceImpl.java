@@ -15,64 +15,64 @@ import com.sevenbee.util.DataSharing;
 @SessionScope
 public class ShopingCartServiceImpl implements ShoppingCartService{
 	
-	private static HashMap<String, SANPHAM> orders = new HashMap<>();
+	private static HashMap<String, SANPHAM> carts = new HashMap<>();
 	@Override
 	public void addProduct(String SP_MA) {
 		// TODO Auto-generated method stub
-		orders = DataSharing.cart;
-		SANPHAM sanpham = orders.get(SP_MA).orderProduct(1);
-		System.out.println("sanpham: " + sanpham);
-		if(!orders.containsKey(SP_MA)) {
-			orders.put(sanpham.getSP_MA(), sanpham);
-		} else if (sanpham != null) {
-			int oldQuantity = orders.get(SP_MA).getSP_SoLuong();
-			orders.get(SP_MA).setSP_SoLuong(oldQuantity + 1); 
-		}
+		carts = DataSharing.cart;
+//		SANPHAM sanpham = carts.get(SP_MA);
+//		System.out.println("sanpham: " + sanpham);
+//		if(!carts.containsKey(SP_MA)) {
+//			carts.put(sanpham.getSP_MA(), sanpham);
+//		} else if (sanpham != null) {
+//			int oldQuantity = carts.get(SP_MA).getSP_SoLuong();
+//			carts.get(SP_MA).setSP_SoLuong(oldQuantity + 1); 
+//		}
 	}
 
 	@Override
 	public void removeProduct(String SP_MA) {
-		SANPHAM sanpham = orders.get(SP_MA);
-		orders.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
-		orders.remove(SP_MA);		
+		SANPHAM sanpham = carts.get(SP_MA);
+		carts.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
+		carts.remove(SP_MA);		
 	}
 
 	@Override
 	public void updateProduct(String SP_MA, int qty) {
-		SANPHAM sanpham = orders.get(SP_MA);
-		SANPHAM sanphamcheck = orders.get(SP_MA).orderProduct(qty - sanpham.getSP_SoLuong());
+		SANPHAM sanpham = carts.get(SP_MA);
+		SANPHAM sanphamcheck = carts.get(SP_MA).orderProduct(qty - sanpham.getSP_SoLuong());
 		//UPdate or remove product
 		if(qty > 0) {
 			if(sanphamcheck != null) {
 				sanpham.setSP_SoLuong(qty);
 			}
 		} else {
-			orders.remove(SP_MA);
+			carts.remove(SP_MA);
 		}
 		
 	}
 
 	@Override
 	public void clear() {
-		for (String SP_MA : orders.keySet()) {
-			SANPHAM sanpham = orders.get(SP_MA);
+		for (String SP_MA : carts.keySet()) {
+			SANPHAM sanpham = carts.get(SP_MA);
 			// Return quantity order into products list
-			orders.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
+			carts.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
 		}
-		orders.clear();
+		carts.clear();
 		
 	}
 
 	@Override
 	public Map<String, SANPHAM> getProducts() {
 		// TODO Auto-generated method stub
-		return orders;
+		return carts;
 	}
 
 	@Override
 	public int getCount() {
 		int count = 0;
-		for (SANPHAM sanpham : orders.values()) {
+		for (SANPHAM sanpham : carts.values()) {
 			count += sanpham.getSP_SoLuong();
 		}
 		return count;
@@ -81,7 +81,7 @@ public class ShopingCartServiceImpl implements ShoppingCartService{
 	@Override
 	public double getAmount() {
 		double amount = 0;
-		for (SANPHAM sanpham : orders.values()) {
+		for (SANPHAM sanpham : carts.values()) {
 			amount += sanpham.getSP_Gia() * sanpham.getSP_SoLuong();
 		}
 		return amount;

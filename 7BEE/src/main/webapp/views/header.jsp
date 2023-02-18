@@ -98,8 +98,8 @@
 				<!-- Begin Header Logo Area -->
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
-						<a href="/home"> <img src="/views/images/menu/logo/logo-final.png"
-							alt="">
+						<a href="/home"> <img
+							src="/views/images/menu/logo/logo-final.png" alt="">
 						</a>
 					</div>
 				</div>
@@ -147,54 +147,33 @@
 								</div> <span></span>
 								<div class="minicart">
 									<ul class="minicart-product-list">
-										<li><a href=""
-											class="minicart-product-image"> <img
-												src="/views/images/product/large-size/${product.SP_HinhAnh}"
-												alt="cart products">
-										</a>
-											<div class="minicart-product-details">
-												<h6>
-													<a href="single-product.html"></a>
-												</h6>
-												<div class="d-flex justify-content-between">
-													<span>${product.SP_SoLuong}</span>
-													<div>
-														<span><fmt:formatNumber type="number"
-																value="${product.SP_Gia}"></fmt:formatNumber></span><span>
-															VNĐ</span>
+										<c:forEach var="product" items="${listcarts}">
+											<li><a href="single-product.html"
+												class="minicart-product-image"> <img
+													src="/views/images/product/small-size/2.jpg"
+													alt="cart products">
+											</a>
+												<div class="minicart-product-details">
+													<h6>
+														<a href="single-product.html">${product.value.SP_TenSP}</a>
+													</h6>
+													<div class="d-flex justify-content-between">
+														<span>x 1</span>
+														<div>
+															<span>${product.value.SP_Gia }</span><span> VNĐ</span>
+														</div>
 													</div>
-												</div>
 
-											</div>
-											<button class="close">
-												<i class="fa fa-close"></i>
-											</button></li>
-										<li><a href="single-product.html"
-											class="minicart-product-image"> <img
-												src="/views/images/product/small-size/2.jpg"
-												alt="cart products">
-										</a>
-											<div class="minicart-product-details">
-												<h6>
-													<a href="single-product.html">Aenean eu tristique</a>
-												</h6>
-												<div class="d-flex justify-content-between">
-													<span>x 1</span>
-													<div>
-														<span>40000000</span><span> VNĐ</span>
-													</div>
 												</div>
-
-											</div>
-											<button class="close">
-												<i class="fa fa-close"></i>
-											</button></li>
+												<button class="/clear">
+													<i class="fa fa-close"></i>
+												</button></li>
 									</ul>
+									</c:forEach>
 									<h6 class="my-3 d-flex justify-content-between">
 										TỔNG TIỀN:
 										<div>
-											<span><fmt:formatNumber type="number"
-													value=""></fmt:formatNumber></span><span>
+											<span><fmt:formatNumber type="number" value=""></fmt:formatNumber></span><span>
 												VNĐ</span>
 										</div>
 									</h6>

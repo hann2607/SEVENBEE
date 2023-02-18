@@ -34,45 +34,31 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td class="li-product-remove"><a href="/clear"><i
-											class="fa fa-times"></i></a></td>
-									<td class="li-product-thumbnail"><a href="/product-detail/${ShopCart.SP_MA}"><img
-											src="/views/images/product/small-size/${ShopCart.SP_HinhAnh}"
-											alt="Li's Product Image"></a></td>
-									<td class="li-product-name"><a href="#">${ShopCart.SP_TenSP}</a></td>
-									<td class="li-product-price"><span class="amount">${ShopCart.SP_Gia }</span></td>
-									<td class="quantity"><label>Quantity</label>
-										<div class="cart-plus-minus">
-											<input class="cart-plus-minus-box" value="1" type="text">
-											<div class="dec qtybutton">
-												<i class="fa fa-angle-down"></i>
-											</div>
-											<div class="inc qtybutton">
-												<i class="fa fa-angle-up"></i>
-											</div>
-										</div></td>
-									<td class="product-subtotal"><span class="amount">$70.00</span></td>
-								</tr>
-								<tr>
-									<td class="li-product-remove"><a href="/clear"><i
-											class="fa fa-times"></i></a></td>
-									<td class="li-product-thumbnail"><a href="#"><img
-											src="/views/images/product/small-size/6.jpg"
-											alt="Li's Product Image"></a></td>
-									<td class="li-product-name"><a href="#">Mug Today is a
-											good day</a></td>
-									<td class="li-product-price"><span class="amount">$71.80</span></td>
-									<td class="quantity"><label>Quantity</label>
-										<div class="cart-plus-minus">
-											<input class="cart-plus-minus-box" value="1" type="text">
-											<div class="dec qtybutton">
-												<i class="fa fa-angle-down"></i>
-											</div>
-											<div class="inc qtybutton">
-												<i class="fa fa-angle-up"></i>
-											</div>
-										</div></td>
-									<td class="product-subtotal"><span class="amount">$60.50</span></td>
+									<c:forEach var="product" items="${listcarts}">
+										<td class="li-product-remove"><a
+											href="/removeCart/${product.value.SP_MA}"><i
+												class="fa fa-times"></i></a></td>
+										<td class="li-product-thumbnail"><a
+											href="/product-detail/${product.value.SP_MA}"><img
+												src="/views/images/product/small-size/${product.value.SP_HinhAnh}"
+												alt="Li's Product Image"></a></td>
+										<td class="li-product-name"><a href="#">${product.value.SP_TenSP}</a></td>
+										<td class="li-product-price"><span class="amount">${product.value.SP_Gia }</span> VND</td>
+										<td class="quantity">
+											<div class="cart-plus-minus">
+												<input class="cart-plus-minus-box" value="${product.value.SP_SoLuong}" type="text">
+												<div class="dec qtybutton">
+													<i class="fa fa-angle-down"></i>
+												</div>
+												<div class="inc qtybutton">
+													<i class="fa fa-angle-up"></i>
+												</div>
+											</div></td>
+										<td class="product-subtotal"><span class="amount"><fmt:formatNumber
+													type="number"
+													value="${product.value.SP_SoLuong * product.value.SP_Gia}"></fmt:formatNumber></span>
+											VND</td>
+									</c:forEach>
 								</tr>
 							</tbody>
 						</table>
@@ -82,13 +68,13 @@
 							<div class="coupon-all">
 								<div class="coupon">
 									<input id="coupon_code" class="input-text" name="coupon_code"
-										value="" placeholder="Nhập mã giảm giá" type="text"> <input
-										class="button" name="apply_coupon" value="ADD CODE"
+										value="" placeholder="Nhập mã giảm giá" type="text">
+									<input class="button" name="apply_coupon" value="ADD CODE"
 										type="submit">
 								</div>
 								<div class="coupon2">
-									<input class="button" name="update_cart" value="Restart giỏ hàng"
-										type="submit">
+									<input class="button" name="update_cart"
+										value="Restart giỏ hàng" type="submit">
 								</div>
 							</div>
 						</div>
@@ -98,8 +84,10 @@
 							<div class="cart-page-total">
 								<h2>Tổng số giỏ hàng</h2>
 								<ul>
-									<li>Tổng phụ <span>$130.00</span></li>
-									<li>Tổng cộng <span>$130.00</span></li>
+									<li>Tổng phụ <span> VND</span> 0
+									</li>
+									<li>Tổng cộng <span> VND</span> 0
+									</li>
 								</ul>
 								<a href="#">Tiến hành kiểm tra</a>
 							</div>
