@@ -102,8 +102,7 @@
 						<a href="/home"> <img
 							src="/views/images/menu/logo/logo-final.png" alt="">
 
-						<a href="/"> <img src="/views/images/menu/logo/logo-final.png"
-							alt="">
+
 
 						</a>
 					</div>
@@ -146,16 +145,17 @@
 							<!-- Begin Header Mini Cart Area -->
 							<li class="hm-minicart">
 								<div class="hm-minicart-trigger">
-									<span class="item-icon"></span> <span class="item-text">80tr
-										<span class="cart-item-count">2</span>
+									<span class="item-icon"></span> <span class="item-text">GIỎ
+										HÀNG <span class="cart-item-count">${listcarts == null ? '0' : totalProductInCart}</span>
 									</span>
 								</div> <span></span>
 								<div class="minicart">
-									<ul class="minicart-product-list">
-										<c:forEach var="product" items="${listcarts}">
+									<c:forEach var="product" items="${listcarts}">
+										<ul class="minicart-product-list">
+
 											<li><a href="single-product.html"
 												class="minicart-product-image"> <img
-													src="/views/images/product/small-size/2.jpg"
+													src="/views/images/product/large-size/${product.value.SP_HinhAnh}"
 													alt="cart products">
 											</a>
 												<div class="minicart-product-details">
@@ -163,23 +163,26 @@
 														<a href="single-product.html">${product.value.SP_TenSP}</a>
 													</h6>
 													<div class="d-flex justify-content-between">
-														<span>x 1</span>
+														<span>x ${product.value.SP_SoLuong}</span>
 														<div>
-															<span>${product.value.SP_Gia }</span><span> VNĐ</span>
+															<span><fmt:formatNumber type="number"
+																	value="${product.value.SP_Gia}"></fmt:formatNumber></span><span>
+																VNĐ</span>
 														</div>
 													</div>
 
 												</div>
-												<button class="/clear">
-													<i class="fa fa-close"></i>
-												</button></li>
-									</ul>
+<%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
+<!-- 													<i class="fa fa-close"></i> -->
+<!-- 												</button> -->
+												</li>
+										</ul>
 									</c:forEach>
 									<h6 class="my-3 d-flex justify-content-between">
 										TỔNG TIỀN:
 										<div>
-											<span><fmt:formatNumber type="number" value=""></fmt:formatNumber></span><span>
-												VNĐ</span>
+											<span><fmt:formatNumber type="number"
+													value="${sumtotal}"></fmt:formatNumber></span><span> VNĐ</span>
 										</div>
 									</h6>
 									<div class="minicart-button">

@@ -1,7 +1,7 @@
 package com.sevenbee.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.SANPHAMDAO;
+import com.sevenbee.entity.SANPHAM;
 import com.sevenbee.service.ParamService;
 import com.sevenbee.service.SessionService;
 import com.sevenbee.service.ShoppingCartService;
@@ -44,53 +45,48 @@ public class GiohangController {
 		model.addAttribute("ShopCart", DataSharing.cart.clone());
 		model.addAttribute("cart", cartShop.getProducts());
 		model.addAttribute("amount", cartShop.getAmount());
-
-		/*
-		 * tất cả các model đều lấy giá trị từ session
-		 * 
-		 * 
-		 * 
-		 */
+		model.addAttribute("sumtotal", total());
+		model.addAttribute("listcarts", DataSharing.cart);
+		int totalProductInCart = 0;
+		for(Map.Entry<String, SANPHAM> entry : DataSharing.cart.entrySet()) {
+		    totalProductInCart += entry.getValue().getSP_SoLuong();
+		}
+		model.addAttribute("totalProductInCart", totalProductInCart);
 		return PageInfo.goSite(model, PageType.SITE_SHOPPINGCART);
 	}
 
 	@GetMapping("/addCart/{id}")
 	public String addToCart(@PathVariable String id, Model model) {
-//		List<SANPHAM> listSP =  sanphamdao.findAll();
-//		for (SANPHAM sanpham : listSP) {
-//			DataSharing.cart.put(sanpham.getSP_MA(), sanpham);
-//		}
-
-//		cartShop.addProduct(id);
-//		System.out.println(id);
 		String masp = id;
 		SANPHAM sanpham = sanphamdao.findById(masp).get();
-		DataSharing.cart.put(sanpham.getSP_MA(), sanpham);
-		if (sanpham.getSP_SoLuong() < DataSharing.cart.get(sanpham.getSP_MA()).getSP_SoLuong()) {
-			System.out.println("san pham ko them dc");
+		if (DataSharing.cart.get(masp) != null) {
+			if (sanpham.getSP_SoLuong() > DataSharing.cart.get(masp).getSP_SoLuong()) {
+				DataSharing.cart.get(masp).setSP_SoLuong(DataSharing.cart.get(masp).getSP_SoLuong() + 1);			
+			}	
 		} else {
-			if(DataSharing.cart.get(sanpham.getSP_MA())== null) {
-				DataSharing.cart.get(masp).setSP_SoLuong(DataSharing.cart.get(masp).getSP_SoLuong()+ 1);	
-			}else {
+			if (sanpham.getSP_SoLuong() >= 1) {
 				sanpham.setSP_SoLuong(1);
-				DataSharing.cart.put(sanpham.getSP_MA(), sanpham);
+				DataSharing.cart.put(sanpham.getSP_MA(), sanpham);			
 			}
-
-			
 		}
-//		cartShop.addProduct(masp);
+
+	
 		sess.setAttribute("listcarts", DataSharing.cart.clone());
-
-//		System.out.println("session da dc them vao");
-		HashMap<String, SANPHAM> abc = new HashMap<>();
-		abc = (HashMap<String, SANPHAM>) sess.getAttribute("listcarts");
-		System.out.println(abc.get(masp).getSP_TenSP());
-//		SANPHAM sanpham1 = (SANPHAM) sess.getAttribute("listcarts");
-//		session.set("ShopCartmini", cartShop.getCount());
+		model.addAttribute("listcarts", DataSharing.cart);
+		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		model.addAttribute("messages", "Add success!");
-		return "redirect:/ShoppingCart";
+		return "redirect:/";
 	}
-
+	
+	private double total() {
+		double sum = 0;
+		for (SANPHAM sanpham : DataSharing.cart.values()) {
+			sum += sanpham.getSP_Gia() * sanpham.getSP_SoLuong();
+		}
+		return sum;
+	}
+	
+	
 	@GetMapping("/updateCart/{id}")
 	public String updateCart(@PathVariable String id, Model model) {
 		cartShop.updateProduct(id, param.getInt("quantity", 0));

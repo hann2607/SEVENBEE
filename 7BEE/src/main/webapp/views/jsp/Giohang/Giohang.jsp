@@ -22,6 +22,7 @@
 				<form action="#">
 					<div class="table-content table-responsive">
 						<table class="table">
+
 							<thead>
 								<tr>
 									<th class="li-product-remove">Bỏ chọn</th>
@@ -32,34 +33,39 @@
 									<th class="li-product-subtotal">Thành tiền</th>
 								</tr>
 							</thead>
+
 							<tbody>
-								<tr>
-									<c:forEach var="product" items="${listcarts}">
+								<c:forEach var="product" items="${listcarts}">
+								<input value="${product.value.SP_Gia}" hidden="true" id="price${product.value.SP_MA}">
+									<tr>
 										<td class="li-product-remove"><a
 											href="/removeCart/${product.value.SP_MA}"><i
 												class="fa fa-times"></i></a></td>
 										<td class="li-product-thumbnail"><a
 											href="/product-detail/${product.value.SP_MA}"><img
-												src="/views/images/product/small-size/${product.value.SP_HinhAnh}"
-												alt="Li's Product Image"></a></td>
+												src="/views/images/product/large-size/${product.value.SP_HinhAnh}"
+												alt="Li's Product Image" height="100px"></a></td>
 										<td class="li-product-name"><a href="#">${product.value.SP_TenSP}</a></td>
-										<td class="li-product-price"><span class="amount">${product.value.SP_Gia }</span> VND</td>
+										<td class="li-product-price"><span class="amount"><fmt:formatNumber
+													type="number" value="${product.value.SP_Gia}"></fmt:formatNumber></span>
+											VND</td>
 										<td class="quantity">
 											<div class="cart-plus-minus">
-												<input class="cart-plus-minus-box" value="${product.value.SP_SoLuong}" type="text">
-												<div class="dec qtybutton">
-													<i class="fa fa-angle-down"></i>
-												</div>
-												<div class="inc qtybutton">
-													<i class="fa fa-angle-up"></i>
-												</div>
-											</div></td>
-										<td class="product-subtotal"><span class="amount"><fmt:formatNumber
-													type="number"
-													value="${product.value.SP_SoLuong * product.value.SP_Gia}"></fmt:formatNumber></span>
+												<input class="cart-plus-minus-box" id="${product.value.SP_MA}" onchange="dem('${product.value.SP_MA}')"
+													value="${product.value.SP_SoLuong}" type="number">
+<!-- 												<div class="dec qtybutton" > -->
+<%-- 													<i class="fa fa-angle-down" onclick="dem('${product.value.SP_MA}')"></i> --%>
+<!-- 												</div> -->
+<!-- 												<div class="inc qtybutton" > -->
+<%-- 													<i class="fa fa-angle-up" onclick="dem('${product.value.SP_MA}')"></i> --%>
+<!-- 												</div> -->
+											</div>
+										</td>
+										<td class="product-subtotal"><span class="amount" id="amount${product.value.SP_MA}"><fmt:formatNumber
+													type="number" value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span>
 											VND</td>
-									</c:forEach>
-								</tr>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -84,9 +90,11 @@
 							<div class="cart-page-total">
 								<h2>Tổng số giỏ hàng</h2>
 								<ul>
-									<li>Tổng phụ <span> VND</span> 0
+									<li>Tổng phụ <span><fmt:formatNumber type="number"
+												value="${sumtotal}"></fmt:formatNumber> VND</span>
 									</li>
-									<li>Tổng cộng <span> VND</span> 0
+									<li>Tổng cộng <span><fmt:formatNumber type="number"
+												value="${sumtotal}"></fmt:formatNumber> VND</span>
 									</li>
 								</ul>
 								<a href="#">Tiến hành kiểm tra</a>
@@ -98,4 +106,11 @@
 		</div>
 	</div>
 </div>
+
+<script text= "text/javascript">
+	var dem = function(index){
+		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
+	}
+
+</script>
 <!-- Begin Quick View | Modal Area End Here-->

@@ -2,6 +2,7 @@ package com.sevenbee.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ import com.sevenbee.dao.SANPHAMDAO;
 import com.sevenbee.entity.DONHANG_SANPHAM;
 import com.sevenbee.entity.PARTNER;
 import com.sevenbee.entity.SANPHAM;
+import com.sevenbee.util.DataSharing;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
@@ -80,9 +82,26 @@ public class homeController {
 			}
 		}
 		model.addAttribute("Products_ShopRandom", Products_ShopRandom);
+
+	
+// tổng tiền trong giỏ hàng nhỏ
+		model.addAttribute("sumtotal", total());
 		
+		int totalProductInCart = 0;
+		for(Map.Entry<String, SANPHAM> entry : DataSharing.cart.entrySet()) {
+		    totalProductInCart += entry.getValue().getSP_SoLuong();
+		}
+		model.addAttribute("totalProductInCart", totalProductInCart);
 
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
+	}
+	
+	private double total() {
+		double sum = 0;
+		for (SANPHAM sanpham : DataSharing.cart.values()) {
+			sum += sanpham.getSP_Gia() * sanpham.getSP_SoLuong();
+		}
+		return sum;
 	}
 	
 	private String spitArrImages(String arrImages) {
