@@ -22,7 +22,7 @@
 				<div class="col-lg-6 col-12">
 
 					<div class="checkbox-form">
-						<h3>Chi Tiết Thành Toán</h3>
+						<h3>Chi Tiết Thanh Toán</h3>
 						<div class="different-address">
 							<div class="order-notes">
 								<div class="checkout-form-list">
