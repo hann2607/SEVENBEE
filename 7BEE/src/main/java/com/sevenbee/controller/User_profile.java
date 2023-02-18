@@ -108,29 +108,19 @@ public class User_profile {
 	@PostMapping("/user/profile/update")
 	public String updateProfile(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword, BindingResult result) throws ServletException, IOException {
 		
-		
-		//System.out.println(cookieService.getValue("username"));
-		
 		nguoidung.setSDT(cookieService.getValue("username"));
 		nguoidung.setMatkhau(cookieService.getValue("password"));
 		
-		System.out.println("testt" +nguoidung.getEmail());
 		
-		System.out.println("testt" +(Date)nguoidung.getNgaysinh());
+		System.out.println("testt" + nguoidung.getNgaysinh());
 		
-		System.out.println("testt" +nguoidung.isVaitro());
-		
-		System.out.println("testt" +nguoidung.getDiachi());
 		nguoidung.setVaitro(false);
 		
-	//	accountService.save(nguoidung);
+		accountService.save(nguoidung);
 		
 		model.addAttribute("messages", "Update success!");
 		System.out.println("update okk");
-//		System.out.println("test2" +nguoidung.getEmail());
-//		System.out.println("test2" +nguoidung.getNgaysinh());
-//		System.out.println("test2" +nguoidung.isVaitro());
-//		System.out.println("testt" +nguoidung.getDiachi());
+
 		
 		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 		
