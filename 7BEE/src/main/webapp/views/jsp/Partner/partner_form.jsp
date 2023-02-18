@@ -29,16 +29,6 @@
             cursor: pointer;
         }
     </style>
-    <div class="breadcrumb-area">
-	<div class="container">
-		<div class="breadcrumb-content">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li class="active">Sản phẩm</li>
-			</ul>
-		</div>
-	</div>
-</div>
     <div class="container">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#staticBackdrop">
