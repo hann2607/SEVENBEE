@@ -48,10 +48,14 @@
 <!-- Responsive CSS -->
 <link rel="stylesheet" href="/views/css/responsive.css">
 <!-- User-Profile SCSS -->
-    <link rel="stylesheet" href="/views/css/user-profile.css">
+<link rel="stylesheet" href="/views/css/user-profile.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
 <!-- Modernizr js -->
 <script src="/views/js/vendor/modernizr-2.8.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 
 <body>

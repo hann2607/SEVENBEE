@@ -21,6 +21,7 @@ public class PageInfo {
 		pageRoute.put(PageType.SITE_CHECKOUT, new PageInfo("THANH TOÁN", "index", "ThanhToan/ThanhToan.jsp"));
 		pageRoute.put(PageType.SITE_LOGIN, new PageInfo("ĐĂNG NHẬP", "index", "Login/login-register.jsp"));
 		pageRoute.put(PageType.SITE_USERPROFILE, new PageInfo("User_Profile", "index", "user_profile/user_profile.jsp"));
+		pageRoute.put(PageType.SITE_PARTNER, new PageInfo("CỬA HÀNG", "index", "Partner/partner_form.jsp"));
 		
 		// Admin
 		pageRoute.put(PageType.ADMIN_CHART, new PageInfo("THỐNG KÊ", "admin/chart.jsp", null));

@@ -84,9 +84,11 @@ public class LoginController {
 				cookieService.remove("username");
 				cookieService.remove("password");
 			}
-			session.setAttribute("username", user.getSDT());
+			cookieService.add("username", username, 1);
+			cookieService.add("password", password, 1);
 			session.setAttribute("name", user.getHo_ten());
-			return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
+			session.setAttribute("avatar", user.getHinhanh());
+			return PageInfo.goSite(model, PageType.HOMEPAGE);
 		}
 
 	}
@@ -105,9 +107,11 @@ public class LoginController {
 				nguoidung.setVaitro(false);
 				nguoidung.setIsactive(false);
 				nguoidung.setNgaysinh(null);
-				accountService.save(nguoidung);
-				session.setAttribute("username", nguoidung.getHo_ten());
 				
+				cookieService.add("username", nguoidung.getSDT(), 1);
+				cookieService.add("password",  nguoidung.getMatkhau(), 1);
+				session.setAttribute("name", nguoidung.getHo_ten());
+				accountService.save(nguoidung);
 				return PageInfo.goSite(model, PageType.HOMEPAGE);
 			} else {
 				// Báo lỗi tài khoản đã tồn tại
@@ -119,7 +123,9 @@ public class LoginController {
 
 	@RequestMapping("/logout")
 	public String getLogout(Model model) throws ServletException, IOException {
-		sessionService.remove("username");
+		cookieService.remove("username");
+		cookieService.remove("password");
+		sessionService.remove("name");
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
 

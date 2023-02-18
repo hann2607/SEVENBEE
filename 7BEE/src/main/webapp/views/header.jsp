@@ -60,7 +60,7 @@
 									<ul class="ht-setting-list">
 										<div class="d-flex justify-content-center">
 											<img
-												src="https://shopgarena.net/wp-content/uploads/2022/08/Hinh-nen-Yasuo-chibi.jpg"
+												src="https://shopgarena.net/wp-content/uploads/2022/08/${avatar}"
 												alt="" height="100px"
 												style="border-radius: 50%; border: 2px solid black;">
 										</div>
@@ -71,7 +71,7 @@
 										</div>
 										<hr class="mt-3 mb-2">
 										<li class="d-flex justify-content-center"><a
-											href="login-register.html">TÀI KHOẢN</a></li>
+											href="/user/profile">TÀI KHOẢN</a></li>
 										<li class="d-flex justify-content-center"><a
 											href="login-register.html">LỊCH SỬ</a></li>
 										<li class="d-flex justify-content-center"><a
