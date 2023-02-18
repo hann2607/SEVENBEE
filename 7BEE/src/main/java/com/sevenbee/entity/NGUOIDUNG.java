@@ -3,6 +3,8 @@ package com.sevenbee.entity;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +38,9 @@ public class NGUOIDUNG {
 	@NotBlank(message = "Không được để trống mật khẩu !")
 	@Column(length = 60, nullable = false)
 	String Matkhau;
+	
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "Ngaysinh")
 	Date Ngaysinh = new Date();
 	boolean Vaitro = true, isactive = false;
