@@ -166,8 +166,9 @@
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 
-												<li ><a class="quick-view" data-toggle="modal"
-													data-target="#exampleModalCenter" href="#" onclick="showQuickView(${product.SP_MA})"><i
+												<li id="myButton${product.SP_MA}"><a
+													class="quick-view" data-toggle="modal"
+													data-target="#exampleModalCenter" href="#"> <i
 														class="fa fa-eye"></i></a></li>
 											</ul>
 										</div>
@@ -682,18 +683,43 @@
 	</div>
 </div>
 <!-- Group Featured Product Area End Here -->
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	var showQuickView = function(id) {
-		console.log(id);
-		$.ajax({
-			type : 'GET',
-			url : 'home/Quick-view/' + id,
-			success : function(product) {
-				$('#exampleModalCenter #QVNameProduct').val(product.SP_TenSP);
-			}
+	$(document).ready(function() {
+		$('#myButtonSP006').click(function() {
+			$.ajax({
+				url : '/api/Quick-view/SP006',
+				type : 'GET',
+				success : function(data) {
+					// Handle successful response
+					console.log(JSON.parse(data));
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					// Handle error response
+					console.log(errorThrown);
+				}
+			});
 		});
-	}
+	});
+// 	var showQuickView = function(id) {
+		// 		$.ajax({
+		// 			type : 'GET',
+		// 			url : '/home/Quick-view/' + id,
+		// 			success: function(result) {
+		// 	            // Handle the returned list of objects
+		// 	            console.log(result);
+		// 	        },
+		// 	        error : function(e) {
+		// 	            console.log("Error: ", e);
+		// 	        }
+		// // 			success : function(data) {
+		// // 				console.log(data)
+		// // // 				$('#exampleModalCenter #QVNameProduct').val(product.SP_TenSP);
+		// // 			}, error : function(data) {
+		// // // 				$('#exampleModalCenter #QVNameProduct').val(product.SP_TenSP);
+		// // 			}
+		// 		});
+// 	}
 </script>
 
 <!-- Begin Quick View | Modal Area -->
@@ -768,7 +794,7 @@
 					<div class="col-lg-7 col-md-6 col-sm-6">
 						<div class="product-details-view-content pt-60">
 							<div class="product-info">
-								<h2 id="QVNameProduct">Today is a good day Framed poster</h2>
+								<h2 id="QVNameProduct">${sanpham}</h2>
 								<span class="product-details-ref">Reference: demo_15</span>
 								<div class="rating-box pt-20">
 									<ul class="rating rating-with-review-item">

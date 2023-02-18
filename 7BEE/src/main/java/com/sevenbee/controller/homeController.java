@@ -8,11 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MimeTypeUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sevenbee.dao.DONHANGDAO;
 import com.sevenbee.dao.DONHANG_SANPHAMDAO;
 import com.sevenbee.dao.LOAISPDAO;
@@ -43,7 +44,7 @@ public class homeController {
 	LOAISPDAO loaispdao;
 
 	@RequestMapping("/")
-	public String home(Model model) throws ServletException, IOException {		
+	public String home(Model model) throws ServletException, IOException {
 		// Lấy ra danh sách sản phẩm mới nhất
 		List<SANPHAM> LatestProducts = sanphamdao.findByLatestProducts(6);
 		for (SANPHAM sanpham : LatestProducts) {
@@ -80,26 +81,27 @@ public class homeController {
 			}
 		}
 		model.addAttribute("Products_ShopRandom", Products_ShopRandom);
-		
 
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}
-	
+
 	private String spitArrImages(String arrImages) {
 		String[] components = arrImages.split("-\\*-");
-		if(components != null) {
+		if (components != null) {
 			return components[0];
 		}
 		return null;
 	}
-	
-	@RequestMapping(value = "home/Quick-view/{id}", method = RequestMethod.GET, produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
-	public ResponseEntity<SANPHAM> find(@PathVariable("id") String id) {
-		System.out.println(id);
-		try {
-			return new ResponseEntity<SANPHAM>(sanphamdao.findProductBySP_MA(id), HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<SANPHAM>(HttpStatus.BAD_REQUEST);
-		}
-	}
+
+//	@GetMapping("/api/Quick-view/{id}")
+//	public String find(@PathVariable("id") String id) {
+//		System.out.println(id);
+////		model.addAttribute("sanpham", sanphamdao.findProductBySP_MA(id));
+////		try {
+////			return new ResponseEntity<>(sanphamdao.findProductBySP_MA(id), HttpStatus.OK);
+////		} catch (Exception e) {
+////			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+////		}
+//		return "hello";
+//	}
 }
