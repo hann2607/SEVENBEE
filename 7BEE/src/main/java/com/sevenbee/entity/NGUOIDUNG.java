@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +35,9 @@ public class NGUOIDUNG {
 	String Email;
 	@NotBlank(message = "Không được để trống họ và tên !")
 	String Ho_ten;
-	String Diachi, Hinhanh;
+	String Diachi,Hinhanh;
+	
+	
 	@NotBlank(message = "Không được để trống mật khẩu !")
 	@Column(length = 60, nullable = false)
 	String Matkhau;
@@ -46,7 +49,7 @@ public class NGUOIDUNG {
 	boolean Vaitro = true, isactive = false;
 	@OneToMany(mappedBy = "SDT", cascade = CascadeType.ALL)
 	List<DONHANG> donhang;
-	@OneToMany
-	@JoinColumn(name = "SDT")
+	
+	@OneToMany(mappedBy = "SDT")
 	List<DANHGIA_TINTUC> danhgia_tintuc;
 }
