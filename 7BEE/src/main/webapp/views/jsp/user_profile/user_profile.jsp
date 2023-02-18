@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
 					<!-- Password chance Form s-->
-					<form:form action="/user/changepassword" modelAttribute="nguoidung">
+					<form:form action="/user/changepassword" modelAttribute="nguoidungpassword">
 						<div class="login-form">
 							<h4 class="login-title">Thay đổi mật khẩu</h4>
 							<div class="row">
@@ -91,16 +91,20 @@
 								</div>
 
 								<div class="col-md-12 mb-20">
-									<label>Địa chỉ</label> <input class="mb-0" type="text"
-										placeholder="địa chỉ" value = "${user.getDiachi()}">
+								
+									<form:label  path="Diachi">Địa chỉ</form:label>
+									<form:input path="Diachi" class="mb-0" type="text"
+										placeholder="địa chỉ" value = "${user.getDiachi()}"/>
 								</div>
 								<div class="col-md-6 mb-20">
-									<label>Ngày Sinh</label> <input class="mb-0" type="date"
-										placeholder="time" value = "${user.getNgaysinh()}" >
+								<form:label  path="Ngaysinh">Ngày Sinh</form:label>
+								<form:input path="Ngaysinh" class="mb-0" type="date"
+										placeholder="time" value = "${user.getNgaysinh()}" />
 								</div>
 								<div class="col-md-6 mb-20">
-									<label>Vai trò</label> <input class="mb-0" type="text"
-										placeholder="" value = "${test111}" disabled >
+								<form:label  path="Vaitro">Vai trò</form:label>
+								<h5 class="mb-0 text-danger" 
+										 >${test111}</h5>
 								</div>
 								<div class="col-12">
 									<button formaction="/user/profile/update" formmethod="post" class="register-button mt-0">Chỉnh sửa</button>
