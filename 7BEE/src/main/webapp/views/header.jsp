@@ -57,30 +57,36 @@
 									<span>TÀI KHOẢN</span>
 								</div>
 								<div class="setting ht-setting">
-									<ul class="ht-setting-list">
-										<div class="d-flex justify-content-center">
-											<img
-												src="https://shopgarena.net/wp-content/uploads/2022/08/${avatar}"
-												alt="" height="100px"
-												style="border-radius: 50%; border: 2px solid black;">
-										</div>
-										<div class="d-flex justify-content-center mt-2">${name}
-										</div>
-										<div class="d-flex justify-content-center">
-											<div style="color: #ccc;">#Người dùng</div>
-										</div>
-										<hr class="mt-3 mb-2">
-										<li class="d-flex justify-content-center"><a
-											href="/user/profile">TÀI KHOẢN</a></li>
-										<li class="d-flex justify-content-center"><a
-											href="login-register.html">LỊCH SỬ</a></li>
-										<li class="d-flex justify-content-center"><a
-											href="/logout">ĐĂNG XUẤT</a></li>
-										<li class="d-none justify-content-center"><a
-											href="login-register.html">ĐĂNG NHẬP</a></li>
-										<li class="d-none justify-content-center"><a
-											href="login-register.html">ĐĂNG KÝ</a></li>
-									</ul>
+									<c:if test="${not empty user}">
+										<ul class="ht-setting-list">
+											<div class="d-flex justify-content-center">
+												<img
+													src="/views/images/team/${user.getHinhanh()}"
+													alt="" height="100px"
+													style="border-radius: 50%; border: 2px solid black;">
+											</div>
+											<div class="d-flex justify-content-center mt-2">${user.getHo_ten()}
+											</div>
+											<div class="d-flex justify-content-center">
+												<div style="color: #ccc;"># ${user.isVaitro() ? 'Admin' : 'Người dùng' }</div>
+											</div>
+											<hr class="mt-3 mb-2">
+											<li class="d-flex justify-content-center"><a
+												href="/user/profile">TÀI KHOẢN</a></li>
+											<li class="d-flex justify-content-center"><a
+												href="login-register.html">LỊCH SỬ</a></li>
+											<li class="d-flex justify-content-center"><a
+												href="/logout">ĐĂNG XUẤT</a></li>
+											
+										</ul>
+									</c:if>
+									<c:if test="${empty user}">
+										<ul class="ht-setting-list">
+											<li class="d-flex justify-content-center"><a
+												href="/login">ĐĂNG NHẬP</a></li>
+										</ul>
+									</c:if>
+
 								</div>
 							</li>
 						</ul>
@@ -171,11 +177,9 @@
 														</div>
 													</div>
 
-												</div>
-<%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
-<!-- 													<i class="fa fa-close"></i> -->
-<!-- 												</button> -->
-												</li>
+												</div> <%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
+												<!-- 													<i class="fa fa-close"></i> --> <!-- 												</button> -->
+											</li>
 										</ul>
 									</c:forEach>
 									<h6 class="my-3 d-flex justify-content-between">

@@ -50,7 +50,6 @@ public class User_profile {
 	@Autowired
 	private AccountService accountService;
 
-	String codeVerify;
 
 //	@GetMapping("/userinfo")
 //	public String getUserInfo(Model model) throws ServletException, IOException {
