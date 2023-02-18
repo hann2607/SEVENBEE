@@ -32,33 +32,17 @@ public class ShopingCartServiceImpl implements ShoppingCartService{
 
 	@Override
 	public void removeProduct(String SP_MA) {
-		SANPHAM sanpham = carts.get(SP_MA);
-		carts.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
 		carts.remove(SP_MA);		
 	}
 
 	@Override
 	public void updateProduct(String SP_MA, int qty) {
-		SANPHAM sanpham = carts.get(SP_MA);
-		SANPHAM sanphamcheck = carts.get(SP_MA).orderProduct(qty - sanpham.getSP_SoLuong());
-		//UPdate or remove product
-		if(qty > 0) {
-			if(sanphamcheck != null) {
-				sanpham.setSP_SoLuong(qty);
-			}
-		} else {
-			carts.remove(SP_MA);
-		}
+		carts.get(SP_MA).setSP_SoLuong(qty);
 		
 	}
 
 	@Override
 	public void clear() {
-		for (String SP_MA : carts.keySet()) {
-			SANPHAM sanpham = carts.get(SP_MA);
-			// Return quantity order into products list
-			carts.get(SP_MA).orderProduct(0 - sanpham.getSP_SoLuong());
-		}
 		carts.clear();
 		
 	}
