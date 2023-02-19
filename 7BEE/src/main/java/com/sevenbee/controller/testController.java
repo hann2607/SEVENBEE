@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sevenbee.dao.SANPHAMDAO;
-import com.sevenbee.entity.CHITIET_SANPHAM;
-import com.sevenbee.entity.LOAISP;
-import com.sevenbee.entity.PARTNER;
 import com.sevenbee.entity.SANPHAM;
 import com.sevenbee.util.JsonUtils;
 
