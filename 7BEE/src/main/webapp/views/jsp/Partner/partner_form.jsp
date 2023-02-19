@@ -60,27 +60,27 @@
 				</div>
 				<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
 					TIN SẢN PHẨM</h3>
-				<form id="addProductForm" enctype="multipart/form-data">
+				<form:form id="addProductForm" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-6">
 							<input type="hidden" name="id">
 							<div class="form-group">
 								<label for="name">Tên</label> 
-								<input type="text"
+								<form:input type="text"
 									class="form-control" name="name" id="name"
-									placeholder="Nhập Tên sản phẩm">
+									placeholder="Nhập Tên sản phẩm"/>
 								<form:errors path="Ho_ten" class="badge badge-danger" />
 							</div>
 							<div class="form-group">
-								<label for="category">Chọn Loại</label> <select
+								<label for="category">Chọn Loại</label> <form:select
 									class="form-control" id="category" name="category">
 									<option>
-								</select>
+								</form:select>
 							</div>
 							<div class="form-group">
-								<label for="price">Giá</label> <input type="number"
-									class="form-control" required name="price" id="price"
-									placeholder="Giá">
+								<label for="price">Giá</label> <form:input type="number"
+									class="form-control" name="price" id="price"
+									placeholder="Giá"/>
 							</div>
 							<div class="form-group">
 								<label for="category">Chọn Kích thước</label> <select
@@ -119,18 +119,18 @@
 							<div class="row d-lg-flex justify-content-center">
 								<div class="file-input btn">
 									<span><i class="fa-regular fa-image"></i> Chọn ảnh</span> <input
-										type="file" multiple onchange="displaySelectedImages(this)">
+										type="file" multiple name="images" onchange="displaySelectedImages(this)">
 								</div>
 							</div>
 						</div>
 
 					</div>
-				</form>
+				</form:form>
 				<div class="modal-footer d-flex justify-content-between">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">
 						<i class="fa-solid fa-right-to-bracket"></i> Đóng tác vụ
 					</button>
-					<button type="button" class="btn btn-success">
+					<button type="button" formaction="" class="btn btn-success">
 						<i class="fa-solid fa-plus"></i> Thêm Sản Phẩm
 					</button>
 				</div>
