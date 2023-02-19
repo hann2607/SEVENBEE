@@ -22,9 +22,9 @@ public class PartnerController {
 	@Autowired
 	RandomService randomService;
 
-	@GetMapping("/partner")
+	@PostMapping("/partner")
 	public String detai_Product(Model model) throws ServletException, IOException {
-		System.out.println(randomService.randomString(5));
+//		System.out.println(randomService.randomString(5));
 		return PageInfo.goSite(model, PageType.SITE_PARTNER);
 	}
 

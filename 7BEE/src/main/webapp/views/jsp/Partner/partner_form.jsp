@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <style>
 .file-input {
 	position: relative;
@@ -39,162 +41,210 @@
 	</div>
 </div>
 <div class="container">
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary mt-3" data-toggle="modal"
-		data-target="#staticBackdrop">THÊM SẢN PHẨM</button>
+	<nav>
+		<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<button class="nav-link active" id="nav-home-tab" data-toggle="tab"
+				data-target="#nav-home" type="button" role="tab"
+				aria-controls="nav-home" aria-selected="true">Home</button>
+			<button class="nav-link" id="nav-profile-tab" data-toggle="tab"
+				data-target="#nav-profile" type="button" role="tab"
+				aria-controls="nav-profile" aria-selected="false">Profile</button>
+			<button class="nav-link" id="nav-contact-tab" data-toggle="tab"
+				data-target="#nav-contact" type="button" role="tab"
+				aria-controls="nav-contact" aria-selected="false">Contact</button>
+		</div>
+	</nav>
+	<div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+			aria-labelledby="nav-home-tab">
+			<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
+				TIN SẢN PHẨM</h3>
+			<form:form method="post">
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group">
+							<form:label for="name">Tên sản phẩm</form:label>
+							<form:input type="text" class="form-control" required name="name"
+								id="name" placeholder="Nhập Tên sản phẩm" />
 
-	<!-- Modal -->
-	<div class="modal fade" id="staticBackdrop" data-backdrop="static"
-		tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel"
-		aria-hidden="true">
-		<div class="modal-dialog modal-lg container-fluid" role="document">
-			<div class="modal-content px-3 container-sm">
-				<div class="modal-header">
-					<h5 class="modal-title" style="margin-left: -20px;"
-						id="staticBackdropLabel">THÊM SẢN PHẨM</h5>
-					<button type="button" class="close" style="margin-right: -20px;"
-						data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
-					TIN SẢN PHẨM</h3>
-				<form enctype="multipart/form-data">
-					<div class="row">
-						<div class="col-6">
-							<div class="form-group">
-								<label for="tensp">Tên sản phẩm</label> <input type="text"
-									class="form-control" name="tensp" id="name"
-									placeholder="Nhập Tên sản phẩm" required />
-								<div class="invalid-feedback">Vui lòng nhập tên đăng nhập.</div>
-							</div>
-							<div class="form-group">
-								<label for="category">Chọn Loại</label> <select
-									class="form-control" id="category" name="category">
-									<option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="price">Giá</label> <input type="number"
-									class="form-control" name="price" id="price" placeholder="Giá" />
-							</div>
-							<div class="form-group">
-								<label for="category">Chọn Kích thước</label> <select
-									class="form-control" id="size" name="size">
-									<option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="category">Chọn Màu sắc</label> <select
-									class="form-control" id="color" name="color">
-									<option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="description">Mô tả</label>
-								<textarea class="form-control" rows="6" name="description"
-									id="description"></textarea>
-							</div>
 						</div>
-						<div class="col-6">
-							<p class="text-center">Ảnh sản phẩm</p>
-
-							<div id="selectedImages" class="carousel slide"
-								data-ride="carousel">
-								<div class="carousel-inner"></div>
-								<a class="carousel-control-prev" href="#selectedImages"
-									role="button" data-slide="prev"> <span
-									class="fa fa-chevron-left fa-lg" style="color: black;"></span>
-									<span class="sr-only">Previous</span>
-								</a> <a class="carousel-control-next" href="#selectedImages"
-									role="button" data-slide="next"> <span
-									class="fa fa-chevron-right fa-lg" style="color: black;"></span>
-									<span class="sr-only">Next</span>
-								</a>
-							</div>
-							<div class="row d-lg-flex justify-content-center">
-								<div class="file-input btn">
-									<span><i class="fa-regular fa-image"></i> Chọn ảnh</span> <input
-										type="file" multiple name="images"
-										onchange="displaySelectedImages(this)">
+						<div class="form-group">
+							<form:label for="category">Chọn Loại</form:label>
+							<form:select class="form-control" id="category" name="category">
+								<option>
+							</form:select>
+						</div>
+						<div class="form-group">
+							<form:label for="price">Giá</form:label>
+							<form:input type="text" class="form-control" required
+								name="price" id="price" />
+						</div>
+						<div class="form-group">
+							<form:label for="category">Kích thước</form:label>
+							<form:input type="text" class="form-control" required name="size"
+								id="price" />
+						</div>
+						<div class="form-group">
+							<form:label for="category">Màu sắc</form:label>
+							<form:input type="text" class="form-control" required
+								name="color" id="price" />
+						</div>
+						<div class="form-group">
+							<form:label for="category">Số lượng</form:label>
+							<form:input type="number" class="form-control" required
+								name="qty" id="qty" />
+						</div>
+						<div class="form-group">
+							<form:label for="description">Mô tả</form:label>
+							<form:textarea class="form-control" rows="4" name="description"
+								id="description"></form:textarea>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="row h-50 d-flex flex-column">
+							<h5 class="text-center mb-0">Ảnh sản phẩm</h5>
+							<div class="d-flex flex-column">
+								<div id="selectedImages" class="carousel slide"
+									data-ride="carousel">
+									<div class="carousel-inner"></div>
+									<a class="carousel-control-prev" href="#selectedImages"
+										role="button" data-slide="prev"> <span
+										class="fa fa-chevron-left fa-lg" style="color: black;"></span>
+										<span class="sr-only">Previous</span>
+									</a> <a class="carousel-control-next" href="#selectedImages"
+										role="button" data-slide="next"> <span
+										class="fa fa-chevron-right fa-lg" style="color: black;"></span>
+										<span class="sr-only">Next</span>
+									</a>
+								</div>
+								<div class="d-lg-flex justify-content-center">
+									<div class="file-input btn">
+										<span><i class="fa-regular fa-image"></i> Chọn ảnh</span> <input
+											type="file" multiple onchange="displaySelectedImages(this)">
+									</div>
 								</div>
 							</div>
 						</div>
-
+						<div class="row h-50">
+							<h5 class="text-center w-100 mb-0">Thông số chi tiết</h5>
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+										<th>Tiêu đề</th>
+										<th>Nội dung</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><form:input type="text" class="form-control"
+											placeholder="Nhập tiêu đề"/></td>
+										<td><form:input type="text" class="form-control"
+											placeholder="Nhập nội dung"/></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="form-control"
+											placeholder="Nhập tiêu đề"></td>
+										<td><input type="text" class="form-control"
+											placeholder="Nhập nội dung"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="form-control"
+											placeholder="Nhập tiêu đề"></td>
+										<td><input type="text" class="form-control"
+											placeholder="Nhập nội dung"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="form-control"
+											placeholder="Nhập tiêu đề"></td>
+										<td><input type="text" class="form-control"
+											placeholder="Nhập nội dung"></td>
+									</tr>
+									<!-- Các hàng tiếp theo tương tự -->
+								</tbody>
+							</table>
+						</div>
 					</div>
-				</form>
-				<div class="modal-footer d-flex justify-content-between">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">
-						<i class="fa-solid fa-right-to-bracket"></i> Đóng tác vụ
-					</button>
-					<button type="submit"
-						class="btn btn-success">
-						<i class="fa-solid fa-plus"></i> Thêm Sản Phẩm
-					</button>
 				</div>
+				<button type="submit" class="btn btn-primary mt-3">THÊM SẢN
+					PHẨM</button>
+			</form:form>
+		</div>
+		<div class="tab-pane fade" id="nav-profile" role="tabpanel"
+			aria-labelledby="nav-profile-tab">
+			<table
+				class="table-hover table mt-3 text-center justify-content-center">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col" class="w-25">Tên SP</th>
+						<th scope="col" class="w-25">Loại</th>
+						<th scope="col" class="w-25">Hình ảnh</th>
+						<th scope="col" class="w-25">Thao tác</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row" class="align-middle">1</th>
+						<td class="align-middle">Loa Bluetooth SamSung</td>
+						<td class="align-middle">Điện Tử</td>
+						<td class="align-middle"><img class="img-thumbnail"
+							width="50%"
+							src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
+						</td>
+						<td colspan="2" class="align-middle">
+							<button formaction="" class="btn btn-lg btn-warning mr-3">
+								<i class="fa-solid fa-pen-to-square"></i> Sửa
+							</button>
+							<button formaction="" class="btn btn-lg btn-danger ">
+								<i class="fa-solid fa-trash-can"></i> Xóa
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="align-middle">1</th>
+						<td class="align-middle">Loa Bluetooth SamSung</td>
+						<td class="align-middle">Điện Tử</td>
+						<td class="align-middle"><img class="img-thumbnail"
+							width="50%"
+							src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
+						</td>
+						<td colspan="2" class="align-middle">
+							<button formaction="" class="btn btn-lg btn-warning mr-3">
+								<i class="fa-solid fa-pen-to-square"></i> Sửa
+							</button>
+							<button formaction="" class="btn btn-lg btn-danger ">
+								<i class="fa-solid fa-trash-can"></i> Xóa
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="align-middle">1</th>
+						<td class="align-middle">Loa Bluetooth SamSung</td>
+						<td class="align-middle">Điện Tử</td>
+						<td class="align-middle"><img class="img-thumbnail"
+							width="50%"
+							src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
+						</td>
+						<td colspan="2" class="align-middle">
+							<button formaction="" class="btn btn-lg btn-warning mr-3">
+								<i class="fa-solid fa-pen-to-square"></i> Sửa
+							</button>
+							<button formaction="" class="btn btn-lg btn-danger ">
+								<i class="fa-solid fa-trash-can"></i> Xóa
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane fade" id="nav-contact" role="tabpanel"
+			aria-labelledby="nav-contact-tab">
+			<div
+				class="d-flex flex-row align-items-center justify-content-center">
+				<img alt="" src="/views/images/team/7bee.png">
+				<h2>Tính năng đang được phát triển</h2>
 			</div>
+
 		</div>
 	</div>
-	<table
-		class="table-hover table mt-3 text-center justify-content-center">
-		<thead class="thead-light">
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col" class="w-25">Tên SP</th>
-				<th scope="col" class="w-25">Loại</th>
-				<th scope="col" class="w-25">Hình ảnh</th>
-				<th scope="col" class="w-25">Thao tác</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row" class="align-middle">1</th>
-				<td class="align-middle">Loa Bluetooth SamSung</td>
-				<td class="align-middle">Điện Tử</td>
-				<td class="align-middle"><img class="img-thumbnail" width="50%"
-					src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
-				</td>
-				<td colspan="2" class="align-middle">
-					<button formaction="" class="btn btn-lg btn-warning mr-3">
-						<i class="fa-solid fa-pen-to-square"></i> Sửa
-					</button>
-					<button formaction="" class="btn btn-lg btn-danger ">
-						<i class="fa-solid fa-trash-can"></i> Xóa
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row" class="align-middle">1</th>
-				<td class="align-middle">Loa Bluetooth SamSung</td>
-				<td class="align-middle">Điện Tử</td>
-				<td class="align-middle"><img class="img-thumbnail" width="50%"
-					src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
-				</td>
-				<td colspan="2" class="align-middle">
-					<button formaction="" class="btn btn-lg btn-warning mr-3">
-						<i class="fa-solid fa-pen-to-square"></i> Sửa
-					</button>
-					<button formaction="" class="btn btn-lg btn-danger ">
-						<i class="fa-solid fa-trash-can"></i> Xóa
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row" class="align-middle">1</th>
-				<td class="align-middle">Loa Bluetooth SamSung</td>
-				<td class="align-middle">Điện Tử</td>
-				<td class="align-middle"><img class="img-thumbnail" width="50%"
-					src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
-				</td>
-				<td colspan="2" class="align-middle">
-					<button formaction="" class="btn btn-lg btn-warning mr-3">
-						<i class="fa-solid fa-pen-to-square"></i> Sửa
-					</button>
-					<button formaction="" class="btn btn-lg btn-danger ">
-						<i class="fa-solid fa-trash-can"></i> Xóa
-					</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
 </div>
