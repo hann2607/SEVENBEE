@@ -22,7 +22,7 @@
 				<div class="col-lg-6 col-12">
 
 					<div class="checkbox-form">
-						<h3>Chi Tiết Thành Toán</h3>
+						<h3>Chi Tiết Thanh Toán</h3>
 						<div class="different-address">
 							<div class="order-notes">
 								<div class="checkout-form-list">
@@ -61,25 +61,25 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="cart_item">
-										<td class="cart-product-name">Laptop<strong
-											class="product-quantity"> × 1</strong></td>
-										<td class="cart-product-total"><span class="amount">£165.00</span></td>
-									</tr>
-									<tr class="cart_item">
-										<td class="cart-product-name">Điện Thoại<strong
-											class="product-quantity"> × 1</strong></td>
-										<td class="cart-product-total"><span class="amount">£165.00</span></td>
-									</tr>
+									<c:forEach var="product" items="${listcarts}">
+										<tr class="cart_item">
+											<td class="cart-product-name">${product.value.SP_TenSP}<strong
+												class="product-quantity"> × ${product.value.SP_SoLuong}</strong></td>
+											<td class="cart-product-total"><span class="amount"><fmt:formatNumber
+													type="number" value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span> VND</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 								<tfoot>
 									<tr class="cart-subtotal">
 										<th>Tổng Phụ của Giỏ Hàng</th>
-										<td><span class="amount">£330.00</span></td>
+										<td><span class="amount"><fmt:formatNumber type="number"
+												value="${sumtotal}"></fmt:formatNumber></span> VND</td>
 									</tr>
 									<tr class="order-total">
 										<th>Tổng Số Đơn Đặt Hàng</th>
-										<td><strong><span class="amount">£215.00</span></strong></td>
+										<td><strong><span class="amount"><fmt:formatNumber type="number"
+												value="${sumtotal}"></fmt:formatNumber></span></strong> VND</td>
 									</tr>
 								</tfoot>
 							</table>

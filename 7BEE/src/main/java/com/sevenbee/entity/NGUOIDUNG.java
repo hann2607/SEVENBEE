@@ -45,7 +45,7 @@ public class NGUOIDUNG {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "Ngaysinh")
-	Date Ngaysinh = new Date();
+	Date Ngaysinh ;
 	boolean Vaitro = true, isactive = false;
 	@OneToMany(mappedBy = "SDT", cascade = CascadeType.ALL)
 	List<DONHANG> donhang;

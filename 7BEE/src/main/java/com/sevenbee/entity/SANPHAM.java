@@ -11,6 +11,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,13 @@ import lombok.NoArgsConstructor;
 public class SANPHAM {
 	@Id
 	String SP_MA;
-	String SP_TenSP, SP_HinhAnh;
+	@NotBlank(message = "Không được để trống tên sản phẩm !")
+	String SP_TenSP; 
+	@NotBlank(message = "Không được để trống hình sản phẩm !")
+	String SP_HinhAnh;
+	@NotBlank(message = "Không được để trống số lượng !")
 	int SP_SoLuong;
+	@NotBlank(message = "Không được để trống giá sản phẩm !")
 	long SP_Gia;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SP_Ngaydang")
@@ -41,8 +47,10 @@ public class SANPHAM {
 	
 	public SANPHAM orderProduct(int SP_SoLuong) {
 		SANPHAM sanpham = null;
-		
+		System.out.println("soluong: " + SP_SoLuong);
+		System.out.println("this: " + this.SP_SoLuong);
 		if(SP_SoLuong <= this.SP_SoLuong) {
+			
 			try {
 				sanpham = (SANPHAM) this.clone();
 				sanpham.setSP_SoLuong(SP_SoLuong);

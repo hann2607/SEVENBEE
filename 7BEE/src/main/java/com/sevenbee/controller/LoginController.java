@@ -86,8 +86,8 @@ public class LoginController {
 			}
 			cookieService.add("username", username, 1);
 			cookieService.add("password", password, 1);
-			session.setAttribute("name", user.getHo_ten());
-			return PageInfo.goSite(model, PageType.HOMEPAGE);
+			session.setAttribute("user", user);
+			return "forward:/";
 		}
 
 	}
@@ -111,7 +111,7 @@ public class LoginController {
 				cookieService.add("password",  nguoidung.getMatkhau(), 1);
 				session.setAttribute("name", nguoidung.getHo_ten());
 				accountService.save(nguoidung);
-				return PageInfo.goSite(model, PageType.HOMEPAGE);
+				return "forward:/";
 			} else {
 				// Báo lỗi tài khoản đã tồn tại
 				model.addAttribute("message", "Tài khoản đã tồn tại");
@@ -124,8 +124,8 @@ public class LoginController {
 	public String getLogout(Model model) throws ServletException, IOException {
 		cookieService.remove("username");
 		cookieService.remove("password");
-		sessionService.remove("name");
-		return PageInfo.goSite(model, PageType.HOMEPAGE);
+		sessionService.remove("user");
+		return "forward:/";
 	}
 
 	public void sendMail(String txtTo, String username, String password) {

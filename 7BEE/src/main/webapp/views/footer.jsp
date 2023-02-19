@@ -15,8 +15,8 @@
 								<img src="/views/images/shipping-icon/1.png" alt="Shipping Icon">
 							</div>
 							<div class="shipping-text">
-								<h2>Free Delivery</h2>
-								<p>And free returns. See checkout for delivery dates.</p>
+								<h2>Miễn phí vận chuyển</h2>
+								<p>Giao và trả hàng hoàn toàn miễn phí, giao hàng nhanh và toàn quốc.</p>
 							</div>
 						</div>
 					</div>
@@ -28,9 +28,8 @@
 								<img src="/views/images/shipping-icon/2.png" alt="Shipping Icon">
 							</div>
 							<div class="shipping-text">
-								<h2>Safe Payment</h2>
-								<p>Pay with the world's most popular and secure payment
-									methods.</p>
+								<h2>Thanh toán an toàn</h2>
+								<p>Thanh toán bằng các phương thức thanh toán phổ biến và an toàn nhất thế giới.</p>
 							</div>
 						</div>
 					</div>
@@ -42,9 +41,8 @@
 								<img src="/views/images/shipping-icon/3.png" alt="Shipping Icon">
 							</div>
 							<div class="shipping-text">
-								<h2>Shop with Confidence</h2>
-								<p>Our Buyer Protection covers your purchasefrom click to
-									delivery.</p>
+								<h2>Mua sắm với sự tin tưởng</h2>
+								<p>Bảo vệ người mua bao gồm giao dịch mua của bạn từ nhấp chuột đến giao hàng.</p>
 							</div>
 						</div>
 					</div>
@@ -56,8 +54,8 @@
 								<img src="/views/images/shipping-icon/4.png" alt="Shipping Icon">
 							</div>
 							<div class="shipping-text">
-								<h2>24/7 Help Center</h2>
-								<p>Have a question? Call a Specialist or chat online.</p>
+								<h2>Trung tâm hỗ trợ 24/7</h2>
+								<p>Nếu bạn có câu hỏi? Hãy gọi cho chuyên gia hoặc trò chuyện trực tuyến.</p>
 							</div>
 						</div>
 					</div>
@@ -109,7 +107,7 @@
 						<div class="footer-block">
 							<h3 class="footer-block-title">VỀ CHÚNG TÔI</h3>
 							<ul>
-								<li><a href="#">THÔNG TIN</a></li>
+								<li><a href="/About-us">THÔNG TIN</a></li>
 								<li><a href="#">CHÍNH SÁCH</a></li>
 								<li><a href="#">GÓP Ý</a></li>
 								<li><a href="#">LIÊN HỆ</a></li>
@@ -181,25 +179,15 @@
 					<!-- Begin Footer Links Area -->
 					<div class="footer-links">
 						<ul>
-							<li><a href="#">Online Shopping</a></li>
-							<li><a href="#">Promotions</a></li>
-							<li><a href="#">My Orders</a></li>
-							<li><a href="#">Help</a></li>
-							<li><a href="#">Customer Service</a></li>
-							<li><a href="#">Support</a></li>
-							<li><a href="#">Most Populars</a></li>
-							<li><a href="#">New Arrivals</a></li>
-							<li><a href="#">Special Products</a></li>
-							<li><a href="#">Manufacturers</a></li>
-							<li><a href="#">Our Stores</a></li>
-							<li><a href="#">Shipping</a></li>
-							<li><a href="#">Payments</a></li>
-							<li><a href="#">Warantee</a></li>
-							<li><a href="#">Refunds</a></li>
-							<li><a href="#">Checkout</a></li>
-							<li><a href="#">Discount</a></li>
-							<li><a href="#">Refunds</a></li>
-							<li><a href="#">Policy Shipping</a></li>
+							<li><a href="/">TRANG CHỦ</a></li>
+							<li><a href="/shop/LSP003">ĐỒ ĐIỆN TỬ</a></li>
+							<li><a href="/shop/LSP002">THỜI TRANG</a></li>
+							<li><a href="/shop/LSP001">ĐỒ ĂN & ĐỒ UỐNG</a></li>
+							<li><a href="#">TIN TỨC</a></li>
+							<li><a href="/About-us">VỀ CHÚNG TÔI</a></li>
+							<li><a href="/contact">LIÊN HỆ</a></li>
+							<li><a href="/ShoppingCart">GIỎ HÀNG</a></li>
+							<li><a href="/checkout">THANH TOÁN</a></li>
 						</ul>
 					</div>
 					<!-- Footer Links Area End Here -->

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.SANPHAMDAO;
 import com.sevenbee.entity.SANPHAM;
+import com.sevenbee.util.DataSharing;
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
@@ -28,11 +29,21 @@ public class ChiTiet_SanPhamController {
 		model.addAttribute("sanpham", sanpham);
 		model.addAttribute("listAnh", sanpham.getSP_HinhAnh());
 		model.addAttribute("mota", sanpham.getCt_sanpham().getCTSP_MoTa());
+		model.addAttribute("sumtotal", total());
+		model.addAttribute("listcarts", DataSharing.cart);
+		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		
 		// Lấy ra danh sách sản phẩm cùng loại mới nhất
 		List<SANPHAM> same_Products = sanphamdao.findProductsByLoaiSP(sanpham.getLoaisp().getLoaiSP_MA().toString(), 6);
 		model.addAttribute("Same_Products", same_Products);
 
 		return PageInfo.goSite(model, PageType.SITE_PRODUCT);
+	}
+	private double total() {
+		double sum = 0;
+		for (SANPHAM sanpham : DataSharing.cart.values()) {
+			sum += sanpham.getSP_Gia() * sanpham.getSP_SoLuong();
+		}
+		return sum;
 	}
 }
