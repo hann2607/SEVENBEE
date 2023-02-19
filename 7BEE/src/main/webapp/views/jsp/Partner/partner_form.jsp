@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <style>
 .file-input {
 	position: relative;
@@ -59,14 +60,16 @@
 				</div>
 				<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
 					TIN SẢN PHẨM</h3>
-				<form enctype="multipart/form-data">
+				<form id="addProductForm" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-6">
+							<input type="hidden" name="id">
 							<div class="form-group">
-								<label for="tensp">Tên sản phẩm</label> <input type="text"
-									class="form-control" name="tensp" id="name"
-									placeholder="Nhập Tên sản phẩm" required />
-								<div class="invalid-feedback">Vui lòng nhập tên đăng nhập.</div>
+								<label for="name">Tên</label> 
+								<input type="text"
+									class="form-control" name="name" id="name"
+									placeholder="Nhập Tên sản phẩm">
+								<form:errors path="Ho_ten" class="badge badge-danger" />
 							</div>
 							<div class="form-group">
 								<label for="category">Chọn Loại</label> <select
@@ -76,7 +79,8 @@
 							</div>
 							<div class="form-group">
 								<label for="price">Giá</label> <input type="number"
-									class="form-control" name="price" id="price" placeholder="Giá" />
+									class="form-control" required name="price" id="price"
+									placeholder="Giá">
 							</div>
 							<div class="form-group">
 								<label for="category">Chọn Kích thước</label> <select
@@ -115,8 +119,7 @@
 							<div class="row d-lg-flex justify-content-center">
 								<div class="file-input btn">
 									<span><i class="fa-regular fa-image"></i> Chọn ảnh</span> <input
-										type="file" multiple name="images"
-										onchange="displaySelectedImages(this)">
+										type="file" multiple onchange="displaySelectedImages(this)">
 								</div>
 							</div>
 						</div>
@@ -127,8 +130,7 @@
 					<button type="button" class="btn btn-danger" data-dismiss="modal">
 						<i class="fa-solid fa-right-to-bracket"></i> Đóng tác vụ
 					</button>
-					<button type="submit"
-						class="btn btn-success">
+					<button type="button" class="btn btn-success">
 						<i class="fa-solid fa-plus"></i> Thêm Sản Phẩm
 					</button>
 				</div>
