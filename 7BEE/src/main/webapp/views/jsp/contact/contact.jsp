@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- Begin Li's Breadcrumb Area -->
 <div class="breadcrumb-area">
 	<div class="container">
@@ -56,26 +59,40 @@
 				<div class="contact-form-content pt-sm-55 pt-xs-55">
 					<h3 class="contact-page-title">GÓP Ý</h3>
 					<div class="contact-form">
-						<form id="contact-form">
+						<form:form action="/contact/feedback" modelAttribute="gopy">
 							<div class="form-group">
-								<label>HỌ VÀ TÊN <span class="required">*</span></label> <input
-									type="text" name="customerName" id="customername" required>
+								<form:label path="GOPY_HoTen">HỌ VÀ TÊN <span
+										class="text-danger">*</span>
+								</form:label>
+								<form:input path="GOPY_HoTen" type="text" name="customerName"
+									id="customername" />
+								<form:errors path="GOPY_HoTen" class="badge badge-danger" />
+
 							</div>
 							<div class="form-group">
-								<label>EMAIL <span class="required">*</span></label> <input
-									type="email" name="customerEmail" id="customerEmail" required>
+								<form:label path="GOPY_email">EMAIL <span
+										class="text-danger">*</span>
+								</form:label>
+								<form:input path="GOPY_email" type="email" name="customerEmail"
+									id="customerEmail" />
+								<form:errors path="GOPY_email" class="badge badge-danger" />
+
 							</div>
 							<div class="form-group mb-30">
-								<label>NỘI DUNG GÓP Ý</label>
-								<textarea name="contactMessage" id="contactMessage"></textarea>
+								<form:label path="NoiDung">NỘI DUNG GÓP Ý</form:label>
+								<form:textarea path="NoiDung" name="contactMessage"
+									id="contactMessage"></form:textarea>
+								<form:errors path="NoiDung" class="badge badge-danger" />
 							</div>
 							<div class="form-group">
-								<button type="submit" value="submit" id="submit"
-									class="li-btn-3" name="submit">GỬI ĐI</button>
+								<button class="li-btn-3" formaction="/contact/feedback">GỬI
+									ĐI</button>
 							</div>
-						</form>
+						</form:form>
 					</div>
-					<p class="form-messege"></p>
+					<c:if test="${not empty message }">
+						<div class="alert alert-success" id="success">${message }</div>
+					</c:if>
 				</div>
 			</div>
 		</div>
