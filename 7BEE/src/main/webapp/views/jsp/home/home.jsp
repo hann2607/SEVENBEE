@@ -683,43 +683,6 @@
 	</div>
 </div>
 <!-- Group Featured Product Area End Here -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-	$(document).ready( function() {
-			$(document).on("click", ".quick-view", function() {
-			$.ajax({
-				url : '/api/Quick-view/' + this.dataset.masp,
-					type : 'GET',
-						success : function(data) {
-							// Handle successful response
-								var arrSP = data.split("-*-");
-								var sanpham = JSON.parse(arrSP[0]);
-								$('#exampleModalCenter #QVNameProduct').text(sanpham.SP_TenSP.toUpperCase());
-								$('#exampleModalCenter #QuickViewPrice').text(commify(sanpham.SP_Gia));
-								$('#exampleModalCenter #image1').prop('src', '/views/images/product/large-size/' + sanpham.SP_HinhAnh);
-								$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
-								$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
-								
-								},
-								
-								error : function(jqXHR, textStatus, errorThrown) {
-								// Handle error response
-								console.log(errorThrown);
-								}
-			});
-		});
-	});
-	
-
-	function commify(n) {
-		var parts = n.toString().split(".");
-		const numberPart = parts[0];
-		const decimalPart = parts[1];
-		const thousands = /\B(?=(\d{3})+(?!\d))/g;
-		return numberPart.replace(thousands, ".")
-				+ (decimalPart ? "," + decimalPart : "");
-	}
-</script>
 
 <!-- Begin Quick View | Modal Area -->
 <div class="modal fade modal-wrapper" id="exampleModalCenter">
