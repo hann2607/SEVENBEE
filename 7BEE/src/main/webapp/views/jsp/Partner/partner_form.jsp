@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <style>
 .file-input {
 	position: relative;
@@ -60,16 +60,16 @@
 				</div>
 				<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
 					TIN SẢN PHẨM</h3>
-				<form method="post">
+				<form id="addProductForm" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-6">
-
 							<input type="hidden" name="id">
 							<div class="form-group">
-								<label for="name">Tên</label> <input type="text"
-									class="form-control" required name="name" id="name"
+								<label for="name">Tên</label> 
+								<input type="text"
+									class="form-control" name="name" id="name"
 									placeholder="Nhập Tên sản phẩm">
-
+								<form:errors path="Ho_ten" class="badge badge-danger" />
 							</div>
 							<div class="form-group">
 								<label for="category">Chọn Loại</label> <select
