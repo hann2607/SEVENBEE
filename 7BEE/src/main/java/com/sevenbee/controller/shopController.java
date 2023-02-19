@@ -31,16 +31,31 @@ public class shopController {
 			throws ServletException, IOException {
 		Pageable pageable = PageRequest.of(page.orElse(0), 9);
 		Page<SANPHAM> pages = sanphamdao.findProductsByLoaiSPAndPage(LoaiSP, pageable);
+
 		model.addAttribute("Pagecurrent", pages.getNumber());
 		model.addAttribute("totalPages", pages.getTotalPages());
-		model.addAttribute("loaiSP", LoaiSP);
 		model.addAttribute("pages", pages);
 		model.addAttribute("sumtotal", total());
 		model.addAttribute("listcarts", DataSharing.cart);
 		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		return PageInfo.goSite(model, PageType.SITE_SHOP);
 	}
-	
+
+	@RequestMapping("/shop/search")
+	public String shopSearch(@RequestParam("page") Optional<Integer> page, @RequestParam("SearchValue") String search,
+			@RequestParam("selectedSearch") String selectedSearch, Model model) throws ServletException, IOException {
+		Pageable pageable = PageRequest.of(page.orElse(0), 9);
+		Page<SANPHAM> pages = searchSP(pageable, search, selectedSearch);
+
+		model.addAttribute("Pagecurrent", pages.getNumber());
+		model.addAttribute("totalPages", pages.getTotalPages());
+		model.addAttribute("pages", pages);
+		model.addAttribute("sumtotal", total());
+		model.addAttribute("listcarts", DataSharing.cart);
+		model.addAttribute("totalProductInCart", DataSharing.cart.size());
+		return PageInfo.goSite(model, PageType.SITE_SHOP);
+	}
+
 	private double total() {
 		double sum = 0;
 		for (SANPHAM sanpham : DataSharing.cart.values()) {
@@ -91,6 +106,25 @@ public class shopController {
 			return sanphamdao.findProductsBy2LoaiSPAndPage("%SON%", "%KEM DƯỠNG DA%", pageable);
 		} else if (maLoai.equalsIgnoreCase("Fpoly")) {
 			return sanphamdao.findProductsBy1LoaiSPAndPage("%FPOLY%", pageable);
+		}
+		return null;
+	}
+
+	private Page<SANPHAM> searchSP(Pageable pageable, String search, String searchSelected) {
+		if(searchSelected.equalsIgnoreCase("all")) {
+			return sanphamdao.findBySearch("%" + search + "%", pageable);
+		} else if(searchSelected.equalsIgnoreCase("all")) {
+			return sanphamdao.findBySearch("%" + search + "%", pageable);
+		} else if(searchSelected.equalsIgnoreCase("DT")) {
+			return sanphamdao.findBySearch("%" + search + "%", pageable);
+		} else if(searchSelected.equalsIgnoreCase("TT")) {
+			return sanphamdao.findBySearch("%" + search + "%", pageable);
+		} else if(searchSelected.equalsIgnoreCase("DADU")) {
+			return sanphamdao.findBySearch("%" + search + "%", pageable);
+		} else if(searchSelected.equalsIgnoreCase("KH")) {
+			return sanphamdao.findBySearch("%" + search + "%", pageable);
+		} else if(searchSelected.equalsIgnoreCase("FPOLY")) {
+			return sanphamdao.findBySearch("%" + search + "%", pageable);
 		}
 		return null;
 	}

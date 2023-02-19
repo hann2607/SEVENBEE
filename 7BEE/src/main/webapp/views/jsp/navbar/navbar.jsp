@@ -39,7 +39,7 @@
 
 				</ul></li>
 			<li><a class="clearafter" href="/About-us">VỀ CHÚNG TÔI</a></li>
-			<li><a href="#">LIÊN HỆ</a></li>
+			<li><a href="/contact">LIÊN HỆ</a></li>
 		</ul>
 	</nav>
 </div>
