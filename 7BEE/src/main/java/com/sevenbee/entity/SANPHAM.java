@@ -23,13 +23,9 @@ import lombok.NoArgsConstructor;
 public class SANPHAM {
 	@Id
 	String SP_MA;
-	
 	String SP_TenSP; 
-	
 	String SP_HinhAnh;
-	
 	int SP_SoLuong;
-	
 	long SP_Gia;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SP_Ngaydang")
