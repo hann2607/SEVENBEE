@@ -63,7 +63,9 @@
 					</div>
 					<!-- product-select-box end -->
 				</div>
-				<h1 class="mt-4 ${pages.totalElements > 0 ? 'd-none' : 'd-block'} text-center">Không có kết quả!</h1>
+				<h1
+					class="mt-4 ${pages.totalElements > 0 ? 'd-none' : 'd-block'} text-center">Không
+					có kết quả!</h1>
 				<!-- shop-top-bar end -->
 				<!-- shop-products-wrapper start -->
 				<div class="shop-products-wrapper">
@@ -204,7 +206,7 @@
 								<div class="col-lg-6 col-md-6">
 									<ul class="pagination-box pt-xs-20 pb-xs-15">
 										<li><a
-											href="${request.getContextPath()}?page=${pages.number <= 0 ? pages.number : pages.number - 1}"
+											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=${pages.number <= 0 ? pages.number : pages.number - 1}"
 											class="Previous"><i class="fa fa-chevron-left"></i> Trước</a></li>
 										<%
 										for (int i = 0; i < Integer.parseInt(request.getAttribute("totalPages").toString()); i += 1) {
@@ -212,13 +214,13 @@
 										<li
 											<%if (Integer.parseInt(request.getAttribute("Pagecurrent").toString()) == i) {%>
 											class="active" <%}%>><a
-											href="${request.getContextPath()}?page=<%=i%>"><%=i + 1%></a></li>
+											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=<%=i%>"><%=i + 1%></a></li>
 										<%
 										}
 										%>
 
 										<li><a
-											href="${request.getContextPath()}?page=${pages.number >= (pages.totalPages -1) ? pages.number : pages.number + 1}"
+											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=${pages.number >= (pages.totalPages -1) ? pages.number : pages.number + 1}"
 											class="Next"> Sau <i class="fa fa-chevron-right"></i></a></li>
 									</ul>
 								</div>
@@ -229,13 +231,14 @@
 				<!-- shop-products-wrapper end -->
 			</div>
 			<div class="col-lg-3 order-2 order-lg-1">
-			<!--sidebar-categores-box start  -->
+				<!--sidebar-categores-box start  -->
 				<div class="sidebar-categores-box">
 					<div class="sidebar-title">
 						<h2>Bộ Lọc</h2>
 					</div>
 					<!-- btn-xoa tat ca-  start -->
-					<button class="btn-clear-all mb-sm-30 mb-xs-30">Làm sạch tất cả</button>
+					<button class="btn-clear-all mb-sm-30 mb-xs-30">Làm sạch
+						tất cả</button>
 					<!-- btn-xoa tat ca- end -->
 					<!-- btn-Loc-start -->
 					<button type="button" class="btn btn-primary btn-sm">Lọc</button>
@@ -288,8 +291,7 @@
 								<ul>
 									<li><span class="white"></span><a href="#">Trắng (1)</a></li>
 									<li><span class="black"></span><a href="#">Đen (1)</a></li>
-									<li><span class="Orange"></span><a href="#">Cam (3)
-									</a></li>
+									<li><span class="Orange"></span><a href="#">Cam (3) </a></li>
 									<li><span class="Blue"></span><a href="#">Xanh (2) </a></li>
 								</ul>
 							</form>
@@ -316,11 +318,11 @@
 				</div>
 
 				<!--sidebar-categores-box end  -->
-				
-				</div>
+
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <!-- Content Wraper Area End Here -->
 

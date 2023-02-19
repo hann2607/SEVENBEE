@@ -117,13 +117,12 @@
 				<!-- Begin Header Middle Right Area -->
 				<div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
 					<!-- Begin Header Middle Searchbox Area -->
-					<form action="/shop/search" class="hm-searchbox" method="post">
+					<form action="/shop/search" class="hm-searchbox" method="get">
 						<select class="nice-select select-search-category" name="selectedSearch">
 							<option value="all">All</option>
 							<option value="DT">ĐỒ ĐIỆN TỬ</option>
 							<option value="TT">THỜI TRANG</option>
 							<option value="DADU">ĐỒ ĂN & ĐỒ UỐNG</option>
-							<option value="KH">KHÁC</option>
 							<option value="FPOLY">ĐỒ DÙNG FPOLY</option>
 
 						</select> <input type="text" placeholder="Nhập để tìm kiếm ..." name="SearchValue">
