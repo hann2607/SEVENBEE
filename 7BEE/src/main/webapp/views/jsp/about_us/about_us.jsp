@@ -246,7 +246,7 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="team-member mb-60 mb-sm-30 mb-xs-30">
 					<div class="team-thumb">
-						<img src="/views/images/team/baohong.jpg" alt="Our Team Member">
+						<img src="/views/images/team/zyro-image.png" alt="Our Team Member">
 					</div>
 					<div class="team-content text-center">
 						<h3>NGUYỄN HOÀNG KHANH</h3>
@@ -265,7 +265,7 @@
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="team-member mb-60 mb-sm-30 mb-xs-30">
 					<div class="team-thumb">
-						<img src="/views/images/team/andanh.png" alt="Our Team Member">
+						<img src="/views/images/team/hinh-anh-che-meo-mat-tham_082100750.jpg" alt="Our Team Member">
 					</div>
 					<div class="team-content text-center">
 						<h3>NGUYỄN NGỌC HÂN</h3>
