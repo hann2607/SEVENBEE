@@ -11,7 +11,7 @@ public class SessionService {
 	HttpSession session;
 	
 	@SuppressWarnings("unchecked")
-	public <T> T get(String name){
+	public <T>T get(String name){
 		return (T) session.getAttribute(name);
 	}
 	public <T>T getValue(String name, T defaultValue){

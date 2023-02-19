@@ -166,9 +166,8 @@
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
 
-												<li><a class="quick-view" 
-													data-masp="${product.SP_MA}" data-toggle="modal" 
-													data-target="#exampleModalCenter" href="#"> <i
+												<li ><a class="quick-view" data-toggle="modal"
+													data-target="#exampleModalCenter" href="#" onclick="showQuickView(${product.SP_MA})"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
 										</div>
@@ -225,7 +224,7 @@
 													href="/addCart/${dhsp.sanpham.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal" data-masp="${dhsp.sanpham.SP_MA}"
+												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -284,7 +283,7 @@
 													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
+												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -340,9 +339,9 @@
 						<span>ĐỒ CÔNG NGHỆ</span>
 					</h2>
 					<ul class="li-sub-category-list">
-						<li class="active"><a href="/shop/category/LT">LAPTOP</a></li>
-						<li><a href="/shop/category/PC">MÁY TÍNH</a></li>
-						<li><a href="/shop/category/DT">ĐIỆN THOẠI</a></li>
+						<li class="active"><a href="shop-left-sidebar.html">LAPTOP</a></li>
+						<li><a href="shop-left-sidebar.html">TV</a></li>
+						<li><a href="shop-left-sidebar.html">ĐIỆN THOẠI</a></li>
 					</ul>
 				</div>
 				<div class="row">
@@ -389,7 +388,7 @@
 													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
+												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -419,9 +418,9 @@
 						<span>THỜI TRANG</span>
 					</h2>
 					<ul class="li-sub-category-list">
-						<li class="active"><a href="/shop/category/QA">QUẦN ÁO</a></li>
-						<li><a href="/shop/category/GD">GIÀY DÉP</a></li>
-						<li><a href="/shop/category/T">TÚI SÁCH</a></li>
+						<li class="active"><a href="shop-left-sidebar.html">ÁO</a></li>
+						<li><a href="shop-left-sidebar.html">QUẦN</a></li>
+						<li><a href="shop-left-sidebar.html">GIÀY</a></li>
 					</ul>
 				</div>
 				<div class="row">
@@ -468,7 +467,7 @@
 													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
+												<li><a class="quick-view" data-toggle="modal"
 													data-target="#exampleModalCenter" href="#"><i
 														class="fa fa-eye"></i></a></li>
 											</ul>
@@ -684,6 +683,19 @@
 </div>
 <!-- Group Featured Product Area End Here -->
 
+<script type="text/javascript">
+	var showQuickView = function(id) {
+		console.log(id);
+		$.ajax({
+			type : 'GET',
+			url : 'home/Quick-view/' + id,
+			success : function(product) {
+				$('#exampleModalCenter #QVNameProduct').val(product.SP_TenSP);
+			}
+		});
+	}
+</script>
+
 <!-- Begin Quick View | Modal Area -->
 <div class="modal fade modal-wrapper" id="exampleModalCenter">
 	<div class="modal-dialog modal-dialog-centered" role="document">
@@ -697,13 +709,36 @@
 					<div class="col-lg-5 col-md-6 col-sm-6">
 						<!-- Product Details Left -->
 						<div class="product-details-left">
-							<div class="product-details-images slider-navigation-1" id="QuickViewImagesLarge">
-								
+							<div class="product-details-images slider-navigation-1">
+								<div class="lg-image">
+									<img src="/views/images/product/large-size/1.jpg"
+										alt="product image">
+								</div>
+								<div class="lg-image">
+									<img src="/views/images/product/large-size/2.jpg"
+										alt="product image">
+								</div>
+								<div class="lg-image">
+									<img src="/views/images/product/large-size/3.jpg"
+										alt="product image">
+								</div>
+								<div class="lg-image">
+									<img src="/views/images/product/large-size/4.jpg"
+										alt="product image">
+								</div>
+								<div class="lg-image">
+									<img src="/views/images/product/large-size/5.jpg"
+										alt="product image">
+								</div>
+								<div class="lg-image">
+									<img src="/views/images/product/large-size/6.jpg"
+										alt="product image">
+								</div>
 							</div>
-							<div class="product-details-thumbs slider-thumbs-1" id="QuickViewImagesThumb">
+							<div class="product-details-thumbs slider-thumbs-1">
 								<div class="sm-image">
 									<img src="/views/images/product/small-size/1.jpg"
-										alt="product image thumb" id="image1">
+										alt="product image thumb">
 								</div>
 								<div class="sm-image">
 									<img src="/views/images/product/small-size/2.jpg"
@@ -733,9 +768,8 @@
 					<div class="col-lg-7 col-md-6 col-sm-6">
 						<div class="product-details-view-content pt-60">
 							<div class="product-info">
-								<h1 id="QVNameProduct"
-									style="color: #0363cd; margin-top: -6%; margin-bottom: 2%"></h1>
-								<span class="product-details-ref" id="QuickViewModalLoaiSP"></span>
+								<h2 id="QVNameProduct">Today is a good day Framed poster</h2>
+								<span class="product-details-ref">Reference: demo_15</span>
 								<div class="rating-box pt-20">
 									<ul class="rating rating-with-review-item">
 										<li><i class="fa fa-star-o"></i></li>
@@ -748,25 +782,30 @@
 									</ul>
 								</div>
 								<div class="price-box pt-20">
-									<span class="new-price new-price-2" id="QuickViewPrice"></span>
-									<span>VNĐ</span>
+									<span class="new-price new-price-2">1000</span> <span>VNĐ</span>
 								</div>
 								<div class="product-desc">
 									<p>
-										<span id="QuickViewmodalmotaSP"></span>
+										<span>100% cotton double printed dress. Black and white
+											striped top and orange high waisted skater skirt bottom.
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											quibusdam corporis, earum facilis et nostrum dolorum
+											accusamus similique eveniet quia pariatur. </span>
 									</p>
 								</div>
 								<div class="product-variants">
-									<div class="">
-										<button type="button" class="btn btn-primary">Xanh</button>
-										<button type="button" class="btn btn-warning">Vàng</button>
-										<button type="button" class="btn btn-dark">Đen</button>
+									<div class="produt-variants-size">
+										<label>Dimension</label> <select class="nice-select">
+											<option value="1" title="S" selected="selected">40x60cm</option>
+											<option value="2" title="M">60x90cm</option>
+											<option value="3" title="L">80x120cm</option>
+										</select>
 									</div>
 								</div>
 								<div class="single-add-to-cart">
 									<form action="#" class="cart-quantity">
 										<div class="quantity">
-											<label>SỐ LƯỢNG</label>
+											<label>Quantity</label>
 											<div class="cart-plus-minus">
 												<input class="cart-plus-minus-box" value="1" type="text">
 												<div class="dec qtybutton">

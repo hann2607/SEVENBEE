@@ -21,7 +21,7 @@
 						<ul>
 							<li><a href="/shop/category/QA">QUẦN ÁO</a></li>
 							<li><a href="/shop/category/GD">GIÀY DÉP</a></li>
-							<li><a href="/shop/category/T">TÚI SÁCH</a></li>
+							<li><a href="/shop/category/T">TÚI</a></li>
 							<li><a href="/shop/category/BL">BALO</a></li>
 							<li><a href="/shop/category/MP">MỸ PHẨM</a></li>
 						</ul></li>
@@ -38,8 +38,8 @@
 					<li><a class="clearafter" href="#">TIN TỨC CỦA TÔI</a></li>
 
 				</ul></li>
-			<li><a class="clearafter" href="/About-us">VỀ CHÚNG TÔI</a></li>
-			<li><a href="/contact">LIÊN HỆ</a></li>
+			<li><a class="clearafter" href="#">VỀ CHÚNG TÔI</a></li>
+			<li><a href="#">LIÊN HỆ</a></li>
 		</ul>
 	</nav>
 </div>
