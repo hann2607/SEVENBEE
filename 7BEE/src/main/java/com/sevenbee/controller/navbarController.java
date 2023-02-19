@@ -17,4 +17,6 @@ public class navbarController {
 	public String aboutUs(Model model) throws ServletException, IOException {
 		return PageInfo.goSite(model, PageType.SITE_ABOUTUS);
 	}
+
+	
 }

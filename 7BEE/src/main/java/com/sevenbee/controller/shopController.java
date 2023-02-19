@@ -31,16 +31,31 @@ public class shopController {
 			throws ServletException, IOException {
 		Pageable pageable = PageRequest.of(page.orElse(0), 9);
 		Page<SANPHAM> pages = sanphamdao.findProductsByLoaiSPAndPage(LoaiSP, pageable);
+
 		model.addAttribute("Pagecurrent", pages.getNumber());
 		model.addAttribute("totalPages", pages.getTotalPages());
-		model.addAttribute("loaiSP", LoaiSP);
 		model.addAttribute("pages", pages);
 		model.addAttribute("sumtotal", total());
 		model.addAttribute("listcarts", DataSharing.cart);
 		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		return PageInfo.goSite(model, PageType.SITE_SHOP);
 	}
-	
+
+	@RequestMapping("/shop/search")
+	public String shopSearch(@RequestParam("page") Optional<Integer> page, @RequestParam("SearchValue") String search,
+			@RequestParam("selectedSearch") String selectedSearch, Model model) throws ServletException, IOException {
+		Pageable pageable = PageRequest.of(page.orElse(0), 9);
+		Page<SANPHAM> pages = searchSP(pageable, search, selectedSearch);
+
+		model.addAttribute("Pagecurrent", pages.getNumber());
+		model.addAttribute("totalPages", pages.getTotalPages());
+		model.addAttribute("pages", pages);
+		model.addAttribute("sumtotal", total());
+		model.addAttribute("listcarts", DataSharing.cart);
+		model.addAttribute("totalProductInCart", DataSharing.cart.size());
+		return PageInfo.goSite(model, PageType.SITE_SHOP);
+	}
+
 	private double total() {
 		double sum = 0;
 		for (SANPHAM sanpham : DataSharing.cart.values()) {
@@ -70,27 +85,45 @@ public class shopController {
 
 	public Page<SANPHAM> checkMaLoai(String maLoai, Pageable pageable) {
 		if (maLoai.equalsIgnoreCase("LT")) {
-			return sanphamdao.findProductsBy1LoaiSPAndPage("%LAPTOP%", pageable);
+			return sanphamdao.findProducts("%LAPTOP%", "", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("PC")) {
-			return sanphamdao.findProductsBy1LoaiSPAndPage("%PC%", pageable);
+			return sanphamdao.findProducts("%PC%", "", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("MH")) {
-			return sanphamdao.findProductsBy1LoaiSPAndPage("%MÀN HÌNH%", pageable);
+			return sanphamdao.findProducts("%MÀN HÌNH%", "", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("DT")) {
-			return sanphamdao.findProductsBy1LoaiSPAndPage("%ĐIỆN THOẠI%", pageable);
+			return sanphamdao.findProducts("%ĐIỆN THOẠI%", "", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("TL")) {
-			return sanphamdao.findProductsBy2LoaiSPAndPage("%TỦ LẠNH%", "%MÁY GIẶT%", pageable);
+			return sanphamdao.findProducts("%TỦ LẠNH%", "%MÁY GIẶT%", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("QA")) {
-			return sanphamdao.findProductsBy2LoaiSPAndPage("%QUẦN%", "%ÁO%", pageable);
+			return sanphamdao.findProducts("%QUẦN%", "%ÁO%", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("GD")) {
-			return sanphamdao.findProductsBy2LoaiSPAndPage("%GIÀY%", "%DÉP%", pageable);
+			return sanphamdao.findProducts("%GIÀY%", "%DÉP%", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("T")) {
-			return sanphamdao.findProductsBy1LoaiSPAndPage("%TÚI%", pageable);
+			return sanphamdao.findProducts("%TÚI%", "", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("BL")) {
-			return sanphamdao.findProductsBy1LoaiSPAndPage("%BALO%", pageable);
+			return sanphamdao.findProducts("%BALO%", "", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("MP")) {
-			return sanphamdao.findProductsBy2LoaiSPAndPage("%SON%", "%KEM DƯỠNG DA%", pageable);
+			return sanphamdao.findProducts("%SON%", "%KEM DƯỠNG DA%", "%%", "%%", pageable);
 		} else if (maLoai.equalsIgnoreCase("Fpoly")) {
-			return sanphamdao.findProductsBy1LoaiSPAndPage("%FPOLY%", pageable);
+			return sanphamdao.findProducts("%FPOLY%", "", "%%", "%%", pageable);
+		}
+		return null;
+	}
+
+	private Page<SANPHAM> searchSP(Pageable pageable, String search, String searchSelected) {
+		if(search == null || search.equals(" ")) {
+			search = "";
+		}
+		if(searchSelected.equalsIgnoreCase("all")) {
+			return sanphamdao.findProducts("%" + search + "%", "", "%%", "%%", pageable);
+		} else if(searchSelected.equalsIgnoreCase("DT")) {
+			return sanphamdao.findProducts("%" + search + "%", "", "%LSP003%", "", pageable);
+		} else if(searchSelected.equalsIgnoreCase("TT")) {
+			return sanphamdao.findProducts("%" + search + "%", "", "%LSP002%", "", pageable);
+		} else if(searchSelected.equalsIgnoreCase("DADU")) {
+			return sanphamdao.findProducts("%" + search + "%", "", "%LSP001%", "", pageable);
+		} else if(searchSelected.equalsIgnoreCase("FPOLY")) {
+			return sanphamdao.findProductsFpoly("%" + search + "%", "%FPOLY%", "%%", "%%", pageable);
 		}
 		return null;
 	}

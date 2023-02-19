@@ -518,14 +518,14 @@
 							<div class="footer-links">
 								<ul>
 									<li><a href="/">TRANG CHỦ</a></li>
-									<li><a href="#">ĐỒ ĐIỆN TỬ</a></li>
-									<li><a href="#">THỜI TRANG</a></li>
-									<li><a href="#">ĐỒ ĂN & ĐỒ UỐNG</a></li>
+									<li><a href="/shop/LSP003">ĐỒ ĐIỆN TỬ</a></li>
+									<li><a href="/shop/LSP002">THỜI TRANG</a></li>
+									<li><a href="/shop/LSP001">ĐỒ ĂN & ĐỒ UỐNG</a></li>
 									<li><a href="#">TIN TỨC</a></li>
 									<li><a href="/About-us">VỀ CHÚNG TÔI</a></li>
-									<li><a href="#">LIÊN HỆ</a></li>
-									<li><a href="#">GIỎ HÀNG</a></li>
-									<li><a href="#">THANH TOÁN</a></li>
+									<li><a href="/contact">LIÊN HỆ</a></li>
+									<li><a href="/ShoppingCart">GIỎ HÀNG</a></li>
+									<li><a href="/checkout">THANH TOÁN</a></li>
 								</ul>
 							</div>
 							<!-- Footer Links Area End Here -->
