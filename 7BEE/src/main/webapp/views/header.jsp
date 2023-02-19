@@ -57,30 +57,36 @@
 									<span>TÀI KHOẢN</span>
 								</div>
 								<div class="setting ht-setting">
-									<ul class="ht-setting-list">
-										<div class="d-flex justify-content-center">
-											<img
-												src="https://shopgarena.net/wp-content/uploads/2022/08/Hinh-nen-Yasuo-chibi.jpg"
-												alt="" height="100px"
-												style="border-radius: 50%; border: 2px solid black;">
-										</div>
-										<div class="d-flex justify-content-center mt-2">${name}
-										</div>
-										<div class="d-flex justify-content-center">
-											<div style="color: #ccc;">#Người dùng</div>
-										</div>
-										<hr class="mt-3 mb-2">
-										<li class="d-flex justify-content-center"><a
-											href="/user/profile">TÀI KHOẢN</a></li>
-										<li class="d-flex justify-content-center"><a
-											href="login-register.html">LỊCH SỬ</a></li>
-										<li class="d-flex justify-content-center"><a
-											href="/logout">ĐĂNG XUẤT</a></li>
-										<li class="d-none justify-content-center"><a
-											href="login-register.html">ĐĂNG NHẬP</a></li>
-										<li class="d-none justify-content-center"><a
-											href="login-register.html">ĐĂNG KÝ</a></li>
-									</ul>
+									<c:if test="${not empty user}">
+										<ul class="ht-setting-list">
+											<div class="d-flex justify-content-center">
+												<img
+													src="/views/images/team/${user.getHinhanh()}"
+													alt="" height="100px"
+													style="border-radius: 50%; border: 2px solid black;">
+											</div>
+											<div class="d-flex justify-content-center mt-2">${user.getHo_ten()}
+											</div>
+											<div class="d-flex justify-content-center">
+												<div style="color: #ccc;"># ${user.isVaitro() ? 'Admin' : 'Người dùng' }</div>
+											</div>
+											<hr class="mt-3 mb-2">
+											<li class="d-flex justify-content-center"><a
+												href="/user/profile">TÀI KHOẢN</a></li>
+											<li class="d-flex justify-content-center"><a
+												href="login-register.html">LỊCH SỬ</a></li>
+											<li class="d-flex justify-content-center"><a
+												href="/logout">ĐĂNG XUẤT</a></li>
+											
+										</ul>
+									</c:if>
+									<c:if test="${empty user}">
+										<ul class="ht-setting-list">
+											<li class="d-flex justify-content-center"><a
+												href="/login">ĐĂNG NHẬP</a></li>
+										</ul>
+									</c:if>
+
 								</div>
 							</li>
 						</ul>
@@ -98,8 +104,12 @@
 				<!-- Begin Header Logo Area -->
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
-						<a href="/"> <img src="/views/images/menu/logo/logo-final.png"
-							alt="">
+
+						<a href="/"> <img
+							src="/views/images/menu/logo/logo-final.png" alt="">
+
+
+
 						</a>
 					</div>
 				</div>
@@ -107,24 +117,16 @@
 				<!-- Begin Header Middle Right Area -->
 				<div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
 					<!-- Begin Header Middle Searchbox Area -->
-					<form action="#" class="hm-searchbox">
-						<select class="nice-select select-search-category">
-							<option value="0">All</option>
-							<option value="1">Đồ công nghệ</option>
-							<option value="2">Đồ ăn, thực phẩm</option>
-							<option value="3">Thời trang</option>
-							<option value="4">Giải trí, thể thao</option>
-							<option value="5">Đồ gia dụng nội thất</option>
-							<option value="6">Bất động sản</option>
-							<option value="7">Xe cộ</option>
-							<option value="8">Việc làm</option>
-							<option value="9">Thú cưng</option>
-							<option value="10">Tủ lạnh, máy giặt</option>
-							<option value="11">Đồ võ Fpoly</option>
-							<option value="12">Sách cũ</option>
+					<form action="/shop/search" class="hm-searchbox" method="get">
+						<select class="nice-select select-search-category" name="selectedSearch">
+							<option value="all">All</option>
+							<option value="DT">ĐỒ ĐIỆN TỬ</option>
+							<option value="TT">THỜI TRANG</option>
+							<option value="DADU">ĐỒ ĂN & ĐỒ UỐNG</option>
+							<option value="FPOLY">ĐỒ DÙNG FPOLY</option>
 
-						</select> <input type="text" placeholder="Nhập để tìm kiếm ...">
-						<button class="li-btn" type="submit">
+						</select> <input type="text" placeholder="Nhập để tìm kiếm ..." name="SearchValue">
+						<button class="li-btn" type="submit" formaction="/shop/search">
 							<i class="fa fa-search"></i>
 						</button>
 					</form>
@@ -133,7 +135,7 @@
 					<div class="header-middle-right">
 						<ul class="hm-menu">
 							<!-- Begin Header Middle Wishlist Area -->
-							<li class="hm-wishlist"><a href="wishlist.html"> <span
+							<li class="hm-wishlist"><a href="#"> <span
 									class="cart-item-count wishlist-item-count">0</span> <i
 									class="fa fa-heart-o"></i>
 							</a></li>
@@ -141,68 +143,49 @@
 							<!-- Begin Header Mini Cart Area -->
 							<li class="hm-minicart">
 								<div class="hm-minicart-trigger">
-									<span class="item-icon"></span> <span class="item-text">80tr
-										<span class="cart-item-count">2</span>
+									<span class="item-icon"></span> <span class="item-text">GIỎ
+										HÀNG <span class="cart-item-count">${listcarts == null ? '0' : totalProductInCart}</span>
 									</span>
 								</div> <span></span>
 								<div class="minicart">
-									<ul class="minicart-product-list">
-										<li><a href=""
-											class="minicart-product-image"> <img
-												src="/views/images/product/large-size/${product.SP_HinhAnh}"
-												alt="cart products">
-										</a>
-											<div class="minicart-product-details">
-												<h6>
-													<a href="single-product.html"></a>
-												</h6>
-												<div class="d-flex justify-content-between">
-													<span>${product.SP_SoLuong}</span>
-													<div>
-														<span><fmt:formatNumber type="number"
-																value="${product.SP_Gia}"></fmt:formatNumber></span><span>
-															VNĐ</span>
-													</div>
-												</div>
+									<c:forEach var="product" items="${listcarts}">
+										<ul class="minicart-product-list">
 
-											</div>
-											<button class="close">
-												<i class="fa fa-close"></i>
-											</button></li>
-										<li><a href="single-product.html"
-											class="minicart-product-image"> <img
-												src="/views/images/product/small-size/2.jpg"
-												alt="cart products">
-										</a>
-											<div class="minicart-product-details">
-												<h6>
-													<a href="single-product.html">Aenean eu tristique</a>
-												</h6>
-												<div class="d-flex justify-content-between">
-													<span>x 1</span>
-													<div>
-														<span>40000000</span><span> VNĐ</span>
+											<li><a href="single-product.html"
+												class="minicart-product-image"> <img
+													src="/views/images/product/large-size/${product.value.SP_HinhAnh}"
+													alt="cart products">
+											</a>
+												<div class="minicart-product-details">
+													<h6>
+														<a href="single-product.html">${product.value.SP_TenSP}</a>
+													</h6>
+													<div class="d-flex justify-content-between">
+														<span>x ${product.value.SP_SoLuong}</span>
+														<div>
+															<span><fmt:formatNumber type="number"
+																	value="${product.value.SP_Gia}"></fmt:formatNumber></span><span>
+																VNĐ</span>
+														</div>
 													</div>
-												</div>
 
-											</div>
-											<button class="close">
-												<i class="fa fa-close"></i>
-											</button></li>
-									</ul>
+												</div> <%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
+												<!-- 													<i class="fa fa-close"></i> --> <!-- 												</button> -->
+											</li>
+										</ul>
+									</c:forEach>
 									<h6 class="my-3 d-flex justify-content-between">
 										TỔNG TIỀN:
 										<div>
 											<span><fmt:formatNumber type="number"
-													value=""></fmt:formatNumber></span><span>
-												VNĐ</span>
+													value="${sumtotal}"></fmt:formatNumber></span><span> VNĐ</span>
 										</div>
 									</h6>
 									<div class="minicart-button">
 										<a href="/ShoppingCart"
 											class="li-button li-button-dark li-button-fullwidth li-button-sm">
 											<span>XEM GIỎ HÀNG</span>
-										</a> <a href="checkout.html"
+										</a> <a href="/checkout"
 											class="li-button li-button-fullwidth li-button-sm"> <span>THANH
 												TOÁN</span>
 										</a>

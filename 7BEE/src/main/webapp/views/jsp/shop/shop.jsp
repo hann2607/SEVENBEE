@@ -63,7 +63,9 @@
 					</div>
 					<!-- product-select-box end -->
 				</div>
-				<h1 class="mt-4 ${pages.totalElements > 0 ? 'd-none' : 'd-block'} text-center">Không có kết quả!</h1>
+				<h1
+					class="mt-4 ${pages.totalElements > 0 ? 'd-none' : 'd-block'} text-center">Không
+					có kết quả!</h1>
 				<!-- shop-top-bar end -->
 				<!-- shop-products-wrapper start -->
 				<div class="shop-products-wrapper">
@@ -117,9 +119,8 @@
 															<li><a class="links-details" href="#"><i
 																	class="fa fa-heart-o"></i></a></li>
 
-															<li><a class="quick-view" data-toggle="modal"
-																data-target="#exampleModalCenter" href="#"
-																onclick="showQuickView(${product.SP_MA})"><i
+															<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
+																data-target="#exampleModalCenter" href="#"><i
 																	class="fa fa-eye"></i></a></li>
 														</ul>
 													</div>
@@ -183,7 +184,7 @@
 															href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 														<li class="wishlist"><a href="wishlist.html"><i
 																class="fa fa-heart-o"></i>YÊU THÍCH</a></li>
-														<li><a class="quick-view" data-toggle="modal"
+														<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
 															data-target="#exampleModalCenter" href="#"><i
 																class="fa fa-eye"></i>XEM NHANH</a></li>
 													</ul>
@@ -204,7 +205,7 @@
 								<div class="col-lg-6 col-md-6">
 									<ul class="pagination-box pt-xs-20 pb-xs-15">
 										<li><a
-											href="${request.getContextPath()}?page=${pages.number <= 0 ? pages.number : pages.number - 1}"
+											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=${pages.number <= 0 ? pages.number : pages.number - 1}"
 											class="Previous"><i class="fa fa-chevron-left"></i> Trước</a></li>
 										<%
 										for (int i = 0; i < Integer.parseInt(request.getAttribute("totalPages").toString()); i += 1) {
@@ -212,13 +213,13 @@
 										<li
 											<%if (Integer.parseInt(request.getAttribute("Pagecurrent").toString()) == i) {%>
 											class="active" <%}%>><a
-											href="${request.getContextPath()}?page=<%=i%>"><%=i + 1%></a></li>
+											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=<%=i%>"><%=i + 1%></a></li>
 										<%
 										}
 										%>
 
 										<li><a
-											href="${request.getContextPath()}?page=${pages.number >= (pages.totalPages -1) ? pages.number : pages.number + 1}"
+											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=${pages.number >= (pages.totalPages -1) ? pages.number : pages.number + 1}"
 											class="Next"> Sau <i class="fa fa-chevron-right"></i></a></li>
 									</ul>
 								</div>
@@ -229,13 +230,14 @@
 				<!-- shop-products-wrapper end -->
 			</div>
 			<div class="col-lg-3 order-2 order-lg-1">
-			<!--sidebar-categores-box start  -->
+				<!--sidebar-categores-box start  -->
 				<div class="sidebar-categores-box">
 					<div class="sidebar-title">
 						<h2>Bộ Lọc</h2>
 					</div>
 					<!-- btn-xoa tat ca-  start -->
-					<button class="btn-clear-all mb-sm-30 mb-xs-30">Làm sạch tất cả</button>
+					<button class="btn-clear-all mb-sm-30 mb-xs-30">Làm sạch
+						tất cả</button>
 					<!-- btn-xoa tat ca- end -->
 					<!-- btn-Loc-start -->
 					<button type="button" class="btn btn-primary btn-sm">Lọc</button>
@@ -288,8 +290,7 @@
 								<ul>
 									<li><span class="white"></span><a href="#">Trắng (1)</a></li>
 									<li><span class="black"></span><a href="#">Đen (1)</a></li>
-									<li><span class="Orange"></span><a href="#">Cam (3)
-									</a></li>
+									<li><span class="Orange"></span><a href="#">Cam (3) </a></li>
 									<li><span class="Blue"></span><a href="#">Xanh (2) </a></li>
 								</ul>
 							</form>
@@ -316,11 +317,11 @@
 				</div>
 
 				<!--sidebar-categores-box end  -->
-				
-				</div>
+
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <!-- Content Wraper Area End Here -->
 
@@ -337,49 +338,32 @@
 					<div class="col-lg-5 col-md-6 col-sm-6">
 						<!-- Product Details Left -->
 						<div class="product-details-left">
-							<div class="product-details-images slider-navigation-1">
-								<div class="lg-image">
-									<img src="images/product/large-size/1.jpg" alt="product image">
-								</div>
-								<div class="lg-image">
-									<img src="images/product/large-size/2.jpg" alt="product image">
-								</div>
-								<div class="lg-image">
-									<img src="images/product/large-size/3.jpg" alt="product image">
-								</div>
-								<div class="lg-image">
-									<img src="images/product/large-size/4.jpg" alt="product image">
-								</div>
-								<div class="lg-image">
-									<img src="images/product/large-size/5.jpg" alt="product image">
-								</div>
-								<div class="lg-image">
-									<img src="images/product/large-size/6.jpg" alt="product image">
-								</div>
+							<div class="product-details-images slider-navigation-1" id="QuickViewImagesLarge">
+								
 							</div>
-							<div class="product-details-thumbs slider-thumbs-1">
+							<div class="product-details-thumbs slider-thumbs-1" id="QuickViewImagesThumb">
 								<div class="sm-image">
-									<img src="images/product/small-size/1.jpg"
+									<img src="/views/images/product/small-size/1.jpg"
+										alt="product image thumb" id="image1">
+								</div>
+								<div class="sm-image">
+									<img src="/views/images/product/small-size/2.jpg"
 										alt="product image thumb">
 								</div>
 								<div class="sm-image">
-									<img src="images/product/small-size/2.jpg"
+									<img src="/views/images/product/small-size/3.jpg"
 										alt="product image thumb">
 								</div>
 								<div class="sm-image">
-									<img src="images/product/small-size/3.jpg"
+									<img src="/views/images/product/small-size/4.jpg"
 										alt="product image thumb">
 								</div>
 								<div class="sm-image">
-									<img src="images/product/small-size/4.jpg"
+									<img src="/views/images/product/small-size/5.jpg"
 										alt="product image thumb">
 								</div>
 								<div class="sm-image">
-									<img src="images/product/small-size/5.jpg"
-										alt="product image thumb">
-								</div>
-								<div class="sm-image">
-									<img src="images/product/small-size/6.jpg"
+									<img src="/views/images/product/small-size/6.jpg"
 										alt="product image thumb">
 								</div>
 							</div>
@@ -390,8 +374,9 @@
 					<div class="col-lg-7 col-md-6 col-sm-6">
 						<div class="product-details-view-content pt-60">
 							<div class="product-info">
-								<h2>Today is a good day Framed poster</h2>
-								<span class="product-details-ref">Reference: demo_15</span>
+								<h1 id="QVNameProduct"
+									style="color: #0363cd; margin-top: -6%; margin-bottom: 2%"></h1>
+								<span class="product-details-ref" id="QuickViewModalLoaiSP"></span>
 								<div class="rating-box pt-20">
 									<ul class="rating rating-with-review-item">
 										<li><i class="fa fa-star-o"></i></li>
@@ -399,35 +384,30 @@
 										<li><i class="fa fa-star-o"></i></li>
 										<li class="no-star"><i class="fa fa-star-o"></i></li>
 										<li class="no-star"><i class="fa fa-star-o"></i></li>
-										<li class="review-item"><a href="#">Read Review</a></li>
-										<li class="review-item"><a href="#">Write Review</a></li>
+										<li class="review-item"><a href="#">XEM ĐÁNH GIÁ</a></li>
+										<li class="review-item"><a href="#">ĐÁNH GIÁ</a></li>
 									</ul>
 								</div>
 								<div class="price-box pt-20">
-									<span class="new-price new-price-2">$57.98</span>
+									<span class="new-price new-price-2" id="QuickViewPrice"></span>
+									<span>VNĐ</span>
 								</div>
 								<div class="product-desc">
 									<p>
-										<span>100% cotton double printed dress. Black and white
-											striped top and orange high waisted skater skirt bottom.
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-											quibusdam corporis, earum facilis et nostrum dolorum
-											accusamus similique eveniet quia pariatur. </span>
+										<span id="QuickViewmodalmotaSP"></span>
 									</p>
 								</div>
 								<div class="product-variants">
-									<div class="produt-variants-size">
-										<label>Dimension</label> <select class="nice-select">
-											<option value="1" title="S" selected="selected">40x60cm</option>
-											<option value="2" title="M">60x90cm</option>
-											<option value="3" title="L">80x120cm</option>
-										</select>
+									<div class="">
+										<button type="button" class="btn btn-primary">Xanh</button>
+										<button type="button" class="btn btn-warning">Vàng</button>
+										<button type="button" class="btn btn-dark">Đen</button>
 									</div>
 								</div>
 								<div class="single-add-to-cart">
 									<form action="#" class="cart-quantity">
 										<div class="quantity">
-											<label>Quantity</label>
+											<label>SỐ LƯỢNG</label>
 											<div class="cart-plus-minus">
 												<input class="cart-plus-minus-box" value="1" type="text">
 												<div class="dec qtybutton">
@@ -438,12 +418,13 @@
 												</div>
 											</div>
 										</div>
-										<button class="add-to-cart" type="submit">Add to cart</button>
+										<button class="add-to-cart" type="submit">THÊM VÀO
+											GIỎ HÀNG</button>
 									</form>
 								</div>
 								<div class="product-additional-info pt-25">
-									<a class="wishlist-btn" href="wishlist.html"><i
-										class="fa fa-heart-o"></i>Add to wishlist</a>
+									<a class="wishlist-btn" href="/views/wishlist.html"><i
+										class="fa fa-heart-o"></i>THÊM VÀO YÊU THÍCH</a>
 									<div class="product-social-sharing pt-25">
 										<ul>
 											<li class="facebook"><a href="#"><i
@@ -465,4 +446,4 @@
 		</div>
 	</div>
 </div>
-<!-- Quick View | Modal Area End Here -->
+<!-- Begin Quick View | Modal Area End Here-->

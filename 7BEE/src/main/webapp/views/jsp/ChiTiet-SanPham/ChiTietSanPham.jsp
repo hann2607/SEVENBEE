@@ -7,8 +7,8 @@
 	<div class="container">
 		<div class="breadcrumb-content">
 			<ul>
-				<li><a href="/">Home</a></li>
-				<li class="active">Product Detail</li>
+				<li><a href="/">TRANG CHỦ</a></li>
+				<li class="active">CHI TIẾT SẢN PHẨM</li>
 			</ul>
 		</div>
 	</div>
@@ -67,7 +67,7 @@
 						</div>
 						<div class="product-desc">
 							<p>
-								<span>No data</span>
+								<span>${sanpham.getCt_sanpham().getCTSP_ThongTinThem()}</span>
 							</p>
 						</div>
 						<div class="single-add-to-cart">
@@ -89,7 +89,7 @@
 										</div>
 									</div>
 								</div>
-								<button class="add-to-cart" type="submit">Thêm Vào Giỏ
+								<button class="add-to-cart"  type="submit">Thêm Vào Giỏ
 									Hàng</button>
 							</form>
 						</div>

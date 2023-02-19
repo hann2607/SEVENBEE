@@ -1462,7 +1462,6 @@ textarea:focus {
 	position: relative;
 }
 .select-search-category ul.list {
-	height: 440px;
 	overflow-y: auto;
 	overscroll-behavior-x: none;
 }
