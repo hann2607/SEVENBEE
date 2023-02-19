@@ -340,9 +340,9 @@
 						<span>ĐỒ CÔNG NGHỆ</span>
 					</h2>
 					<ul class="li-sub-category-list">
-						<li class="active"><a href="shop-left-sidebar.html">LAPTOP</a></li>
-						<li><a href="shop-left-sidebar.html">TV</a></li>
-						<li><a href="shop-left-sidebar.html">ĐIỆN THOẠI</a></li>
+						<li class="active"><a href="/shop/category/LT">LAPTOP</a></li>
+						<li><a href="/shop/category/PC">MÁY TÍNH</a></li>
+						<li><a href="/shop/category/DT">ĐIỆN THOẠI</a></li>
 					</ul>
 				</div>
 				<div class="row">
@@ -419,9 +419,9 @@
 						<span>THỜI TRANG</span>
 					</h2>
 					<ul class="li-sub-category-list">
-						<li class="active"><a href="shop-left-sidebar.html">ÁO</a></li>
-						<li><a href="shop-left-sidebar.html">QUẦN</a></li>
-						<li><a href="shop-left-sidebar.html">GIÀY</a></li>
+						<li class="active"><a href="/shop/category/QA">QUẦN ÁO</a></li>
+						<li><a href="/shop/category/GD">GIÀY DÉP</a></li>
+						<li><a href="/shop/category/T">TÚI SÁCH</a></li>
 					</ul>
 				</div>
 				<div class="row">
@@ -686,7 +686,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
-// 		for(let i = 0; i < $('.quick-view').length; i++) {
 			$(document).on("click", ".quick-view", function() {
 			$.ajax({
 				url : '/api/Quick-view/' + this.dataset.masp,
@@ -700,6 +699,7 @@
 								$('#exampleModalCenter #image1').prop('src', '/views/images/product/large-size/' + sanpham.SP_HinhAnh);
 								$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
 								$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
+								
 								},
 								
 								error : function(jqXHR, textStatus, errorThrown) {
@@ -708,7 +708,6 @@
 								}
 			});
 		});
-// 		}
 	});
 	
 

@@ -14,6 +14,10 @@ public interface SANPHAMDAO extends JpaRepository<SANPHAM, String> {
 	@Query("SELECT sp FROM SANPHAM sp ORDER BY sp.SP_Ngaydang DESC LIMIT ?1")
 	List<SANPHAM> findByLatestProducts(int limit);
 
+	// Lấy ra danh sách sản phẩm mới nhất cho hàm search
+	@Query("SELECT sp FROM SANPHAM sp WHERE sp.SP_TenSP LIKE ?1 ORDER BY sp.SP_Ngaydang DESC")
+	Page<SANPHAM> findBySearch(String search, Pageable pageable);
+
 	// Lấy ra danh sách sản phẩm theo loại mới nhất
 	@Query("SELECT sp FROM SANPHAM sp WHERE sp.loaisp.LoaiSP_MA=?1 ORDER BY sp.SP_Ngaydang DESC LIMIT ?2")
 	List<SANPHAM> findProductsByLoaiSP(String LoaiSP_MA, int limit);
@@ -34,4 +38,8 @@ public interface SANPHAMDAO extends JpaRepository<SANPHAM, String> {
 	@Query("SELECT sp FROM SANPHAM sp WHERE sp.SP_TenSP LIKE ?1 OR sp.SP_TenSP LIKE ?2")
 	Page<SANPHAM> findProductsBy2LoaiSPAndPage(String LoaiSP_MA1, String LoaiSP_MA2, Pageable pageable);
 
+	
+	// Lấy ra danh sách sản phẩm theo loại
+//		@Query("SELECT sp FROM SANPHAM sp WHERE sp.loaisp.LoaiSP_MA=?1 AND sp.SP_TenSP LIKE ?2")
+//		Page<SANPHAM> findProductsByLoaiSPAndPage(String LoaiSP_MA, String TenSP, Pageable pageable);
 }
