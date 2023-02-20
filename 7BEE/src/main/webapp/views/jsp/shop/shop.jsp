@@ -113,16 +113,23 @@
 														</div>
 													</div>
 													<div class="add-actions">
-														<ul class="add-actions-link">
-															<li class="add-cart active"><a
-																href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
-															<li><a class="links-details" href="#"><i
-																	class="fa fa-heart-o"></i></a></li>
+														<form action="/addCart" class="cart-quantity"
+															method="post">
+															<input id="maspQuickView" hidden="true"
+																value="${product.SP_MA}" name="masp"> <input
+																value="1" type="number" name="quantity" hidden="true">
+															<ul class="add-actions-link">
+																<li class="add-cart active"><button type="submit">THÊM
+																		VÀO GIỎ</button></li>
+																<li><a class="links-details" href="#"><i
+																		class="fa fa-heart-o"></i></a></li>
 
-															<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
-																data-target="#exampleModalCenter" href="#"><i
-																	class="fa fa-eye"></i></a></li>
-														</ul>
+																<li><a class="quick-view" data-toggle="modal"
+																	data-masp="${product.SP_MA}"
+																	data-target="#exampleModalCenter" href="#"><i
+																		class="fa fa-eye"></i></a></li>
+															</ul>
+														</form>
 													</div>
 												</div>
 											</div>
@@ -184,7 +191,8 @@
 															href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
 														<li class="wishlist"><a href="wishlist.html"><i
 																class="fa fa-heart-o"></i>YÊU THÍCH</a></li>
-														<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
+														<li><a class="quick-view" data-toggle="modal"
+															data-masp="${product.SP_MA}"
 															data-target="#exampleModalCenter" href="#"><i
 																class="fa fa-eye"></i>XEM NHANH</a></li>
 													</ul>
@@ -213,7 +221,7 @@
 										<li
 											<%if (Integer.parseInt(request.getAttribute("Pagecurrent").toString()) == i) {%>
 											class="active" <%}%>><a
-											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=<%=i%>"><%=i + 1%></a></li>
+											href="<%=request.getContextPath()%>?selectedSearch=<%=request.getParameter("selectedSearch")%>&SearchValue=<%=request.getParameter("SearchValue")%>&page=<%=i%>"><%=i + 1%></a></li>
 										<%
 										}
 										%>
@@ -338,10 +346,10 @@
 					<div class="col-lg-5 col-md-6 col-sm-6">
 						<!-- Product Details Left -->
 						<div class="product-details-left">
-							<div class="product-details-images slider-navigation-1" id="QuickViewImagesLarge">
-								
-							</div>
-							<div class="product-details-thumbs slider-thumbs-1" id="QuickViewImagesThumb">
+							<div class="product-details-images slider-navigation-1"
+								id="QuickViewImagesLarge"></div>
+							<div class="product-details-thumbs slider-thumbs-1"
+								id="QuickViewImagesThumb">
 								<div class="sm-image">
 									<img src="/views/images/product/small-size/1.jpg"
 										alt="product image thumb" id="image1">

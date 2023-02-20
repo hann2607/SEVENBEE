@@ -25,11 +25,10 @@
 						<%
 						String inputIMG = (String) request.getAttribute("listAnh");
 						String[] listIMG = inputIMG.split("-\\*-");
-						for (int i = 0; i < listIMG.length; i ++) {
+						for (int i = 0; i < listIMG.length; i++) {
 						%>
 						<div class="lg-image">
-							<img
-								src="/views/images/product/large-size/<%=listIMG[i]%>"
+							<img src="/views/images/product/large-size/<%=listIMG[i]%>"
 								alt="product image">
 						</div>
 						<%
@@ -40,7 +39,7 @@
 						<%
 						String inputIMGsm = (String) request.getAttribute("listAnh");
 						String[] listIMGsm = inputIMGsm.split("-\\*-");
-						for (int i = 0; i < listIMGsm.length; i ++) {
+						for (int i = 0; i < listIMGsm.length; i++) {
 						%>
 						<div class="sm-image">
 							<img src="/views/images/product/small-size/<%=listIMGsm[i]%>"
@@ -71,16 +70,13 @@
 							</p>
 						</div>
 						<div class="single-add-to-cart">
-							<form action="#" class="cart-quantity">
-								<div class="">
-									<button type="button" class="btn btn-primary">Xanh</button>
-									<button type="button" class="btn btn-warning">Vàng</button>
-									<button type="button" class="btn btn-dark">Đen</button>
-								</div>
+							<form action="/addCart" class="cart-quantity" method="post">
+								<input id="maspQuickView" hidden="true" value="${sanpham.getSP_MA()}" name="masp">
 								<div class="quantity">
-									<label>Số Lượng</label>
+									<label>SỐ LƯỢNG</label>
 									<div class="cart-plus-minus">
-										<input class="cart-plus-minus-box" value="1" type="text">
+										<input class="cart-plus-minus-box" value="1" type="number"
+											name="quantity">
 										<div class="dec qtybutton">
 											<i class="fa fa-angle-down"></i>
 										</div>
@@ -89,8 +85,8 @@
 										</div>
 									</div>
 								</div>
-								<button class="add-to-cart"  type="submit">Thêm Vào Giỏ
-									Hàng</button>
+								<button class="add-to-cart" type="submit">THÊM VÀO GIỎ
+									HÀNG</button>
 							</form>
 						</div>
 
@@ -293,9 +289,9 @@
 													href="/addCart/${item.SP_MA}">THÊM VÀO GIỎ</a></li>
 												<li><a class="links-details" href="#"><i
 														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal" data-masp="${item.SP_MA}"
-													data-target="#exampleModalCenter" href="#"><i
-														class="fa fa-eye"></i></a></li>
+												<li><a class="quick-view" data-toggle="modal"
+													data-masp="${item.SP_MA}" data-target="#exampleModalCenter"
+													href="#"><i class="fa fa-eye"></i></a></li>
 											</ul>
 										</div>
 									</div>
@@ -323,10 +319,10 @@
 					<div class="col-lg-5 col-md-6 col-sm-6">
 						<!-- Product Details Left -->
 						<div class="product-details-left">
-							<div class="product-details-images slider-navigation-1" id="QuickViewImagesLarge">
-								
-							</div>
-							<div class="product-details-thumbs slider-thumbs-1" id="QuickViewImagesThumb">
+							<div class="product-details-images slider-navigation-1"
+								id="QuickViewImagesLarge"></div>
+							<div class="product-details-thumbs slider-thumbs-1"
+								id="QuickViewImagesThumb">
 								<div class="sm-image">
 									<img src="/views/images/product/small-size/1.jpg"
 										alt="product image thumb" id="image1">
