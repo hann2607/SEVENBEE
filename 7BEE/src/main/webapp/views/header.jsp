@@ -60,9 +60,8 @@
 									<c:if test="${not empty user}">
 										<ul class="ht-setting-list">
 											<div class="d-flex justify-content-center">
-												<img
-													src="/views/images/team/${user.getHinhanh()}"
-													alt="" height="100px"
+												<img src="/views/images/team/${user.getHinhanh()}" alt=""
+													height="100px"
 													style="border-radius: 50%; border: 2px solid black;">
 											</div>
 											<div class="d-flex justify-content-center mt-2">${user.getHo_ten()}
@@ -77,7 +76,7 @@
 												href="login-register.html">LỊCH SỬ</a></li>
 											<li class="d-flex justify-content-center"><a
 												href="/logout">ĐĂNG XUẤT</a></li>
-											
+
 										</ul>
 									</c:if>
 									<c:if test="${empty user}">
@@ -105,8 +104,8 @@
 				<div class="col-lg-3">
 					<div class="logo pb-sm-30 pb-xs-30">
 
-						<a href="/"> <img
-							src="/views/images/menu/logo/logo-final.png" alt="">
+						<a href="/"> <img src="/views/images/menu/logo/logo-final.png"
+							alt="">
 
 
 
@@ -118,14 +117,16 @@
 				<div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
 					<!-- Begin Header Middle Searchbox Area -->
 					<form action="/shop/search" class="hm-searchbox" method="get">
-						<select class="nice-select select-search-category" name="selectedSearch">
+						<select class="nice-select select-search-category"
+							name="selectedSearch">
 							<option value="all">All</option>
 							<option value="DT">ĐỒ ĐIỆN TỬ</option>
 							<option value="TT">THỜI TRANG</option>
 							<option value="DADU">ĐỒ ĂN & ĐỒ UỐNG</option>
 							<option value="FPOLY">ĐỒ DÙNG FPOLY</option>
 
-						</select> <input type="text" placeholder="Nhập để tìm kiếm ..." name="SearchValue">
+						</select> <input type="text" placeholder="Nhập để tìm kiếm ..."
+							name="SearchValue">
 						<button class="li-btn" type="submit" formaction="/shop/search">
 							<i class="fa fa-search"></i>
 						</button>
@@ -146,7 +147,7 @@
 									<span class="item-icon"></span> <span class="item-text">GIỎ
 										HÀNG <span class="cart-item-count">${listcarts == null ? '0' : totalProductInCart}</span>
 									</span>
-								</div> <span></span>
+								</div>
 								<div class="minicart">
 									<c:forEach var="product" items="${listcarts}">
 										<ul class="minicart-product-list">
@@ -169,17 +170,16 @@
 														</div>
 													</div>
 
-												</div> <%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
-												<!-- 													<i class="fa fa-close"></i> --> <!-- 												</button> -->
-											</li>
+												</div>
+												<button class="/removeCart/${product.value.SP_MA}">
+													<i class="fa fa-close"></i>
+												</button></li>
 										</ul>
 									</c:forEach>
 									<h6 class="my-3 d-flex justify-content-between">
-										TỔNG TIỀN:
-										<div>
-											<span><fmt:formatNumber type="number"
-													value="${sumtotal}"></fmt:formatNumber></span><span> VNĐ</span>
-										</div>
+										TỔNG TIỀN: <span><fmt:formatNumber type="number"
+												value="${sumtotal}"></fmt:formatNumber></span><span> VNĐ</span>
+
 									</h6>
 									<div class="minicart-button">
 										<a href="/ShoppingCart"

@@ -51,14 +51,13 @@
 											VND</td>
 										<td class="quantity">
 											<div class="cart-plus-minus">
-												<input class="cart-plus-minus-box" id="${product.value.SP_MA}" onchange="dem('${product.value.SP_MA}')"
-													value="${product.value.SP_SoLuong}" type="number">
-<!-- 												<div class="dec qtybutton" > -->
-<%-- 													<i class="fa fa-angle-down" onclick="dem('${product.value.SP_MA}')"></i> --%>
-<!-- 												</div> -->
-<!-- 												<div class="inc qtybutton" > -->
-<%-- 													<i class="fa fa-angle-up" onclick="dem('${product.value.SP_MA}')"></i> --%>
-<!-- 												</div> -->
+												<input class="cart-plus-minus-box quantityShopCart" value="${product.value.SP_SoLuong}" id="${product.value.SP_MA}" type="number">
+												<div class="dec qtybutton" >
+													<i class="fa fa-angle-down"></i>
+												</div>
+												<div class="inc qtybutton" >
+													<i class="fa fa-angle-up"></i>
+												</div>
 											</div>
 										</td>
 										<td class="product-subtotal"><span class="amount" id="amount${product.value.SP_MA}"><fmt:formatNumber
@@ -109,7 +108,7 @@
 
 <script text= "text/javascript">
 	var dem = function(index){
-		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
+// 		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
 	}
 
 </script>

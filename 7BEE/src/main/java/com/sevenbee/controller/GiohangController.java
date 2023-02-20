@@ -37,9 +37,6 @@ public class GiohangController {
 	@Autowired
 	SANPHAMDAO sanphamdao;
 
-	@Autowired
-	HttpSession sess;
-
 	@RequestMapping("/ShoppingCart")
 	public String LoadShopcart(Model model) throws ServletException, IOException {
 		model.addAttribute("ShopCart", DataSharing.cart.clone());
@@ -71,7 +68,7 @@ public class GiohangController {
 		}
 
 	
-		sess.setAttribute("listcarts", DataSharing.cart.clone());
+		session.set("listcartsSession", DataSharing.cart.clone());
 		model.addAttribute("listcarts", DataSharing.cart);
 		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		model.addAttribute("messages", "Add success!");
@@ -98,7 +95,7 @@ public class GiohangController {
 	@GetMapping("/removeCart/{id}")
 	public String removeCart(@PathVariable String id, Model model) {
 		DataSharing.cart.remove(id);
-		sess.setAttribute("listcarts", DataSharing.cart.clone());
+		session.setAttribute("listcartsSession", DataSharing.cart.clone());
 		model.addAttribute("messages", "remove success!");
 		return "redirect:/ShoppingCart";
 	}
