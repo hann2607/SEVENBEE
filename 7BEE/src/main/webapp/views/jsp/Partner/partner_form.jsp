@@ -73,9 +73,7 @@
 						<div class="form-group">
 							<form:label path="">Chọn Loại</form:label>
 							<form:select path="" class="form-control">
-								<c:forEach items="${lstLoaiSP}" var="item">
-									<option value="${item.LoaiSP_MA}">${item.LoaiSP_Ten}</option>
-								</c:forEach>
+								<form:options items="${lstLoaiSP}" itemValue="id" itemLabel="name" />
 							</form:select>
 							<form:errors path="" class="badge badge-danger" />
 
