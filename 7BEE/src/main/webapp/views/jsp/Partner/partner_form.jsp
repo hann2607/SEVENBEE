@@ -71,11 +71,14 @@
 
 						</div>
 						<div class="form-group">
-							<form:label path="LoaiSP_MA">Chọn Loại</form:label>
-							<form:select path="LoaiSP_MA" class="form-control">
-								<form:options items="${lstLoaiSP}" itemValue="LoaiSP_MA" itemLabel="LoaiSP_Ten" />
-							</form:select>
-							<form:errors path="LoaiSP_MA" class="badge badge-danger" />
+							<label>Chọn Loại</label> <select class="form-control">
+								<%-- <form:options items="${lstLoaiSP}" itemValue="LoaiSP_MA"
+									itemLabel="LoaiSP_Ten" /> --%>
+								<option value="LSP003">ĐỒ ĐIỆN TỬ</option>
+								<option value="LSP002">THỜI TRANG</option>
+								<option value="LSP001">ĐỒ ĂN & ĐỒ UỐNG</option>
+								<option value="LSP002">ĐỒ DÙNG FPOLY</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<form:label path="SP_Gia" for="price">Giá</form:label>
@@ -84,27 +87,30 @@
 							<form:errors path="SP_Gia" class="badge badge-danger" />
 
 						</div>
-						<div class="form-group">
-							<label for="category">Kích thước</label> <input type="text"
-								class="form-control" name="size" id="price">
 
-						</div>
 						<div class="form-group">
 							<label for="category">Màu sắc</label> <input type="text"
 								class="form-control" name="color" id="price">
 						</div>
-						<div class="form-group">
-							<form:label path="SP_SoLuong" for="category">Số lượng</form:label>
-							<form:input path="SP_SoLuong" type="number" class="form-control"
-								name="qty" id="qty" />
-							<form:errors path="SP_SoLuong" class="badge badge-danger" />
-
+						<div class="form-group row mx-auto">
+							<div class="form-group">
+								<label for="category">Số lượng</label>
+								<div class="cart-plus-minus" style="float: none;">
+									<input type="number"
+										class="cart-plus-minus-box quantityShopCart" value="1"
+										name="qty" id="qty" >
+								</div>
+								<form:errors path="SP_SoLuong" class="badge badge-danger" />
+							</div>
+							<div class="form-group w-75">
+								<label for="category">Kích thước</label> <input type="text"
+									class="form-control" name="size" id="price">
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="description">Mô tả</label>
 							<textarea class="form-control" rows="4" name="description"
 								id="description"></textarea>
-
 						</div>
 					</div>
 					<div class="col-6">
@@ -133,7 +139,8 @@
 							</div>
 						</div>
 						<div class="row h-50">
-							<h5 class="text-center w-100 mb-0">Thông số chi tiết</h5>
+							<h5 class="text-center w-100 mb-0">Thông số chi tiết <form:errors path="CTSP_MoTa" class="text-danger font-weight-bold"/></h5>
+							
 							<table class="table">
 								<thead class="thead-light">
 									<tr>
@@ -144,29 +151,29 @@
 								<tbody>
 									<tr>
 										<td><form:input path="CTSP_MoTa" type="text"
-												class="form-control" placeholder="Nhập tiêu đề" /></td>
-										<td><form:input path="CTSP_MoTa" type="text"
-												class="form-control" placeholder="Nhập nội dung" /></td>
-										<form:errors path="CTSP_MoTa" class="badge badge-danger" />
+												class="form-control" placeholder="Nhập tiêu đề 1" /></td>
+										<td><input type="text"
+												class="form-control" placeholder="Nhập nội dung 1" /></td>
+										
 
 									</tr>
 									<tr>
 										<td><input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"></td>
+											placeholder="Nhập tiêu đề 2"></td>
 										<td><input type="text" class="form-control"
-											placeholder="Nhập nội dung"></td>
+											placeholder="Nhập nội dung 2"></td>
 									</tr>
 									<tr>
 										<td><input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"></td>
+											placeholder="Nhập tiêu đề 3"></td>
 										<td><input type="text" class="form-control"
-											placeholder="Nhập nội dung"></td>
+											placeholder="Nhập nội dung 3"></td>
 									</tr>
 									<tr>
 										<td><input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"></td>
+											placeholder="Nhập tiêu đề 4"></td>
 										<td><input type="text" class="form-control"
-											placeholder="Nhập nội dung"></td>
+											placeholder="Nhập nội dung 4"></td>
 									</tr>
 									<!-- Các hàng tiếp theo tương tự -->
 								</tbody>
@@ -174,8 +181,8 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" formaction="/partner/addproduct" class="btn btn-primary mt-3">THÊM SẢN
-					PHẨM</button>
+				<button type="submit" formaction="/partner/addproduct"
+					class="btn btn-primary mt-3">THÊM SẢN PHẨM</button>
 			</form:form>
 		</div>
 		<div class="tab-pane fade" id="nav-profile" role="tabpanel"

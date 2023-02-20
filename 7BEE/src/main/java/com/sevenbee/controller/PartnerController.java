@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenbee.dao.LOAISPDAO;
 import com.sevenbee.entity.LOAISP;
@@ -41,7 +42,7 @@ public class PartnerController {
 
 	
 
-	@PostMapping("/partner/addproduct")
+	@RequestMapping("/partner/addproduct")
 	public String add_Product(Model model, @Valid @ModelAttribute("product") PRODUCT p, BindingResult result)
 			throws ServletException, IOException {
 		if (result.hasErrors()) {
