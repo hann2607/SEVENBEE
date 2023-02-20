@@ -95,7 +95,7 @@ public class GiohangController {
 //		return "redirect:/ShoppingCart";
 //	}
 
-	@GetMapping("/removeCart/{id}")
+	@GetMapping("/removeCart/{id}")   
 	public String removeCart(@PathVariable String id, Model model) {
 		DataSharing.cart.remove(id);
 		sess.setAttribute("listcarts", DataSharing.cart.clone());
