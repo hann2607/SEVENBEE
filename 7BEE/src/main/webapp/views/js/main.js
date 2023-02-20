@@ -559,7 +559,7 @@ $(document).ready(function() {
 
 				$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
 				$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
-
+				$('#exampleModalCenter #maspQuickView').val(sanpham.SP_MA);
 			},
 
 			error: function(jqXHR, textStatus, errorThrown) {

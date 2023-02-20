@@ -35,8 +35,7 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var="product"
-									items="${Carts != null ? Carts : ''}">
+								<c:forEach var="product" items="${Carts != null ? Carts : ''}">
 									<input value="${product.value.SP_Gia}" hidden="true"
 										id="price${product.value.SP_MA}">
 									<tr>
@@ -51,15 +50,16 @@
 										<td class="li-product-price"><span class="amount"><fmt:formatNumber
 													type="number" value="${product.value.SP_Gia}"></fmt:formatNumber></span>
 											VND</td>
-										<td class="quantity">
+										<td class="quantity changeQuantity"
+											data-masp="${product.value.SP_MA}" onclick="dem(this)">
 											<div class="cart-plus-minus">
 												<input class="cart-plus-minus-box quantityShopCart"
 													value="${product.value.SP_SoLuong}"
 													id="${product.value.SP_MA}" type="number">
-												<div class="dec qtybutton" onclick="dem()">
+												<div class="dec qtybutton">
 													<i class="fa fa-angle-down"></i>
 												</div>
-												<div class="inc qtybutton" onclick="dem()">
+												<div class="inc qtybutton">
 													<i class="fa fa-angle-up"></i>
 												</div>
 											</div>
@@ -84,7 +84,7 @@
 										type="submit">
 								</div>
 								<div class="coupon2">
-	
+
 									<a href="/clearCart">XÓA GIỎ HÀNG</a>
 								</div>
 							</div>
@@ -113,10 +113,39 @@
 </div>
 
 <script type="text/javascript">
+	// $(document).ready(function() {
+	// 	$(document).on("click", ".changeQuantity", function() {
+	// 		console.log("abc")
+	// 		$.ajax({
+	// 			url: '/updateCart/' + this.dataset.masp,
+	// 			type: 'GET',
+	// 			success: function(data) {
+	// 				// Handle successful response
+	// 			},
 
-	var dem = function() {
-		console.log('abc');
-		// 		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
+	// 			error: function(jqXHR, textStatus, errorThrown) {
+	// 				// Handle error response
+	// 				console.log(errorThrown);
+	// 			}
+	// 		});
+	// 	});
+	// });
+
+	var dem = function(index) {
+		$.ajax({
+			url : '/updateCart/' + index.dataset.masp + '/'
+					+ document.getElementById(index.dataset.masp).value,
+			type : 'GET',
+			success : function(data) {
+				// Handle successful response
+				location.reload(true);
+			},
+
+			error : function(jqXHR, textStatus, errorThrown) {
+				// Handle error response
+				console.log(errorThrown);
+			}
+		});
 	}
 </script>
 <!-- Begin Quick View | Modal Area End Here-->

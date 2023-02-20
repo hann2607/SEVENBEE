@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sevenbee.dao.SANPHAMDAO;
 import com.sevenbee.entity.SANPHAM;
@@ -67,7 +68,7 @@ public class GiohangController {
 
 		session.set("Carts", DataSharing.cart.clone());
 		model.addAttribute("totalProductInCart", DataSharing.cart.size());
-		
+
 		// Update lại minicart
 		updateMiniCart();
 
@@ -76,13 +77,23 @@ public class GiohangController {
 		return "redirect:/" + Referer.substring(Referer.indexOf("/") + 1, Referer.length());
 	}
 
-//	@GetMapping("/updateCart/{id}")
-//	public String updateCart(@PathVariable String id, Model model) {
-//		cartShop.updateProduct(id, param.getInt("quantity", 0));
-//		sess.setAttribute("Carts", DataSharing.cart.clone());
-//		model.addAttribute("messages", "Update success!");
-//		return "redirect:/ShoppingCart";
-//	}
+	@RequestMapping("/updateCart/{id}/{quantity}")
+	@ResponseBody
+	public String updateCart(@PathVariable("id") String id, @PathVariable("quantity") int quantity, Model model) {
+		SANPHAM sanpham = sanphamdao.findById(id).get();
+		if (DataSharing.cart.get(id) != null && sanpham != null) {
+			if (sanpham.getSP_SoLuong() >= quantity) {
+				DataSharing.cart.get(id).setSP_SoLuong(quantity);
+			}
+		}
+		session.set("Carts", DataSharing.cart.clone());
+		model.addAttribute("totalProductInCart", DataSharing.cart.size());
+
+		// Update lại minicart
+		updateMiniCart();
+		
+		return "";
+	}
 
 	@RequestMapping("/removeCart/{id}")
 	public String removeCart(@PathVariable String id, Model model, HttpServletRequest request) {
