@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -201,11 +203,11 @@
 									<li class="hm-minicart">
 										<div class="hm-minicart-trigger">
 											<span class="item-icon"></span> <span class="item-text">GIỎ
-												HÀNG <span class="cart-item-count">${listcarts == null ? '0' : totalProductInCart}</span>
+												HÀNG <span class="cart-item-count">${Carts == null ? '0' : totalProductInCart}</span>
 											</span>
-										</div> <span></span>
+										</div>
 										<div class="minicart">
-											<c:forEach var="product" items="${listcarts}">
+											<c:forEach var="product" items="${Carts}">
 												<ul class="minicart-product-list">
 
 													<li><a href="single-product.html"
@@ -226,17 +228,21 @@
 																</div>
 															</div>
 
-														</div> <%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
-														<!-- 													<i class="fa fa-close"></i> --> <!-- 												</button> -->
-													</li>
+														</div>
+														<form action="/removeCart/${product.value.SP_MA}"
+															method="post" style="display: flex; text-align: center;">
+															<button type="submit"
+																style="color: #212529; background: none; border: none; cursor: pointer;">
+																<i class="fa fa-close"></i>
+															</button>
+														</form></li>
 												</ul>
 											</c:forEach>
 											<h6 class="my-3 d-flex justify-content-between">
-												TỔNG TIỀN:
-												<div>
-													<span><fmt:formatNumber type="number"
-															value="${sumtotal}"></fmt:formatNumber></span><span> VNĐ</span>
-												</div>
+												TỔNG TIỀN: <span><span><fmt:formatNumber
+															type="number" value="${sumtotal}"></fmt:formatNumber></span><span>
+														VNĐ</span></span>
+
 											</h6>
 											<div class="minicart-button">
 												<a href="/ShoppingCart"

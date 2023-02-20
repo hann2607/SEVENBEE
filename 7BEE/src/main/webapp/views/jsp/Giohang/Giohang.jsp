@@ -35,8 +35,10 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var="product" items="${listcarts}">
-								<input value="${product.value.SP_Gia}" hidden="true" id="price${product.value.SP_MA}">
+								<c:forEach var="product"
+									items="${Carts != null ? Carts : ''}">
+									<input value="${product.value.SP_Gia}" hidden="true"
+										id="price${product.value.SP_MA}">
 									<tr>
 										<td class="li-product-remove"><a
 											href="/removeCart/${product.value.SP_MA}"><i
@@ -51,17 +53,21 @@
 											VND</td>
 										<td class="quantity">
 											<div class="cart-plus-minus">
-												<input class="cart-plus-minus-box quantityShopCart" value="${product.value.SP_SoLuong}" id="${product.value.SP_MA}" type="number">
-												<div class="dec qtybutton" >
+												<input class="cart-plus-minus-box quantityShopCart"
+													value="${product.value.SP_SoLuong}"
+													id="${product.value.SP_MA}" type="number">
+												<div class="dec qtybutton" onclick="dem()">
 													<i class="fa fa-angle-down"></i>
 												</div>
-												<div class="inc qtybutton" >
+												<div class="inc qtybutton" onclick="dem()">
 													<i class="fa fa-angle-up"></i>
 												</div>
 											</div>
 										</td>
-										<td class="product-subtotal"><span class="amount" id="amount${product.value.SP_MA}"><fmt:formatNumber
-													type="number" value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span>
+										<td class="product-subtotal"><span class="amount"
+											id="amount${product.value.SP_MA}"><fmt:formatNumber
+													type="number"
+													value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span>
 											VND</td>
 									</tr>
 								</c:forEach>
@@ -78,8 +84,8 @@
 										type="submit">
 								</div>
 								<div class="coupon2">
-									<input  class="button" name="update_cart"
-										value="Restart giỏ hàng" type="submit">
+	
+									<a href="/clearCart">XÓA GIỎ HÀNG</a>
 								</div>
 							</div>
 						</div>
@@ -106,10 +112,11 @@
 	</div>
 </div>
 
-<script text= "text/javascript">
-	var dem = function(index){
-// 		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
-	}
+<script type="text/javascript">
 
+	var dem = function() {
+		console.log('abc');
+		// 		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
+	}
 </script>
 <!-- Begin Quick View | Modal Area End Here-->
