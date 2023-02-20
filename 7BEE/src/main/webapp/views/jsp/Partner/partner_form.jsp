@@ -71,12 +71,11 @@
 
 						</div>
 						<div class="form-group">
-							<form:label path="">Chọn Loại</form:label>
-							<form:select path="" class="form-control">
-								<form:options items="${lstLoaiSP}" itemValue="id" itemLabel="name" />
+							<form:label path="LoaiSP_MA">Chọn Loại</form:label>
+							<form:select path="LoaiSP_MA" class="form-control">
+								<form:options items="${lstLoaiSP}" itemValue="LoaiSP_MA" itemLabel="LoaiSP_Ten" />
 							</form:select>
-							<form:errors path="" class="badge badge-danger" />
-
+							<form:errors path="LoaiSP_MA" class="badge badge-danger" />
 						</div>
 						<div class="form-group">
 							<form:label path="SP_Gia" for="price">Giá</form:label>
@@ -175,7 +174,7 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary mt-3">THÊM SẢN
+				<button type="submit" formaction="/partner/addproduct" class="btn btn-primary mt-3">THÊM SẢN
 					PHẨM</button>
 			</form:form>
 		</div>
