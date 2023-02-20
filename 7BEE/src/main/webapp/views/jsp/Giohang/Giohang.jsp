@@ -51,7 +51,7 @@
 											VND</td>
 										<td class="quantity">
 											<div class="cart-plus-minus">
-												<input class="cart-plus-minus-box" id="${product.value.SP_MA}" onchange="dem('${product.value.SP_MA}')"
+												<input data-masp=${product.value.SP_MA } class="soluongdocnhat cart-plus-minus-box" id="${product.value.SP_MA}" onchange="dem('${product.value.SP_MA}')"
 													value="${product.value.SP_SoLuong}" type="number">
 <!-- 												<div class="dec qtybutton" > -->
 <%-- 													<i class="fa fa-angle-down" onclick="dem('${product.value.SP_MA}')"></i> --%>

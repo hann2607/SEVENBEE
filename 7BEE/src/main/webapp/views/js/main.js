@@ -561,6 +561,21 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$(document).on("change", ".soluongdocnhat", function() {
+		$.ajax({
+			url: '/quantity/' + this.dataset.masp + this.value,
+			type: 'GET',
+			success: function(data) {
+				// Handle successful response
+		},
+
+			error: function(jqXHR, textStatus, errorThrown) {
+				// Handle error response
+				console.log(errorThrown);
+		}
+	});
+	});
+
 });
 
 
