@@ -59,45 +59,55 @@
 			aria-labelledby="nav-home-tab">
 			<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
 				TIN SẢN PHẨM</h3>
-			<form:form method="post">
+			<form:form modelAttribute="product">
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
-							<form:label for="name">Tên sản phẩm</form:label>
-							<form:input type="text" class="form-control" required name="name"
-								id="name" placeholder="Nhập Tên sản phẩm" />
+							<form:label path="SP_TenSP" for="name">Tên sản phẩm</form:label>
+							<form:input path="SP_TenSP" type="text" class="form-control"
+								name="name" id="name" placeholder="Nhập Tên sản phẩm" />
+							<form:errors path="SP_TenSP" class="badge badge-danger" />
+
 
 						</div>
 						<div class="form-group">
-							<form:label for="category">Chọn Loại</form:label>
-							<form:select class="form-control" id="category" name="category">
-								<option>
+							<form:label path="LoaiSP_MA">Chọn Loại</form:label>
+							<form:select path="LoaiSP_MA" class="form-control">
+								<c:forEach items="item" var="lstLoaiSP">
+									<option value="${item.LoaiSP_MA}">${LoaiSP_Ten}</option>
+								</c:forEach>
 							</form:select>
+							<form:errors path="LoaiSP_MA" class="badge badge-danger" />
+
 						</div>
 						<div class="form-group">
-							<form:label for="price">Giá</form:label>
-							<form:input type="text" class="form-control" required
+							<form:label path="SP_Gia" for="price">Giá</form:label>
+							<form:input path="SP_Gia" type="text" class="form-control"
 								name="price" id="price" />
+							<form:errors path="SP_Gia" class="badge badge-danger" />
+
 						</div>
 						<div class="form-group">
-							<form:label for="category">Kích thước</form:label>
-							<form:input type="text" class="form-control" required name="size"
-								id="price" />
+							<label for="category">Kích thước</label> <input type="text"
+								class="form-control" name="size" id="price">
+
 						</div>
 						<div class="form-group">
-							<form:label for="category">Màu sắc</form:label>
-							<form:input type="text" class="form-control" required
-								name="color" id="price" />
+							<label for="category">Màu sắc</label> <input type="text"
+								class="form-control" name="color" id="price">
 						</div>
 						<div class="form-group">
-							<form:label for="category">Số lượng</form:label>
-							<form:input type="number" class="form-control" required
+							<form:label path="SP_SoLuong" for="category">Số lượng</form:label>
+							<form:input path="SP_SoLuong" type="number" class="form-control"
 								name="qty" id="qty" />
+							<form:errors path="SP_SoLuong" class="badge badge-danger" />
+
 						</div>
 						<div class="form-group">
-							<form:label for="description">Mô tả</form:label>
-							<form:textarea class="form-control" rows="4" name="description"
-								id="description"></form:textarea>
+							<label for="description">Mô tả</label>
+							<textarea class="form-control" rows="4" name="description"
+								id="description"></textarea>
+
 						</div>
 					</div>
 					<div class="col-6">
@@ -136,10 +146,12 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td><form:input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"/></td>
-										<td><form:input type="text" class="form-control"
-											placeholder="Nhập nội dung"/></td>
+										<td><form:input path="CTSP_MoTa" type="text"
+												class="form-control" placeholder="Nhập tiêu đề" /></td>
+										<td><form:input path="CTSP_MoTa" type="text"
+												class="form-control" placeholder="Nhập nội dung" /></td>
+										<form:errors path="CTSP_MoTa" class="badge badge-danger" />
+
 									</tr>
 									<tr>
 										<td><input type="text" class="form-control"
