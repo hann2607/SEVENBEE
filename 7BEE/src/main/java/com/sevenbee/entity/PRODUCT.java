@@ -19,7 +19,6 @@ public class PRODUCT {
 	@Min(value = 0, message = "Giá sản phẩm phải lớn hơn 0")
 	@Positive(message = "Giá sản phẩm phải là một số dương")
 	long SP_Gia;
-	@NotBlank(message = "Không được để trống số điện thoại !")
 	String Kich_Thuoc;
 	@NotBlank(message = "Không được để trống số điện thoại !")
 	String CTSP_Mau;

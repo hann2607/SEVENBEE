@@ -570,13 +570,8 @@ $(document).ready(function() {
 	});
 
 	// Thêm sản phẩm
-	$(document).on("click", ".btn_themSP", function() {
-		$.ajax({
-			type: "POST",
-			url: "/partner/addproduct",
+	
 
-		});
-	})
 });
 
 
