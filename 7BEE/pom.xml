@@ -27,10 +27,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>-->
+		</dependency>
 		<!-- CRYPTO -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -74,9 +74,9 @@
 		</dependency>
 		<!-- MAIL -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
 		<!-- VALIDATE -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -86,7 +86,12 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
-
+		<!-- PARSE JSON-->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
 
 
 	</dependencies>

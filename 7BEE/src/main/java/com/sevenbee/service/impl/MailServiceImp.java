@@ -16,6 +16,7 @@ import com.sevenbee.service.MailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
+
 @Service
 public class MailServiceImp implements MailService {
 	List<MailInfo> list = new ArrayList<>();
