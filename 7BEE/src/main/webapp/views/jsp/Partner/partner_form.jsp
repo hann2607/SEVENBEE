@@ -71,13 +71,13 @@
 
 						</div>
 						<div class="form-group">
-							<form:label path="LoaiSP_MA">Chọn Loại</form:label>
-							<form:select path="LoaiSP_MA" class="form-control">
-								<c:forEach items="item" var="lstLoaiSP">
-									<option value="${item.LoaiSP_MA}">${LoaiSP_Ten}</option>
+							<form:label path="">Chọn Loại</form:label>
+							<form:select path="" class="form-control">
+								<c:forEach items="${lstLoaiSP}" var="item">
+									<option value="${item.LoaiSP_MA}">${item.LoaiSP_Ten}</option>
 								</c:forEach>
 							</form:select>
-							<form:errors path="LoaiSP_MA" class="badge badge-danger" />
+							<form:errors path="" class="badge badge-danger" />
 
 						</div>
 						<div class="form-group">
