@@ -225,16 +225,22 @@
 											</div>
 										</div>
 										<div class="add-actions">
-											<ul class="add-actions-link">
-												<li class="add-cart active"><a
-													href="/addCart/${dhsp.sanpham.SP_MA}">THÊM VÀO GIỎ</a></li>
-												<li><a class="links-details" href="#"><i
-														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
-													data-masp="${dhsp.sanpham.SP_MA}"
-													data-target="#exampleModalCenter" href="#"><i
-														class="fa fa-eye"></i></a></li>
-											</ul>
+											<form action="/addCart" class="cart-quantity" method="post">
+												<input id="maspQuickView" hidden="true"
+													value="${dhsp.sanpham.SP_MA}" name="masp"> <input
+													value="1" type="number" name="quantity" hidden="true">
+												<ul class="add-actions-link">
+													<li class="add-cart active"><button type="submit">THÊM
+															VÀO GIỎ</button></li>
+													<li><a class="links-details" href="#"><i
+															class="fa fa-heart-o"></i></a></li>
+
+													<li><a class="quick-view" data-toggle="modal"
+														data-masp="${dhsp.sanpham.SP_MA}"
+														data-target="#exampleModalCenter" href="#"><i
+															class="fa fa-eye"></i></a></li>
+												</ul>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -285,16 +291,22 @@
 											</div>
 										</div>
 										<div class="add-actions">
-											<ul class="add-actions-link">
-												<li class="add-cart active"><a
-													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
-												<li><a class="links-details" href="#"><i
-														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
-													data-masp="${product.SP_MA}"
-													data-target="#exampleModalCenter" href="#"><i
-														class="fa fa-eye"></i></a></li>
-											</ul>
+											<form action="/addCart" class="cart-quantity" method="post">
+												<input id="maspQuickView" hidden="true"
+													value="${product.SP_MA}" name="masp"> <input
+													value="1" type="number" name="quantity" hidden="true">
+												<ul class="add-actions-link">
+													<li class="add-cart active"><button type="submit">THÊM
+															VÀO GIỎ</button></li>
+													<li><a class="links-details" href="#"><i
+															class="fa fa-heart-o"></i></a></li>
+
+													<li><a class="quick-view" data-toggle="modal"
+														data-masp="${product.SP_MA}"
+														data-target="#exampleModalCenter" href="#"><i
+															class="fa fa-eye"></i></a></li>
+												</ul>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -391,16 +403,22 @@
 											</div>
 										</div>
 										<div class="add-actions">
-											<ul class="add-actions-link">
-												<li class="add-cart active"><a
-													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
-												<li><a class="links-details" href="#"><i
-														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
-													data-masp="${product.SP_MA}"
-													data-target="#exampleModalCenter" href="#"><i
-														class="fa fa-eye"></i></a></li>
-											</ul>
+											<form action="/addCart" class="cart-quantity" method="post">
+												<input id="maspQuickView" hidden="true"
+													value="${product.SP_MA}" name="masp"> <input
+													value="1" type="number" name="quantity" hidden="true">
+												<ul class="add-actions-link">
+													<li class="add-cart active"><button type="submit">THÊM
+															VÀO GIỎ</button></li>
+													<li><a class="links-details" href="#"><i
+															class="fa fa-heart-o"></i></a></li>
+
+													<li><a class="quick-view" data-toggle="modal"
+														data-masp="${product.SP_MA}"
+														data-target="#exampleModalCenter" href="#"><i
+															class="fa fa-eye"></i></a></li>
+												</ul>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -471,16 +489,22 @@
 											</div>
 										</div>
 										<div class="add-actions">
-											<ul class="add-actions-link">
-												<li class="add-cart active"><a
-													href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
-												<li><a class="links-details" href="#"><i
-														class="fa fa-heart-o"></i></a></li>
-												<li><a class="quick-view" data-toggle="modal"
-													data-masp="${product.SP_MA}"
-													data-target="#exampleModalCenter" href="#"><i
-														class="fa fa-eye"></i></a></li>
-											</ul>
+											<form action="/addCart" class="cart-quantity" method="post">
+												<input id="maspQuickView" hidden="true"
+													value="${product.SP_MA}" name="masp"> <input
+													value="1" type="number" name="quantity" hidden="true">
+												<ul class="add-actions-link">
+													<li class="add-cart active"><button type="submit">THÊM
+															VÀO GIỎ</button></li>
+													<li><a class="links-details" href="#"><i
+															class="fa fa-heart-o"></i></a></li>
+
+													<li><a class="quick-view" data-toggle="modal"
+														data-masp="${product.SP_MA}"
+														data-target="#exampleModalCenter" href="#"><i
+															class="fa fa-eye"></i></a></li>
+												</ul>
+											</form>
 										</div>
 									</div>
 								</div>
