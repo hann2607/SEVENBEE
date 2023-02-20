@@ -27,12 +27,4 @@ public class testController {
 		sanpham.setLoaisp(null);
 		return JsonUtils.toString(sanpham) + "-*-" + CTSP;
 	}
-	
-	@GetMapping("/quantity/{id}/{Soluong}")
-	public String quantityCart(@PathVariable String Soluong, @PathVariable String id, Model model) {
-		System.out.println(Soluong);
-		System.out.println(id);
-		return "redirect:/ShoppingCart";
-	} 
-	
 }
