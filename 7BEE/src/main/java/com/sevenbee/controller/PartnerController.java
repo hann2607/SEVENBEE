@@ -33,7 +33,7 @@ public class PartnerController {
 	public String detai_Product(Model model,@ModelAttribute("product") PRODUCT p) throws ServletException, IOException {
 //		System.out.println(randomService.randomString(5));
 		List<LOAISP> lstLoaiSP = loaispDAO.findAll();
-		System.out.println(lstLoaiSP.size());
+		System.out.println(lstLoaiSP);
 		model.addAttribute("lstLoaiSP", lstLoaiSP);
 		return PageInfo.goSite(model, PageType.SITE_PARTNER);
 	}
