@@ -547,9 +547,16 @@ $(document).ready(function() {
 				// Handle successful response
 				var arrSP = data.split("-*-");
 				var sanpham = JSON.parse(arrSP[0]);
+				var arrHinhanh = sanpham.SP_HinhAnh.split("-*-");
 				$('#exampleModalCenter #QVNameProduct').text(sanpham.SP_TenSP.toUpperCase());
 				$('#exampleModalCenter #QuickViewPrice').text(commify(sanpham.SP_Gia));
-				$('#exampleModalCenter #image1').prop('src', '/views/images/product/large-size/' + sanpham.SP_HinhAnh);
+				$('#exampleModalCenter #QuickViewImagesLarge').empty();
+				//				$('#exampleModalCenter #QuickViewImagesThumb').empty();
+				for (let i = 0; i < arrHinhanh.length; i++) {
+					$('#exampleModalCenter #QuickViewImagesLarge').append('<div class="lg-image"><img src="/views/images/product/large-size/' + arrHinhanh[i] + '" alt="product image"></div>');
+					//					$('#exampleModalCenter #QuickViewImagesThumb').append('<div class="sm-image"><img src="/views/images/product/small-size/' + arrHinhanh[i] + '" alt="product image thumb"></div>');
+				}
+
 				$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
 				$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
 
@@ -562,6 +569,14 @@ $(document).ready(function() {
 		});
 	});
 
+	// Thêm sản phẩm
+	$(document).on("click", ".btn_themSP", function() {
+		$.ajax({
+			type: "POST",
+			url: "/partner/addproduct",
+
+		});
+	})
 });
 
 

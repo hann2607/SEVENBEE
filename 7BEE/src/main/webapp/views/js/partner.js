@@ -6,8 +6,8 @@ function displaySelectedImages(input) {
 	function addImageToCarousel(index) {
 		return function(e) {
 			selectedImages.innerHTML += `
-                        <div class="carousel-item ${index == 0 ? 'active' : ''}">
-                            <img src="${e.target.result}" class="d-block w-100" alt="${files[index].name}">
+                        <div style="height: 17em;" class="carousel-item ${index == 0 ? 'active' : ''}">
+                            <img src="${e.target.result}" class="d-block w-50 h-100 mx-auto img-thumbnail img-fluid" alt="${files[index].name}">
                         </div>`;
 		}
 	}

@@ -31,7 +31,9 @@ public class shopController {
 			throws ServletException, IOException {
 		Pageable pageable = PageRequest.of(page.orElse(0), 9);
 		Page<SANPHAM> pages = sanphamdao.findProductsByLoaiSPAndPage(LoaiSP, pageable);
-
+		for (SANPHAM sanpham : pages) {
+			sanpham.setSP_HinhAnh(spitArrImages(sanpham.getSP_HinhAnh()));
+		}
 		model.addAttribute("Pagecurrent", pages.getNumber());
 		model.addAttribute("totalPages", pages.getTotalPages());
 		model.addAttribute("pages", pages);
@@ -46,7 +48,9 @@ public class shopController {
 			@RequestParam("selectedSearch") String selectedSearch, Model model) throws ServletException, IOException {
 		Pageable pageable = PageRequest.of(page.orElse(0), 9);
 		Page<SANPHAM> pages = searchSP(pageable, search, selectedSearch);
-
+		for (SANPHAM sanpham : pages) {
+			sanpham.setSP_HinhAnh(spitArrImages(sanpham.getSP_HinhAnh()));
+		}
 		model.addAttribute("Pagecurrent", pages.getNumber());
 		model.addAttribute("totalPages", pages.getTotalPages());
 		model.addAttribute("pages", pages);
@@ -75,6 +79,9 @@ public class shopController {
 			pages = sanphamdao.findAll(pageable);
 		}
 		if (pages != null) {
+			for (SANPHAM sanpham : pages) {
+				sanpham.setSP_HinhAnh(spitArrImages(sanpham.getSP_HinhAnh()));
+			}
 			model.addAttribute("Pagecurrent", pages.getNumber());
 			model.addAttribute("totalPages", pages.getTotalPages());
 			model.addAttribute("loaiSP", LoaiSP);
@@ -124,6 +131,14 @@ public class shopController {
 			return sanphamdao.findProducts("%" + search + "%", "", "%LSP001%", "", pageable);
 		} else if(searchSelected.equalsIgnoreCase("FPOLY")) {
 			return sanphamdao.findProductsFpoly("%" + search + "%", "%FPOLY%", "%%", "%%", pageable);
+		}
+		return null;
+	}
+	
+	private String spitArrImages(String arrImages) {
+		String[] components = arrImages.split("-\\*-");
+		if (components != null) {
+			return components[0];
 		}
 		return null;
 	}

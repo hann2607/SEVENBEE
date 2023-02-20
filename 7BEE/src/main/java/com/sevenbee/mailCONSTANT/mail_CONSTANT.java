@@ -368,7 +368,7 @@ public class mail_CONSTANT {
 				+ "                                        style=\"font-weight:lighter;\" class=\"\">(+84) 9847 724 10</span>\r\n"
 				+ "                                      <br><br>\r\n"
 				+ "                                      <div style=\"display: flex; align-items: center; justify-content: center;\">\r\n"
-				+ "                                        <a href=\"https://www.facebook.com/se7enbee/\" target=\"_blank\"\r\n"
+				+ "                                        <a  style=\"color: snow;\" href=\"https://www.facebook.com/se7enbee/\" target=\"_blank\"\r\n"
 				+ "                                          class=\"facebook-button\">\r\n"
 				+ "                                          <img width=\"20\" src=\"https://cdn.iconscout.com/icon/free/png-256/facebook-logo-2019-1597680-1350125.png\" alt=\"\"> Seven Bee\r\n"
 				+ "                                        </a>\r\n"
