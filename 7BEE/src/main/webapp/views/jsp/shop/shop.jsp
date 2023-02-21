@@ -113,16 +113,23 @@
 														</div>
 													</div>
 													<div class="add-actions">
-														<ul class="add-actions-link">
-															<li class="add-cart active"><a
-																href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
-															<li><a class="links-details" href="#"><i
-																	class="fa fa-heart-o"></i></a></li>
+														<form action="/addCart" class="cart-quantity"
+															method="post">
+															<input id="maspQuickView" hidden="true"
+																value="${product.SP_MA}" name="masp"> <input
+																value="1" type="number" name="quantity" hidden="true">
+															<ul class="add-actions-link">
+																<li class="add-cart active"><button type="submit">THÊM
+																		VÀO GIỎ</button></li>
+																<li><a class="links-details" href="#"><i
+																		class="fa fa-heart-o"></i></a></li>
 
-															<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
-																data-target="#exampleModalCenter" href="#"><i
-																	class="fa fa-eye"></i></a></li>
-														</ul>
+																<li><a class="quick-view" data-toggle="modal"
+																	data-masp="${product.SP_MA}"
+																	data-target="#exampleModalCenter" href="#"><i
+																		class="fa fa-eye"></i></a></li>
+															</ul>
+														</form>
 													</div>
 												</div>
 											</div>
@@ -177,19 +184,25 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4">
+											<form action="/addCart" class="col-lg-4"
+												class="shop-add-action mb-xs-30" method="post">
+												<input id="maspQuickView" hidden="true"
+													value="${product.SP_MA}" name="masp"> <input
+													value="1" type="number" name="quantity" hidden="true">
 												<div class="shop-add-action mb-xs-30">
-													<ul class="add-actions-link">
-														<li class="add-cart active"><a
-															href="/addCart/${product.SP_MA}">THÊM VÀO GIỎ</a></li>
-														<li class="wishlist"><a href="wishlist.html"><i
-																class="fa fa-heart-o"></i>YÊU THÍCH</a></li>
-														<li><a class="quick-view" data-toggle="modal" data-masp="${product.SP_MA}"
+													<ul class="add-actions-link text-center">
+														<li class="add-cart active"><button type="submit">THÊM
+																VÀO GIỎ</button></li>
+														<li><a class="links-details" href="#"><i
+																class="fa fa-heart-o" style="padding: 0px;"></i></a></li>
+
+														<li><a class="quick-view" data-toggle="modal"
+															data-masp="${product.SP_MA}"
 															data-target="#exampleModalCenter" href="#"><i
-																class="fa fa-eye"></i>XEM NHANH</a></li>
+																class="fa fa-eye"></i></a></li>
 													</ul>
 												</div>
-											</div>
+											</form>
 										</div>
 									</c:forEach>
 								</div>
@@ -213,7 +226,7 @@
 										<li
 											<%if (Integer.parseInt(request.getAttribute("Pagecurrent").toString()) == i) {%>
 											class="active" <%}%>><a
-											href="<%= request.getContextPath()%>?selectedSearch=<%= request.getParameter("selectedSearch")%>&SearchValue=<%= request.getParameter("SearchValue")%>&page=<%=i%>"><%=i + 1%></a></li>
+											href="<%=request.getContextPath()%>?selectedSearch=<%=request.getParameter("selectedSearch")%>&SearchValue=<%=request.getParameter("SearchValue")%>&page=<%=i%>"><%=i + 1%></a></li>
 										<%
 										}
 										%>
@@ -338,10 +351,10 @@
 					<div class="col-lg-5 col-md-6 col-sm-6">
 						<!-- Product Details Left -->
 						<div class="product-details-left">
-							<div class="product-details-images slider-navigation-1" id="QuickViewImagesLarge">
-								
-							</div>
-							<div class="product-details-thumbs slider-thumbs-1" id="QuickViewImagesThumb">
+							<div class="product-details-images slider-navigation-1"
+								id="QuickViewImagesLarge"></div>
+							<div class="product-details-thumbs slider-thumbs-1"
+								id="QuickViewImagesThumb">
 								<div class="sm-image">
 									<img src="/views/images/product/small-size/1.jpg"
 										alt="product image thumb" id="image1">
@@ -405,11 +418,13 @@
 									</div>
 								</div>
 								<div class="single-add-to-cart">
-									<form action="#" class="cart-quantity">
+									<form action="/addCart" class="cart-quantity" method="post">
+										<input id="maspQuickView" hidden="true" value="" name="masp">
 										<div class="quantity">
 											<label>SỐ LƯỢNG</label>
 											<div class="cart-plus-minus">
-												<input class="cart-plus-minus-box" value="1" type="text">
+												<input class="cart-plus-minus-box" value="1" type="number"
+													name="quantity">
 												<div class="dec qtybutton">
 													<i class="fa fa-angle-down"></i>
 												</div>

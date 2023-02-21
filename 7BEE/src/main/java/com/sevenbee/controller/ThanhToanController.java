@@ -22,9 +22,6 @@ public class ThanhToanController {
 
 	@RequestMapping("/checkout")
 	public String detai_Product(Model model) throws ServletException, IOException {
-		model.addAttribute("sumtotal", total());
-		model.addAttribute("listcarts", DataSharing.cart);
-		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		return PageInfo.goSite(model, PageType.SITE_CHECKOUT);
 	}
 	

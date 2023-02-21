@@ -59,45 +59,61 @@
 			aria-labelledby="nav-home-tab">
 			<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
 				TIN SẢN PHẨM</h3>
-			<form:form method="post">
+			<form:form modelAttribute="product">
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
-							<form:label for="name">Tên sản phẩm</form:label>
-							<form:input type="text" class="form-control" required name="name"
-								id="name" placeholder="Nhập Tên sản phẩm" />
+							<form:label path="SP_TenSP" for="name">Tên sản phẩm</form:label>
+							<form:input path="SP_TenSP" type="text" class="form-control"
+								name="name" id="name" placeholder="Nhập Tên sản phẩm" />
+							<form:errors path="SP_TenSP" class="badge badge-danger" />
+
 
 						</div>
 						<div class="form-group">
-							<form:label for="category">Chọn Loại</form:label>
-							<form:select class="form-control" id="category" name="category">
-								<option>
+							<label>Chọn Loại</label>
+							<form:select class="form-control" path="LoaiSP_MA">
+								<%-- <form:options items="${lstLoaiSP}" itemValue="LoaiSP_MA"
+									itemLabel="LoaiSP_Ten" /> --%>
+								<option value="LSP003">ĐỒ ĐIỆN TỬ</option>
+								<option value="LSP002">THỜI TRANG</option>
+								<option value="LSP001">ĐỒ ĂN & ĐỒ UỐNG</option>
+								<option value="LSP002">ĐỒ DÙNG FPOLY</option>
 							</form:select>
 						</div>
 						<div class="form-group">
-							<form:label for="price">Giá</form:label>
-							<form:input type="text" class="form-control" required
+							<form:label path="SP_Gia" for="price">Giá</form:label>
+							<form:input path="SP_Gia" type="text" class="form-control"
 								name="price" id="price" />
+							<form:errors path="SP_Gia" class="badge badge-danger" />
+
 						</div>
+
 						<div class="form-group">
-							<form:label for="category">Kích thước</form:label>
-							<form:input type="text" class="form-control" required name="size"
-								id="price" />
-						</div>
-						<div class="form-group">
-							<form:label for="category">Màu sắc</form:label>
-							<form:input type="text" class="form-control" required
+							<label for="category">Màu sắc</label>
+							<form:input type="text" path="CTSP_Mau" class="form-control"
 								name="color" id="price" />
 						</div>
-						<div class="form-group">
-							<form:label for="category">Số lượng</form:label>
-							<form:input type="number" class="form-control" required
-								name="qty" id="qty" />
+						<div class="form-group row mx-auto">
+							<div class="form-group">
+								<label for="category">Số lượng</label>
+								<div class="cart-plus-minus" style="float: none;">
+									<form:input type="number" path="SP_SoLuong"
+										class="cart-plus-minus-box quantityShopCart" value="1"
+										name="qty" id="qty" />
+								</div>
+								<form:errors path="SP_SoLuong" class="badge badge-danger" />
+							</div>
+							<div class="form-group w-75">
+								<label for="size">Kích thước</label>
+								<form:input type="text" path="Kich_Thuoc" class="form-control"
+									name="size" id="size" />
+							</div>
 						</div>
 						<div class="form-group">
-							<form:label for="description">Mô tả</form:label>
+							<label for="description">Mô tả</label>
 							<form:textarea class="form-control" rows="4" name="description"
-								id="description"></form:textarea>
+								path="CTSP_ThongTinThem" id="description"></form:textarea>
 						</div>
 					</div>
 					<div class="col-6">
@@ -126,8 +142,13 @@
 							</div>
 						</div>
 						<div class="row h-50">
-							<h5 class="text-center w-100 mb-0">Thông số chi tiết</h5>
-							<table class="table">
+							<h5 class="text-center w-100 mb-0">
+								Thông số chi tiết
+								<form:errors path="CTSP_MoTa"
+									class="text-danger font-weight-bold" />
+							</h5>
+
+							<table id="dataTableThemSP" class="table">
 								<thead class="thead-light">
 									<tr>
 										<th>Tiêu đề</th>
@@ -136,28 +157,28 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td><form:input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"/></td>
-										<td><form:input type="text" class="form-control"
-											placeholder="Nhập nội dung"/></td>
+										<td><form:input path="CTSP_MoTa" type="text"
+												class="form-control" placeholder="Nhập tiêu đề 1" /></td>
+										<td><input type="text" class="form-control"
+											name="content1" placeholder="Nhập nội dung 1" /></td>
 									</tr>
 									<tr>
-										<td><input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"></td>
-										<td><input type="text" class="form-control"
-											placeholder="Nhập nội dung"></td>
+										<td><input type="text" class="form-control" name="title2"
+											placeholder="Nhập tiêu đề 2"></td>
+										<td><input type="text" class="form-control" name="content2"
+											placeholder="Nhập nội dung 2"></td>
 									</tr>
 									<tr>
-										<td><input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"></td>
-										<td><input type="text" class="form-control"
-											placeholder="Nhập nội dung"></td>
+										<td><input type="text" class="form-control" name="title3"
+											placeholder="Nhập tiêu đề 3"></td>
+										<td><input type="text" class="form-control" name="content3"
+											placeholder="Nhập nội dung 3"></td>
 									</tr>
 									<tr>
-										<td><input type="text" class="form-control"
-											placeholder="Nhập tiêu đề"></td>
-										<td><input type="text" class="form-control"
-											placeholder="Nhập nội dung"></td>
+										<td><input type="text" class="form-control" name="title4"
+											placeholder="Nhập tiêu đề 4"></td>
+										<td><input type="text" class="form-control" name="content4"
+											placeholder="Nhập nội dung 4"></td>
 									</tr>
 									<!-- Các hàng tiếp theo tương tự -->
 								</tbody>
@@ -165,8 +186,8 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary mt-3">THÊM SẢN
-					PHẨM</button>
+				<button formaction="/partner/addproduct" type="submit"
+					class="btn btn-primary mt-3">THÊM SẢN PHẨM</button>
 			</form:form>
 		</div>
 		<div class="tab-pane fade" id="nav-profile" role="tabpanel"

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -189,70 +191,7 @@
 							</form>
 							<!-- Header Middle Searchbox Area End Here -->
 							<!-- Begin Header Middle Right Area -->
-							<div class="header-middle-right">
-								<ul class="hm-menu">
-									<!-- Begin Header Middle Wishlist Area -->
-									<li class="hm-wishlist"><a href="#"> <span
-											class="cart-item-count wishlist-item-count">0</span> <i
-											class="fa fa-heart-o"></i>
-									</a></li>
-									<!-- Header Middle Wishlist Area End Here -->
-									<!-- Begin Header Mini Cart Area -->
-									<li class="hm-minicart">
-										<div class="hm-minicart-trigger">
-											<span class="item-icon"></span> <span class="item-text">GIỎ
-												HÀNG <span class="cart-item-count">${listcarts == null ? '0' : totalProductInCart}</span>
-											</span>
-										</div> <span></span>
-										<div class="minicart">
-											<c:forEach var="product" items="${listcarts}">
-												<ul class="minicart-product-list">
-
-													<li><a href="single-product.html"
-														class="minicart-product-image"> <img
-															src="/views/images/product/large-size/${product.value.SP_HinhAnh}"
-															alt="cart products">
-													</a>
-														<div class="minicart-product-details">
-															<h6>
-																<a href="single-product.html">${product.value.SP_TenSP}</a>
-															</h6>
-															<div class="d-flex justify-content-between">
-																<span>x ${product.value.SP_SoLuong}</span>
-																<div>
-																	<span><fmt:formatNumber type="number"
-																			value="${product.value.SP_Gia}"></fmt:formatNumber></span><span>
-																		VNĐ</span>
-																</div>
-															</div>
-
-														</div> <%-- 												<button class="/removeCart/${product.value.SP_MA}"> --%>
-														<!-- 													<i class="fa fa-close"></i> --> <!-- 												</button> -->
-													</li>
-												</ul>
-											</c:forEach>
-											<h6 class="my-3 d-flex justify-content-between">
-												TỔNG TIỀN:
-												<div>
-													<span><fmt:formatNumber type="number"
-															value="${sumtotal}"></fmt:formatNumber></span><span> VNĐ</span>
-												</div>
-											</h6>
-											<div class="minicart-button">
-												<a href="/ShoppingCart"
-													class="li-button li-button-dark li-button-fullwidth li-button-sm">
-													<span>XEM GIỎ HÀNG</span>
-												</a> <a href="/checkout"
-													class="li-button li-button-fullwidth li-button-sm"> <span>THANH
-														TOÁN</span>
-												</a>
-											</div>
-										</div>
-									</li>
-									<!-- Header Mini Cart Area End Here -->
-								</ul>
-							</div>
-							<!-- Header Middle Right Area End Here -->
+							
 						</div>
 						<!-- Header Middle Right Area End Here -->
 					</div>

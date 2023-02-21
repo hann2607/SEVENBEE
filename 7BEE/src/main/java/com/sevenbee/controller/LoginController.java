@@ -106,7 +106,7 @@ public class LoginController {
 				nguoidung.setVaitro(false);
 				nguoidung.setIsactive(false);
 				nguoidung.setNgaysinh(null);
-				
+				nguoidung.setHinhanh("user.jpeg");
 				cookieService.add("username", nguoidung.getSDT(), 1);
 				cookieService.add("password",  nguoidung.getMatkhau(), 1);
 				session.setAttribute("name", nguoidung.getHo_ten());

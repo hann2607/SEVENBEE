@@ -474,10 +474,10 @@ Note: main.js, All Default Scripting Languages For This Theme Included In This F
 			var newVal = parseFloat(oldValue) + 1;
 		} else {
 			// Don't allow decrementing below zero
-			if (oldValue > 0) {
+			if (oldValue > 1) {
 				var newVal = parseFloat(oldValue) - 1;
 			} else {
-				newVal = 0;
+				newVal = 1;
 			}
 		}
 		$button.parent().find("input").val(newVal);
@@ -551,15 +551,15 @@ $(document).ready(function() {
 				$('#exampleModalCenter #QVNameProduct').text(sanpham.SP_TenSP.toUpperCase());
 				$('#exampleModalCenter #QuickViewPrice').text(commify(sanpham.SP_Gia));
 				$('#exampleModalCenter #QuickViewImagesLarge').empty();
-//				$('#exampleModalCenter #QuickViewImagesThumb').empty();
-				for(let i = 0; i < arrHinhanh.length; i ++) {
+				//				$('#exampleModalCenter #QuickViewImagesThumb').empty();
+				for (let i = 0; i < arrHinhanh.length; i++) {
 					$('#exampleModalCenter #QuickViewImagesLarge').append('<div class="lg-image"><img src="/views/images/product/large-size/' + arrHinhanh[i] + '" alt="product image"></div>');
-//					$('#exampleModalCenter #QuickViewImagesThumb').append('<div class="sm-image"><img src="/views/images/product/small-size/' + arrHinhanh[i] + '" alt="product image thumb"></div>');
+					//					$('#exampleModalCenter #QuickViewImagesThumb').append('<div class="sm-image"><img src="/views/images/product/small-size/' + arrHinhanh[i] + '" alt="product image thumb"></div>');
 				}
-					
+
 				$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
 				$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
-
+				$('#exampleModalCenter #maspQuickView').val(sanpham.SP_MA);
 			},
 
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -568,6 +568,10 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	// Thêm sản phẩm
+	
+
 });
 
 

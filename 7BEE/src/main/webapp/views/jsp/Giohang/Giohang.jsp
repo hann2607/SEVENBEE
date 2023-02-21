@@ -35,8 +35,9 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var="product" items="${listcarts}">
-								<input value="${product.value.SP_Gia}" hidden="true" id="price${product.value.SP_MA}">
+								<c:forEach var="product" items="${Carts != null ? Carts : ''}">
+									<input value="${product.value.SP_Gia}" hidden="true"
+										id="price${product.value.SP_MA}">
 									<tr>
 										<td class="li-product-remove"><a
 											href="/removeCart/${product.value.SP_MA}"><i
@@ -49,20 +50,24 @@
 										<td class="li-product-price"><span class="amount"><fmt:formatNumber
 													type="number" value="${product.value.SP_Gia}"></fmt:formatNumber></span>
 											VND</td>
-										<td class="quantity">
+										<td class="quantity changeQuantity"
+											data-masp="${product.value.SP_MA}" onclick="dem(this)">
 											<div class="cart-plus-minus">
-												<input class="cart-plus-minus-box" id="${product.value.SP_MA}" onchange="dem('${product.value.SP_MA}')"
-													value="${product.value.SP_SoLuong}" type="number">
-<!-- 												<div class="dec qtybutton" > -->
-<%-- 													<i class="fa fa-angle-down" onclick="dem('${product.value.SP_MA}')"></i> --%>
-<!-- 												</div> -->
-<!-- 												<div class="inc qtybutton" > -->
-<%-- 													<i class="fa fa-angle-up" onclick="dem('${product.value.SP_MA}')"></i> --%>
-<!-- 												</div> -->
+												<input class="cart-plus-minus-box quantityShopCart"
+													value="${product.value.SP_SoLuong}"
+													id="${product.value.SP_MA}" type="number">
+												<div class="dec qtybutton">
+													<i class="fa fa-angle-down"></i>
+												</div>
+												<div class="inc qtybutton">
+													<i class="fa fa-angle-up"></i>
+												</div>
 											</div>
 										</td>
-										<td class="product-subtotal"><span class="amount" id="amount${product.value.SP_MA}"><fmt:formatNumber
-													type="number" value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span>
+										<td class="product-subtotal"><span class="amount"
+											id="amount${product.value.SP_MA}"><fmt:formatNumber
+													type="number"
+													value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span>
 											VND</td>
 									</tr>
 								</c:forEach>
@@ -79,8 +84,8 @@
 										type="submit">
 								</div>
 								<div class="coupon2">
-									<input  class="button" name="update_cart"
-										value="Restart giỏ hàng" type="submit">
+
+									<a href="/clearCart">XÓA GIỎ HÀNG</a>
 								</div>
 							</div>
 						</div>
@@ -107,10 +112,40 @@
 	</div>
 </div>
 
-<script text= "text/javascript">
-	var dem = function(index){
-		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
-	}
+<script type="text/javascript">
+	// $(document).ready(function() {
+	// 	$(document).on("click", ".changeQuantity", function() {
+	// 		console.log("abc")
+	// 		$.ajax({
+	// 			url: '/updateCart/' + this.dataset.masp,
+	// 			type: 'GET',
+	// 			success: function(data) {
+	// 				// Handle successful response
+	// 			},
 
+	// 			error: function(jqXHR, textStatus, errorThrown) {
+	// 				// Handle error response
+	// 				console.log(errorThrown);
+	// 			}
+	// 		});
+	// 	});
+	// });
+
+	var dem = function(index) {
+		$.ajax({
+			url : '/updateCart/' + index.dataset.masp + '/'
+					+ document.getElementById(index.dataset.masp).value,
+			type : 'GET',
+			success : function(data) {
+				// Handle successful response
+				location.reload(true);
+			},
+
+			error : function(jqXHR, textStatus, errorThrown) {
+				// Handle error response
+				console.log(errorThrown);
+			}
+		});
+	}
 </script>
 <!-- Begin Quick View | Modal Area End Here-->
