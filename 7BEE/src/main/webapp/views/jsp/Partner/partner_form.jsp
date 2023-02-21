@@ -45,13 +45,13 @@
 		<div class="nav nav-tabs" id="nav-tab" role="tablist">
 			<button class="nav-link active" id="nav-home-tab" data-toggle="tab"
 				data-target="#nav-home" type="button" role="tab"
-				aria-controls="nav-home" aria-selected="true">Home</button>
+				aria-controls="nav-home" aria-selected="true">Chi tiết</button>
 			<button class="nav-link" id="nav-profile-tab" data-toggle="tab"
 				data-target="#nav-profile" type="button" role="tab"
-				aria-controls="nav-profile" aria-selected="false">Profile</button>
+				aria-controls="nav-profile" aria-selected="false">Danh sách sản phẩm</button>
 			<button class="nav-link" id="nav-contact-tab" data-toggle="tab"
 				data-target="#nav-contact" type="button" role="tab"
-				aria-controls="nav-contact" aria-selected="false">Contact</button>
+				aria-controls="nav-contact" aria-selected="false">Đơn hàng</button>
 		</div>
 	</nav>
 	<div class="tab-content" id="nav-tabContent">
@@ -59,7 +59,7 @@
 			aria-labelledby="nav-home-tab">
 			<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
 				TIN SẢN PHẨM</h3>
-			<form:form modelAttribute="product">
+			<form:form modelAttribute="product" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
@@ -135,8 +135,8 @@
 								</div>
 								<div class="d-lg-flex justify-content-center">
 									<div class="file-input btn">
-										<span><i class="fa-regular fa-image"></i> Chọn ảnh</span> <input
-											type="file" multiple onchange="displaySelectedImages(this)">
+										<span><i class="fa-regular fa-image"></i> Chọn ảnh</span> <input accept=".jpg,.png,.gif"
+											type="file" name="filesIMG" max="10" multiple onchange="displaySelectedImages(this)">
 									</div>
 								</div>
 							</div>
