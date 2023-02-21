@@ -57,16 +57,14 @@
 								<thead>
 									<tr>
 										<th class="cart-product-name">Sản Phẩm</th>
-										<th class="cart-product-name">Số Lượng</th>
 										<th class="cart-product-total">Tổng</th>
-										
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="product" items="${listcarts}">
 										<tr class="cart_item">
-											<td class="cart-product-name">${product.value.SP_TenSP}</td>
-											<td class="product-quantity"> × ${product.value.SP_SoLuong} </td>
+											<td class="cart-product-name">${product.value.SP_TenSP}<strong
+												class="product-quantity"> × ${product.value.SP_SoLuong}</strong></td>
 											<td class="cart-product-total"><span class="amount"><fmt:formatNumber
 													type="number" value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span> VND</td>
 										</tr>
@@ -75,13 +73,11 @@
 								<tfoot>
 									<tr class="cart-subtotal">
 										<th>Tổng Phụ của Giỏ Hàng</th>
-										<td></td>
 										<td><span class="amount"><fmt:formatNumber type="number"
 												value="${sumtotal}"></fmt:formatNumber></span> VND</td>
 									</tr>
 									<tr class="order-total">
 										<th>Tổng Số Đơn Đặt Hàng</th>
-										<td></td>
 										<td><strong><span class="amount"><fmt:formatNumber type="number"
 												value="${sumtotal}"></fmt:formatNumber></span></strong> VND</td>
 									</tr>

@@ -29,9 +29,6 @@ public class ChiTiet_SanPhamController {
 		model.addAttribute("sanpham", sanpham);
 		model.addAttribute("listAnh", sanpham.getSP_HinhAnh());
 		model.addAttribute("mota", sanpham.getCt_sanpham().getCTSP_MoTa());
-		model.addAttribute("sumtotal", total());
-		model.addAttribute("listcarts", DataSharing.cart);
-		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		
 		// Lấy ra danh sách sản phẩm cùng loại mới nhất
 		List<SANPHAM> same_Products = sanphamdao.findProductsByLoaiSP(sanpham.getLoaisp().getLoaiSP_MA().toString(), 6);

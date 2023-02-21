@@ -35,8 +35,9 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var="product" items="${listcarts}">
-								<input value="${product.value.SP_Gia}" hidden="true" id="price${product.value.SP_MA}">
+								<c:forEach var="product" items="${Carts != null ? Carts : ''}">
+									<input value="${product.value.SP_Gia}" hidden="true"
+										id="price${product.value.SP_MA}">
 									<tr>
 										<td class="li-product-remove"><a
 											href="/removeCart/${product.value.SP_MA}"><i
@@ -49,20 +50,24 @@
 										<td class="li-product-price"><span class="amount"><fmt:formatNumber
 													type="number" value="${product.value.SP_Gia}"></fmt:formatNumber></span>
 											VND</td>
-										<td class="quantity">
+										<td class="quantity changeQuantity"
+											data-masp="${product.value.SP_MA}" onclick="dem(this)">
 											<div class="cart-plus-minus">
-												<input data-masp=${product.value.SP_MA } class="soluongdocnhat cart-plus-minus-box" id="${product.value.SP_MA}" onchange="dem('${product.value.SP_MA}')"
-													value="${product.value.SP_SoLuong}" type="number">
-<!-- 												<div class="dec qtybutton" > -->
-<%-- 													<i class="fa fa-angle-down" onclick="dem('${product.value.SP_MA}')"></i> --%>
-<!-- 												</div> -->
-<!-- 												<div class="inc qtybutton" > -->
-<%-- 													<i class="fa fa-angle-up" onclick="dem('${product.value.SP_MA}')"></i> --%>
-<!-- 												</div> -->
+												<input class="cart-plus-minus-box quantityShopCart"
+													value="${product.value.SP_SoLuong}"
+													id="${product.value.SP_MA}" type="number">
+												<div class="dec qtybutton">
+													<i class="fa fa-angle-down"></i>
+												</div>
+												<div class="inc qtybutton">
+													<i class="fa fa-angle-up"></i>
+												</div>
 											</div>
 										</td>
-										<td class="product-subtotal"><span class="amount" id="amount${product.value.SP_MA}"><fmt:formatNumber
-													type="number" value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span>
+										<td class="product-subtotal"><span class="amount"
+											id="amount${product.value.SP_MA}"><fmt:formatNumber
+													type="number"
+													value="${product.value.SP_Gia * product.value.SP_SoLuong}"></fmt:formatNumber></span>
 											VND</td>
 									</tr>
 								</c:forEach>
@@ -79,8 +84,8 @@
 										type="submit">
 								</div>
 								<div class="coupon2">
-									<input  class="button" name="update_cart"
-										value="Restart giỏ hàng" type="submit">
+
+									<a href="/clearCart">XÓA GIỎ HÀNG</a>
 								</div>
 							</div>
 						</div>
@@ -107,45 +112,40 @@
 	</div>
 </div>
 
-<script text= "text/javascript">
-	var dem = function(index){
-		document.getElementById('amount' + index).innerText = document.getElementById(index).value * document.getElementById('price' + index).value;
-	}
-	
-	$(document).ready( function() {
-		$(document).on("click", ".quick-view", function() {
+<script type="text/javascript">
+	// $(document).ready(function() {
+	// 	$(document).on("click", ".changeQuantity", function() {
+	// 		console.log("abc")
+	// 		$.ajax({
+	// 			url: '/updateCart/' + this.dataset.masp,
+	// 			type: 'GET',
+	// 			success: function(data) {
+	// 				// Handle successful response
+	// 			},
+
+	// 			error: function(jqXHR, textStatus, errorThrown) {
+	// 				// Handle error response
+	// 				console.log(errorThrown);
+	// 			}
+	// 		});
+	// 	});
+	// });
+
+	var dem = function(index) {
 		$.ajax({
-			url : '/api/Quick-view/' + this.dataset.masp,
-				type : 'GET',
-					success : function(data) {
-						// Handle successful response
-							var arrSP = data.split("-*-");
-							var sanpham = JSON.parse(arrSP[0]);
-							$('#exampleModalCenter #QVNameProduct').text(sanpham.SP_TenSP.toUpperCase());
-							$('#exampleModalCenter #QuickViewPrice').text(commify(sanpham.SP_Gia));
-							$('#exampleModalCenter #image1').prop('src', '/views/images/product/large-size/' + sanpham.SP_HinhAnh);
-							$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
-							$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
-							
-							},
-							
-							error : function(jqXHR, textStatus, errorThrown) {
-							// Handle error response
-							console.log(errorThrown);
-							}
+			url : '/updateCart/' + index.dataset.masp + '/'
+					+ document.getElementById(index.dataset.masp).value,
+			type : 'GET',
+			success : function(data) {
+				// Handle successful response
+				location.reload(true);
+			},
+
+			error : function(jqXHR, textStatus, errorThrown) {
+				// Handle error response
+				console.log(errorThrown);
+			}
 		});
-	});
-});
-
-
-function commify(n) {
-	var parts = n.toString().split(".");
-	const numberPart = parts[0];
-	const decimalPart = parts[1];
-	const thousands = /\B(?=(\d{3})+(?!\d))/g;
-	return numberPart.replace(thousands, ".")
-			+ (decimalPart ? "," + decimalPart : "");
-}
-
+	}
 </script>
 <!-- Begin Quick View | Modal Area End Here-->

@@ -82,15 +82,6 @@ public class homeController {
 			}
 		}
 		model.addAttribute("Products_ShopRandom", Products_ShopRandom);
-
-// tổng tiền trong giỏ hàng nhỏ
-		model.addAttribute("sumtotal", total());
-
-		int totalProductInCart = 0;
-		for (Map.Entry<String, SANPHAM> entry : DataSharing.cart.entrySet()) {
-			totalProductInCart += entry.getValue().getSP_SoLuong();
-		}
-		model.addAttribute("totalProductInCart", totalProductInCart);
 		
 		return PageInfo.goSite(model, PageType.HOMEPAGE);
 	}

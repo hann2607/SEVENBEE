@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sevenbee.dao.SANPHAMDAO;
 import com.sevenbee.entity.SANPHAM;
@@ -20,7 +23,7 @@ import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class GiohangController {
@@ -37,47 +40,83 @@ public class GiohangController {
 	@Autowired
 	SANPHAMDAO sanphamdao;
 
-	@Autowired
-	HttpSession sess;
-
 	@RequestMapping("/ShoppingCart")
 	public String LoadShopcart(Model model) throws ServletException, IOException {
-		model.addAttribute("ShopCart", DataSharing.cart.clone());
-		model.addAttribute("cart", cartShop.getProducts());
-		model.addAttribute("amount", cartShop.getAmount());
 		model.addAttribute("sumtotal", total());
-		model.addAttribute("listcarts", DataSharing.cart);
 		int totalProductInCart = 0;
-		for(Map.Entry<String, SANPHAM> entry : DataSharing.cart.entrySet()) {
-		    totalProductInCart += entry.getValue().getSP_SoLuong();
+		for (Map.Entry<String, SANPHAM> entry : DataSharing.cart.entrySet()) {
+			totalProductInCart += entry.getValue().getSP_SoLuong();
 		}
 		model.addAttribute("totalProductInCart", totalProductInCart);
 		return PageInfo.goSite(model, PageType.SITE_SHOPPINGCART);
 	}
 
-	@GetMapping("/addCart/{id}")
-	public String addToCart(@PathVariable String id, Model model) {
-		String masp = id;
+	@RequestMapping("/addCart")
+	public String addToCart(@RequestParam("masp") String masp, @RequestParam("quantity") int quantity, Model model,
+			HttpServletRequest request) {
 		SANPHAM sanpham = sanphamdao.findById(masp).get();
 		if (DataSharing.cart.get(masp) != null) {
-			if (sanpham.getSP_SoLuong() > DataSharing.cart.get(masp).getSP_SoLuong()) {
-				DataSharing.cart.get(masp).setSP_SoLuong(DataSharing.cart.get(masp).getSP_SoLuong() + 1);			
-			}	
+			if (sanpham.getSP_SoLuong() >= (DataSharing.cart.get(masp).getSP_SoLuong() + quantity)) {
+				DataSharing.cart.get(masp).setSP_SoLuong(DataSharing.cart.get(masp).getSP_SoLuong() + quantity);
+			}
 		} else {
-			if (sanpham.getSP_SoLuong() >= 1) {
-				sanpham.setSP_SoLuong(1);
-				DataSharing.cart.put(sanpham.getSP_MA(), sanpham);			
+			if (sanpham.getSP_SoLuong() >= quantity) {
+				sanpham.setSP_SoLuong(quantity);
+				DataSharing.cart.put(sanpham.getSP_MA(), sanpham);
 			}
 		}
 
-	
-		sess.setAttribute("listcarts", DataSharing.cart.clone());
-		model.addAttribute("listcarts", DataSharing.cart);
+		session.set("Carts", DataSharing.cart.clone());
 		model.addAttribute("totalProductInCart", DataSharing.cart.size());
-		model.addAttribute("messages", "Add success!");
-		return "redirect:/";
+
+		// Update lại minicart
+		updateMiniCart();
+
+		// Get URL Previous
+		String Referer = request.getHeader("Referer");
+		return "redirect:/" + Referer.substring(Referer.indexOf("/") + 1, Referer.length());
 	}
-	
+
+	@RequestMapping("/updateCart/{id}/{quantity}")
+	@ResponseBody
+	public String updateCart(@PathVariable("id") String id, @PathVariable("quantity") int quantity, Model model) {
+		SANPHAM sanpham = sanphamdao.findById(id).get();
+		if (DataSharing.cart.get(id) != null && sanpham != null) {
+			if (sanpham.getSP_SoLuong() >= quantity) {
+				DataSharing.cart.get(id).setSP_SoLuong(quantity);
+			}
+		}
+		session.set("Carts", DataSharing.cart.clone());
+		model.addAttribute("totalProductInCart", DataSharing.cart.size());
+
+		// Update lại minicart
+		updateMiniCart();
+		
+		return "";
+	}
+
+	@RequestMapping("/removeCart/{id}")
+	public String removeCart(@PathVariable String id, Model model, HttpServletRequest request) {
+		DataSharing.cart.remove(id);
+		session.set("Carts", DataSharing.cart.clone());
+
+		// Update lại minicart
+		updateMiniCart();
+
+		// Get URL Previous
+		String Referer = request.getHeader("Referer");
+		return "redirect:/" + Referer.substring(Referer.indexOf("/") + 1, Referer.length());
+	}
+
+	@GetMapping("/clearCart")
+	public String clearCart(Model model) {
+		DataSharing.cart.clear();
+		session.set("Carts", DataSharing.cart.clone());
+		// Update lại minicart
+		updateMiniCart();
+		return "redirect:/ShoppingCart";
+	}
+
 	private double total() {
 		double sum = 0;
 		for (SANPHAM sanpham : DataSharing.cart.values()) {
@@ -85,28 +124,14 @@ public class GiohangController {
 		}
 		return sum;
 	}
-	
-	
-//	@GetMapping("/updateCart/{id}")
-//	public String updateCart(@PathVariable String id, Model model) {
-//		cartShop.updateProduct(id, param.getInt("quantity", 0));
-//		sess.setAttribute("listcarts", DataSharing.cart.clone());
-//		model.addAttribute("messages", "Update success!");
-//		return "redirect:/ShoppingCart";
-//	}
 
-	@GetMapping("/removeCart/{id}")   
-	public String removeCart(@PathVariable String id, Model model) {
-		DataSharing.cart.remove(id);
-		sess.setAttribute("listcarts", DataSharing.cart.clone());
-		model.addAttribute("messages", "remove success!");
-		return "redirect:/ShoppingCart";
-	}
-
-	@GetMapping("/clear")
-	public String clearCart(Model model) {
-		DataSharing.cart.clear();
-		model.addAttribute("messages", "Clear success!");
-		return "redirect:/ShoppingCart";
+	private void updateMiniCart() {
+		// tổng tiền trong giỏ hàng nhỏ
+		session.set("sumtotal", total());
+		int totalProductInCart = 0;
+		for (Map.Entry<String, SANPHAM> entry : DataSharing.cart.entrySet()) {
+			totalProductInCart += entry.getValue().getSP_SoLuong();
+		}
+		session.set("totalProductInCart", totalProductInCart);
 	}
 }

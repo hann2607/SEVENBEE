@@ -37,9 +37,6 @@ public class shopController {
 		model.addAttribute("Pagecurrent", pages.getNumber());
 		model.addAttribute("totalPages", pages.getTotalPages());
 		model.addAttribute("pages", pages);
-		model.addAttribute("sumtotal", total());
-		model.addAttribute("listcarts", DataSharing.cart);
-		model.addAttribute("totalProductInCart", DataSharing.cart.size());
 		return PageInfo.goSite(model, PageType.SITE_SHOP);
 	}
 

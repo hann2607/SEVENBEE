@@ -474,10 +474,10 @@ Note: main.js, All Default Scripting Languages For This Theme Included In This F
 			var newVal = parseFloat(oldValue) + 1;
 		} else {
 			// Don't allow decrementing below zero
-			if (oldValue > 0) {
+			if (oldValue > 1) {
 				var newVal = parseFloat(oldValue) - 1;
 			} else {
-				newVal = 0;
+				newVal = 1;
 			}
 		}
 		$button.parent().find("input").val(newVal);
@@ -559,7 +559,7 @@ $(document).ready(function() {
 
 				$('#exampleModalCenter #QuickViewModalLoaiSP').text(arrSP[1]);
 				$('#exampleModalCenter #QuickViewmodalmotaSP').text(arrSP[2]);
-
+				$('#exampleModalCenter #maspQuickView').val(sanpham.SP_MA);
 			},
 
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -570,13 +570,8 @@ $(document).ready(function() {
 	});
 
 	// Thêm sản phẩm
-	$(document).on("click", ".btn_themSP", function() {
-		$.ajax({
-			type: "POST",
-			url: "/partner/addproduct",
+	
 
-		});
-	})
 });
 
 
