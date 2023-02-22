@@ -40,19 +40,20 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container mb-20">
 	<nav>
 		<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<button class="nav-link ${btnActive1}" id="nav-home-tab" data-toggle="tab"
-				data-target="#nav-home" type="button" role="tab"
+			<button class="nav-link ${btnActive1}" id="nav-home-tab"
+				data-toggle="tab" data-target="#nav-home" type="button" role="tab"
 				aria-controls="nav-home" aria-selected="true">Chi tiết</button>
-			<button class="nav-link ${btnActive2}" id="nav-profile-tab" data-toggle="tab"
-				data-target="#nav-profile" type="button" role="tab"
-				aria-controls="nav-profile" aria-selected="false">Danh sách
-				sản phẩm</button>
-			<button class="nav-link ${btnActive3}" id="nav-contact-tab" data-toggle="tab"
-				data-target="#nav-contact" type="button" role="tab"
-				aria-controls="nav-contact" aria-selected="false">Đơn hàng</button>
+			<button class="nav-link ${btnActive2}" id="nav-profile-tab"
+				data-toggle="tab" data-target="#nav-profile" type="button"
+				role="tab" aria-controls="nav-profile" aria-selected="false">Danh
+				sách sản phẩm</button>
+			<button class="nav-link ${btnActive3}" id="nav-contact-tab"
+				data-toggle="tab" data-target="#nav-contact" type="button"
+				role="tab" aria-controls="nav-contact" aria-selected="false">Đơn
+				hàng</button>
 		</div>
 	</nav>
 	<div class="tab-content" id="nav-tabContent">
@@ -74,8 +75,6 @@
 							<form:input path="SP_TenSP" type="text" class="form-control"
 								name="name" id="name" placeholder="Nhập Tên sản phẩm" />
 							<form:errors path="SP_TenSP" class="badge badge-danger" />
-
-
 						</div>
 						<div class="form-group">
 							<label>Chọn Loại</label>
@@ -127,7 +126,7 @@
 						<div class="row d-flex flex-column">
 							<h5 class="text-center mb-0">
 								Ảnh sản phẩm
-								<p class="text-danger font-weight-bold">${toida10hinh}${itnhat1hinh}</p>
+								<p class="text-danger font-weight-bold">${toida10hinh}${itnhat2hinh}</p>
 							</h5>
 							<div class="d-flex flex-column">
 								<div id="selectedImages" class="carousel slide"
@@ -162,8 +161,12 @@
 						<div class="row mt-25">
 							<h5 class="text-center w-100 mb-0">
 								Thông số chi tiết
-								<form:errors path="CTSP_MoTa"
-									class="text-danger font-weight-bold" />
+								<div>
+									<form:errors path="CTSP_MoTaTitle" class=" alert-danger h6" />
+									<form:errors path="CTSP_MoTaContent" class=" alert-danger h6" />
+								</div>
+
+
 							</h5>
 							<div class="table-responsive" style="height: 16em">
 								<table id="dataTableThemSP" class="table border">
@@ -175,10 +178,10 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td><form:input path="CTSP_MoTa" type="text"
+											<td><form:input path="CTSP_MoTaTitle" type="text"
 													class="form-control" placeholder="Nhập tiêu đề 1" /></td>
-											<td><input type="text" class="form-control"
-												name="content1" placeholder="Nhập nội dung 1" /></td>
+											<td><form:input path="CTSP_MoTaContent" type="text"
+													class="form-control" placeholder="Nhập nội dung 1" /></td>
 										</tr>
 										<tr>
 											<td><input type="text" class="form-control"
@@ -233,76 +236,44 @@
 					class="btn btn-primary mt-3">THÊM SẢN PHẨM</button>
 			</form:form>
 		</div>
-		<div class="tab-pane fade ${showForm2}" id="nav-profile" role="tabpanel"
-			aria-labelledby="nav-profile-tab">
-			<table
-				class="table-hover table mt-3 text-center justify-content-center">
-				<thead class="thead-light">
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col" class="w-25">Tên SP</th>
-						<th scope="col" class="w-25">Loại</th>
-						<th scope="col" class="w-25">Hình ảnh</th>
-						<th scope="col" class="w-25">Thao tác</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row" class="align-middle">1</th>
-						<td class="align-middle">Loa Bluetooth SamSung</td>
-						<td class="align-middle">Điện Tử</td>
-						<td class="align-middle"><img class="img-thumbnail"
-							width="50%"
-							src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
-						</td>
-						<td colspan="2" class="align-middle">
-							<button formaction="" class="btn btn-lg btn-warning mr-3">
-								<i class="fa-solid fa-pen-to-square"></i> Sửa
-							</button>
-							<button formaction="" class="btn btn-lg btn-danger ">
-								<i class="fa-solid fa-trash-can"></i> Xóa
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" class="align-middle">1</th>
-						<td class="align-middle">Loa Bluetooth SamSung</td>
-						<td class="align-middle">Điện Tử</td>
-						<td class="align-middle"><img class="img-thumbnail"
-							width="50%"
-							src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
-						</td>
-						<td colspan="2" class="align-middle">
-							<button formaction="" class="btn btn-lg btn-warning mr-3">
-								<i class="fa-solid fa-pen-to-square"></i> Sửa
-							</button>
-							<button formaction="" class="btn btn-lg btn-danger ">
-								<i class="fa-solid fa-trash-can"></i> Xóa
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" class="align-middle">1</th>
-						<td class="align-middle">Loa Bluetooth SamSung</td>
-						<td class="align-middle">Điện Tử</td>
-						<td class="align-middle"><img class="img-thumbnail"
-							width="50%"
-							src="https://images.wallpaperscraft.com/image/single/context_word_text_825858_1280x720.jpg">
-						</td>
-						<td colspan="2" class="align-middle">
-							<button formaction="" class="btn btn-lg btn-warning mr-3">
-								<i class="fa-solid fa-pen-to-square"></i> Sửa
-							</button>
-							<button formaction="" class="btn btn-lg btn-danger ">
-								<i class="fa-solid fa-trash-can"></i> Xóa
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="tab-pane fade ${showForm2}" id="nav-profile"
+			role="tabpanel" aria-labelledby="nav-profile-tab">
+			<div class="table-responsive" style="height: 50em">
+				<table
+					class="table-hover table mt-3 text-center justify-content-center">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col" class="w-25">Tên SP</th>
+							<th scope="col" class="w-25">Loại</th>
+							<th scope="col" class="w-25">Hình ảnh</th>
+							<th scope="col" class="w-25">Thao tác</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="item" items="${lstSPbyPartner}">
+							<tr>
+								<td class="align-middle">${item.SP_TenSP }</td>
+								<td class="align-middle">${item.getLoaisp().getLoaiSP_Ten() }</td>
+								<td class="align-middle"><img class="img-thumbnail"
+									width="50%"
+									src="/views/images/product/large-size/${item.SP_HinhAnh}">
+								</td>
+								<td colspan="2" class="align-middle">
+									<button formaction="" class="btn btn-lg btn-warning mr-3">
+										<i class="fa-solid fa-pen-to-square"></i> Sửa
+									</button>
+									<button formaction="" class="btn btn-lg btn-danger ">
+										<i class="fa-solid fa-trash-can"></i> Xóa
+									</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div class="tab-pane fade ${showForm3}" id="nav-contact" role="tabpanel"
-			aria-labelledby="nav-contact-tab">
+		<div class="tab-pane fade ${showForm3}" id="nav-contact"
+			role="tabpanel" aria-labelledby="nav-contact-tab">
 			<div
 				class="d-flex flex-row align-items-center justify-content-center">
 				<img alt="" src="/views/images/team/7bee.png">

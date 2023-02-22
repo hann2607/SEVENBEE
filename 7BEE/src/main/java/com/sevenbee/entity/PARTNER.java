@@ -30,7 +30,7 @@ public class PARTNER {
 	String Shop_TenShop;
 	@Email(message = "Email nhập vào không đúng định dạng thử lại !")
 	@NotBlank(message = "Vui lòng nhập email của bạn !")
-	String Email; 
+	String Email;
 	String Hinhanh;
 	@NotBlank(message = "Vui lòng nhập mật khẩu !")
 	String Matkhau;
@@ -42,7 +42,7 @@ public class PARTNER {
 //	@OneToMany
 //	@JoinColumn(name = "Shop_TenShop")
 //	List<TINTUC> tintuc;
-	
+
 	@OneToMany(mappedBy = "shop")
-	private List<SANPHAM> sanpham;
+	List<SANPHAM> sanpham;
 }

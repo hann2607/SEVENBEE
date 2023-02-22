@@ -67,6 +67,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		String referer = request.getHeader("Referer");
 		session.setAttribute("referer", referer);
+		System.out.println();
 		return PageInfo.goSite(model, PageType.SITE_LOGIN);
 	}
 
@@ -126,7 +127,7 @@ public class LoginController {
 			if (!user.isPresent()) {
 				sendMail(nguoidung.getEmail(), nguoidung.getSDT(), nguoidung.getMatkhau());
 				nguoidung.setVaitro(false);
-				nguoidung.setIsactive(false);
+				nguoidung.setIsactive(true);
 				nguoidung.setNgaysinh(null);
 				nguoidung.setHinhanh("user.jpeg");
 				cookieService.add("username", nguoidung.getSDT(), 1);
@@ -190,8 +191,8 @@ public class LoginController {
 				return PageInfo.goSite(model, PageType.SITE_LOGIN_PARTNER);
 			}
 			if (rememberMe) {
-				cookieService.add("username", username, 1);
-				cookieService.add("password", password, 1);
+				cookieService.add("username", username, 24);
+				cookieService.add("password", password, 24);
 			} else {
 				cookieService.remove("username");
 				cookieService.remove("password");
@@ -237,7 +238,7 @@ public class LoginController {
 				partnerService.save(partner);
 				cookieService.add("username", partner.getSDT(), 1);
 				cookieService.add("password", partner.getMatkhau(), 1);
-				session.setAttribute("partner", p);
+				session.setAttribute("partnerCK", p);
 				
 				// Lấy trang hiện tại từ session
 				HttpSession session = request.getSession();
@@ -267,13 +268,12 @@ public class LoginController {
 		cookieService.remove("username");
 		cookieService.remove("password");
 		sessionService.remove("user");
-		sessionService.remove("partner");
+		sessionService.remove("partnerCK");
 		// Xóa trang trước đó khỏi session
 		session.removeAttribute("referer");
 
 		// Chuyển hướng trở lại trang trước đó (nếu có)
 		if (referer != null) {
-			System.out.println(referer);
 			return "redirect:" + referer;
 		}
 
@@ -285,7 +285,7 @@ public class LoginController {
 	public void sendMailPartner(String txtTo, String username, String password) {
 		MailInfo mail = new MailInfo();
 		mail.setTo(txtTo);
-		mail.setSubject("Thông Báo ĐĂNG KÝ SHOP THÀNH CÔNG");
+		mail.setSubject("THÔNG BÁO ĐĂNG KÝ SHOP THÀNH CÔNG");
 		mail.setBody(mailBody.mail_WelcomePartner(username, password));
 		mailService.queue(mail);
 	}

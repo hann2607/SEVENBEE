@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sevenbee.dao.CHITIET_SANPHAMDAO;
 import com.sevenbee.dao.LOAISPDAO;
+import com.sevenbee.dao.PARTNERDAO;
 import com.sevenbee.dao.SANPHAMDAO;
 import com.sevenbee.entity.CHITIET_SANPHAM;
 import com.sevenbee.entity.LOAISP;
+import com.sevenbee.entity.PARTNER;
 import com.sevenbee.entity.PRODUCT;
 import com.sevenbee.entity.SANPHAM;
 import com.sevenbee.service.CookieService;
@@ -43,13 +44,15 @@ public class PartnerController {
 
 	@Autowired
 	LOAISPDAO loaispDAO;
-	
+
 	@Autowired
 	SANPHAMDAO spDAO;
-	
+
 	@Autowired
 	CHITIET_SANPHAMDAO ctspDAO;
-	
+
+	@Autowired
+	PARTNERDAO partnerDAO;
 
 	@Autowired
 	RandomService randomService;
@@ -62,31 +65,35 @@ public class PartnerController {
 		}
 		List<LOAISP> lstLoaiSP = loaispDAO.findAll();
 		model.addAttribute("lstLoaiSP", lstLoaiSP);
-		model.addAttribute("showForm2","show active");
-		model.addAttribute("btnActive2","active");
+		model.addAttribute("showForm2", "show active");
+		model.addAttribute("btnActive2", "active");
+		findAllSPbyPartner(cookieService.getValue("username"), model);
 		return PageInfo.goSite(model, PageType.SITE_PARTNER);
 	}
 
 	@RequestMapping("/partner/addproduct")
-	public String add_Product(Model model,@Valid @ModelAttribute("product") PRODUCT p, BindingResult result,
+	public String add_Product(Model model, @Valid @ModelAttribute("product") PRODUCT p, BindingResult result,
 			HttpServletRequest request, @RequestParam("filesIMG") MultipartFile[] files)
 			throws ServletException, IOException {
 		if (result.hasErrors()) {
 			// validate form
+			model.addAttribute("showForm1", "show active");
+			model.addAttribute("btnActive1", "active");
+			System.err.println("check");
 			return PageInfo.goSite(model, PageType.SITE_PARTNER);
 		} else {
 			if (files == null || files.length < 2) {
-		        // Không có ảnh nào được tải lên
-				model.addAttribute("itnhat1hinh", "Vui lòng đăng tải ít nhất 2 ảnh!");
-		    }
+				// Không có ảnh nào được tải lên
+				model.addAttribute("itnhat2hinh", "Vui lòng đăng tải ít nhất 2 ảnh!");
+			}
 			if (files.length > 10) {
 				// Báo lỗi nếu có nhiều hơn 10 hình ảnh
 				model.addAttribute("toida10hinh", "Bạn chỉ có thể đăng tải tối đa 10 ảnh!");
 			} else {
-				//Xử lí thông số chi tiết dạng table
+				// Xử lí thông số chi tiết dạng table
 				String CTSP_Table = "";
-				if (!p.getCTSP_MoTa().isEmpty() && !request.getParameter("content1").isEmpty()) {
-					CTSP_Table += p.getCTSP_MoTa() + "-*-" + request.getParameter("content1") + "-*-";
+				if (!p.getCTSP_MoTaTitle().isEmpty() && !p.getCTSP_MoTaContent().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle() + "-*-" + p.getCTSP_MoTaContent() + "-*-";
 				}
 				if (request.getParameter("content2") != null && !request.getParameter("content2").isEmpty()) {
 					CTSP_Table += request.getParameter("title2") + "-*-" + request.getParameter("content2") + "-*-";
@@ -118,25 +125,26 @@ public class PartnerController {
 					// Vòng lặp để thêm hình vào folder và thêm tên hình vào mảng
 					for (int i = 0; i < files.length; i++) {
 						// Lấy hình từ mảng input trả về
-			            Path filePath = Paths.get(uploadDirectory, files[i].getOriginalFilename());
-			            // Lưu hình vào thư mục theo đường dẫn
-			            Files.write(filePath, files[i].getBytes());
-			            //Thêm từng tên hình vào mảng
-			            lstIMGname[i] = files[i].getOriginalFilename();
-			        }
-					//Chèn thêm kí hiệu đặc biệt giữa các phần tử trong mảng và đưa về dạng chuỗi
-					 String lstIMGsp = String.join("-*-", lstIMGname);
+						Path filePath = Paths.get(uploadDirectory, files[i].getOriginalFilename());
+						// Lưu hình vào thư mục theo đường dẫn
+						Files.write(filePath, files[i].getBytes());
+						// Thêm từng tên hình vào mảng
+						lstIMGname[i] = files[i].getOriginalFilename();
+					}
+					// Chèn thêm kí hiệu đặc biệt giữa các phần tử trong mảng và đưa về dạng chuỗi
+					String lstIMGsp = String.join("-*-", lstIMGname);
 //					 System.out.println(joinedlstIMGname);
-					 
-					 //Thêm sản phẩm vào bảng chi tiết
-					 String maCTSP = "CTSP" + cookieService.getValue("username") + randomService.randomString(5) ;
-					 Optional<CHITIET_SANPHAM> ctsp =  ctspDAO.findById(maCTSP);
-					 Optional<SANPHAM> sp =  spDAO.findById(maCTSP.substring(2));
-					  
-					 if (!ctsp.isPresent() || !sp.isPresent()) {
-						 model.addAttribute("error", "Thêm sản phẩm thất bại, vui lòng thử lại! ");
-					}else {
-						//Thêm dữ liệu vào bảng Chi tiết sản phẩm
+
+					// Kiểm tra mã của CTSP và SP
+					String maCTSP = "CTSP" + cookieService.getValue("username") + randomService.randomString(5);
+					Optional<CHITIET_SANPHAM> ctsp = ctspDAO.findById(maCTSP);
+					Optional<SANPHAM> sp = spDAO.findById(maCTSP.substring(2));
+
+					if (ctsp.isPresent() || sp.isPresent()) {
+						System.out.println("check");
+						model.addAttribute("error", "Thêm sản phẩm thất bại, vui lòng thử lại!");
+					} else {
+						// Thêm dữ liệu vào bảng Chi tiết sản phẩm
 						CHITIET_SANPHAM ctspNEW = new CHITIET_SANPHAM();
 						ctspNEW.setCTSP_MA(maCTSP);
 						ctspNEW.setCTSP_MoTa(CTSP_Table);
@@ -144,13 +152,13 @@ public class PartnerController {
 						ctspNEW.setCTSP_Mau(p.getCTSP_Mau());
 						ctspNEW.setCTSP_ThongTinThem(p.getCTSP_ThongTinThem());
 						ctspDAO.save(ctspNEW);
-						
-						//Thêm dữ liệu vào bảng Sản phẩm
+
+						// Thêm dữ liệu vào bảng Sản phẩm
 						SANPHAM spNEW = new SANPHAM();
 						spNEW.setSP_MA(maCTSP.substring(2));
-						spNEW.setShop(null);/////////
+						spNEW.setShop(partnerDAO.findById(cookieService.getValue("username")).get());/////////
 						spNEW.setLoaisp(loaispDAO.findById(p.getLoaiSP_MA()).get());
-						Date currentDate =  new Date();
+						Date currentDate = new Date();
 						spNEW.setSP_Ngaydang(currentDate);
 						spNEW.setSP_TenSP(p.getSP_TenSP());
 						spNEW.setSP_HinhAnh(lstIMGsp);
@@ -158,19 +166,24 @@ public class PartnerController {
 						spNEW.setSP_SoLuong(p.getSP_SoLuong());
 						spNEW.setCt_sanpham(ctspDAO.findById(maCTSP).get());
 						spDAO.save(spNEW);
+						model.addAttribute("message", "Thêm sản phẩm thành công");
 					}
 				} catch (IOException e) {
 					model.addAttribute("error", "Error: " + e.getMessage());
+//					model.addAttribute("error", "Thêm sản phẩm thất bại, vui lòng thử lại!");
 				}
 			}
-			
-			
 		}
+		model.addAttribute("showForm1", "show active");
+		model.addAttribute("btnActive1", "active");
 		return PageInfo.goSite(model, PageType.SITE_PARTNER);
 	}
-//	@ModelAttribute("lstLoaiSP")
-//	public List<LOAISP> getlstLoaiSP() {
-//		List<LOAISP> lstLoaiSP = loaispDAO.findAll();
-//		return lstLoaiSP;
-//	}
+
+	private void findAllSPbyPartner(String id, Model model) {
+		PARTNER p = partnerDAO.findById(id).get();
+		List<SANPHAM> lstSP = p.getSanpham();
+		System.out.println(lstSP.size());
+		model.addAttribute("lstSPbyPartner",lstSP);
+	}
+
 }
