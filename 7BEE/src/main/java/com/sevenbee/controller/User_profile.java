@@ -1,7 +1,13 @@
 package com.sevenbee.controller;
 
+//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.sevenbee.dao.NGUOIDUNGDAO;
 import com.sevenbee.entity.NGUOIDUNG;
 import com.sevenbee.mailCONSTANT.mail_CONSTANT;
@@ -21,12 +29,13 @@ import com.sevenbee.service.CookieService;
 import com.sevenbee.service.MailService;
 import com.sevenbee.service.ParamService;
 import com.sevenbee.service.SessionService;
-
 import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 import com.sevenbee.validation.AccountValidate;
 
+//import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class User_profile {
@@ -52,38 +61,7 @@ public class User_profile {
 
 	String codeVerify;
 
-//	@GetMapping("/userinfo")
-//	public String getUserInfo(Model model) throws ServletException, IOException {
-//		
-//	    // Lấy user từ session
-//	    NGUOIDUNG ndung = (NGUOIDUNG) session.getAttribute("user");
-//
-//	    // Nếu user không tồn tại, chuyển hướng đến trang đăng nhập
-//	    if (ndung == null) {
-//	        return "redirect:/home";
-//	    }
-//
-//	    // Sử dụng UserRepository để lấy thông tin của user từ cơ sở dữ liệu
-//	    NGUOIDUNG dbUser = nguoidungDAO.findById("375586332").orElse(null);
-//	    System.out.println(dbUser + " id");
-//
-//	    // Nếu không tìm thấy user trong cơ sở dữ liệu, trả về trang lỗi
-//	    if (dbUser == null) {
-//	        return "error";
-//	    }
-//
-//	    // Truyền thông tin user vào model để hiển thị trên giao diện
-//	    model.addAttribute("username", dbUser.getHo_ten());
-//	    model.addAttribute("email", dbUser.getEmail());
-//	    model.addAttribute("sdt", dbUser.getSDT());
-//	    model.addAttribute("DOB", dbUser.getNgaysinh());
-//	    model.addAttribute("vaitro", dbUser.isVaitro());
-//	   
-//
-//	    return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
-//	}
-
-//
+	private static final String URL_PHOTO = System.getProperty("user.dir") + "/src/main/webapp/views/images/team/";
 	@RequestMapping("/user/profile")
 	public String getUserByUsername(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
 			@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword) throws ServletException, IOException {
@@ -104,17 +82,31 @@ public class User_profile {
 
 		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 	}
-
+//	 @RequestParam("images") MultipartFile attach,
 	@PostMapping("/user/profile/update")
 	public String updateProfile(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
-			@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword, BindingResult result)
+			@ModelAttribute("nguoidungpassword") NGUOIDUNG nguoidungpassword,  @RequestParam("images") MultipartFile attach,
+			BindingResult result)
 			throws ServletException, IOException {
-
+		//String image ;
 		nguoidung.setSDT(cookieService.getValue("username"));
 		nguoidung.setMatkhau(cookieService.getValue("password"));
 		nguoidung.setIsactive(true);
-
+		//System.out.println(nguoidung.getHinhanh() + " name hinh anh");
 		nguoidung.setVaitro(false);
+		if(!attach.isEmpty()) {
+			 String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMddHHmmss-"));
+			String filename = attach.getOriginalFilename()+date ;
+			File file = new File(URL_PHOTO + filename);
+			if(!file.exists()) {
+				file.mkdirs();
+			}
+			attach.transferTo(file);
+			
+			nguoidung.setHinhanh(filename);
+		} else {
+			nguoidung.setHinhanh(nguoidung.getHinhanh());
+		}
 		
 
 		accountService.save(nguoidung);
@@ -126,7 +118,6 @@ public class User_profile {
 //		return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
 
 	}
-
 	@PostMapping("user/profile/changepassword")
 	public String ChangePasswords(@RequestParam("pwnew1") String pw1, @RequestParam("pwcomfirm") String pwcomfirm,
 			Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
@@ -141,36 +132,7 @@ public class User_profile {
 			model.addAttribute("error", "Mật khẩu nhập lại không khớp");
 			return "changepassword";
 		} 
-//			else {
-//			System.out.println("test cookie sdt ; " + nguoidungpassword.getSDT());
-//
-//			Optional<NGUOIDUNG> ngdungpass = nguoidungDAO.findById(nguoidungpassword.getSDT());
-//			System.out.println("dennnday1111 chua lay dc cai gi r" + nguoidungpassword.getHo_ten());
-//			if (ngdungpass.isPresent()) {
-//				System.out.println("dennnday chua lay dc cai gi r" + nguoidungpassword.getHo_ten());
-//				nguoidungpassword.getHo_ten();
-//				nguoidungpassword.getDiachi();
-//				nguoidungpassword.getHinhanh();
-//				nguoidungpassword.getNgaysinh();
-//				nguoidungpassword.getEmail();
-//				nguoidungpassword.isVaitro();
-//				nguoidungpassword.isIsactive();
-//				nguoidungpassword.setMatkhau(pwcomfirm);
-//				accountService.save(nguoidungpassword);
-//				model.addAttribute("messages", "Update success!");
-//				System.out.println("update mat khau okk");
-//			} else {
-//				// Báo lỗi tài khoản đã tồn tại
-//				model.addAttribute("message", "Lỗi");
-//				return PageInfo.goSite(model, PageType.SITE_USERPROFILE);
-//			}
-//
-//			// nguoidungpassword.setMatkhau(pwcomfirm);
-//			// nguoidung.setMatkhau(pwcomfirm)
-//
-//			System.out.println("test1 ; " + nguoidungpassword.getHo_ten());
-//			System.out.println("test1 ; " + nguoidungpassword.getEmail());
-//		}
+
 		else {
 			nguoidung.setSDT(nguoidungpassword.getSDT());
 			Optional<NGUOIDUNG> user1 = nguoidungDAO.findById(nguoidung.getSDT());
@@ -194,8 +156,52 @@ public class User_profile {
 		cookieService.remove("password");
 		sessionService.remove("name");
 		return "redirect:/login";
-		
+
 	}
-	
+//	@Autowired
+//	ServletContext app;
+//	public void createFloder() {
+//		File uploadRootDir = new File(app.getRealPath("upload"));
+//		if (!uploadRootDir.exists()) {
+//			uploadRootDir.mkdirs();
+//		}
+//	}
+//
+//	// Lưu hình người dùng đã chọn
+//	public String saveImage(MultipartFile attach) throws IOException {
+//		// Lấy đường dẫn chính của thư mục upload
+//		File uploadRootDir = new File(app.getRealPath("upload"));
+//		// Nếu thư mục chưa được tạo thì sẽ tạo
+//		createFloder();
+//		// Lấy tên file được chọn
+//		String filename = attach.getOriginalFilename();
+//		File serverFile = new File(uploadRootDir.getAbsoluteFile() + File.separator + filename);
+//		BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+//		stream.write(attach.getBytes());
+//		stream.close();
+//		return filename;
+//	}
+	@Autowired
+    private HttpServletRequest request;
+	public String saveImage(MultipartFile attach) throws IOException {
+	    // Lấy đường dẫn chính của thư mục upload
+	    String uploadRootDir = request.getSession().getServletContext().getRealPath("upload");
+
+	    // Nếu thư mục chưa được tạo thì sẽ tạo
+	    File uploadRootDirPath = new File(uploadRootDir);
+	    if (!uploadRootDirPath.exists()) {
+	        uploadRootDirPath.mkdirs();
+	    }
+
+	    // Lấy tên file được chọn
+	    String fileName = attach.getOriginalFilename();
+
+	    // Lưu file vào thư mục upload
+	    String filePath = uploadRootDir + File.separator + fileName;
+	    File serverFile = new File(filePath);
+	    attach.transferTo(serverFile);
+
+	    return fileName;
+	}
 
 }
