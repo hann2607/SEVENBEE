@@ -10,6 +10,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,10 +23,18 @@ import lombok.NoArgsConstructor;
 @Table(name = "PARTNER")
 public class PARTNER {
 	@Id
+	@NotBlank(message = "Vui lòng nhập số điện thoại !")
 	String SDT;
 	@Column(unique = true)
+	@NotBlank(message = "Vui lòng nhập tên shop !")
 	String Shop_TenShop;
-	String Email, Hinhanh, Matkhau, MoTaShop;
+	@Email(message = "Email nhập vào không đúng định dạng thử lại !")
+	@NotBlank(message = "Vui lòng nhập email của bạn !")
+	String Email; 
+	String Hinhanh;
+	@NotBlank(message = "Vui lòng nhập mật khẩu !")
+	String Matkhau;
+	String MoTaShop;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "NgayDKShop")
 	Date NgayDKShop = new Date();

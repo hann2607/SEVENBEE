@@ -58,10 +58,12 @@ public class PartnerController {
 	public String detai_Product(Model model, @ModelAttribute("product") PRODUCT p)
 			throws ServletException, IOException {
 		if (cookieService.getValue("username") == null) {
-			return "forward:/login";
+			return "forward:/login-partner";
 		}
 		List<LOAISP> lstLoaiSP = loaispDAO.findAll();
 		model.addAttribute("lstLoaiSP", lstLoaiSP);
+		model.addAttribute("showForm2","show active");
+		model.addAttribute("btnActive2","active");
 		return PageInfo.goSite(model, PageType.SITE_PARTNER);
 	}
 

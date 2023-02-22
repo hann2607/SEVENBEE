@@ -79,13 +79,36 @@
 
 										</ul>
 									</c:if>
-									<c:if test="${empty user}">
+									<c:if test="${not empty partnerCK}">
+										<ul class="ht-setting-list">
+											<div class="d-flex justify-content-center">
+												<img src="/views/images/team/${partnerCK.getHinhanh()}" alt=""
+													height="100px"
+													style="border-radius: 50%; border: 2px solid black;">
+											</div>
+											<div class="d-flex justify-content-center mt-2">${partnerCK.getShop_TenShop()}
+											</div>
+											<%-- <div class="d-flex justify-content-center">
+												<div style="color: #ccc;"># ${user.isVaitro() ? 'Admin' : 'Người dùng' }</div>
+											</div> --%>
+											<hr class="mt-3 mb-2">
+											<li class="d-flex justify-content-center"><a
+												href="">TÀI KHOẢN</a></li>
+											<li class="d-flex justify-content-center"><a
+												href="/partner">CỬA HÀNG</a></li>
+											<li class="d-flex justify-content-center"><a
+												href="/logout">ĐĂNG XUẤT</a></li>
+
+										</ul>
+									</c:if>
+									<c:if test="${empty user && empty partnerCK}">
 										<ul class="ht-setting-list">
 											<li class="d-flex justify-content-center"><a
 												href="/login">ĐĂNG NHẬP</a></li>
+											<li class="d-flex justify-content-center"><a
+												href="/login-partner">PARTNER</a></li>
 										</ul>
 									</c:if>
-
 								</div>
 							</li>
 						</ul>
@@ -171,8 +194,10 @@
 													</div>
 
 												</div>
-												<form action="/removeCart/${product.value.SP_MA}" method="post" style="display: flex; text-align: center;">
-													<button type="submit" style="color: #212529; background: none; border: none; cursor: pointer;">
+												<form action="/removeCart/${product.value.SP_MA}"
+													method="post" style="display: flex; text-align: center;">
+													<button type="submit"
+														style="color: #212529; background: none; border: none; cursor: pointer;">
 														<i class="fa fa-close"></i>
 													</button>
 												</form></li>

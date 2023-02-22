@@ -43,20 +43,20 @@
 <div class="container">
 	<nav>
 		<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<button class="nav-link active" id="nav-home-tab" data-toggle="tab"
+			<button class="nav-link ${btnActive1}" id="nav-home-tab" data-toggle="tab"
 				data-target="#nav-home" type="button" role="tab"
 				aria-controls="nav-home" aria-selected="true">Chi tiết</button>
-			<button class="nav-link" id="nav-profile-tab" data-toggle="tab"
+			<button class="nav-link ${btnActive2}" id="nav-profile-tab" data-toggle="tab"
 				data-target="#nav-profile" type="button" role="tab"
 				aria-controls="nav-profile" aria-selected="false">Danh sách
 				sản phẩm</button>
-			<button class="nav-link" id="nav-contact-tab" data-toggle="tab"
+			<button class="nav-link ${btnActive3}" id="nav-contact-tab" data-toggle="tab"
 				data-target="#nav-contact" type="button" role="tab"
 				aria-controls="nav-contact" aria-selected="false">Đơn hàng</button>
 		</div>
 	</nav>
 	<div class="tab-content" id="nav-tabContent">
-		<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+		<div class="tab-pane fade ${showForm1}" id="nav-home" role="tabpanel"
 			aria-labelledby="nav-home-tab">
 			<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
 				TIN SẢN PHẨM</h3>
@@ -233,7 +233,7 @@
 					class="btn btn-primary mt-3">THÊM SẢN PHẨM</button>
 			</form:form>
 		</div>
-		<div class="tab-pane fade" id="nav-profile" role="tabpanel"
+		<div class="tab-pane fade ${showForm2}" id="nav-profile" role="tabpanel"
 			aria-labelledby="nav-profile-tab">
 			<table
 				class="table-hover table mt-3 text-center justify-content-center">
@@ -301,7 +301,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="tab-pane fade" id="nav-contact" role="tabpanel"
+		<div class="tab-pane fade ${showForm3}" id="nav-contact" role="tabpanel"
 			aria-labelledby="nav-contact-tab">
 			<div
 				class="d-flex flex-row align-items-center justify-content-center">
