@@ -96,7 +96,7 @@ public class User_profile {
 		nguoidung.setVaitro(false);
 		if(!attach.isEmpty()) {
 			 String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMddHHmmss-"));
-			String filename = attach.getOriginalFilename()+date ;
+			String filename = date + attach.getOriginalFilename();
 			File file = new File(URL_PHOTO + filename);
 			if(!file.exists()) {
 				file.mkdirs();
