@@ -20,11 +20,11 @@ public class PRODUCT {
 	@Positive(message = "Giá sản phẩm phải là một số dương")
 	long SP_Gia;
 	String Kich_Thuoc;
-	@NotBlank(message = "Không được để trống số điện thoại !")
 	String CTSP_Mau;
 	int SP_SoLuong;
-	@NotBlank(message = "Không được để trống số điện thoại !")
 	String CTSP_ThongTinThem;
-	@NotBlank(message = " - Xin nhập ít nhất 1 thông số chi tiết !")
-	String CTSP_MoTa;
+	@NotBlank(message = " - Xin nhập ít nhất 1 tiêu đề!")
+	String CTSP_MoTaTitle;
+	@NotBlank(message = " - Xin nhập ít nhất 1 nội dung!")
+	String CTSP_MoTaContent;
 }
