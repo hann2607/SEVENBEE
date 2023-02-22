@@ -29,27 +29,35 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
 					<!-- Password chance Form s-->
-					<form:form action="/user/changepassword" modelAttribute="nguoidungpassword">
+					<form:form action="/user/profile/changepassword"
+						modelAttribute="nguoidungpassword" method="post">
 						<div class="login-form">
 							<h4 class="login-title">Thay đổi mật khẩu</h4>
 							<div class="row">
 								<div class="col-md-12 col-12 mb-20">
-									
+
 									<form:label path="Matkhau">Mật khẩu</form:label>
-									<form:input path="Matkhau" class="mb-0" type="password" value = "${user.getMatkhau()}" />
+									<form:input path="Matkhau" class="mb-0" type="password"
+										value="${user.getMatkhau()}" />
 									<form:errors path="Matkhau" class="badge badge-danger" />
 								</div>
 								<div class="col-12 mb-20">
 									<label>Mật khẩu mới</label> <input class="mb-0" type="password"
-										placeholder="Password">
+										name="pwnew1" id="pwnew1" placeholder="Password"
+										onblur="checkPasswords()">
 								</div>
 								<div class="col-12 mb-20">
-									<label>Nhập lại khẩu mới</label> <input class="mb-0"
-										type="password" placeholder="Password">
+									<label>Nhập lại khẩu mới</label>
+									 <input class="mb-0"
+										name="pwcomfirm" id="pwcomfirm" type="password"
+										placeholder="Password" onblur="checkPasswords()">
+									<p id="password-error" style="display: none; color: red;">Mật
+										khẩu nhập lại không trùng khớp</p>
 								</div>
 
 								<div class="col-md-12 " style="display: flex;">
-									<button class="register-button mt-0 ml-auto">Đổi</button>
+									<button formaction="/user/profile/changepassword" id="submit-btn" disabled
+										class="register-button mt-0 ml-auto">Đổi</button>
 								</div>
 							</div>
 						</div>
@@ -57,20 +65,23 @@
 				</div>
 				<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
 					<!--   chỉnh sửa profile -->
-					<form:form action="/user/profile/update" method="post" modelAttribute="nguoidung">
+					<form:form action="/user/profile/update" method="post"
+						modelAttribute="nguoidung" >
 						<div class="login-form">
 							<h4 class="login-title">Thông tin người dùng</h4>
 							<div class="row d-flex justify-content-center mb-20">
 
 								<div class="avatar-upload position-relative">
 									<div class="avatar-edit position-absolute">
-										<input type='file' name="images" id="imageUpload"
-											accept=".png, .jpg, .jpeg" /> <label for="imageUpload"></label>
+										<form:input path="Hinhanh" type='file' name="images" 
+											id="imageUpload" accept=".png, .jpg, .jpeg"
+											value="${user.getHinhanh()}" />
+										<form:label path="Hinhanh" for="imageUpload"></form:label>
 									</div>
 									<div
 										class="avatar-preview border border-5 border-warning rounded-circle">
 										<div id="imagePreview"
-											style="background-image: url(/views/images/team/1.png);"></div>
+											style="background-image: url(/views/images/team/${user.getHinhanh()});"></div>
 									</div>
 								</div>
 
@@ -78,36 +89,36 @@
 							<div class="row">
 								<div class="col-md-6 col-12 mb-20">
 									<form:label path="Ho_ten">Họ tên</form:label>
-									<form:input path="Ho_ten" class="mb-0" type="text" value = "${user.getHo_ten()}"
-										 />
+									<form:input path="Ho_ten" class="mb-0" type="text"
+										value="${user.getHo_ten()}" />
 									<form:errors path="Ho_ten" class="badge badge-danger" />
 								</div>
-								
+
 								<div class="col-md-12 mb-20">
 									<form:label path="Email">Email*</form:label>
 									<form:input path="Email" class="mb-0" type="email"
-										id="email-input" value = "${user.getEmail()}" />
+										id="email-input" value="${user.getEmail()}" />
 									<form:errors path="Email" class="badge badge-danger" />
 								</div>
 
 								<div class="col-md-12 mb-20">
-								
-									<form:label  path="Diachi">Địa chỉ</form:label>
+
+									<form:label path="Diachi">Địa chỉ</form:label>
 									<form:input path="Diachi" class="mb-0" type="text"
-										placeholder="địa chỉ" value = "${user.getDiachi()}"/>
+										placeholder="địa chỉ" value="${user.getDiachi()}" />
 								</div>
 								<div class="col-md-6 mb-20">
-								<form:label  path="Ngaysinh">Ngày Sinh</form:label>
-								<form:input path="Ngaysinh" class="mb-0" type="date"
-										placeholder="time" value = "${user.getNgaysinh()}" />
+									<form:label path="Ngaysinh">Ngày Sinh</form:label>
+									<form:input path="Ngaysinh" class="mb-0" type="date"
+										placeholder="time" value="${user.getNgaysinh()}" />
 								</div>
 								<div class="col-md-6 mb-20">
-								<form:label  path="Vaitro">Vai trò</form:label>
-								<h5 class="mb-0 text-danger" 
-										 >${test111}</h5>
+									<form:label path="Vaitro">Vai trò</form:label>
+									<h5 class="mb-0 text-danger">${test111}</h5>
 								</div>
 								<div class="col-12">
-									<button formaction="/user/profile/update" formmethod="post" class="register-button mt-0">Chỉnh sửa</button>
+									<button formaction="/user/profile/update" formmethod="post"
+										class="register-button mt-0">Chỉnh sửa</button>
 								</div>
 							</div>
 						</div>
@@ -218,4 +229,19 @@
 
                 })
             }
+</script>
+<script>
+    function checkPasswords() {
+        var pwnew1 = document.getElementById('pwnew1');
+        var pwcomfirm = document.getElementById('pwcomfirm');
+        var passwordError = document.getElementById('password-error');
+        var submitBtn = document.getElementById('submit-btn');
+        if (pwnew1.value != pwcomfirm.value) {
+            passwordError.style.display = 'block';
+            submitBtn.disabled = true;
+        } else {
+            passwordError.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    }
 </script>
