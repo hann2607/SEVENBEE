@@ -17,7 +17,6 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-	
 		<!-- SPRING BOOT -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -75,9 +74,9 @@
 		</dependency>
 		<!-- MAIL -->
 		<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-mail</artifactId>
-</dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 		<!-- VALIDATE -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -87,32 +86,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
-		<!-- PARSE JSON-->
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
-<dependency>
-    <groupId>commons-fileupload</groupId>
-    <artifactId>commons-fileupload</artifactId>
-    <version>1.4</version>
-</dependency>
-
-
-
-		
-		<dependency>
-  <groupId>javax.servlet</groupId>
-  <artifactId>javax.servlet-api</artifactId>
-  <version>4.0.1</version>
-  <scope>provided</scope>
-</dependency>
-
-
-
-		
 	</dependencies>
 	<build>
 		<finalName>sevenbee</finalName>
