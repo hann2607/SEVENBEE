@@ -162,8 +162,8 @@
 							<h5 class="text-center w-100 mb-0">
 								Thông số chi tiết
 								<div>
-									<form:errors path="CTSP_MoTaTitle" class=" alert-danger h6" />
-									<form:errors path="CTSP_MoTaContent" class=" alert-danger h6" />
+									<form:errors path="CTSP_MoTaTitle1" class=" alert-danger h6" />
+									<form:errors path="CTSP_MoTaContent1" class=" alert-danger h6" />
 								</div>
 
 
@@ -178,52 +178,52 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle" type="text"
+											<td><form:input path="CTSP_MoTaTitle1" type="text" value="${arrThongSo[0]}"
 													class="form-control" placeholder="Nhập tiêu đề 1" /></td>
-											<td><form:input path="CTSP_MoTaContent" type="text"
+											<td><form:input path="CTSP_MoTaContent1" type="text" value="${arrThongSo[1]}"
 													class="form-control" placeholder="Nhập nội dung 1" /></td>
 										</tr>
 										<tr>
-											<td><input type="text" class="form-control"
-												name="title2" placeholder="Nhập tiêu đề 2"></td>
-											<td><input type="text" class="form-control"
-												name="content2" placeholder="Nhập nội dung 2"></td>
+											<td><form:input path="CTSP_MoTaTitle2" type="text" value="${arrThongSo[2]}"
+													class="form-control" placeholder="Nhập tiêu đề 2" /></td>
+											<td><form:input path="CTSP_MoTaContent2" type="text" value="${arrThongSo[3]}"
+													class="form-control" placeholder="Nhập nội dung 2" /></td>
 										</tr>
 										<tr>
-											<td><input type="text" class="form-control"
-												name="title3" placeholder="Nhập tiêu đề 3"></td>
-											<td><input type="text" class="form-control"
-												name="content3" placeholder="Nhập nội dung 3"></td>
+											<td><form:input path="CTSP_MoTaTitle3" type="text" value="${arrThongSo[4]}"
+													class="form-control" placeholder="Nhập tiêu đề 3" /></td>
+											<td><form:input path="CTSP_MoTaContent3" type="text" value="${arrThongSo[5]}"
+													class="form-control" placeholder="Nhập nội dung 3" /></td>
 										</tr>
 										<tr>
-											<td><input type="text" class="form-control"
-												name="title4" placeholder="Nhập tiêu đề 4"></td>
-											<td><input type="text" class="form-control"
-												name="content4" placeholder="Nhập nội dung 4"></td>
+											<td><form:input path="CTSP_MoTaTitle4" type="text" value="${arrThongSo[6]}"
+													class="form-control" placeholder="Nhập tiêu đề 4" /></td>
+											<td><form:input path="CTSP_MoTaContent4" type="text" value="${arrThongSo[7]}"
+													class="form-control" placeholder="Nhập nội dung 4" /></td>
 										</tr>
 										<tr>
-											<td><input type="text" class="form-control"
-												name="title5" placeholder="Nhập tiêu đề 5"></td>
-											<td><input type="text" class="form-control"
-												name="content5" placeholder="Nhập nội dung 5"></td>
+											<td><form:input path="CTSP_MoTaTitle5" type="text" value="${arrThongSo[8]}"
+													class="form-control" placeholder="Nhập tiêu đề 5" /></td>
+											<td><form:input path="CTSP_MoTaContent5" type="text" value="${arrThongSo[9]}"
+													class="form-control" placeholder="Nhập nội dung 5" /></td>
 										</tr>
 										<tr>
-											<td><input type="text" class="form-control"
-												name="title6" placeholder="Nhập tiêu đề 6"></td>
-											<td><input type="text" class="form-control"
-												name="content6" placeholder="Nhập nội dung 6"></td>
+											<td><form:input path="CTSP_MoTaTitle6" type="text" value="${arrThongSo[10]}"
+													class="form-control" placeholder="Nhập tiêu đề 6" /></td>
+											<td><form:input path="CTSP_MoTaContent6" type="text" value="${arrThongSo[11]}"
+													class="form-control" placeholder="Nhập nội dung 6" /></td>
 										</tr>
 										<tr>
-											<td><input type="text" class="form-control"
-												name="title7" placeholder="Nhập tiêu đề 7"></td>
-											<td><input type="text" class="form-control"
-												name="content7" placeholder="Nhập nội dung 7"></td>
+											<td><form:input path="CTSP_MoTaTitle7" type="text" value="${arrThongSo[12]}"
+													class="form-control" placeholder="Nhập tiêu đề 7" /></td>
+											<td><form:input path="CTSP_MoTaContent7" type="text" value="${arrThongSo[3]}"
+													class="form-control" placeholder="Nhập nội dung 7" /></td>
 										</tr>
 										<tr>
-											<td><input type="text" class="form-control"
-												name="title8" placeholder="Nhập tiêu đề 8"></td>
-											<td><input type="text" class="form-control"
-												name="content8" placeholder="Nhập nội dung 8"></td>
+											<td><form:input path="CTSP_MoTaTitle8" type="text" value="${arrThongSo[14]}"
+													class="form-control" placeholder="Nhập tiêu đề 8" /></td>
+											<td><form:input path="CTSP_MoTaContent8" type="text" value="${arrThongSo[15]}"
+													class="form-control" placeholder="Nhập nội dung 8" /></td>
 										</tr>
 										<!-- Các hàng tiếp theo tương tự -->
 									</tbody>
@@ -232,7 +232,7 @@
 						</div>
 					</div>
 				</div>
-				<button formaction="/partner/addproduct" type="submit"
+				<button formaction="/partner/add" type="submit"
 					class="btn btn-primary mt-3">THÊM SẢN PHẨM</button>
 			</form:form>
 		</div>
@@ -250,24 +250,28 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="item" items="${lstSPbyPartner}">
-							<tr>
-								<td class="align-middle">${item.SP_TenSP }</td>
-								<td class="align-middle">${item.getLoaisp().getLoaiSP_Ten() }</td>
-								<td class="align-middle"><img class="img-thumbnail"
-									width="50%"
-									src="/views/images/product/large-size/${item.SP_HinhAnh}">
-								</td>
-								<td colspan="2" class="align-middle">
-									<button formaction="" class="btn btn-lg btn-warning mr-3">
-										<i class="fa-solid fa-pen-to-square"></i> Sửa
-									</button>
-									<button formaction="" class="btn btn-lg btn-danger ">
-										<i class="fa-solid fa-trash-can"></i> Xóa
-									</button>
-								</td>
-							</tr>
-						</c:forEach>
+						<form action="/partner" method="post">
+							<c:forEach var="item" items="${lstSPbyPartner}">
+								<tr>
+									<td class="align-middle">${item.SP_TenSP }</td>
+									<td class="align-middle">${item.getLoaisp().getLoaiSP_Ten() }</td>
+									<td class="align-middle"><img class="img-thumbnail"
+										width="50%"
+										src="/views/images/product/large-size/${item.SP_HinhAnh}">
+									</td>
+									<td colspan="2" class="align-middle">
+										<button type="submit" formmethod="post"
+											formaction="/partner/edit/${item.getSP_MA()}"
+											class="btn btn-lg btn-warning mr-3">
+											<i class="fa-solid fa-pen-to-square"></i> Sửa
+										</button>
+										<button formaction="" class="btn btn-lg btn-danger ">
+											<i class="fa-solid fa-trash-can"></i> Xóa
+										</button>
+									</td>
+								</tr>
+							</c:forEach>
+						</form>
 					</tbody>
 				</table>
 			</div>
