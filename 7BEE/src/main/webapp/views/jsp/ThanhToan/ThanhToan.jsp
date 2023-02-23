@@ -17,7 +17,7 @@
 <!--Checkout Area Strat-->
 <div class="checkout-area pt-60 pb-30">
 	<div class="container">
-		<form class="needs-validation" novalidate>
+		<form class="needs-validation" action="/checkout/thanhtoan" novalidate>
 			<div class="row">
 				<div class="col-lg-6 col-12">
 
@@ -86,7 +86,7 @@
 						</div>
 						<div class="payment-method">
 							<div class="order-button-payment">
-								<input value="ĐẶT HÀNG" type="submit">
+								<input formaction="/checkout/thanhtoan" value="ĐẶT HÀNG" type="submit">
 							</div>
 						</div>
 					</div>

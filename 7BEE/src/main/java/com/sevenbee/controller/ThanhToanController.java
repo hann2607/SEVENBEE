@@ -32,4 +32,9 @@ public class ThanhToanController {
 		}
 		return sum;
 	}
+//	@RequestMapping("checkout/thanhtoan")
+//	public String thanhtoan() {
+//		
+//		
+//	}
 }

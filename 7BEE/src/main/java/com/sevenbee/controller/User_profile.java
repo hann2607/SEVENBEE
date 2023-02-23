@@ -89,6 +89,7 @@ public class User_profile {
 			BindingResult result)
 			throws ServletException, IOException {
 		//String image ;
+		
 		nguoidung.setSDT(cookieService.getValue("username"));
 		nguoidung.setMatkhau(cookieService.getValue("password"));
 		nguoidung.setIsactive(true);
