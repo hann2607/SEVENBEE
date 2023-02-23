@@ -101,7 +101,7 @@
 
 										</ul>
 									</c:if>
-									<c:if test="${empty user && empty partnerCK}">
+									<c:if test="${empty user || empty partnerCK}">
 										<ul class="ht-setting-list">
 											<li class="d-flex justify-content-center"><a
 												href="/login">ĐĂNG NHẬP</a></li>
