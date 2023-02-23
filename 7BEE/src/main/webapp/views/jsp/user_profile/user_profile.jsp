@@ -65,22 +65,27 @@
 				</div>
 				<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
 					<!--   chỉnh sửa profile -->
+				<!-- 	enctype="multipart/form-data" -->
 					<form:form action="/user/profile/update" method="post"
-						modelAttribute="nguoidung" >
+						modelAttribute="nguoidung" enctype="multipart/form-data" >
 						<div class="login-form">
 							<h4 class="login-title">Thông tin người dùng</h4>
 							<div class="row d-flex justify-content-center mb-20">
 
 								<div class="avatar-upload position-relative">
 									<div class="avatar-edit position-absolute">
-										<form:input path="Hinhanh" type='file' name="images" 
+									<input type='file' name="images" id="imageUpload"
+									accept=".png, .jpg, .jpeg" value="${user.getHinhanh()}" /> <label for="imageUpload"></label>
+									
+										<%-- <form:input path="Hinhanh" type='file' name="images" 
 											id="imageUpload" accept=".png, .jpg, .jpeg"
 											value="${user.getHinhanh()}" />
-										<form:label path="Hinhanh" for="imageUpload"></form:label>
+										<form:label path="Hinhanh" for="imageUpload"></form:label> --%>
+										<!-- <button id="upload-button" onclick="uploadFile()"> Upload </button> -->
 									</div>
 									<div
 										class="avatar-preview border border-5 border-warning rounded-circle">
-										<div id="imagePreview"
+										<div id="imagePreview" name="images" 
 											style="background-image: url(/views/images/team/${user.getHinhanh()});"></div>
 									</div>
 								</div>
@@ -117,7 +122,7 @@
 									<h5 class="mb-0 text-danger">${test111}</h5>
 								</div>
 								<div class="col-12">
-									<button formaction="/user/profile/update" formmethod="post"
+									<button formaction="/user/profile/update" formmethod="post" 
 										class="register-button mt-0">Chỉnh sửa</button>
 								</div>
 							</div>
@@ -245,3 +250,18 @@
         }
     }
 </script>
+
+<!-- <script>
+async function uploadFile() {
+  let formData = new FormData(); 
+  formData.append("imageUpload", images.files[0]);
+  let response = await fetch('/upload', {
+    method: "POST", 
+    body: formData
+  }); 
+
+  if (response.status == 200) {
+    alert("File successfully uploaded.");
+  }
+}
+</script> -->

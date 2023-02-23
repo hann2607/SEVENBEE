@@ -4,13 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -35,7 +36,9 @@ public class NGUOIDUNG {
 	String Email;
 	@NotBlank(message = "Không được để trống họ và tên !")
 	String Ho_ten;
-	String Diachi,Hinhanh;
+	String Diachi;
+	
+	private String  Hinhanh;
 	
 	
 	@NotBlank(message = "Không được để trống mật khẩu !")
