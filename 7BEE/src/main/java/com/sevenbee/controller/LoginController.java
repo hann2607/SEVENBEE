@@ -63,7 +63,6 @@ public class LoginController {
 	@Autowired
 	private HttpSession session;
 
-
 	@GetMapping("/login")
 	public String getLoginform(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
 			HttpServletRequest request) throws ServletException, IOException {
@@ -101,7 +100,8 @@ public class LoginController {
 			// Lưu thông tin đăng nhập
 			cookieService.add("username", username, 1);
 			cookieService.add("password", password, 1);
-			showUserLog(model);
+			// Show thông tin đăng nhập
+			showUserLog(username, model);
 			// Lấy trang hiện tại từ session
 			HttpSession session = request.getSession();
 			String referer = (String) session.getAttribute("referer");
@@ -135,12 +135,12 @@ public class LoginController {
 				cookieService.add("username", nguoidung.getSDT(), 1);
 				cookieService.add("password", nguoidung.getMatkhau(), 1);
 				accountService.save(nguoidung);
-
+				// Show thông tin đăng nhập
+				showUserLog(nguoidung.getSDT(), model);
 				// Lấy trang hiện tại từ session
 				HttpSession session = request.getSession();
 				String referer = (String) session.getAttribute("referer");
-				// Show thông tin đăng nhập
-				showUserLog(model);
+
 				// Chuyển hướng trở lại trang trước đó
 				if (referer != null) {
 					return "redirect:" + referer;
@@ -157,14 +157,13 @@ public class LoginController {
 	}
 
 	
-	public NGUOIDUNG showUserLog(Model model) {
-		if (cookieService.getValue("username") != null) {
-			Optional<NGUOIDUNG> user = nguoidungDAO.findById(cookieService.getValue("username"));
+	public void showUserLog(String username, Model model) {
+		if (username != null) {
+			Optional<NGUOIDUNG> user = nguoidungDAO.findById(username);
 			if (user.isPresent()) {
-				model.addAttribute("user",user.get());
+				model.addAttribute("userCK", user.get());
 			}
 		}
-		return null;
 	}
 
 //	@ModelAttribute("partnerCK")
