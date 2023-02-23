@@ -59,15 +59,18 @@
 	<div class="tab-content" id="nav-tabContent">
 		<div class="tab-pane fade ${showForm1}" id="nav-home" role="tabpanel"
 			aria-labelledby="nav-home-tab">
-			<h3 class="d-flex justify-content-center m-4 font-weight-bold">THÔNG
-				TIN SẢN PHẨM</h3>
-			<c:if test="${not empty message }">
-				<div class="alert alert-success" id="success">${message }</div>
-			</c:if>
-			<c:if test="${not empty error }">
-				<div class="alert alert-danger" id="error">${error }</div>
-			</c:if>
+
+
 			<form:form modelAttribute="product" enctype="multipart/form-data">
+				<div class="row weight-bold">
+					<h3 class="w-100 text-center my-4">THÔNG TIN SẢN PHẨM</h3>
+					<c:if test="${not empty message }">
+						<div class="alert alert-success" id="success">${message }</div>
+					</c:if>
+					<c:if test="${not empty error }">
+						<div class="alert alert-danger" id="error">${error }</div>
+					</c:if>
+				</div>
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
@@ -168,62 +171,87 @@
 
 
 							</h5>
-							<div class="table-responsive" style="height: 16em">
+							<div class="table-responsive border" style="height: 16em">
 								<table id="dataTableThemSP" class="table border">
-									<thead class="thead-light">
+									<thead class="thead-light sticky-top">
 										<tr>
-											<th>Tiêu đề</th>
-											<th>Nội dung</th>
+											<th scope="col">#</th>
+											<th scope="col" class="col-6">Tiêu đề</th>
+											<th scope="col" class="col-6">Nội dung</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle1" type="text" value="${arrThongSo[0]}"
-													class="form-control" placeholder="Nhập tiêu đề 1" /></td>
-											<td><form:input path="CTSP_MoTaContent1" type="text" value="${arrThongSo[1]}"
-													class="form-control" placeholder="Nhập nội dung 1" /></td>
+											<th scope="row">1</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle1"
+													type="text" value="${arrThongSo[0]}" class="form-control"
+													placeholder="Nhập tiêu đề 1" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent1"
+													type="text" value="${arrThongSo[1]}" class="form-control"
+													placeholder="Nhập nội dung 1" /></td>
 										</tr>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle2" type="text" value="${arrThongSo[2]}"
-													class="form-control" placeholder="Nhập tiêu đề 2" /></td>
-											<td><form:input path="CTSP_MoTaContent2" type="text" value="${arrThongSo[3]}"
-													class="form-control" placeholder="Nhập nội dung 2" /></td>
+											<th scope="row">2</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle2"
+													type="text" value="${arrThongSo[2]}" class="form-control"
+													placeholder="Nhập tiêu đề 2" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent2"
+													type="text" value="${arrThongSo[3]}" class="form-control"
+													placeholder="Nhập nội dung 2" /></td>
 										</tr>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle3" type="text" value="${arrThongSo[4]}"
-													class="form-control" placeholder="Nhập tiêu đề 3" /></td>
-											<td><form:input path="CTSP_MoTaContent3" type="text" value="${arrThongSo[5]}"
-													class="form-control" placeholder="Nhập nội dung 3" /></td>
+											<th scope="row">3</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle3"
+													type="text" value="${arrThongSo[4]}" class="form-control"
+													placeholder="Nhập tiêu đề 3" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent3"
+													type="text" value="${arrThongSo[5]}" class="form-control"
+													placeholder="Nhập nội dung 3" /></td>
 										</tr>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle4" type="text" value="${arrThongSo[6]}"
-													class="form-control" placeholder="Nhập tiêu đề 4" /></td>
-											<td><form:input path="CTSP_MoTaContent4" type="text" value="${arrThongSo[7]}"
-													class="form-control" placeholder="Nhập nội dung 4" /></td>
+											<th scope="row">4</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle4"
+													type="text" value="${arrThongSo[6]}" class="form-control"
+													placeholder="Nhập tiêu đề 4" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent4"
+													type="text" value="${arrThongSo[7]}" class="form-control"
+													placeholder="Nhập nội dung 4" /></td>
 										</tr>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle5" type="text" value="${arrThongSo[8]}"
-													class="form-control" placeholder="Nhập tiêu đề 5" /></td>
-											<td><form:input path="CTSP_MoTaContent5" type="text" value="${arrThongSo[9]}"
-													class="form-control" placeholder="Nhập nội dung 5" /></td>
+											<th scope="row">5</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle5"
+													type="text" value="${arrThongSo[8]}" class="form-control"
+													placeholder="Nhập tiêu đề 5" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent5"
+													type="text" value="${arrThongSo[9]}" class="form-control"
+													placeholder="Nhập nội dung 5" /></td>
 										</tr>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle6" type="text" value="${arrThongSo[10]}"
-													class="form-control" placeholder="Nhập tiêu đề 6" /></td>
-											<td><form:input path="CTSP_MoTaContent6" type="text" value="${arrThongSo[11]}"
-													class="form-control" placeholder="Nhập nội dung 6" /></td>
+											<th scope="row">6</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle6"
+													type="text" value="${arrThongSo[10]}" class="form-control"
+													placeholder="Nhập tiêu đề 6" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent6"
+													type="text" value="${arrThongSo[11]}" class="form-control"
+													placeholder="Nhập nội dung 6" /></td>
 										</tr>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle7" type="text" value="${arrThongSo[12]}"
-													class="form-control" placeholder="Nhập tiêu đề 7" /></td>
-											<td><form:input path="CTSP_MoTaContent7" type="text" value="${arrThongSo[3]}"
-													class="form-control" placeholder="Nhập nội dung 7" /></td>
+											<th scope="row">7</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle7"
+													type="text" value="${arrThongSo[12]}" class="form-control"
+													placeholder="Nhập tiêu đề 7" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent7"
+													type="text" value="${arrThongSo[13]}" class="form-control"
+													placeholder="Nhập nội dung 7" /></td>
 										</tr>
 										<tr>
-											<td><form:input path="CTSP_MoTaTitle8" type="text" value="${arrThongSo[14]}"
-													class="form-control" placeholder="Nhập tiêu đề 8" /></td>
-											<td><form:input path="CTSP_MoTaContent8" type="text" value="${arrThongSo[15]}"
-													class="form-control" placeholder="Nhập nội dung 8" /></td>
+											<th scope="row">8</th>
+											<td class="col-6"><form:input path="CTSP_MoTaTitle8"
+													type="text" value="${arrThongSo[14]}" class="form-control"
+													placeholder="Nhập tiêu đề 8" /></td>
+											<td class="col-6"><form:input path="CTSP_MoTaContent8"
+													type="text" value="${arrThongSo[15]}" class="form-control"
+													placeholder="Nhập nội dung 8" /></td>
 										</tr>
 										<!-- Các hàng tiếp theo tương tự -->
 									</tbody>
@@ -239,9 +267,8 @@
 		<div class="tab-pane fade ${showForm2}" id="nav-profile"
 			role="tabpanel" aria-labelledby="nav-profile-tab">
 			<div class="table-responsive" style="height: 50em">
-				<table
-					class="table-hover table mt-3 text-center justify-content-center">
-					<thead class="thead-light">
+				<table class="table-hover table text-center justify-content-center">
+					<thead class="thead-light sticky-top">
 						<tr>
 							<th scope="col" class="w-25">Tên SP</th>
 							<th scope="col" class="w-25">Loại</th>
