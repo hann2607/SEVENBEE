@@ -101,7 +101,9 @@ public class LoginController {
 			cookieService.add("username", username, 1);
 			cookieService.add("password", password, 1);
 			// Show thông tin đăng nhập
-			showUserLog(username, model);
+			sessionService.set("userCK", user);
+//			model.addAttribute("userCK", user);
+//			showUserLog(username, model);
 			// Lấy trang hiện tại từ session
 			HttpSession session = request.getSession();
 			String referer = (String) session.getAttribute("referer");
@@ -136,7 +138,7 @@ public class LoginController {
 				cookieService.add("password", nguoidung.getMatkhau(), 1);
 				accountService.save(nguoidung);
 				// Show thông tin đăng nhập
-				showUserLog(nguoidung.getSDT(), model);
+				sessionService.set("userCK", nguoidung);
 				// Lấy trang hiện tại từ session
 				HttpSession session = request.getSession();
 				String referer = (String) session.getAttribute("referer");
@@ -156,25 +158,6 @@ public class LoginController {
 		}
 	}
 
-	
-	public void showUserLog(String username, Model model) {
-		if (username != null) {
-			Optional<NGUOIDUNG> user = nguoidungDAO.findById(username);
-			if (user.isPresent()) {
-				model.addAttribute("userCK", user.get());
-			}
-		}
-	}
-
-//	@ModelAttribute("partnerCK")
-//	public PARTNER showPartnerLog(Model model) {
-//		Optional<PARTNER> partner = partnerService.findById(cookieService.getValue("username"));
-//		if (partner.isPresent()) {
-//			return partner.get();
-//		} else {
-//			return null;
-//		}
-//	}
 
 	public void sendMail(String txtTo, String username, String password) {
 		MailInfo mail = new MailInfo();
@@ -223,7 +206,8 @@ public class LoginController {
 			cookieService.add("username", username, 1);
 			cookieService.add("password", password, 1);
 
-//			showPartnerLog(model);
+			// Show thông tin đăng nhập
+			sessionService.set("partnerCK", p);
 			// Lấy trang hiện tại từ session
 			HttpSession session = request.getSession();
 			String referer = (String) session.getAttribute("referer");
@@ -263,7 +247,9 @@ public class LoginController {
 				partnerService.save(partner);
 				cookieService.add("username", partner.getSDT(), 1);
 				cookieService.add("password", partner.getMatkhau(), 1);
-				session.setAttribute("partnerCK", p);
+				
+				// Show thông tin đăng nhập
+				sessionService.set("partnerCK", partner);
 
 				// Lấy trang hiện tại từ session
 				HttpSession session = request.getSession();
@@ -292,7 +278,8 @@ public class LoginController {
 		// Xử lí đăng xuất
 		cookieService.remove("username");
 		cookieService.remove("password");
-
+		sessionService.remove("userCK");
+		sessionService.remove("partnerCK");
 		// Xóa trang trước đó khỏi session
 		session.removeAttribute("referer");
 
