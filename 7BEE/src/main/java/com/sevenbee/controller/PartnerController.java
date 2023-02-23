@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,7 +35,6 @@ import com.sevenbee.util.PageInfo;
 import com.sevenbee.util.PageType;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @Controller
@@ -71,15 +72,13 @@ public class PartnerController {
 		return PageInfo.goSite(model, PageType.SITE_PARTNER);
 	}
 
-	@RequestMapping("/partner/addproduct")
+	@RequestMapping("/partner/add")
 	public String add_Product(Model model, @Valid @ModelAttribute("product") PRODUCT p, BindingResult result,
-			HttpServletRequest request, @RequestParam("filesIMG") MultipartFile[] files)
-			throws ServletException, IOException {
+			@RequestParam("filesIMG") MultipartFile[] files) throws ServletException, IOException {
 		if (result.hasErrors()) {
 			// validate form
 			model.addAttribute("showForm1", "show active");
 			model.addAttribute("btnActive1", "active");
-			System.err.println("check");
 			return PageInfo.goSite(model, PageType.SITE_PARTNER);
 		} else {
 			if (files == null || files.length < 2) {
@@ -92,29 +91,29 @@ public class PartnerController {
 			} else {
 				// Xử lí thông số chi tiết dạng table
 				String CTSP_Table = "";
-				if (!p.getCTSP_MoTaTitle().isEmpty() && !p.getCTSP_MoTaContent().isEmpty()) {
-					CTSP_Table += p.getCTSP_MoTaTitle() + "-*-" + p.getCTSP_MoTaContent() + "-*-";
+				if (!p.getCTSP_MoTaTitle1().isEmpty() && !p.getCTSP_MoTaContent1().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle1() + "-*-" + p.getCTSP_MoTaContent1() + "-*-";
 				}
-				if (request.getParameter("content2") != null && !request.getParameter("content2").isEmpty()) {
-					CTSP_Table += request.getParameter("title2") + "-*-" + request.getParameter("content2") + "-*-";
+				if (!p.getCTSP_MoTaTitle2().isEmpty() && !p.getCTSP_MoTaContent2().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle2() + "-*-" + p.getCTSP_MoTaContent2() + "-*-";
 				}
-				if (request.getParameter("content3") != null && !request.getParameter("content3").isEmpty()) {
-					CTSP_Table += request.getParameter("title3") + "-*-" + request.getParameter("content3") + "-*-";
+				if (!p.getCTSP_MoTaTitle3().isEmpty() && !p.getCTSP_MoTaContent3().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle3() + "-*-" + p.getCTSP_MoTaContent3() + "-*-";
 				}
-				if (request.getParameter("content4") != null && !request.getParameter("content4").isEmpty()) {
-					CTSP_Table += request.getParameter("title4") + "-*-" + request.getParameter("content4") + "-*-";
+				if (!p.getCTSP_MoTaTitle4().isEmpty() && !p.getCTSP_MoTaContent4().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle4() + "-*-" + p.getCTSP_MoTaContent4() + "-*-";
 				}
-				if (request.getParameter("content5") != null && !request.getParameter("content5").isEmpty()) {
-					CTSP_Table += request.getParameter("title5") + "-*-" + request.getParameter("content5") + "-*-";
+				if (!p.getCTSP_MoTaTitle5().isEmpty() && !p.getCTSP_MoTaContent5().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle5() + "-*-" + p.getCTSP_MoTaContent5() + "-*-";
 				}
-				if (request.getParameter("content6") != null && !request.getParameter("content6").isEmpty()) {
-					CTSP_Table += request.getParameter("title6") + "-*-" + request.getParameter("content6") + "-*-";
+				if (!p.getCTSP_MoTaTitle6().isEmpty() && !p.getCTSP_MoTaContent6().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle6() + "-*-" + p.getCTSP_MoTaContent6() + "-*-";
 				}
-				if (request.getParameter("content7") != null && !request.getParameter("content7").isEmpty()) {
-					CTSP_Table += request.getParameter("title7") + "-*-" + request.getParameter("content7") + "-*-";
+				if (!p.getCTSP_MoTaTitle7().isEmpty() && !p.getCTSP_MoTaContent7().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle7() + "-*-" + p.getCTSP_MoTaContent7() + "-*-";
 				}
-				if (request.getParameter("content8") != null && !request.getParameter("content8").isEmpty()) {
-					CTSP_Table += request.getParameter("title8") + "-*-" + request.getParameter("content8") + "-*-";
+				if (!p.getCTSP_MoTaTitle8().isEmpty() && !p.getCTSP_MoTaContent8().isEmpty()) {
+					CTSP_Table += p.getCTSP_MoTaTitle8() + "-*-" + p.getCTSP_MoTaContent8() + "-*-";
 				}
 //				System.out.println(CTSP_Table);
 				try {
@@ -179,11 +178,32 @@ public class PartnerController {
 		return PageInfo.goSite(model, PageType.SITE_PARTNER);
 	}
 
+	@PostMapping("/partner/edit/{id}")
+	public String edit(@PathVariable("id") String id, Model model) throws ServletException, IOException {
+		findAllSPbyPartner(cookieService.getValue("username"), model);
+		SANPHAM sp = spDAO.findById(id).get();
+		PRODUCT pd = new PRODUCT();
+		pd.setSP_MA(sp.getSP_MA());
+		pd.setSP_TenSP(sp.getSP_TenSP());
+		pd.setLoaiSP_MA(sp.getLoaisp().getLoaiSP_MA());
+		pd.setSP_Gia(sp.getSP_Gia());
+		pd.setCTSP_Mau(sp.getCt_sanpham().getCTSP_Mau());
+		pd.setSP_SoLuong(sp.getSP_SoLuong());
+		pd.setKich_Thuoc(sp.getCt_sanpham().getKich_Thuoc());
+		pd.setCTSP_ThongTinThem(sp.getCt_sanpham().getCTSP_ThongTinThem());
+//		pd.setSP_HinhAnh(sp.getSP_HinhAnh());
+		String[] arrThongSo = sp.getCt_sanpham().getCTSP_MoTa().split("-\\*-");
+		model.addAttribute("arrThongSo", arrThongSo);
+		model.addAttribute("product", pd);
+		model.addAttribute("showForm1", "show active");
+		model.addAttribute("btnActive1", "active");
+		return PageInfo.goSite(model, PageType.SITE_PARTNER);
+	}
+
 	private void findAllSPbyPartner(String id, Model model) {
 		PARTNER p = partnerDAO.findById(id).get();
 		List<SANPHAM> lstSP = p.getSanpham();
-		System.out.println(lstSP.size());
-		model.addAttribute("lstSPbyPartner",lstSP);
+		model.addAttribute("lstSPbyPartner", lstSP);
 	}
 
 }
