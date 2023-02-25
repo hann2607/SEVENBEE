@@ -57,17 +57,17 @@
 									<span>TÀI KHOẢN</span>
 								</div>
 								<div class="setting ht-setting">
-									<c:if test="${not empty user}">
+									<c:if test="${not empty userCK}">
 										<ul class="ht-setting-list">
 											<div class="d-flex justify-content-center">
-												<img src="/views/images/team/${user.getHinhanh()}" alt=""
+												<img src="/views/images/team/${userCK.getHinhanh()}" alt=""
 													height="100px"
 													style="border-radius: 50%; border: 2px solid black;">
 											</div>
-											<div class="d-flex justify-content-center mt-2">${user.getHo_ten()}
+											<div class="d-flex justify-content-center mt-2">${userCK.getHo_ten()}
 											</div>
 											<div class="d-flex justify-content-center">
-												<div style="color: #ccc;"># ${user.isVaitro() ? 'Admin' : 'Người dùng' }</div>
+												<div style="color: #ccc;"># ${userCK.isVaitro() ? 'Admin' : 'Người dùng' }</div>
 											</div>
 											<hr class="mt-3 mb-2">
 											<li class="d-flex justify-content-center"><a
@@ -101,7 +101,7 @@
 
 										</ul>
 									</c:if>
-									<c:if test="${empty user && empty partnerCK}">
+									<c:if test="${empty userCK}">
 										<ul class="ht-setting-list">
 											<li class="d-flex justify-content-center"><a
 												href="/login">ĐĂNG NHẬP</a></li>

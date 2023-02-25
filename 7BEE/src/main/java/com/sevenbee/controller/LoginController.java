@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sevenbee.dao.NGUOIDUNGDAO;
+import com.sevenbee.dao.PARTNERDAO;
 import com.sevenbee.entity.MailInfo;
 import com.sevenbee.entity.NGUOIDUNG;
 import com.sevenbee.entity.PARTNER;
@@ -50,6 +51,9 @@ public class LoginController {
 	NGUOIDUNGDAO nguoidungDAO;
 
 	@Autowired
+	PARTNERDAO partnerDAO;
+
+	@Autowired
 	MailService mailService;
 
 	@Autowired
@@ -59,15 +63,12 @@ public class LoginController {
 	@Autowired
 	private HttpSession session;
 
-	String url;
-
 	@GetMapping("/login")
 	public String getLoginform(Model model, @ModelAttribute("nguoidung") NGUOIDUNG nguoidung,
 			HttpServletRequest request) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String referer = request.getHeader("Referer");
 		session.setAttribute("referer", referer);
-		System.out.println();
 		return PageInfo.goSite(model, PageType.SITE_LOGIN);
 	}
 
@@ -99,7 +100,10 @@ public class LoginController {
 			// Lưu thông tin đăng nhập
 			cookieService.add("username", username, 1);
 			cookieService.add("password", password, 1);
-			session.setAttribute("user", user);
+			// Show thông tin đăng nhập
+			sessionService.set("userCK", user);
+//			model.addAttribute("userCK", user);
+//			showUserLog(username, model);
 			// Lấy trang hiện tại từ session
 			HttpSession session = request.getSession();
 			String referer = (String) session.getAttribute("referer");
@@ -134,11 +138,12 @@ public class LoginController {
 				cookieService.add("username", nguoidung.getSDT(), 1);
 				cookieService.add("password", nguoidung.getMatkhau(), 1);
 				accountService.save(nguoidung);
-				
+				// Show thông tin đăng nhập
+				sessionService.set("userCK", nguoidung);
 				// Lấy trang hiện tại từ session
 				HttpSession session = request.getSession();
 				String referer = (String) session.getAttribute("referer");
-				session.setAttribute("user", user);
+
 				// Chuyển hướng trở lại trang trước đó
 				if (referer != null) {
 					return "redirect:" + referer;
@@ -153,6 +158,7 @@ public class LoginController {
 			}
 		}
 	}
+
 
 	public void sendMail(String txtTo, String username, String password) {
 		MailInfo mail = new MailInfo();
@@ -200,7 +206,9 @@ public class LoginController {
 			}
 			cookieService.add("username", username, 1);
 			cookieService.add("password", password, 1);
-			session.setAttribute("partnerCK", p);
+
+			// Show thông tin đăng nhập
+			sessionService.set("partnerCK", p);
 			// Lấy trang hiện tại từ session
 			HttpSession session = request.getSession();
 			String referer = (String) session.getAttribute("referer");
@@ -217,14 +225,15 @@ public class LoginController {
 	}
 
 	@RequestMapping("/partner/createPartner")
-	public String register(Model model,@RequestParam("XacnhanMatkhau") String XNmatkhau, @Valid @ModelAttribute("partner") PARTNER partner, BindingResult result,
-			HttpServletRequest request) throws ServletException, IOException {
+	public String register(Model model, @RequestParam("XacnhanMatkhau") String XNmatkhau,
+			@Valid @ModelAttribute("partner") PARTNER partner, BindingResult result, HttpServletRequest request)
+			throws ServletException, IOException {
 		if (result.hasErrors()) {
 			// validate form
 			return PageInfo.goSite(model, PageType.SITE_LOGIN_PARTNER);
 		} else {
 			if (!XNmatkhau.equalsIgnoreCase(partner.getMatkhau())) {
-				model.addAttribute("XNMatkhau","Xác nhận mật khẩu chưa chính xác");
+				model.addAttribute("XNMatkhau", "Xác nhận mật khẩu chưa chính xác");
 				return PageInfo.goSite(model, PageType.SITE_LOGIN_PARTNER);
 			}
 			// Kiểm tra trùng ID
@@ -239,8 +248,10 @@ public class LoginController {
 				partnerService.save(partner);
 				cookieService.add("username", partner.getSDT(), 1);
 				cookieService.add("password", partner.getMatkhau(), 1);
-				session.setAttribute("partnerCK", p);
 				
+				// Show thông tin đăng nhập
+				sessionService.set("partnerCK", partner);
+
 				// Lấy trang hiện tại từ session
 				HttpSession session = request.getSession();
 				String referer = (String) session.getAttribute("referer");
@@ -268,7 +279,7 @@ public class LoginController {
 		// Xử lí đăng xuất
 		cookieService.remove("username");
 		cookieService.remove("password");
-		sessionService.remove("user");
+		sessionService.remove("userCK");
 		sessionService.remove("partnerCK");
 		// Xóa trang trước đó khỏi session
 		session.removeAttribute("referer");
