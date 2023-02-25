@@ -133,7 +133,8 @@ public class LoginController {
 				nguoidung.setVaitro(false);
 				nguoidung.setIsactive(true);
 				nguoidung.setNgaysinh(null);
-				nguoidung.setHinhanh("user.jpeg");
+				nguoidung.setHinhanh(null);
+			//	nguoidung.setHinhanh("user.jpeg");
 				cookieService.add("username", nguoidung.getSDT(), 1);
 				cookieService.add("password", nguoidung.getMatkhau(), 1);
 				accountService.save(nguoidung);
