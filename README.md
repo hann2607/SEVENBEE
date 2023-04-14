@@ -1,62 +1,77 @@
 <p align="center">
-  <img width="400" height="450" src="https://github.com/hann2607/HANSHOP/blob/main/images/logo.png">
+  <img width="600" height="400" src="https://user-images.githubusercontent.com/117273434/231942562-b64cd77a-c5d9-4d22-bd37-617f1b732759.png">
+
 </p>
 
 <h2>TABLE OF CONTENTS<h2>
 
-[1. LOGIN](#login)  
+[1. ERD](#erd)  
 
-[2. REGISTER](#register)  
+[2. SIGNIN/SIGNUP](#login)  
 
 [3. HOMEPAGE](#homepage)  
 
-[4. DETAILS PRODUCT](#detailsProduct)  
+[4. SHOP](#shop)  
 
-[5. CHECKOUT](#checkout)  
+[5. DETAILS PRODUCT](#detailsProduct)  
+  
+[6. CART](#cart) 
 
-[5.1 PAYMENT WITH PAYPAL](#paymentWithPaypal)  
+[7. CHECKOUT](#checkout)  
 
-[6. CART](#cart)  
+[8. FEEDBACK](#feedback)  
 
 
+<a name = "erd"></a>
+<h1>1. ERD<h1>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/117273434/231942055-079c545a-f4df-4a32-8a5e-90ff29c2b045.png">
+</p>
+  
 <a name = "login"></a>
-<h1>1. LOGIN<h1>
+<h1>2. SIGNIN/SIGNUP<h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/205692995-758841c0-4ee4-4582-afa5-b6f000e35922.png">
+<img src="https://user-images.githubusercontent.com/117273434/231937764-854a08e5-33b6-4548-b403-c668995852bf.png">
 </p>
-
-<a name = "register"></a>
-<h1>2. REGISTER<h1>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/205693510-f1899edb-c3d6-4b79-9cbb-a4978af8bc85.png">
-</p>
-
+  
 <a name = "homepage"></a>
 <h1>3. HOMEPAGE<h1>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/117273434/231937545-7f719f7b-dd21-4bb0-9fbc-2276d346bf6b.png">
 </p>
+  
+<a name = "shop"></a>
+<h1>4. SHOP<h1>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/117273434/231940963-900066cf-e877-4c67-90b2-6c266d38968f.png">
+<img src="https://user-images.githubusercontent.com/117273434/231941107-e6136a47-f6ad-4569-ad70-e2e88e2b2c98.png">
+</p>
 
 <a name = "detailsProduct"></a>
-<h1>4. DETAILS PRODUCT<h1>
+<h1>5. DETAILS PRODUCT<h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/205694792-47fafb84-7412-4a0b-8d20-f12e4c73a5e2.png">
+<img src="https://user-images.githubusercontent.com/117273434/231940770-7a707216-f84e-4112-b592-74f3cdb33462.png">
+</p>
+  
+  <a name = "cart"></a>
+<h1>6. MINI CART<h1>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/117273434/231940409-c37816ae-7463-4861-a8ae-183eab8d1ea5.png">
+</p>
+  
+ <h1>6.1 PAGE CART<h1>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/117273434/231940576-30b3618b-4db0-4b5b-b036-c7200723e033.png">
 </p>
 
 <a name = "checkout"></a>
-<h1>5. CHECKOUT<h1>
+<h1>7. CHECKOUT<h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/205694983-43c23621-e807-479d-b214-1f90dfccc075.png">
+<img src="https://user-images.githubusercontent.com/117273434/231941308-b5f4279e-79e5-4230-a564-e372ff1c69ef.png">
 </p>
 
-<a name = "paymentWithPaypal"></a>
-<h1>5.1 PAYMENT WITH PAYPAL<h1>
+<a name = "feedback"></a>
+<h1>8. FEEDBACK<h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/205695467-b015e746-8c50-4377-b695-a2861c26baa2.png">
-</p>
-
-<a name = "cart"></a>
-<h1>6. CART<h1>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/205695558-39c1ef78-b012-4071-beb2-6f10003ad45f.png">
+<img src="https://user-images.githubusercontent.com/117273434/231941472-81362271-d549-410d-af7f-debf33129b4d.png">
 </p>
