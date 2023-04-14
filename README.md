@@ -23,7 +23,7 @@
 <a name = "login"></a>
 <h1>1. SIGNIN/SIGNUP<h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/231937764-854a08e5-33b6-4548-b403-c668995852bf.png">
+<img src="https://user-images.githubusercontent.com/117273434/231943100-d7fac3a1-7d9e-4704-9f58-4162a2c11f56.png">
 </p>
   
 <a name = "homepage"></a>
