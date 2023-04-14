@@ -34,7 +34,7 @@
 <a name = "homepage"></a>
 <h1>3. HOMEPAGE<h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/117273434/205694698-41ae0463-b7f3-44ba-9079-55860f4819aa.png">
+<img src="![image](https://user-images.githubusercontent.com/117273434/231937479-8a199484-7f00-4b67-8831-95312c61d1c9.png)">
 </p>
 
 <a name = "detailsProduct"></a>
